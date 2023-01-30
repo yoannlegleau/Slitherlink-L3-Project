@@ -1,4 +1,4 @@
-package fr.slitherlink.demo;
+package fr.slitherlink.app;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

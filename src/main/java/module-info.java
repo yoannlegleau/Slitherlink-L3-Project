@@ -3,6 +3,6 @@ module fr.slitherlink.demo {
     requires javafx.fxml;
 
 
-    opens fr.slitherlink.demo to javafx.fxml;
-    exports fr.slitherlink.demo;
+    opens fr.slitherlink.app to javafx.fxml;
+    exports fr.slitherlink.app;
 }

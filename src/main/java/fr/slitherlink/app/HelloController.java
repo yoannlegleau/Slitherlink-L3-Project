@@ -1,4 +1,4 @@
-package fr.slitherlink.demo;
+package fr.slitherlink.app;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
