@@ -1,6 +1,7 @@
 package fr.slitherlink.save;
 
 import javafx.fxml.FXML;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Structure de données sauvegarder represent des niveaux
@@ -9,7 +10,8 @@ import javafx.fxml.FXML;
  * @pakage fr.slitherlink.save
  */
 
-@XmlRootElement
+
+@XmlRootElement(name = "Level")
 public class LevelData {
     int id;
     int size;

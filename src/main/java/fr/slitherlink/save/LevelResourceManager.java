@@ -7,4 +7,9 @@ package fr.slitherlink.save;
  * @pakage fr.slitherlink.save
  */
 public class LevelResourceManager {
+
+    public static Object loadLevel(Class<?> c, String fileName){
+        //JAXBContext jc;
+        return null;
+    }
 }
