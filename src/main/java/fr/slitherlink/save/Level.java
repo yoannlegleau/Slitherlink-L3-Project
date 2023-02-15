@@ -1,5 +1,7 @@
 package fr.slitherlink.save;
 
+import fr.levelEditor.LevelEditor;
+
 import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -74,7 +76,6 @@ public class Level {
 
     @XmlRootElement(name = "number")
     private static class GridNumber {
-
 
         int number;
 

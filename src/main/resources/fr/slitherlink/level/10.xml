@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<level id="10">
+    <size>10</size>
+    <number column="4" row="5">0</number>
+    <number column="4" row="4">0</number>
+    <number column="4" row="3">1</number>
+    <number column="5" row="1">1</number>
+    <number column="5" row="2">1</number>
+    <number column="1" row="5">1</number>
+    <number column="1" row="6">1</number>
+    <number column="1" row="8">3</number>
+    <number column="3" row="8">1</number>
+    <number column="4" row="8">1</number>
+</level>
