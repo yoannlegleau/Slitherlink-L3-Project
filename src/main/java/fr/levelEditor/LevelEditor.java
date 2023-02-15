@@ -116,17 +116,26 @@ public class LevelEditor extends JPanel {
     private void creegrille() {
 
         int size = curentLevel.getSize();
-        double margin = 2.3;
 
+
+        int windowSize ;
+        double margin = 1.2;
         gridPanel.setLayout(new GridLayout(size, size));
-        gridPanel.setMaximumSize(new Dimension((int) (getWidth() / margin), (int) (getWidth() / margin)));
-        Dimension btnDimension = new Dimension((int) (getWidth() / (margin*size)), (int) (getWidth() / (margin*size)));
+        if (getHeight() < getWidth())
+            windowSize = getHeight(); //getWidth();
+        else
+            windowSize = getWidth();
+
+
+        gridPanel.setMaximumSize(new Dimension((int) (windowSize / margin), (int) (windowSize / margin)));
+        Dimension btnDimension = new Dimension((int) (windowSize / (margin*size)), (int) (windowSize / (margin*size)));
 
         gridPanel.removeAll();
 
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 JButton button = new JButton();
+                button.setFont(new Font("Arial", Font.PLAIN, btnDimension.height/2));
                 int number = curentLevel.getGrid(i,j);
                 if (number!=-1)
                     button.setText(String.valueOf(number));
