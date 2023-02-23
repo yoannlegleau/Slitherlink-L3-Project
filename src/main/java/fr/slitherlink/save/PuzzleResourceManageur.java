@@ -7,19 +7,19 @@ import javax.xml.bind.JAXBException;
  * @version 1, 14/02/2023
  * @pakage fr.slitherlink.save
  */
-public class LevelResourceManageur {
+public class PuzzleResourceManageur {
 
-    public static final String LEVEL_PATH = "level/";
+    public static final String LEVEL_PATH = "puzzle/";
 
     /**
      * Recupere les données d'un niveau a partire de son id.
      * @param id idantifein du niveux
      * @return
      */
-    public static Level LoadLevel(int id){
-        Level level;
+    public static Puzzle LoadPuzzle(int id){
+        Puzzle level;
         try {
-            level = (Level) XmlResourcesManageur.concertXmlToJava(Level.class,LEVEL_PATH+ id);
+            level = (Puzzle) XmlResourcesManageur.concertXmlToJava(Puzzle.class,LEVEL_PATH+ id);
         } catch (JAXBException e) {
             throw new RuntimeException(e);
         }
@@ -30,7 +30,7 @@ public class LevelResourceManageur {
      * Sauvegarde un niveau dans les resource. Doit aitre utiliser uniquement par l'éditeur de niveaux
      * @param level niveau a sauvegarder
      */
-    public static void saveLevel(Level level){
+    public static void saveLevel(Puzzle level){
         try {
             XmlResourcesManageur.concertJavaToXml(level, LEVEL_PATH + level.getId());
         } catch (JAXBException e) {

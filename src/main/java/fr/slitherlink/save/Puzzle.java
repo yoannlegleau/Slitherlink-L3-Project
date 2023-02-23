@@ -1,7 +1,5 @@
 package fr.slitherlink.save;
 
-import fr.levelEditor.LevelEditor;
-
 import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,19 +11,19 @@ import java.util.List;
 
 @XmlRootElement
 @XmlType(propOrder={"size", "grid"})
-public class Level {
+public class Puzzle {
     private int id;
     private int size;
 
     @XmlElement(name="number")
     private List<GridNumber> grid;
 
-    public Level() {
+    public Puzzle() {
         super();
         grid = new ArrayList<>();
     }
 
-    public Level(int id, int size) {
+    public Puzzle(int id, int size) {
         this();
         this.id = id;
         this.size = size;
@@ -48,6 +46,12 @@ public class Level {
         this.size = size;
     }
 
+    /**
+     * uniquement pour le level editor
+     * @param number
+     * @param row
+     * @param column
+     */
     public void setGrid(int number, int row, int column){
         GridNumber target = null;
         for (GridNumber n :grid)
@@ -63,11 +67,20 @@ public class Level {
 
     }
 
+    Integer[][] getGrid(){
+        Integer[][] grid = new Integer[size][size];
+        for (GridNumber n :this.grid)
+            grid[n.row][n.column] = n.number;
+        return grid;
+    }
+
     public int getGrid(int row, int column){
         for (GridNumber n :grid)
             if (n.row == row && n.column == column) return n.number;
         return -1;
     }
+
+
 
     @Override
     public String toString() {

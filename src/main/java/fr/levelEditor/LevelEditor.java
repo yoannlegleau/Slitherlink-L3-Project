@@ -1,12 +1,10 @@
 package fr.levelEditor;
 
-import fr.slitherlink.save.Level;
-import fr.slitherlink.save.LevelResourceManageur;
+import fr.slitherlink.save.Puzzle;
+import fr.slitherlink.save.PuzzleResourceManageur;
 import fr.slitherlink.save.XmlResourcesManageur;
 
 import javax.swing.*;
-import javax.swing.event.CaretEvent;
-import javax.swing.event.CaretListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,7 +19,7 @@ import java.util.stream.Stream;
  * @pakage fr.levelEditor
  */
 public class LevelEditor extends JPanel {
-    private Level curentLevel;
+    private Puzzle curentLevel;
 
     private boolean isModified;
 
@@ -44,7 +42,7 @@ public class LevelEditor extends JPanel {
         loadButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                curentLevel = LevelResourceManageur.LoadLevel(Integer.parseInt(textFieldSearch.getText()));
+                curentLevel = PuzzleResourceManageur.LoadPuzzle(Integer.parseInt(textFieldSearch.getText()));
                 setModified(false);
                 loadLevel();
             }
@@ -54,7 +52,7 @@ public class LevelEditor extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Thread t = new Thread(() -> {
-                    LevelResourceManageur.saveLevel(curentLevel);
+                    PuzzleResourceManageur.saveLevel(curentLevel);
                     setModified(false);
                 });
                 t.start();
@@ -89,7 +87,7 @@ public class LevelEditor extends JPanel {
     }
 
     private void newLevel() {
-        String dir = XmlResourcesManageur.RESOURCES_PATH + "Level";
+        String dir = XmlResourcesManageur.RESOURCES_PATH + "puzzle";
         List<String> list = Stream.of(new File(dir).listFiles())
                 .filter(file -> !file.isDirectory())
                 .map(File::getName)
@@ -100,7 +98,7 @@ public class LevelEditor extends JPanel {
             id = 1;
         else
             id = Integer.parseInt(list.get(list.size() - 1).replace(".xml", "")) + 1;
-        curentLevel = new Level(id, 6);
+        curentLevel = new Puzzle(id, 6);
         loadLevel();
     }
 

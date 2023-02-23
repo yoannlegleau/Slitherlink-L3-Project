@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<puzzle id="10">
+    <size>6</size>
+    <number column="0" row="0">0</number>
+    <number column="1" row="1">0</number>
+    <number column="2" row="2">0</number>
+    <number column="3" row="3">0</number>
+    <number column="4" row="4">0</number>
+    <number column="5" row="5">0</number>
+</puzzle>

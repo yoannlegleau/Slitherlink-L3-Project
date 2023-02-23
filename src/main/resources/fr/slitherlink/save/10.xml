@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<save id="10">
+    <level>10</level>
+    <action>
+        <type>click</type>
+        <column>1</column>
+        <row>2</row>
+    </action>
+</save>

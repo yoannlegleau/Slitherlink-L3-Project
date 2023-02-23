@@ -13,13 +13,13 @@ class LevelResourceManageurTest {
 
     @Test
     void loadLevel() {
-        assertNull(LevelResourceManageur.LoadLevel(0));
-        assertEquals(1,LevelResourceManageur.LoadLevel(1).getId());
+        assertNull(PuzzleResourceManageur.LoadPuzzle(0));
+        assertEquals(1, PuzzleResourceManageur.LoadPuzzle(1).getId());
     }
 
     @Test
     void saveLevel() {
-        Level level = new Level(1,6);
-        LevelResourceManageur.saveLevel(level);
+        Puzzle level = new Puzzle(1,6);
+        PuzzleResourceManageur.saveLevel(level);
     }
 }
