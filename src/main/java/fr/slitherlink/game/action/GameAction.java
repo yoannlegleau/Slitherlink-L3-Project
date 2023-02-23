@@ -1,8 +1,7 @@
-package fr.slitherlink.game;
+package fr.slitherlink.game.action;
 
-import fr.slitherlink.game.grid.GridCell;
+import fr.slitherlink.game.Game;
 
-import java.util.List;
 
 /**
  * @author LE GLEAU Yoann
@@ -10,10 +9,6 @@ import java.util.List;
  */
 public class GameAction {
     GameActionTypes type;
-
-    private GridCell grid;
-
-    private List<GameAction> actions;
 
     public void doAction(Game game) {
 

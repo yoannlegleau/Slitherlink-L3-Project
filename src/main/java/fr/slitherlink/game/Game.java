@@ -1,5 +1,6 @@
 package fr.slitherlink.game;
 
+import fr.slitherlink.game.action.GameAction;
 import fr.slitherlink.game.grid.Grid;
 import fr.slitherlink.save.*;
 
@@ -37,6 +38,13 @@ public class Game {
 
         save = GameSaveResourceManageur.LoadLevel(puzzleId);
         save.reloadGame(this);
+    }
+
+    public void action(GameAction action){
+        if (isSolved)
+            return;
+        actions.add(action);
+        action.doAction(this);
     }
 
 }
