@@ -26,8 +26,6 @@ class GameGridTest {
 
     @Test
     void getSetEdgeValue() {
-        grid.getCell(0, 0).getRight().setType(LINE);
-        assertEquals(LINE, grid.getCell(0, 0).getRight().getType());
-        assertEquals(LINE, grid.getCell(1, 0).getLeft().getType());
+        assertEquals(grid.getCell(1, 0).getLeft() , grid.getCell(0, 0).getRight());
     }
 }

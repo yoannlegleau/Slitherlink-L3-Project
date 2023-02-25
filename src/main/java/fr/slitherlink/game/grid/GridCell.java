@@ -22,6 +22,10 @@ public class GridCell {
         return number;
     }
 
+    /**
+     * Modifie la valeur de la cellule. À utiliser uniquement dans le level editor
+     * @param number
+     */
     public void setNumber(Integer number) {
         this.number = number;
     }
