@@ -18,6 +18,14 @@ public class GridCell {
         }
     }
 
+    public Integer getNumber() {
+        return number;
+    }
+
+    public void setNumber(Integer number) {
+        this.number = number;
+    }
+
     public Edge getTop() {
         return edges[0];
     }

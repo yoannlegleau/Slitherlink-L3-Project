@@ -7,6 +7,10 @@ package fr.slitherlink.game.grid;
 public class Edge {
     private EdgeType type;
 
+    public Edge() {
+        this.type = EdgeType.EMPTY;
+    }
+
     public void setType(EdgeType newType) {
         type = newType;
     }

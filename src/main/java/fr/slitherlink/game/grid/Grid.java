@@ -10,6 +10,10 @@ public class Grid {
 
     public Grid(int size) {
         grid = new GridCell[size][size];
+        initGrid(size);
+    }
+
+    private void initGrid(int size) {
         for (int x = 0; x < size; x++) {
             for (int y = 0; y < size; y++) {
                 grid[x][y] = new GridCell(null);
@@ -25,8 +29,8 @@ public class Grid {
         return grid[x][y];
     }
 
-    public void setCell(int x, int y, GridCell cell) {
-        grid[x][y] = cell;
+    public int getSize(){
+        return grid.length;
     }
 
 }

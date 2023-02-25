@@ -16,10 +16,10 @@ public class PuzzleResourceManageur {
      * @param id idantifein du niveux
      * @return
      */
-    public static Puzzle LoadPuzzle(int id){
-        Puzzle level;
+    public static PuzzleSave LoadPuzzle(int id){
+        PuzzleSave level;
         try {
-            level = (Puzzle) XmlResourcesManageur.concertXmlToJava(Puzzle.class,LEVEL_PATH+ id);
+            level = (PuzzleSave) XmlResourcesManageur.concertXmlToJava(PuzzleSave.class,LEVEL_PATH+ id);
         } catch (JAXBException e) {
             throw new RuntimeException(e);
         }
@@ -30,7 +30,7 @@ public class PuzzleResourceManageur {
      * Sauvegarde un niveau dans les resource. Doit aitre utiliser uniquement par l'éditeur de niveaux
      * @param level niveau a sauvegarder
      */
-    public static void saveLevel(Puzzle level){
+    public static void saveLevel(PuzzleSave level){
         try {
             XmlResourcesManageur.concertJavaToXml(level, LEVEL_PATH + level.getId());
         } catch (JAXBException e) {

@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class Game {
 
-    private Puzzle puzzle;
+    private PuzzleSave puzzle;
 
     private GameSave save;
 
