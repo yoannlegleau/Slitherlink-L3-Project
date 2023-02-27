@@ -1,9 +1,9 @@
 package fr.slitherlink.game.grid;
 
+import fr.slitherlink.Grid;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static fr.slitherlink.game.grid.EdgeType.LINE;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**

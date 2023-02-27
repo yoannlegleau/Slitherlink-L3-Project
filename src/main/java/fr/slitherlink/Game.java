@@ -1,8 +1,9 @@
-package fr.slitherlink.game;
+package fr.slitherlink;
 
-import fr.slitherlink.game.action.GameAction;
-import fr.slitherlink.game.grid.Grid;
-import fr.slitherlink.save.*;
+import fr.slitherlink.save.GameSave;
+import fr.slitherlink.save.GameSaveResourceManageur;
+import fr.slitherlink.save.PuzzleResourceManageur;
+import fr.slitherlink.save.PuzzleSave;
 
 import java.util.ArrayList;
 import java.util.List;

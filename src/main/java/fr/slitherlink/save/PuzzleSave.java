@@ -1,8 +1,8 @@
 package fr.slitherlink.save;
 
-import fr.slitherlink.game.grid.EdgeType;
-import fr.slitherlink.game.grid.Grid;
-import fr.slitherlink.game.grid.GridCell;
+import fr.slitherlink.EdgeType;
+import fr.slitherlink.Grid;
+import fr.slitherlink.GridCell;
 
 import javax.xml.bind.annotation.*;
 import java.util.ArrayList;

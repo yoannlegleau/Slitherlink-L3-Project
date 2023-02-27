@@ -1,6 +1,4 @@
-package fr.slitherlink.game.action;
-
-import fr.slitherlink.game.Game;
+package fr.slitherlink;
 
 
 /**
