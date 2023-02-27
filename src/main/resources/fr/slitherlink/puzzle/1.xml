@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<puzzleSave id="1">
+    <size>4</size>
+    <grid>
+        <number column="0" row="0">1</number>
+        <number column="2" row="0">2</number>
+        <number column="2" row="1">0</number>
+        <number column="3" row="1">2</number>
+        <number column="1" row="2">0</number>
+        <number column="2" row="2">1</number>
+        <number column="1" row="3">3</number>
+        <number column="3" row="3">1</number>
+    </grid>
+    <solution>
+        <number column="0" row="0">R</number>
+    </solution>
+</puzzleSave>

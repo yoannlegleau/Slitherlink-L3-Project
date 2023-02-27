@@ -15,10 +15,11 @@ import java.util.List;
  */
 
 @XmlRootElement
-@XmlType(propOrder={"size", "grid", "solution"})
+@XmlType(propOrder={"size", "grid", "solution","difficulty"})
 public class PuzzleSave {
     private int id;
     private int size;
+    private Difficulty difficulty;
 
     @XmlElement
     private GridSave grid;
@@ -31,11 +32,12 @@ public class PuzzleSave {
         grid = new GridSave();
     }
 
-    public PuzzleSave(int id, Grid grid) {
+    public PuzzleSave(int id, Grid grid, Integer[][] numbers) {
         this();
         this.id = id;
         this.size = grid.getSize();
-        setGameGrid(grid);
+        this.difficulty = Difficulty.UNKNOWN;
+        setGameGrid(grid, numbers);
     }
 
     @XmlAttribute(name = "id")
@@ -55,16 +57,28 @@ public class PuzzleSave {
         this.size = size;
     }
 
+    public Difficulty getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(Difficulty difficulty) {
+        this.difficulty = difficulty;
+    }
+
     @Override
     public String toString() {
         return this.getClass().toString()+"[id="+id+", name="+ size +"]";
     }
 
-    public Grid getGameGrid() {
-        Grid g = new Grid(size);
+    public Integer[][] getGridNumbers() {
+        Integer[][] returnGrid = new Integer[size][size];
         for (GridSave.GridNumber number : grid.getNumberList()) {
-            g.getCell(number.getRow(), number.getColumn()).setNumber(number.getNumber());
+            returnGrid[number.getRow()][number.getColumn()] = number.getNumber();
         }
+        return returnGrid;
+    }
+    public Grid getSolution() {
+        Grid g = new Grid(size);
         for (Solution.SaveEdge edge : solution.getEdgeList()) {
             switch (edge.direction) {
                 case "T" -> g.getCell(edge.row, edge.column).getTop().setType(EdgeType.LINE);
@@ -77,8 +91,8 @@ public class PuzzleSave {
     }
 
     @XmlTransient
-    public void setGameGrid(Grid newGrid) {
-        grid = new GridSave(newGrid);
+    public void setGameGrid(Grid newGrid, Integer[][] gridNumbers) {
+        grid = new GridSave(gridNumbers);
         solution = new Solution(newGrid);
     }
 
@@ -92,12 +106,12 @@ public class PuzzleSave {
             numberList = new ArrayList<>();
         }
 
-        public GridSave(Grid gameGrid) {
+        public GridSave(Integer[][] gridNumbers) {
             this();
-            for (int x = 0; x < gameGrid.getSize(); x++) {
-                for (int y = 0; y < gameGrid.getSize(); y++) {
-                    if (gameGrid.getCell(x, y).getNumber() != null)
-                        numberList.add(new GridNumber(gameGrid.getCell(x, y).getNumber(), x, y));
+            for (int x = 0; x < gridNumbers.length; x++) {
+                for (int y = 0; y < gridNumbers.length; y++) {
+                    if (gridNumbers[x][y] != null)
+                        numberList.add(new GridNumber(gridNumbers[x][y], x, y));
                 }
             }
         }

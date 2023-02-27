@@ -23,4 +23,8 @@ public class GameSave {
         for (GameAction action: actions)
             action.doAction(game);
     }
+
+    public List<GameAction> getActions() {
+        return actions;
+    }
 }

@@ -13,11 +13,10 @@ import java.util.List;
  */
 public class Game {
 
-    private PuzzleSave puzzle;
+    private Integer[][] numbers;
+    private Grid solution;
 
-    private GameSave save;
-
-    private Grid grid;
+    private Grid currentGrid;
 
     private List<GameAction> actions;
 
@@ -28,16 +27,17 @@ public class Game {
     private int NbHint;
 
     public Game(int puzzleId){
-        puzzle = PuzzleResourceManageur.LoadPuzzle(puzzleId);
-
-        grid = new Grid(puzzle.getSize());
+        loadGame(puzzleId);
+        currentGrid = new Grid(solution.getSize());
         actions = new ArrayList<>();
         assumptionMode = false;
         isSolved = false;
         NbHint = 0;
 
-        save = GameSaveResourceManageur.LoadLevel(puzzleId);
-        save.reloadGame(this);
+    }
+
+    public Grid getSolution( ){
+        return solution;
     }
 
     public void action(GameAction action){
@@ -45,6 +45,15 @@ public class Game {
             return;
         actions.add(action);
         action.doAction(this);
+    }
+
+    private void loadGame(int puzzleId){
+        PuzzleSave puzzle = PuzzleResourceManageur.LoadPuzzle(puzzleId);
+        numbers = puzzle.getGridNumbers();
+        solution = puzzle.getSolution();
+        GameSave gameSave = GameSaveResourceManageur.LoadLevel(puzzleId);
+        for (GameAction action: gameSave.getActions())
+            action.doAction(this);//        save = GameSaveResourceManageur.LoadLevel(puzzleId);
     }
 
 }

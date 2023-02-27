@@ -47,7 +47,7 @@ public class LevelEditor extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 curentLevel = PuzzleResourceManageur.LoadPuzzle(Integer.parseInt(textFieldSearch.getText()));
-                grid = curentLevel.getGameGrid();
+                grid = curentLevel.getSolution();
                 setModified(false);
                 loadLevel();
             }

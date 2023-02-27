@@ -6,28 +6,13 @@ package fr.slitherlink.game.grid;
  */
 public class GridCell {
 
-    private Integer number;
-
     private Edge[] edges;
 
     public GridCell(Integer number) {
-        this.number = number;
         edges = new Edge[4];
         for (int i = 0; i < 4; i++) {
             edges[i] = new Edge();
         }
-    }
-
-    public Integer getNumber() {
-        return number;
-    }
-
-    /**
-     * Modifie la valeur de la cellule. À utiliser uniquement dans le level editor
-     * @param number
-     */
-    public void setNumber(Integer number) {
-        this.number = number;
     }
 
     public Edge getTop() {
