@@ -1,6 +1,6 @@
 package fr.levelEditor;
 
-import fr.slitherlink.Grid;
+import fr.slitherlink.game.grid.Grid;
 import fr.slitherlink.save.PuzzleSave;
 import fr.slitherlink.save.PuzzleResourceManageur;
 import fr.slitherlink.save.XmlResourcesManageur;

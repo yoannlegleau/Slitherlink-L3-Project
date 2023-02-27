@@ -1,5 +1,7 @@
-package fr.slitherlink;
+package fr.slitherlink.game;
 
+import fr.slitherlink.game.action.GameAction;
+import fr.slitherlink.game.grid.Grid;
 import fr.slitherlink.save.GameSave;
 import fr.slitherlink.save.GameSaveResourceManageur;
 import fr.slitherlink.save.PuzzleResourceManageur;

@@ -1,4 +1,4 @@
-package fr.slitherlink;
+package fr.slitherlink.game.action;
 
 /**
  * @author LE GLEAU Yoann

@@ -1,7 +1,7 @@
 package fr.slitherlink.save;
 
-import fr.slitherlink.Game;
-import fr.slitherlink.GameAction;
+import fr.slitherlink.game.Game;
+import fr.slitherlink.game.action.GameAction;
 
 import java.util.List;
 
