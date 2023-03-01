@@ -23,7 +23,7 @@ import java.util.stream.Stream;
 public class LevelEditor extends JPanel {
     private PuzzleSave curentLevel;
 
-    private Grid grid;
+    private Integer[][] grid;
 
     private boolean isModified;
 
@@ -47,7 +47,7 @@ public class LevelEditor extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 curentLevel = PuzzleResourceManageur.LoadPuzzle(Integer.parseInt(textFieldSearch.getText()));
-                grid = curentLevel.getSolution();
+                grid = curentLevel.getGridNumbers();
                 setModified(false);
                 loadLevel();
             }
@@ -56,7 +56,7 @@ public class LevelEditor extends JPanel {
         saveButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                curentLevel.setGameGrid(grid);
+                curentLevel.setGrid(grid);
                 Thread t = new Thread(() -> {
                     PuzzleResourceManageur.saveLevel(curentLevel);
                     setModified(false);
@@ -79,7 +79,7 @@ public class LevelEditor extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 curentLevel.setSize(Integer.parseInt(textFieldSize.getText()));
-                grid = new Grid(curentLevel.getSize());
+                grid = new Integer[curentLevel.getSize()][curentLevel.getSize()];
                 creegrille();
                 setModified(true);
             }
@@ -106,8 +106,8 @@ public class LevelEditor extends JPanel {
             id = 1;
         else
             id = Integer.parseInt(list.get(list.size() - 1).replace(".xml", "")) + 1;
-        grid = new Grid(6);
-        curentLevel = new PuzzleSave(id, grid);
+        grid = new Integer[6][6];
+        curentLevel = new PuzzleSave();
         loadLevel();
     }
 
@@ -143,7 +143,7 @@ public class LevelEditor extends JPanel {
             for (int j = 0; j < size; j++) {
                 JButton button = new JButton();
                 button.setFont(new Font("Arial", Font.PLAIN, btnDimension.height/2));
-                Integer number = grid.getCell(i, j).getNumber();
+                Integer number = grid[i][j];
                 if (number!=null)
                     button.setText(String.valueOf(number));
                 button.setPreferredSize(btnDimension);
@@ -191,9 +191,9 @@ public class LevelEditor extends JPanel {
                     break;
             }
             if (button.getText().equals(""))
-                grid.getCell(row, column).setNumber(null);
+                grid[row][column] = null;
             else
-                grid.getCell(row, column).setNumber(Integer.parseInt(button.getText()));
+                grid[row][column] = Integer.parseInt(button.getText());
 
         }
     }

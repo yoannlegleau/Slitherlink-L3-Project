@@ -32,9 +32,13 @@ public class PuzzleSave {
         grid = new GridSave();
     }
 
-    public PuzzleSave(int id, Grid grid, Integer[][] numbers) {
+    public PuzzleSave(int id){
         this();
         this.id = id;
+    }
+
+    public PuzzleSave(int id, Grid grid, Integer[][] numbers) {
+        this(id);
         this.size = grid.getSize();
         this.difficulty = Difficulty.UNKNOWN;
         setGameGrid(grid, numbers);
@@ -68,6 +72,10 @@ public class PuzzleSave {
     @Override
     public String toString() {
         return this.getClass().toString()+"[id="+id+", name="+ size +"]";
+    }
+
+    public void setGrid(Integer[][] grid) {
+        this.grid = new GridSave(grid);
     }
 
     public Integer[][] getGridNumbers() {

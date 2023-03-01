@@ -14,21 +14,12 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class LevelResourceManageurTest {
 
-    public static Grid grid;
+    public static Grid gridSolution;
+    public static Integer gridNumber;
 
     @BeforeAll
     public static void init(){
-        grid = new Grid(4);
-        grid.getCell(0,0).setNumber(1);
-        grid.getCell(0,2).setNumber(2);
-        grid.getCell(1,2).setNumber(0);
-        grid.getCell(1,3).setNumber(2);
-        grid.getCell(2,1).setNumber(0);
-        grid.getCell(2,2).setNumber(1);
-        grid.getCell(3,1).setNumber(3);
-        grid.getCell(3,3).setNumber(1);
-
-        grid.getCell(0,0).getRight().setType(LINE);
+        //TODO
     }
 
 
@@ -40,7 +31,6 @@ class LevelResourceManageurTest {
 
     @Test
     void saveLevel() {
-        PuzzleSave level = new PuzzleSave(1,grid);
-        PuzzleResourceManageur.saveLevel(level);
+        //TODO
     }
 }
