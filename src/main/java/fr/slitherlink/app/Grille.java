@@ -10,7 +10,7 @@ import javafx.scene.shape.*;
 import javafx.event.*;
 import javafx.scene.input.*;
 
-public class Grille extends Application {
+public class Grille extends Application implements Comparable {
 
 
 
@@ -88,5 +88,10 @@ public class Grille extends Application {
         }else{
             r.setStroke(Color.DARKGRAY);
         }
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return 0;
     }
 }

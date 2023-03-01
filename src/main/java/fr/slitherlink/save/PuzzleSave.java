@@ -75,6 +75,7 @@ public class PuzzleSave {
     }
 
     public void setGrid(Integer[][] grid) {
+        this.size = grid.length;
         this.grid = new GridSave(grid);
     }
 

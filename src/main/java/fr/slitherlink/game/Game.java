@@ -43,6 +43,10 @@ public class Game {
         return solution;
     }
 
+    public Grid getCurrentGrid() {
+        return currentGrid;
+    }
+
     public void action(GameAction action){
         if (isSolved)
             return;
@@ -56,7 +60,7 @@ public class Game {
         solution = puzzle.getSolution();
         GameSave gameSave = GameSaveResourceManageur.LoadLevel(puzzleId);
         for (GameAction action: gameSave.getActions())
-            action.doAction(this);//        save = GameSaveResourceManageur.LoadLevel(puzzleId);
+            action(action);//        save = GameSaveResourceManageur.LoadLevel(puzzleId);
     }
 
 }

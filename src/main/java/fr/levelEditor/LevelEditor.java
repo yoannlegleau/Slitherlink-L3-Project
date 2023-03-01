@@ -1,8 +1,7 @@
 package fr.levelEditor;
 
-import fr.slitherlink.game.grid.Grid;
-import fr.slitherlink.save.PuzzleSave;
 import fr.slitherlink.save.PuzzleResourceManageur;
+import fr.slitherlink.save.PuzzleSave;
 import fr.slitherlink.save.XmlResourcesManageur;
 
 import javax.swing.*;
@@ -70,7 +69,6 @@ public class LevelEditor extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 newLevel();
-
                 setModified(false);
             }
         });
@@ -107,7 +105,8 @@ public class LevelEditor extends JPanel {
         else
             id = Integer.parseInt(list.get(list.size() - 1).replace(".xml", "")) + 1;
         grid = new Integer[6][6];
-        curentLevel = new PuzzleSave();
+        curentLevel = new PuzzleSave(id);
+        curentLevel.setGrid(grid);
         loadLevel();
     }
 
@@ -123,8 +122,6 @@ public class LevelEditor extends JPanel {
     private void creegrille() {
 
         int size = curentLevel.getSize();
-
-
         int windowSize ;
         double margin = 1.2;
         gridPanel.setLayout(new GridLayout(size, size));
