@@ -1,3 +1,4 @@
+package fr.slitherlink.game.help;
 /* MEMO
 id_aide
 ajout dans un tableau des id
@@ -11,3 +12,4 @@ mise en place de l'anglais
 générer une aide lors de l'appui et stocker son instance
 choix de la technique avec l'id le plus petit possible
 */
+
