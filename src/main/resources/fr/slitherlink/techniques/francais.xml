@@ -1,78 +1,78 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <technique id="1">
-    <title>0 present</title>
-    <description></description>
-    <image></image>
-</technique>
-
-<technique id="2">
     <title>adjacent 0 et 3</title>
     <description></description>
     <image></image>
 </technique>
 
-<technique id="3">
+<technique id="2">
     <title>diagonale 0 et 3</title>
     <description></description>
     <image></image>
 </technique>
 
-<technique id="4">
+<technique id="3">
     <title>adjacent 3 et 3</title>
     <description></description>
     <image></image>
 </technique>
 
-<technique id="5">
+<technique id="4">
     <title>diagonale 3 et 3</title>
     <description></description>
     <image></image>
 </technique>
 
-<technique id="6">
+<technique id="5">
     <title>coin d'un 2 trace</title>
     <description></description>
     <image></image>
 </technique>
 
-<technique id="7">
+<technique id="6">
     <title>2 en coin</title>
     <description></description>
     <image></image>
 </technique>
 
-<technique id="8">
+<technique id="7">
     <title>3 en coin</title>
     <description></description>
     <image></image>
 </technique>
 
-<technique id="9">
+<technique id="8">
     <title>diagonale 3 et 3 avec 2 internes</title>
     <description></description>
     <image></image>
 </technique>
 
-<technique id="10">
+<technique id="9">
     <title>coin d'un 3 barre</title>
     <description></description>
     <image></image>
 </technique>
 
-<technique id="11">
+<technique id="10">
     <title>3 atteint</title>
     <description></description>
     <image></image>
 </technique>
 
-<technique id="12">
+<technique id="11">
     <title>brochette de 2 atteint 3</title>
     <description></description>
     <image></image>
 </technique>
 
-<technique id="13">
+<technique id="12">
     <title>diagonale 3 et 2</title>
+    <description></description>
+    <image></image>
+</technique>
+
+<technique id="13">
+    <title>adjacent 3 et 2</title>
     <description></description>
     <image></image>
 </technique>
@@ -84,31 +84,31 @@
 </technique>
 
 <technique id="15">
-    <title>adjacent 3 et 2</title>
-    <description></description>
-    <image></image>
-</technique>
-
-<technique id="16">
     <title>diagonale 3 et 1</title>
     <description></description>
     <image></image>
 </technique>
 
-<technique id="17">
+<technique id="16">
     <title>brochette de 2</title>
     <description></description>
     <image></image>
 </technique>
 
-<technique id="18">
+<technique id="17">
     <title>2 atteint</title>
     <description></description>
     <image></image>
 </technique>
 
-<technique id="19">
+<technique id="18">
     <title>adjacent 3 et 1</title>
+    <description></description>
+    <image></image>
+</technique>
+
+<technique id="19">
+    <title>0 present</title>
     <description></description>
     <image></image>
 </technique>
