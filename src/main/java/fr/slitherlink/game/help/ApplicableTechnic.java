@@ -1,7 +1,7 @@
 package fr.slitherlink.game.help;
 
 import java.util.List;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import fr.slitherlink.game.grid.Grid;
 
 /**
@@ -28,20 +28,27 @@ public class ApplicableTechnic {
      * @param size la taille de la grille
      * @return la liste des coordonnées des cases à mettre en surbrillance si la technique est applicable, null sinon
      */
-    private Coordinates searchTech1Pos(int x, int y, Integer [][] gridNumber, Grid route, int size) {
+    private LinkedList<Coordinates> searchTech1Pos(int x, int y, Integer [][] gridNumber, Grid route, int size) {
         if (coordExist(x,y, size) && gridNumber[x][y] == 0){
-            if (coordExist(x, y-1, size) && (gridNumber[x][y-1] == 3))
+            LinkedList<Coordinates> listCoord = new LinkedList<>();
+
+            if (coordExist(x, y-1, size) && (gridNumber[x][y-1] == 3)){
                 if ( !(route.getCell(x, y-1).getTop().isLine() && route.getCell(x, y-1).getRight().isLine() && route.getCell(x, y-1).getLeft().isLine() && route.getCell(x-1, y-1).getBottom().isLine() && route.getCell(x+1, y-1).getBottom().isLine()) )
-                    return (new Coordinates(x, y-1));
-            if (coordExist(x+1, y, size) && (gridNumber[x+1][y] == 3))
+                    listCoord.add(new Coordinates(x, y-1));
+            } else if (coordExist(x+1, y, size) && (gridNumber[x+1][y] == 3)){
                 if ( !(route.getCell(x+1, y).getRight().isLine() && route.getCell(x+1, y).getTop().isLine() && route.getCell(x+1, y).getBottom().isLine() && route.getCell(x+1, y-1).getLeft().isLine() && route.getCell(x+1, y+1).getLeft().isLine()) )
-                    return (new Coordinates(x+1, y));
-            if (coordExist(x, y+1, size) && (gridNumber[x][y+1] == 3))
+                    listCoord.add(new Coordinates(x+1, y));
+            } else if (coordExist(x, y+1, size) && (gridNumber[x][y+1] == 3)){
                 if ( !(route.getCell(x, y+1).getBottom().isLine() && route.getCell(x, y+1).getRight().isLine() && route.getCell(x, y+1).getLeft().isLine() && route.getCell(x-1, y+1).getTop().isLine() && route.getCell(x+1, y+1).getTop().isLine()) )
-                    return (new Coordinates(x, y+1));
-            if (coordExist(x-1, y, size) && (gridNumber[x-1][y] == 3))
+                    listCoord.add(new Coordinates(x, y+1));
+            } else if (coordExist(x-1, y, size) && (gridNumber[x-1][y] == 3))
                 if ( !(route.getCell(x-1, y).getLeft().isLine() && route.getCell(x-1, y).getTop().isLine() && route.getCell(x-1, y).getBottom().isLine() && route.getCell(x-1, y-1).getRight().isLine() && route.getCell(x-1, y+1).getRight().isLine()) )
-                    return (new Coordinates(x-1, y));
+                    listCoord.add(new Coordinates(x-1, y));
+            
+            if(!listCoord.isEmpty()){
+                listCoord.addFirst(new Coordinates(x, y));
+                return listCoord;
+            }
         }
         return null;
     }
@@ -55,20 +62,27 @@ public class ApplicableTechnic {
      * @param size la taille de la grille
      * @return la liste des coordonnées des cases à mettre en surbrillance si la technique est applicable, null sinon
      */
-    private Coordinates searchTech2Pos(int x, int y, Integer [][] gridNumber, Grid route, int size) {
+    private LinkedList<Coordinates> searchTech2Pos(int x, int y, Integer [][] gridNumber, Grid route, int size) {
         if (coordExist(x,y, size) && gridNumber[x][y] == 0){
-            if (coordExist(x-1, y-1, size) && (gridNumber[x-1][y-1] == 3))
+            LinkedList<Coordinates> listCoord = new LinkedList<>();
+
+            if (coordExist(x-1, y-1, size) && (gridNumber[x-1][y-1] == 3)){
                 if ( !(route.getCell(x-1, y-1).getBottom().isLine() && route.getCell(x-1, y-1).getRight().isLine()) )
-                    return (new Coordinates(x-1, y-1));
-            if (coordExist(x+1, y-1, size) && (gridNumber[x+1][y-1] == 3))
+                    listCoord.add(new Coordinates(x-1, y-1));
+            } else if (coordExist(x+1, y-1, size) && (gridNumber[x+1][y-1] == 3)){
                 if ( !(route.getCell(x+1, y-1).getBottom().isLine() && route.getCell(x+1, y-1).getLeft().isLine()) )
-                    return (new Coordinates(x+1, y-1));
-            if (coordExist(x+1, y+1, size) && (gridNumber[x+1][y+1] == 3))
+                    listCoord.add(new Coordinates(x+1, y-1));
+            } else if (coordExist(x+1, y+1, size) && (gridNumber[x+1][y+1] == 3)){
                 if ( !(route.getCell(x+1, y+1).getTop().isLine() && route.getCell(x+1, y+1).getLeft().isLine()) )
-                    return (new Coordinates(x+1, y+1));
-            if (coordExist(x-1, y+1, size) && (gridNumber[x-1][y+1] == 3))
+                    listCoord.add(new Coordinates(x+1, y+1));
+            } else if (coordExist(x-1, y+1, size) && (gridNumber[x-1][y+1] == 3))
                 if ( !(route.getCell(x-1, y+1).getTop().isLine() && route.getCell(x-1, y+1).getRight().isLine()) )
-                    return (new Coordinates(x-1, y+1));
+                    listCoord.add(new Coordinates(x-1, y+1));
+
+            if(!listCoord.isEmpty()){
+                listCoord.addFirst(new Coordinates(x, y));
+                return listCoord;
+            }
         }
         return null;
     }
@@ -82,14 +96,21 @@ public class ApplicableTechnic {
      * @param size la taille de la grille
      * @return la liste des coordonnées des cases à mettre en surbrillance si la technique est applicable, null sinon
      */
-    private Coordinates searchTech3Pos(int x, int y, Integer [][] gridNumber, Grid route, int size) {
+    private LinkedList<Coordinates> searchTech3Pos(int x, int y, Integer [][] gridNumber, Grid route, int size) {
         if (coordExist(x,y, size) && gridNumber[x][y] == 3){
-            if (coordExist(x+1, y, size) && (gridNumber[x+1][y] == 3))
+            LinkedList<Coordinates> listCoord = new LinkedList<>();
+
+            if (coordExist(x+1, y, size) && (gridNumber[x+1][y] == 3)){
                 if ( !(route.getCell(x, y).getLeft().isLine() && route.getCell(x, y).getRight().isLine() && route.getCell(x+1, y).getRight().isLine()) )
-                    return (new Coordinates(x+1, y));
-            if (coordExist(x, y+1, size) && (gridNumber[x][y+1] == 3))
+                    listCoord.add(new Coordinates(x+1, y));
+            } else if (coordExist(x, y+1, size) && (gridNumber[x][y+1] == 3))
                 if ( !(route.getCell(x, y).getTop().isLine() && route.getCell(x, y).getBottom().isLine() && route.getCell(x, y+1).getBottom().isLine()) )
-                    return (new Coordinates(x, y+1));
+                    listCoord.add(new Coordinates(x, y+1));
+            
+            if(!listCoord.isEmpty()){
+                listCoord.addFirst(new Coordinates(x, y));
+                return listCoord;
+            }
         }
         return null;
     }
@@ -103,17 +124,26 @@ public class ApplicableTechnic {
      * @param size la taille de la grille
      * @return la liste des coordonnées des cases à mettre en surbrillance si la technique est applicable, null sinon
      */
-    private Coordinates searchTech4Pos(int x, int y, Integer [][] gridNumber, Grid route, int size) {
+    private LinkedList<Coordinates> searchTech4Pos(int x, int y, Integer [][] gridNumber, Grid route, int size) {
         if (coordExist(x,y, size) && gridNumber[x][y] == 3){
-            if (coordExist(x-1, y+1, size) && (gridNumber[x-1][y+1] == 3))
+            LinkedList<Coordinates> listCoord = new LinkedList<>();
+
+            if (coordExist(x-1, y+1, size) && (gridNumber[x-1][y+1] == 3)){
                 if ( !(route.getCell(x, y).getTop().isLine() && route.getCell(x, y).getRight().isLine() && route.getCell(x-1, y+1).getBottom().isLine() && route.getCell(x-1, y+1).getLeft().isLine()) )
-                    return (new Coordinates(x-1, y+1));
-           if (coordExist(x+1, y+1, size) && (gridNumber[x+1][y+1] == 3))
+                    listCoord.add(new Coordinates(x-1, y+1));
+            } else if (coordExist(x+1, y+1, size) && (gridNumber[x+1][y+1] == 3))
                 if ( !(route.getCell(x, y).getTop().isLine() && route.getCell(x, y).getLeft().isLine() && route.getCell(x+1, y+1).getBottom().isLine() && route.getCell(x+1, y+1).getRight().isLine()) )
-                    return (new Coordinates(x+1, y+1));
+                    listCoord.add(new Coordinates(x+1, y+1));
+            
+            if(!listCoord.isEmpty()){
+                listCoord.addFirst(new Coordinates(x, y));
+                return listCoord;
+            }
         }
         return null;
     }
+
+    
 
 
 
