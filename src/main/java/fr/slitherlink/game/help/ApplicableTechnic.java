@@ -193,16 +193,16 @@ public class ApplicableTechnic {
     private boolean searchTech6Pos(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
         if (coordExist(x,y, size) && gridNumber[x][y] == 2){
             
-            if (!coordExist(x-1, y-1, size)
+            if (!coordExist(x-1, y, size) && !coordExist(x, y-1, size)
                 && !(route.getCell(x, y+1).getLeft().isLine() && route.getCell(x+1, y).getTop().isLine()) )
                     listCoord.add(new Coordinates(x, y));
-            else if (!coordExist(x+1, y-1, size)
+            else if (!coordExist(x, y-1, size) && !coordExist(x+1, y, size)
                 && !(route.getCell(x-1, y).getTop().isLine() && route.getCell(x, y+1).getRight().isLine()) )
                     listCoord.add(new Coordinates(x, y));
-            else if (!coordExist(x+1, y+1, size)
+            else if (!coordExist(x+1, y, size) && !coordExist(x, y+1, size)
                 && !(route.getCell(x, y-1).getRight().isLine() && route.getCell(x-1, y).getBottom().isLine()) )
                     listCoord.add(new Coordinates(x, y));
-            else if (!coordExist(x-1, y+1, size)
+            else if (!coordExist(x, y+1, size) && !coordExist(x-1, y, size)
                 && !(route.getCell(x+1, y).getBottom().isLine() && route.getCell(x, y-1).getLeft().isLine()) )
                     listCoord.add(new Coordinates(x, y));
             else
@@ -226,16 +226,16 @@ public class ApplicableTechnic {
     private boolean searchTech7Pos(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
         if (coordExist(x,y, size) && gridNumber[x][y] == 3){
 
-            if (!coordExist(x-1, y-1, size)
+            if (!coordExist(x-1, y, size) && !coordExist(x, y-1, size)
                 && !(route.getCell(x, y).getLeft().isLine() && route.getCell(x, y).getTop().isLine()) )
                     listCoord.add(new Coordinates(x, y));
-            else if (!coordExist(x+1, y-1, size)
+            else if (!coordExist(x, y-1, size) && !coordExist(x+1, y, size)
                 && !(route.getCell(x, y).getTop().isLine() && route.getCell(x, y).getRight().isLine()) )
                     listCoord.add(new Coordinates(x, y));
-            else if (!coordExist(x+1, y+1, size)
+            else if (!coordExist(x+1, y, size) && !coordExist(x, y+1, size)
                 && !(route.getCell(x, y).getRight().isLine() && route.getCell(x, y).getBottom().isLine()) )
                     listCoord.add(new Coordinates(x, y));
-            else if (!coordExist(x-1, y+1, size)
+            else if (!coordExist(x, y+1, size) && !coordExist(x-1, y, size)
                 && !(route.getCell(x, y).getBottom().isLine() && route.getCell(x, y).getLeft().isLine()) )
                     listCoord.add(new Coordinates(x, y));
             else
@@ -247,24 +247,28 @@ public class ApplicableTechnic {
     }
 
     /**
-     * Regarde si le patern de nombre est valide pour la technique 8 dans la direction Sud-Ouest
+     * Regarde si la technique 8 est valide dans la direction Sud-Ouest
      * @param gridNumber la grille de nombres
+     * @param route la grille de tracés
      * @param size la taille de la grille
      * @param listCoord la liste des coordonnées des cases faisant partie de la technique (si elle est applicable)
      * @return true si le patern est valide, false sinon
      */
-    private boolean searchTech8SW(int x, int y, Integer [][] gridNumber, int size, LinkedList<Coordinates> listCoord) {
-        if (coordExist(x, y, size)){
-            if (gridNumber[x][y] == 3){
-                listCoord.add(new Coordinates(x, y));
-                if(listCoord.size() == 1) //Si on est sur le premier 3, on continue la recherche
-                    return searchTech8SW(x-1, y+1, gridNumber, size, listCoord);
-                else 
+    private boolean searchTech8PosSW(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
+        int xSave = x, ySave = y;
+
+        if (coordExist(x, y, size) && gridNumber[x][y] == 3 && gridNumber[x-1][y+1] == 2){
+            listCoord.add(new Coordinates(x, y));
+
+            while(coordExist(x-1, y+1, size) && gridNumber[x-1][y+1] == 2){
+                listCoord.add(new Coordinates(x-1, y+1));
+                x--; y++;
+            }
+            if(coordExist(x-1, y+1, size) && gridNumber[x-1][y+1] == 3
+                && route.getCell(x-1, y+1).getLeft().isLine() && route.getCell(x-1, y+1).getBottom().isLine() && route.getCell(xSave, ySave).getLeft().isLine() && route.getCell(xSave, ySave).getTop().isLine() ){
+                    listCoord.add(new Coordinates(x-1, y+1));
                     return true;
-            } else if (gridNumber[x][y] == 2){
-                listCoord.add(new Coordinates(x, y));
-                return searchTech8SW(x-1, y+1, gridNumber, size, listCoord);
-            } else {
+            }else{
                 listCoord.clear();
                 return false;
             }
@@ -273,24 +277,28 @@ public class ApplicableTechnic {
     }
 
     /**
-     * Regarde si le patern de nombre est valide pour la technique 8 dans la direction Sud-Est
+     * Regarde si la technique 8 est valide dans la direction Sud-Est
      * @param gridNumber la grille de nombres
+     * @param route la grille de tracés
      * @param size la taille de la grille
      * @param listCoord la liste des coordonnées des cases faisant partie de la technique (si elle est applicable)
      * @return true si le patern est valide, false sinon
      */
-    private boolean searchTech8SE(int x, int y, Integer [][] gridNumber, int size, LinkedList<Coordinates> listCoord) {
-        if (coordExist(x, y, size)){
-            if (gridNumber[x][y] == 3){
-                listCoord.add(new Coordinates(x, y));
-                if(listCoord.size() == 1) //Si on est sur le premier 3, on continue la recherche
-                    return searchTech8SW(x+1, y+1, gridNumber, size, listCoord);
-                else 
+    private boolean searchTech8PosSE(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
+        int xSave = x, ySave = y;
+
+        if (coordExist(x, y, size) && gridNumber[x][y] == 3 && gridNumber[x+1][y+1] == 2){
+            listCoord.add(new Coordinates(x, y));
+            
+            while(coordExist(x+1, y+1, size) && gridNumber[x+1][y+1] == 2){
+                listCoord.add(new Coordinates(x+1, y+1));
+                x++; y++;
+            }
+            if(coordExist(x+1, y+1, size) && gridNumber[x+1][y+1] == 3
+                && !(route.getCell(x+1, y+1).getRight().isLine() && route.getCell(x+1, y+1).getBottom().isLine() && route.getCell(xSave, ySave).getTop().isLine() && route.getCell(xSave, ySave).getLeft().isLine() ) ){
+                    listCoord.add(new Coordinates(x+1, y+1));
                     return true;
-            } else if (gridNumber[x][y] == 2){
-                listCoord.add(new Coordinates(x, y));
-                return searchTech8SW(x+1, y+1, gridNumber, size, listCoord);
-            } else {
+            }else{
                 listCoord.clear();
                 return false;
             }
@@ -311,21 +319,222 @@ public class ApplicableTechnic {
     private boolean searchTech8Pos(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
         if (coordExist(x,y, size) && gridNumber[x][y] == 3){
 
-            if (searchTech8SW(x, y, gridNumber, size, listCoord)
-                && !(route.getCell(x, y).getTop().isLine() && route.getCell(x, y).getRight().isLine() && route.getCell(listCoord.getLast().getX(),listCoord.getLast().getY()).getLeft().isLine() && route.getCell(listCoord.getLast().getX(),listCoord.getLast().getY()).getBottom().isLine()))
+            if (searchTech8PosSW(x, y, gridNumber, route, size, listCoord))
                     return true;
-            else if (searchTech8SE(x, y, gridNumber, size, listCoord)
-                && !(route.getCell(x, y).getTop().isLine() && route.getCell(x, y).getLeft().isLine() && route.getCell(listCoord.getLast().getX(),listCoord.getLast().getY()).getRight().isLine() && route.getCell(listCoord.getLast().getX(),listCoord.getLast().getY()).getBottom().isLine()))
+            else if (searchTech8PosSE(x, y, gridNumber, route, size, listCoord))
                     return true;
             else
                 return false;
         }
         return false;
     }
+    
+    /**
+     * [Coin d'un 3 barré]
+     * 
+     * Vérifie si cette technique est applicable à la position x, y
+     * @param gridNumber la grille de nombres
+     * @param route la grille de tracés
+     * @param size la taille de la grille
+     * @param listCoord la liste des coordonnées des cases faisant partie de la technique (si elle est applicable)
+     * @return true si la technique est applicable, false sinon
+     */
+    private boolean searchTech9Pos(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
+        if (coordExist(x,y, size) && gridNumber[x][y] == 3){
 
+            if (coordExist(x-1, y-1, size) && (route.getCell(x-1, y-1).getBottom().isCross() && route.getCell(x-1, y-1).getRight().isCross())
+                && !(route.getCell(x, y).getTop().isLine() && route.getCell(x, y).getLeft().isLine()) )
+                    listCoord.add(new Coordinates(x, y));
+            else if (coordExist(x+1, y-1, size) && (route.getCell(x+1, y-1).getBottom().isCross() && route.getCell(x+1, y-1).getLeft().isCross())
+                && !(route.getCell(x, y).getTop().isLine() && route.getCell(x, y).getRight().isLine()) )
+                    listCoord.add(new Coordinates(x, y));
+            else if (coordExist(x+1, y+1, size) && (route.getCell(x+1, y+1).getTop().isCross() && route.getCell(x+1, y+1).getLeft().isCross())
+                && !(route.getCell(x, y).getBottom().isLine() && route.getCell(x, y).getRight().isLine()) )
+                    listCoord.add(new Coordinates(x, y));
+            else if (coordExist(x-1, y+1, size) && (route.getCell(x-1, y+1).getTop().isCross() && route.getCell(x-1, y+1).getRight().isCross())
+                && !(route.getCell(x, y).getBottom().isLine() && route.getCell(x, y).getLeft().isLine()) )
+                    listCoord.add(new Coordinates(x, y));
+            else
+                return false;
 
+            return true;
+        }
+        return false;
+    }
 
+    /**
+     * [3 atteint]
+     * 
+     * Vérifie si cette technique est applicable à la position x, y
+     * @param gridNumber la grille de nombres
+     * @param route la grille de tracés
+     * @param size la taille de la grille
+     * @param listCoord la liste des coordonnées des cases faisant partie de la technique (si elle est applicable)
+     * @return true si la technique est applicable, false sinon
+     */
+    private boolean searchTech10Pos(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
+        if (coordExist(x,y, size) && gridNumber[x][y] == 3){
 
+            if ((coordExist(x-1, y, size) && route.getCell(x-1, y).getTop().isLine()) || (coordExist(x, y-1, size) && route.getCell(x, y-1).getLeft().isLine())
+                && !(route.getCell(x, y).getBottom().isLine() && route.getCell(x, y).getRight().isLine()) )
+                    listCoord.add(new Coordinates(x, y));
+            else if ((coordExist(x, y-1, size) && route.getCell(x, y-1).getRight().isLine()) || (coordExist(x+1, y, size) && route.getCell(x+1, y).getTop().isLine())
+                && !(route.getCell(x, y).getBottom().isLine() && route.getCell(x, y).getLeft().isLine()) )
+                    listCoord.add(new Coordinates(x, y));
+            else if ((coordExist(x+1, y, size) && route.getCell(x+1, y).getBottom().isLine()) || (coordExist(x, y+1, size) && route.getCell(x, y+1).getRight().isLine())
+                && !(route.getCell(x, y).getTop().isLine() && route.getCell(x, y).getLeft().isLine()) )
+                    listCoord.add(new Coordinates(x, y));
+            else if ((coordExist(x, y+1, size) && route.getCell(x, y+1).getLeft().isLine()) || (coordExist(x-1, y, size) && route.getCell(x-1, y).getBottom().isLine())
+                && !(route.getCell(x, y).getTop().isLine() && route.getCell(x, y).getRight().isLine()) )
+                    listCoord.add(new Coordinates(x, y));
+            else
+                return false;
+
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Regarde si la technique 11 est valide dans la direction Nord-Ouest
+     * @param gridNumber la grille de nombres
+     * @param route la grille de tracés
+     * @param size la taille de la grille
+     * @param listCoord la liste des coordonnées des cases faisant partie de la technique (si elle est applicable)
+     * @return true si le patern est valide, false sinon
+     */
+    private boolean searchTech11PosNW(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
+        if (coordExist(x, y, size) && gridNumber[x][y] == 2
+            && (coordExist(x+1, y, size) && route.getCell(x+1, y).getBottom().isLine()) || (coordExist(x, y+1, size) && route.getCell(x, y+1).getRight().isLine()) ){
+            listCoord.add(new Coordinates(x, y));
+
+            while(coordExist(x-1, y-1, size) && gridNumber[x-1][y-1] == 2){
+                listCoord.add(new Coordinates(x-1, y-1));
+                x--; y--;
+            }
+            if(coordExist(x-1, y-1, size) && gridNumber[x-1][y-1] == 3
+                && !(route.getCell(x-1, y-1).getLeft().isLine() && route.getCell(x-1, y-1).getTop().isLine()) ){
+                listCoord.add(new Coordinates(x-1, y-1));
+                return true;
+            }else{
+                listCoord.clear();
+                return false;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Regarde si la technique 11 est valide dans la direction Nord-Est
+     * @param gridNumber la grille de nombres
+     * @param route la grille de tracés
+     * @param size la taille de la grille
+     * @param listCoord la liste des coordonnées des cases faisant partie de la technique (si elle est applicable)
+     * @return true si le patern est valide, false sinon
+     */
+    private boolean searchTech11PosNE(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
+        if (coordExist(x, y, size) && gridNumber[x][y] == 2
+            && (coordExist(x, y+1, size) && route.getCell(x, y+1).getLeft().isLine()) || (coordExist(x-1, y, size) && route.getCell(x-1, y).getBottom().isLine()) ){
+            listCoord.add(new Coordinates(x, y));
+
+            while(coordExist(x+1, y-1, size) && gridNumber[x+1][y-1] == 2){
+                listCoord.add(new Coordinates(x+1, y-1));
+                x++; y--;
+            }
+            if(coordExist(x+1, y-1, size) && gridNumber[x+1][y-1] == 3
+                && !(route.getCell(x+1, y-1).getTop().isLine() && route.getCell(x+1, y-1).getRight().isLine()) ){
+                listCoord.add(new Coordinates(x+1, y-1));
+                return true;
+            }else{
+                listCoord.clear();
+                return false;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Regarde si la technique 11 est valide dans la direction Sud-Est
+     * @param gridNumber la grille de nombres
+     * @param route la grille de tracés
+     * @param size la taille de la grille
+     * @param listCoord la liste des coordonnées des cases faisant partie de la technique (si elle est applicable)
+     * @return true si le patern est valide, false sinon
+     */
+    private boolean searchTech11PosSE(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
+        if (coordExist(x, y, size) && gridNumber[x][y] == 2
+            && (coordExist(x-1, y, size) && route.getCell(x-1, y).getTop().isLine()) || (coordExist(x, y-1, size) && route.getCell(x, y-1).getLeft().isLine()) ){
+            listCoord.add(new Coordinates(x, y));
+
+            while(coordExist(x+1, y+1, size) && gridNumber[x+1][y+1] == 2){
+                listCoord.add(new Coordinates(x+1, y+1));
+                x++; y++;
+            }
+            if(coordExist(x+1, y+1, size) && gridNumber[x+1][y+1] == 3
+                && !(route.getCell(x+1, y+1).getBottom().isLine() && route.getCell(x+1, y+1).getRight().isLine()) ){
+                listCoord.add(new Coordinates(x+1, y+1));
+                return true;
+            }else{
+                listCoord.clear();
+                return false;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Regarde si la technique 11 est valide dans la direction Sud-Ouest
+     * @param gridNumber la grille de nombres
+     * @param route la grille de tracés
+     * @param size la taille de la grille
+     * @param listCoord la liste des coordonnées des cases faisant partie de la technique (si elle est applicable)
+     * @return true si le patern est valide, false sinon
+     */
+    private boolean searchTech11PosSW(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
+        if (coordExist(x, y, size) && gridNumber[x][y] == 2
+            && (coordExist(x, y-1, size) && route.getCell(x, y-1).getRight().isLine()) || (coordExist(x+1, y, size) && route.getCell(x+1, y).getTop().isLine()) ){
+            listCoord.add(new Coordinates(x, y));
+
+            while(coordExist(x-1, y+1, size) && gridNumber[x-1][y+1] == 2){
+                listCoord.add(new Coordinates(x-1, y+1));
+                x--; y++;
+            }
+            if(coordExist(x-1, y+1, size) && gridNumber[x-1][y+1] == 3
+                && !(route.getCell(x-1, y+1).getLeft().isLine() && route.getCell(x-1, y+1).getBottom().isLine()) ){
+                listCoord.add(new Coordinates(x-1, y+1));
+                return true;
+            }else{
+                listCoord.clear();
+                return false;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * [brochette de 2 atteignant un 3]
+     * 
+     * Vérifie si cette technique est applicable à la position x, y
+     * @param gridNumber la grille de nombres
+     * @param route la grille de tracés
+     * @param size la taille de la grille
+     * @param listCoord la liste des coordonnées des cases faisant partie de la technique (si elle est applicable)
+     * @return true si la technique est applicable, false sinon
+     */
+    private boolean searchTech11Pos(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
+        if (coordExist(x,y, size) && gridNumber[x][y] == 2){
+            
+            if (searchTech11PosNW(x, y, gridNumber, route, size, listCoord))
+                return true;
+            else if (searchTech11PosNE(x, y, gridNumber, route, size, listCoord))
+                return true;
+            else if (searchTech11PosSE(x, y, gridNumber, route, size, listCoord))
+                return true;
+            else if (searchTech11PosSW(x, y, gridNumber, route, size, listCoord))
+                return true;
+        }
+        return false;
+    }
 
 
 
