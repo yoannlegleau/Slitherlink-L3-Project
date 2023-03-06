@@ -536,13 +536,173 @@ public class ApplicableTechnic {
         return false;
     }
 
+    /**
+     * [3 & 2 diagonaux]
+     * 
+     * Vérifie si cette technique est applicable à la position x, y
+     * @param gridNumber la grille de nombres
+     * @param route la grille de tracés
+     * @param size la taille de la grille
+     * @param listCoord la liste des coordonnées des cases faisant partie de la technique (si elle est applicable)
+     * @return true si la technique est applicable, false sinon
+     */
+    private boolean searchTech12Pos(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
+        if (coordExist(x,y, size) && gridNumber[x][y] == 2){
+            listCoord.add(new Coordinates(x, y));
 
+            if (route.getCell(x, y).getBottom().isCross() && coordExist(x-1, y-1, size) && gridNumber[x-1][y-1] == 3
+                && !(route.getCell(x-1, y-1).getTop().isLine() && route.getCell(x-1, y-1).getLeft().isLine() && route.getCell(x, y).getRight().isLine()) )
+                    listCoord.add(new Coordinates(x-1, y-1));
+            else if (route.getCell(x, y).getRight().isCross() && coordExist(x-1, y-1, size) && gridNumber[x-1][y-1] == 3
+                && !(route.getCell(x-1, y-1).getTop().isLine() && route.getCell(x-1, y-1).getLeft().isLine() && route.getCell(x, y).getBottom().isLine()) )
+                    listCoord.add(new Coordinates(x-1, y-1));
+            else if (route.getCell(x, y).getLeft().isCross() && coordExist(x+1, y-1, size) && gridNumber[x+1][y-1] == 3
+                && !(route.getCell(x+1, y-1).getTop().isLine() && route.getCell(x+1, y-1).getRight().isLine() && route.getCell(x, y).getBottom().isLine()) )
+                    listCoord.add(new Coordinates(x+1, y-1));
+            else if (route.getCell(x, y).getBottom().isCross() && coordExist(x+1, y-1, size) && gridNumber[x+1][y-1] == 3
+                && !(route.getCell(x+1, y-1).getTop().isLine() && route.getCell(x+1, y-1).getRight().isLine() && route.getCell(x, y).getLeft().isLine()) )
+                    listCoord.add(new Coordinates(x+1, y-1));
+            else if (route.getCell(x, y).getLeft().isCross() && coordExist(x+1, y+1, size) && gridNumber[x+1][y+1] == 3
+                && !(route.getCell(x+1, y+1).getBottom().isLine() && route.getCell(x+1, y+1).getRight().isLine() && route.getCell(x, y).getTop().isLine()) )
+                    listCoord.add(new Coordinates(x+1, y+1));
+            else if (route.getCell(x, y).getTop().isCross() && coordExist(x+1, y+1, size) && gridNumber[x+1][y+1] == 3
+                && !(route.getCell(x+1, y+1).getBottom().isLine() && route.getCell(x+1, y+1).getRight().isLine() && route.getCell(x, y).getLeft().isLine()) )
+                    listCoord.add(new Coordinates(x+1, y+1));
+            else if (route.getCell(x, y).getTop().isCross() && coordExist(x-1, y+1, size) && gridNumber[x-1][y+1] == 3
+                && !(route.getCell(x-1, y+1).getLeft().isLine() && route.getCell(x-1, y+1).getBottom().isLine() && route.getCell(x, y).getRight().isLine()) )
+                    listCoord.add(new Coordinates(x-1, y+1));
+            else if (route.getCell(x, y).getRight().isCross() && coordExist(x-1, y+1, size) && gridNumber[x-1][y+1] == 3
+                && !(route.getCell(x-1, y+1).getLeft().isLine() && route.getCell(x-1, y+1).getBottom().isLine() && route.getCell(x, y).getTop().isLine()) )
+                    listCoord.add(new Coordinates(x-1, y+1));
+            else{
+                listCoord.clear();
+                return false;
+            }
 
+            return true;
+        }
+        return false;
+    }
 
+    /**
+     * [3 & 2 adjacents]
+     * 
+     * Vérifie si cette technique est applicable à la position x, y
+     * @param gridNumber la grille de nombres
+     * @param route la grille de tracés
+     * @param size la taille de la grille
+     * @param listCoord la liste des coordonnées des cases faisant partie de la technique (si elle est applicable)
+     * @return true si la technique est applicable, false sinon
+     */
+    private boolean searchTech13Pos(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
+        if (coordExist(x,y, size) && gridNumber[x][y] == 2){
+            listCoord.add(new Coordinates(x, y));
 
+            if (coordExist(x-1, y-1, size) && route.getCell(x-1, y-1).getBottom().isCross() && route.getCell(x-1, y-1).getRight().isCross() && coordExist(x, y+1, size) && gridNumber[x][y+1] == 3
+                && !(route.getCell(x, y+1).getLeft().isLine() && route.getCell(x, y+1).getBottom().isLine()) )
+                    listCoord.add(new Coordinates(x, y+1));
+            else if (coordExist(x-1, y-1, size) && route.getCell(x-1, y-1).getBottom().isCross() && route.getCell(x-1, y-1).getRight().isCross() && coordExist(x+1, y, size) && gridNumber[x+1][y] == 3
+                && !(route.getCell(x+1, y).getTop().isLine() && route.getCell(x+1, y).getRight().isLine()) )
+                    listCoord.add(new Coordinates(x+1, y));
+            else if (coordExist(x+1, y-1, size) && route.getCell(x+1, y-1).getLeft().isCross() && route.getCell(x+1, y-1).getBottom().isCross() && coordExist(x-1, y, size) && gridNumber[x-1][y] == 3
+                && !(route.getCell(x-1, y).getLeft().isLine() && route.getCell(x-1, y).getTop().isLine()) )
+                    listCoord.add(new Coordinates(x-1, y));
+            else if (coordExist(x+1, y-1, size) && route.getCell(x+1, y-1).getLeft().isCross() && route.getCell(x+1, y-1).getBottom().isCross() && coordExist(x, y+1, size) && gridNumber[x][y+1] == 3
+                && !(route.getCell(x, y+1).getBottom().isLine() && route.getCell(x, y+1).getRight().isLine()) )
+                    listCoord.add(new Coordinates(x, y+1));
+            else if (coordExist(x+1, y+1, size) && route.getCell(x+1, y+1).getLeft().isCross() && route.getCell(x+1, y+1).getTop().isCross() && coordExist(x, y-1, size) && gridNumber[x][y-1] == 3
+                && !(route.getCell(x, y-1).getTop().isLine() && route.getCell(x, y-1).getRight().isLine()) )
+                    listCoord.add(new Coordinates(x, y-1));
+            else if (coordExist(x+1, y+1, size) && route.getCell(x+1, y+1).getLeft().isCross() && route.getCell(x+1, y+1).getTop().isCross() && coordExist(x-1, y, size) && gridNumber[x-1][y] == 3
+                && !(route.getCell(x-1, y).getLeft().isLine() && route.getCell(x-1, y).getBottom().isLine()) )
+                    listCoord.add(new Coordinates(x-1, y));
+            else if (coordExist(x-1, y+1, size) && route.getCell(x-1, y+1).getTop().isCross() && route.getCell(x-1, y+1).getRight().isCross() && coordExist(x+1, y, size) && gridNumber[x+1][y] == 3
+                && !(route.getCell(x+1, y).getBottom().isLine() && route.getCell(x+1, y).getRight().isLine()) )
+                    listCoord.add(new Coordinates(x+1, y));
+            else if (coordExist(x-1, y+1, size) && route.getCell(x-1, y+1).getTop().isCross() && route.getCell(x-1, y+1).getRight().isCross() && coordExist(x, y-1, size) && gridNumber[x][y-1] == 3
+                && !(route.getCell(x, y-1).getLeft().isLine() && route.getCell(x, y-1).getTop().isLine()) )
+                    listCoord.add(new Coordinates(x, y-1));
+            else{
+                listCoord.clear();
+                return false;
+            }
 
+            return true;
+        }
+        return false;
+    }
 
+    /**
+     * [3 & 2 adjacents bis]
+     * 
+     * Vérifie si cette technique est applicable à la position x, y
+     * @param gridNumber la grille de nombres
+     * @param route la grille de tracés
+     * @param size la taille de la grille
+     * @param listCoord la liste des coordonnées des cases faisant partie de la technique (si elle est applicable)
+     * @return true si la technique est applicable, false sinon
+     */
+    private boolean searchTech14Pos(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
+        if (coordExist(x,y, size) && gridNumber[x][y] == 2){
+            listCoord.add(new Coordinates(x, y));
 
+            if (route.getCell(x, y).getTop().isCross() && coordExist(x, y+1, size) && gridNumber[x][y+1] == 3
+                && !(route.getCell(x, y+1).getBottom().isLine()) )
+                    listCoord.add(new Coordinates(x, y+1));
+            else if (route.getCell(x, y).getRight().isCross() && coordExist(x-1, y, size) && gridNumber[x-1][y] == 3
+                && !(route.getCell(x-1, y).getLeft().isLine()) )
+                    listCoord.add(new Coordinates(x-1, y));
+            else if (route.getCell(x, y).getBottom().isCross() && coordExist(x, y-1, size) && gridNumber[x][y-1] == 3
+                && !(route.getCell(x, y-1).getTop().isLine()) )
+                    listCoord.add(new Coordinates(x, y-1));
+            else if (route.getCell(x, y).getLeft().isCross() && coordExist(x+1, y, size) && gridNumber[x+1][y] == 3
+                && !(route.getCell(x+1, y).getRight().isLine()) )
+                    listCoord.add(new Coordinates(x+1, y));
+            else{
+                listCoord.clear();
+                return false;
+            }
+
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * [3 & 1 diagonaux]
+     * 
+     * Vérifie si cette technique est applicable à la position x, y
+     * @param gridNumber la grille de nombres
+     * @param route la grille de tracés
+     * @param size la taille de la grille
+     * @param listCoord la liste des coordonnées des cases faisant partie de la technique (si elle est applicable)
+     * @return true si la technique est applicable, false sinon
+     */
+    private boolean searchTech15Pos(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
+        if (coordExist(x,y, size) && gridNumber[x][y] == 1){
+            listCoord.add(new Coordinates(x, y));
+
+            if (route.getCell(x, y).getLeft().isCross() && route.getCell(x, y).getTop().isCross() && coordExist(x+1, y+1, size) && gridNumber[x+1][y+1] == 3
+                && !(route.getCell(x+1, y+1).getBottom().isLine() && route.getCell(x+1, y+1).getRight().isLine()) )
+                    listCoord.add(new Coordinates(x+1, y+1));
+            else if (route.getCell(x, y).getTop().isCross() && route.getCell(x, y).getRight().isCross() && coordExist(x-1, y+1, size) && gridNumber[x-1][y+1] == 3
+                && !(route.getCell(x-1, y+1).getLeft().isLine() && route.getCell(x-1, y+1).getBottom().isLine()) )
+                    listCoord.add(new Coordinates(x-1, y+1));
+            else if (route.getCell(x, y).getRight().isCross() && route.getCell(x, y).getBottom().isCross() && coordExist(x-1, y-1, size) && gridNumber[x-1][y-1] == 3
+                && !(route.getCell(x-1, y-1).getLeft().isLine() && route.getCell(x-1, y-1).getTop().isLine()) )
+                    listCoord.add(new Coordinates(x-1, y-1));
+            else if (route.getCell(x, y).getBottom().isCross() && route.getCell(x, y).getLeft().isCross() && coordExist(x+1, y-1, size) && gridNumber[x+1][y-1] == 3
+                && !(route.getCell(x+1, y-1).getTop().isLine() && route.getCell(x+1, y-1).getRight().isLine()) )
+                    listCoord.add(new Coordinates(x+1, y-1));
+            else{
+                listCoord.clear();
+                return false;
+            }
+
+            return true;
+        }
+        return false;
+    }
 
 
 
