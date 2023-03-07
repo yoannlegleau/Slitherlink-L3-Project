@@ -4,16 +4,27 @@ import fr.slitherlink.game.Game;
 import fr.slitherlink.game.grid.Edge;
 import fr.slitherlink.game.grid.EdgeType;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  * @author LE GLEAU Yoann
  * @version 1, 01/03/2023
  * @pakage fr.levelEditor
  */
+@XmlRootElement
 public class EdgeAction extends GameAction {
 
+    @XmlElement
     private final EdgeType type;
+
+    @XmlElement
     private final int x;
+
+    @XmlElement
     private final int y;
+
+    @XmlElement
     private final String t;
 
     public EdgeAction(int i, int i1, String t, EdgeType line) {

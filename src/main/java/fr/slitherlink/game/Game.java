@@ -16,6 +16,7 @@ import java.util.List;
  */
 public class Game {
 
+    int puzzleId;
     private Integer[][] numbers;
     private Grid solution;
 
@@ -30,6 +31,7 @@ public class Game {
     private int NbHint;
 
     public Game(int puzzleId){
+        this.puzzleId = puzzleId;
         loadGame(puzzleId);
         currentGrid = new Grid(solution.getSize());
         actions = new ArrayList<>();
@@ -47,6 +49,13 @@ public class Game {
         return currentGrid;
     }
 
+    public List<GameAction> getActions() {
+        return actions;
+    }
+
+    public int getPuzzleId() {
+        return puzzleId;
+    }
     public Integer[][] getNumbers() {
         return numbers;
     }
@@ -56,6 +65,7 @@ public class Game {
             return;
         actions.add(action);
         action.doAction(this);
+        saveGame();
     }
 
     private void loadGame(int puzzleId){
@@ -66,6 +76,10 @@ public class Game {
         if (gameSave != null)
             for (GameAction action: gameSave.getActions())
                 action(action);//        save = GameSaveResourceManageur.LoadLevel(puzzleId);
+    }
+
+    private void saveGame(){
+        GameSaveResourceManageur.saveGameSave(new GameSave(this));
     }
 
 }

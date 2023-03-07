@@ -1,9 +1,11 @@
 package fr.slitherlink.app;
 
 import fr.slitherlink.game.Game;
+import fr.slitherlink.game.action.ActionFactory;
 import fr.slitherlink.game.grid.EdgeType;
 import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.input.MouseButton;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
@@ -116,22 +118,17 @@ public class PuzlGridGroup extends Group {
             setStroke(Color.BLACK);
             setOnMouseClicked(event -> {
                 EdgeType newTipe = EdgeType.EMPTY;
-                if (getEdgeType().equals(EdgeType.EMPTY)) newTipe = EdgeType.LINE;
-                if (getEdgeType().equals(EdgeType.LINE)) newTipe = EdgeType.EMPTY;
-                switch (direction){
-                    case "T":
-                        game.getCurrentGrid().getCell(coodonatX, coodonatY).getTop().setType(newTipe);
-                        break;
-                    case "B":
-                        game.getCurrentGrid().getCell(coodonatX, coodonatY).getBottom().setType(newTipe);
-                        break;
-                    case "L":
-                        game.getCurrentGrid().getCell(coodonatX, coodonatY).getLeft().setType(newTipe);
-                        break;
-                    case "R":
-                        game.getCurrentGrid().getCell(coodonatX, coodonatY).getRight().setType(newTipe);
-                        break;
-                }
+
+                if (event.getButton() == MouseButton.PRIMARY)
+                    if (getEdgeType().equals(EdgeType.LINE))
+                        game.action(ActionFactory.setEdgeEmpty(coodonatX, coodonatY, direction));
+                    else
+                        game.action(ActionFactory.setEdgeLine(coodonatX, coodonatY, direction));
+                else if (event.getButton() == MouseButton.SECONDARY)
+                    if (getEdgeType().equals(EdgeType.CROSS))
+                        game.action(ActionFactory.setEdgeEmpty(coodonatX, coodonatY, direction));
+                    else
+                        game.action(ActionFactory.setEdgeCross(coodonatX, coodonatY, direction));
                 updateColor();
             });
             updateColor();
@@ -143,7 +140,7 @@ public class PuzlGridGroup extends Group {
                     setFill(Color.GRAY);
                     break;
                 case LINE:
-                    setFill(Color.RED);
+                    setFill(Color.BLUE);
                     break;
                 case CROSS:
                     setFill(Color.RED);
@@ -161,8 +158,8 @@ public class PuzlGridGroup extends Group {
                     return game.getCurrentGrid().getCell(coodonatX, coodonatY).getLeft().getType();
                 case "R":
                     return game.getCurrentGrid().getCell(coodonatX, coodonatY).getRight().getType();
-                    default:
-                        return null;
+                default:
+                    return null;
             }
         }
 
