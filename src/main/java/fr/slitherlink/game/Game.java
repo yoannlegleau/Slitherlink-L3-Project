@@ -47,6 +47,10 @@ public class Game {
         return currentGrid;
     }
 
+    public Integer[][] getNumbers() {
+        return numbers;
+    }
+
     public void action(GameAction action){
         if (isSolved)
             return;
@@ -59,8 +63,9 @@ public class Game {
         numbers = puzzle.getGridNumbers();
         solution = puzzle.getSolution();
         GameSave gameSave = GameSaveResourceManageur.LoadLevel(puzzleId);
-        for (GameAction action: gameSave.getActions())
-            action(action);//        save = GameSaveResourceManageur.LoadLevel(puzzleId);
+        if (gameSave != null)
+            for (GameAction action: gameSave.getActions())
+                action(action);//        save = GameSaveResourceManageur.LoadLevel(puzzleId);
     }
 
 }

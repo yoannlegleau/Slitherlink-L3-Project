@@ -99,7 +99,6 @@ public class PuzzleSave {
         return g;
     }
 
-    @XmlTransient
     public void setGameGrid(Grid newGrid, Integer[][] gridNumbers) {
         grid = new GridSave(gridNumbers);
         solution = new Solution(newGrid);
