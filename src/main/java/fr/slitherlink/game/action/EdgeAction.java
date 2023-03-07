@@ -54,4 +54,19 @@ public class EdgeAction extends GameAction {
         curent.setType(type);
     }
 
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public String getT() {
+        return t;
+    }
+
+    public EdgeType getType() {
+        return type;
+    }
 }

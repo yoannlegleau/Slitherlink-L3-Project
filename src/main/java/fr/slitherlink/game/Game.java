@@ -32,13 +32,13 @@ public class Game {
 
     public Game(int puzzleId){
         this.puzzleId = puzzleId;
-        loadGame(puzzleId);
-        currentGrid = new Grid(solution.getSize());
+        loadPuzzle(puzzleId);
         actions = new ArrayList<>();
         assumptionMode = false;
         isSolved = false;
         NbHint = 0;
-
+        currentGrid = new Grid(solution.getSize());
+        loadGameSave();
     }
 
     public Grid getSolution( ){
@@ -68,14 +68,16 @@ public class Game {
         saveGame();
     }
 
-    private void loadGame(int puzzleId){
+    private void loadPuzzle(int puzzleId){
         PuzzleSave puzzle = PuzzleResourceManageur.LoadPuzzle(puzzleId);
         numbers = puzzle.getGridNumbers();
         solution = puzzle.getSolution();
+    }
+
+    private void loadGameSave(){
         GameSave gameSave = GameSaveResourceManageur.LoadLevel(puzzleId);
-        if (gameSave != null)
-            for (GameAction action: gameSave.getActions())
-                action(action);//        save = GameSaveResourceManageur.LoadLevel(puzzleId);
+        for (GameAction action: gameSave.getActions())
+            action(action);
     }
 
     private void saveGame(){

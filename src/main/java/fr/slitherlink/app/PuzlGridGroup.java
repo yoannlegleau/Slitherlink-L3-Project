@@ -33,6 +33,15 @@ public class PuzlGridGroup extends Group {
         createGrid();
     }
 
+    public void setPxSize(int pxSize) {
+        this.pxSize = pxSize;
+        update();
+    }
+
+    public int getPxSize() {
+        return pxSize;
+    }
+
     public void update(){
         //TODO faire une methode mois brutale
         getChildren().clear();
