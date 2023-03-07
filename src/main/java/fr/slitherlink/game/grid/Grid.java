@@ -33,4 +33,21 @@ public class Grid {
         return grid.length;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null)
+            return false;
+
+        Grid grid = (Grid) obj;
+        if (getSize() != grid.getSize())
+            return false;
+        for (int x = 0; x < getSize(); x++) {
+            for (int y = 0; y < getSize(); y++) {
+                if (!getCell(x,y).equals(grid.getCell(x, y)))
+                    return false;
+            }
+        }
+        return true;
+    }
+
 }

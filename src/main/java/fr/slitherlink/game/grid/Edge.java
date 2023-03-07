@@ -14,9 +14,14 @@ public class Edge {
     public void setType(EdgeType newType) {
         type = newType;
     }
-
     public EdgeType getType() {
         return type;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        Edge edge = (Edge) obj;
+        return type == edge.type;
     }
 
 }

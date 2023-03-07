@@ -46,4 +46,14 @@ public class GridCell {
     public void setLeft(Edge left) {
         edges[3] = left;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        GridCell cell = (GridCell) obj;
+        for (int i = 0; i < 4; i++) {
+            if (!edges[i].equals(cell.edges[i]))
+                return false;
+        }
+        return true;
+    }
 }

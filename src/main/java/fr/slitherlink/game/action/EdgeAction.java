@@ -11,19 +11,20 @@ import fr.slitherlink.game.grid.EdgeType;
  */
 public class EdgeAction extends GameAction {
 
-    int x;
-    int y;
-    String t;
+    private final EdgeType type;
+    private final int x;
+    private final int y;
+    private final String t;
 
-    public EdgeAction(int i, int i1, String t) {
+    public EdgeAction(int i, int i1, String t, EdgeType line) {
         this.x = i;
         this.y = i1;
         this.t = t;
+        this.type = line;
     }
 
     @Override
     public void doAction(Game game) {
-        super.doAction(game);
         Edge curent = game.getCurrentGrid().getCell(x, y).getTop();
         switch (t){
             case "T":
@@ -39,13 +40,7 @@ public class EdgeAction extends GameAction {
                 curent = game.getCurrentGrid().getCell(x, y).getLeft();
                 break;
         }
-        changeEdge(curent);
+        curent.setType(type);
     }
 
-    private void changeEdge(Edge curent) {
-        if (curent.getType() == EdgeType.LINE)
-            curent.setType(EdgeType.EMPTY);
-        else
-            curent.setType(EdgeType.EMPTY);
-    }
 }
