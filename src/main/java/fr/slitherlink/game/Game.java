@@ -76,6 +76,8 @@ public class Game {
 
     private void loadGameSave(){
         GameSave gameSave = GameSaveResourceManageur.LoadLevel(puzzleId);
+        if (gameSave == null)
+            return;
         for (GameAction action: gameSave.getActions())
             action(action);
     }

@@ -38,6 +38,7 @@ public class GameActionAdapter extends XmlAdapter<GameActionAdapter.AdaptedActio
     }
 
     public static class AdaptedAction {
+
         public int x;
         public int y;
         public String t;
