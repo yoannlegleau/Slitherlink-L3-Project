@@ -21,10 +21,6 @@ public class Slitherlink extends Application {
         stage.show();
     }
 
-    public static void loadFxml(String path){
-
-    }
-
     public static void main(String[] args) {
         launch();
     }

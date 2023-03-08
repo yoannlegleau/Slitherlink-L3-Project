@@ -1,4 +1,4 @@
-package fr.slitherlink.app;
+package fr.slitherlink.app.component;
 
 import fr.slitherlink.game.Game;
 import fr.slitherlink.game.action.ActionFactory;
@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.input.MouseButton;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 import java.awt.*;
@@ -62,11 +63,9 @@ public class PuzlGridGroup extends Group {
                     Text text = new Text(String.valueOf(game.getNumbers()[x][y]));
                     text.setX( marging + x * length + length/2 - fontSize/2);
                     text.setY( marging + y * length + length/2 + fontSize/2);
-                    text.setFont(new javafx.scene.text.Font(fontSize));
+                    text.setStyle("-fx-fill: white; -fx-font-size: "+fontSize+"px;");
                     getChildren().add(text);
                 }
-
-
 
                 if (y == 0) {
                     getChildren().add(new DrawingEdge(
@@ -124,7 +123,7 @@ public class PuzlGridGroup extends Group {
             this.direction = direction;
             this.game = game;
             setFill(Color.GRAY);
-            setStroke(Color.BLACK);
+            //setStroke(Color.BLACK);
             setOnMouseClicked(event -> {
                 EdgeType newTipe = EdgeType.EMPTY;
 
@@ -144,15 +143,16 @@ public class PuzlGridGroup extends Group {
         }
 
         private void updateColor() {
+            //TODO recupere la couleur dans le css
             switch (getEdgeType()){
                 case EMPTY:
                     setFill(Color.GRAY);
                     break;
                 case LINE:
-                    setFill(Color.BLUE);
+                    setFill(Color.valueOf("66F4FF"));
                     break;
                 case CROSS:
-                    setFill(Color.RED);
+                    setFill(Color.valueOf("E35151"));
                     break;
             }
         }

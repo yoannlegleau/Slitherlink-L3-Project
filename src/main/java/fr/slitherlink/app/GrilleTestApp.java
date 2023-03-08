@@ -1,8 +1,8 @@
 package fr.slitherlink.app;
 
+import fr.slitherlink.app.component.PuzlGridGroup;
 import fr.slitherlink.game.Game;
 import javafx.application.Application;
-import javafx.beans.value.ChangeListener;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 

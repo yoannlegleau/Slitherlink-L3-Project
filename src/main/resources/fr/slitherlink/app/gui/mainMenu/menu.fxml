@@ -19,7 +19,7 @@
         style="-fx-background-color: #333337;"
         stylesheets="@../../style/default-style.css"
         xmlns:fx="http://javafx.com/fxml"
-        fx:controller="fr.slitherlink.app.Menu">
+        fx:controller="fr.slitherlink.app.fx_controlleur.Menu">
    <bottom>
       <ButtonBar buttonMinWidth="2.0" minWidth="-Infinity" prefHeight="40.0" style="-fx-background-color: #252525;" BorderPane.alignment="CENTER">
          <buttons>
