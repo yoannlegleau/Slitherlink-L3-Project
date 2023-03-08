@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
@@ -10,7 +11,14 @@
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0" />
-            <FlowPane fx:id="gamePane" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="200.0" />
+            <FlowPane fx:id="gamePane" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #252525; -fx-border-width: 5; -fx-border-color: #535353; -fx-border-radius: 15;">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="10.0" top="10.0" />
+               </padding>
+            </FlowPane>
             <HBox prefHeight="100.0" prefWidth="200.0" />
          </children>
       </VBox>
