@@ -43,7 +43,7 @@ public class PuzlGridGroup extends Group {
     }
 
     public void update(){
-        //TODO faire une methode mois brutale
+        //TODO faire une methode moins brutale
         getChildren().clear();
         createGrid();
     }
