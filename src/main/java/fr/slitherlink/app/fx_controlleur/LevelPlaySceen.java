@@ -14,13 +14,23 @@ public class LevelPlaySceen {
 
     private static final int levelid = 1;
 
+    Game game;
+
+    PuzlGridGroup puzlGridGroup;
+
     @FXML
     public Pane gamePane;
 
     @FXML
     public void initialize() {
         int pxSize = 500; //TODO trouver un moyen de le recuperer la taille de gamePane
-        gamePane.getChildren().add(new PuzlGridGroup(new Game(levelid), pxSize));
+        game = new Game(levelid);
+        puzlGridGroup = new PuzlGridGroup(game, pxSize);
+        gamePane.getChildren().add(puzlGridGroup);
     }
 
+    public void resetAction(ActionEvent actionEvent) {
+        game.reset();
+        puzlGridGroup.update();
+    }
 }

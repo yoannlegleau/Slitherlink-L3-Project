@@ -76,8 +76,9 @@ public class Game {
 
     private void loadGameSave(){
         GameSave gameSave = GameSaveResourceManageur.LoadLevel(puzzleId);
-        if (gameSave == null)
+        if (gameSave == null || gameSave.getActions() == null)
             return;
+
         for (GameAction action: gameSave.getActions())
             action(action);
     }
@@ -86,4 +87,9 @@ public class Game {
         GameSaveResourceManageur.saveGameSave(new GameSave(this));
     }
 
+    public void reset() {
+        actions.clear();
+        currentGrid = new Grid(solution.getSize());
+        saveGame();
+    }
 }

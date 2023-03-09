@@ -17,13 +17,13 @@
         minHeight="720.0" minWidth="960.0"
         prefHeight="720.0" prefWidth="960.0"
         style="-fx-background-color: #333337;"
-        stylesheets="@../../style/default-style.css"
+        stylesheets="@../../css/default-style.css"
         xmlns:fx="http://javafx.com/fxml"
         fx:controller="fr.slitherlink.app.fx_controlleur.Menu">
    <bottom>
       <ButtonBar buttonMinWidth="2.0" minWidth="-Infinity" prefHeight="40.0" style="-fx-background-color: #252525;" BorderPane.alignment="CENTER">
          <buttons>
-            <Button graphicTextGap="5.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-translate-y: -18;" styleClass="MenuButton" stylesheets="@../../style/default-style.css" text="Paramètres" textAlignment="CENTER" textOverrun="CLIP" ButtonBar.buttonData="LEFT">
+            <Button graphicTextGap="5.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-translate-y: -18;" styleClass="MenuButton" stylesheets="@../../css/default-style.css" text="Paramètres" textAlignment="CENTER" textOverrun="CLIP" ButtonBar.buttonData="LEFT">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -39,7 +39,7 @@
                   <Insets left="20.0" right="20.0" />
                </padding>
             </Button>
-            <Button alignment="CENTER" graphicTextGap="5.0" maxHeight="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" style="-fx-translate-y: -18;" styleClass="MenuButton" stylesheets="@../../style/default-style.css" text="Profil" ButtonBar.buttonData="LEFT">
+            <Button alignment="CENTER" graphicTextGap="5.0" maxHeight="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" style="-fx-translate-y: -18;" styleClass="MenuButton" stylesheets="@../../css/default-style.css" text="Profil" ButtonBar.buttonData="LEFT">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -58,7 +58,7 @@
                   <Insets left="20.0" right="20.0" />
                </padding>
             </Button>
-            <Button contentDisplay="CENTER" graphicTextGap="0.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" style="-fx-translate-y: -18; -fx-background-radius: 100%;" styleClass="MenuButton" stylesheets="@../../style/default-style.css" text=" " textAlignment="CENTER">
+            <Button contentDisplay="CENTER" graphicTextGap="0.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" style="-fx-translate-y: -18; -fx-background-radius: 100%;" styleClass="MenuButton" stylesheets="@../../css/default-style.css" text=" " textAlignment="CENTER">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -91,7 +91,7 @@
    <center>
       <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="89.0" minWidth="255.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="buttonPlay" alignment="CENTER" graphicTextGap="5.0" maxWidth="1.7976931348623157E308" minHeight="54.0" minWidth="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#onPlayButonClick" styleClass="MenuButton" stylesheets="@../../style/default-style.css" text="Jouer" textAlignment="CENTER">
+            <Button fx:id="buttonPlay" alignment="CENTER" graphicTextGap="5.0" maxWidth="1.7976931348623157E308" minHeight="54.0" minWidth="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#onPlayButonClick" styleClass="MenuButton" stylesheets="@../../css/default-style.css" text="Jouer" textAlignment="CENTER">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -108,7 +108,7 @@
                   <Region id="Button_play" prefHeight="200.0" prefWidth="200.0" styleClass="Button_icon" />
                </graphic>
             </Button>
-            <Button alignment="CENTER" graphicTextGap="5.0" maxWidth="1.7976931348623157E308" minHeight="54.0" minWidth="-Infinity" mnemonicParsing="false" styleClass="MenuButton" stylesheets="@../../style/default-style.css" text="Règles">
+            <Button alignment="CENTER" graphicTextGap="5.0" maxWidth="1.7976931348623157E308" minHeight="54.0" minWidth="-Infinity" mnemonicParsing="false" styleClass="MenuButton" stylesheets="@../../css/default-style.css" text="Règles">
                <VBox.margin>
                   <Insets bottom="6.0" top="6.0" />
                </VBox.margin>
@@ -122,10 +122,10 @@
                   <Insets bottom="1.0" />
                </padding>
                <graphic>
-                  <Region id="Button_rules" prefHeight="200.0" prefWidth="200.0" styleClass="Button_icon" stylesheets="@../../style/default-style.css" />
+                  <Region id="Button_rules" prefHeight="200.0" prefWidth="200.0" styleClass="Button_icon" stylesheets="@../../css/default-style.css" />
                </graphic>
             </Button>
-            <Button alignment="CENTER" graphicTextGap="2.0" maxWidth="1.7976931348623157E308" minHeight="54.0" mnemonicParsing="false" styleClass="MenuButton" stylesheets="@../../style/default-style.css" text="Tutoriel">
+            <Button alignment="CENTER" graphicTextGap="2.0" maxWidth="1.7976931348623157E308" minHeight="54.0" mnemonicParsing="false" styleClass="MenuButton" stylesheets="@../../css/default-style.css" text="Tutoriel">
                <VBox.margin>
                   <Insets bottom="6.0" top="6.0" />
                </VBox.margin>
@@ -139,10 +139,10 @@
                   <Insets bottom="1.0" />
                </padding>
                <graphic>
-                  <Region id="Button_tuto" prefHeight="50.0" prefWidth="90.0" styleClass="Button_icon" stylesheets="@../../style/default-style.css" />
+                  <Region id="Button_tuto" prefHeight="50.0" prefWidth="90.0" styleClass="Button_icon" stylesheets="@../../css/default-style.css" />
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" prefWidth="118.0" styleClass="MenuButton" stylesheets="@../../style/default-style.css" text="Quitter">
+            <Button mnemonicParsing="false" prefWidth="118.0" styleClass="MenuButton" stylesheets="@../../css/default-style.css" text="Quitter">
                <VBox.margin>
                   <Insets top="6.0" />
                </VBox.margin>
@@ -153,7 +153,7 @@
                   <Font size="16.0" />
                </font>
                <graphic>
-                  <Region id="Button_exit" prefHeight="200.0" prefWidth="200.0" styleClass="Button_icon" stylesheets="@../../style/default-style.css" />
+                  <Region id="Button_exit" prefHeight="200.0" prefWidth="200.0" styleClass="Button_icon" stylesheets="@../../css/default-style.css" />
                </graphic>
             </Button>
          </children>
