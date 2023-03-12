@@ -24,8 +24,8 @@
                <children>
                   <Button mnemonicParsing="false" onAction="#resetAction" text="Reset" />
                   <Button mnemonicParsing="false" text="Hint" />
-                  <Button mnemonicParsing="false" text="&lt;" />
-                  <Button mnemonicParsing="false" text="&gt;" />
+                  <Button mnemonicParsing="false" onAction="#undo" text="&lt;" />
+                  <Button mnemonicParsing="false" onAction="#redo" text="&gt;" />
                   <Button mnemonicParsing="false" text="hypothes" />
                </children></HBox>
          </children>
