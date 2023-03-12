@@ -6,7 +6,7 @@ package fr.slitherlink.game.grid;
  */
 public class GridCell {
 
-    private Edge[] edges;
+    public Edge[] edges;
 
     public GridCell(Integer number) {
         edges = new Edge[4];
