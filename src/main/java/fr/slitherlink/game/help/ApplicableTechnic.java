@@ -2,7 +2,8 @@ package fr.slitherlink.game.help;
 
 import java.util.List;
 import java.util.LinkedList;
-import fr.slitherlink.game.grid.Grid;
+import java.util.Queue;
+import fr.slitherlink.game.grid.*;
 
 /**
  * Classe contenant les méthodes pour rechercher les techniques applicables dans la grille
@@ -11,6 +12,12 @@ import fr.slitherlink.game.grid.Grid;
  */
 public class ApplicableTechnic {
     
+    public static final int TOP = 0;
+    public static final int RIGHT = 1;
+    public static final int BOTTOM = 2;
+    public static final int LEFT = 3;
+
+
     /**
      * Vérifie si la case de coordonnées x, y existe dans la grille
      * @param size la taille de la grille
@@ -1142,8 +1149,74 @@ public class ApplicableTechnic {
     }
 
 
+    //listEndsPath
+    private List<EdgePos> getEndsPath(Grid route, int size) {
+        List<EdgePos> listEndsPath = new LinkedList<EdgePos>();
+        int x, y;
+
+        for(y=0; y < size; y++)
+            for(x=0; x < size; x++){
+                if(route.getCell(y, x).getTop().isLine() &&
+                    ( !((coordExist(y-1, x, size) && route.getCell(y-1, x).getLeft().isLine()) || (coordExist(y, x, size) && route.getCell(y, x).getLeft().isLine()) || (coordExist(y-1, x-1, size) && (route.getCell(y-1, x-1).getRight().isLine() || route.getCell(y-1, x-1).getBottom().isLine()) ) || (coordExist(y, x-1, size) && (route.getCell(y, x-1).getRight().isLine() || route.getCell(y, x-1).getTop().isLine()) ) )
+                    || !((coordExist(y-1, x, size) && route.getCell(y-1, x).getRight().isLine()) || (coordExist(y, x, size) && route.getCell(y, x).getRight().isLine()) || (coordExist(y-1, x+1, size) && (route.getCell(y-1, x+1).getLeft().isLine() || route.getCell(y-1, x+1).getBottom().isLine()) ) || (coordExist(y, x+1, size) && (route.getCell(y, x+1).getLeft().isLine() || route.getCell(y, x+1).getTop().isLine()) ) ) ) )
+                        listEndsPath.add(new EdgePos(TOP, y, x));
+                if(route.getCell(y, x).getBottom().isLine() &&
+                    ( !((coordExist(y+1, x, size) && route.getCell(y+1, x).getLeft().isLine()) || (coordExist(y, x, size) && route.getCell(y, x).getLeft().isLine()) || (coordExist(y+1, x-1, size) && (route.getCell(y+1, x-1).getRight().isLine() || route.getCell(y+1, x-1).getTop().isLine()) ) || (coordExist(y, x-1, size) && (route.getCell(y, x-1).getRight().isLine() || route.getCell(y, x-1).getBottom().isLine()) ) )
+                    || !((coordExist(y+1, x, size) && route.getCell(y+1, x).getRight().isLine()) || (coordExist(y, x, size) && route.getCell(y, x).getRight().isLine()) || (coordExist(y+1, x+1, size) && (route.getCell(y+1, x+1).getLeft().isLine() || route.getCell(y+1, x+1).getTop().isLine()) ) || (coordExist(y, x+1, size) && (route.getCell(y, x+1).getLeft().isLine() || route.getCell(y, x+1).getBottom().isLine()) ) ) ) )
+                        listEndsPath.add(new EdgePos(BOTTOM, y, x));
+                if(route.getCell(y, x).getLeft().isLine() &&
+                    ( !((coordExist(y, x-1, size) && route.getCell(y, x-1).getTop().isLine()) || (coordExist(y, x, size) && route.getCell(y, x).getTop().isLine()) || (coordExist(y-1, x-1, size) && (route.getCell(y-1, x-1).getRight().isLine() || route.getCell(y-1, x-1).getBottom().isLine()) ) || (coordExist(y-1, x, size) && (route.getCell(y-1, x).getLeft().isLine() || route.getCell(y-1, x).getBottom().isLine()) ) )
+                    || !((coordExist(y, x-1, size) && route.getCell(y, x-1).getBottom().isLine()) || (coordExist(y, x, size) && route.getCell(y, x).getBottom().isLine()) || (coordExist(y+1, x-1, size) && (route.getCell(y+1, x-1).getRight().isLine() || route.getCell(y+1, x-1).getTop().isLine()) ) || (coordExist(y+1, x, size) && (route.getCell(y+1, x).getLeft().isLine() || route.getCell(y+1, x).getTop().isLine()) ) ) ) )
+                        listEndsPath.add(new EdgePos(LEFT, y, x));
+                if(route.getCell(y, x).getRight().isLine() &&
+                    ( !((coordExist(y, x+1, size) && route.getCell(y, x+1).getTop().isLine()) || (coordExist(y, x, size) && route.getCell(y, x).getTop().isLine()) || (coordExist(y-1, x+1, size) && (route.getCell(y-1, x+1).getLeft().isLine() || route.getCell(y-1, x+1).getBottom().isLine()) ) || (coordExist(y-1, x, size) && (route.getCell(y-1, x).getRight().isLine() || route.getCell(y-1, x).getBottom().isLine()) ) )
+                    || !((coordExist(y, x+1, size) && route.getCell(y, x+1).getBottom().isLine()) || (coordExist(y, x, size) && route.getCell(y, x).getBottom().isLine()) || (coordExist(y+1, x+1, size) && (route.getCell(y+1, x+1).getLeft().isLine() || route.getCell(y+1, x+1).getTop().isLine()) ) || (coordExist(y+1, x, size) && (route.getCell(y+1, x).getRight().isLine() || route.getCell(y+1, x).getTop().isLine()) ) ) ) )
+                        listEndsPath.add(new EdgePos(RIGHT, y, x));
+            }
+        return listEndsPath;
+    } 
 
 
+    
+    private List<List<EdgePos>> getReachableEndsByEnds(List<EdgePos> listEnds, Grid route, int size) {
+        List<List<EdgePos>> listReachableEnds = new LinkedList<>();
+        for (EdgePos edgePos : listEnds) {
+        }
+    }
+
+    
+    private List<EdgePos> getReachableEndsByEnd(Grid route, int size, EdgePos edgePos, List<EdgePos> listEnds) {
+        List<EdgePos> listReachableEnds = new LinkedList<>();
+        Queue<EdgePos> queue = new LinkedList<>();
+        EdgePos currentEdge;
+        int x, y;
+        int pos;
+        //faire une copie profonde de route
+
+        queue.add(edgePos);
+        //cycler une fois
+        while(!queue.isEmpty()){
+            currentEdge = queue.poll();
+            x = currentEdge.getX();
+            y = currentEdge.getY();
+            pos = currentEdge.getPosition();
+
+            if(coordExist(y, x, size) && currentEdge != edgePos ){
+                if(route.getCell(y, x).edges[pos].isLine() && listEnds.contains(currentEdge)){
+                    listReachableEnds.add(currentEdge);
+                    //remplacer par une croix
+                } else if(route.getCell(y, x).edges[pos].isEmpty()){
+                    //ajouter les voisins d'un bout à la queue
+                    //ajouter les voisins de l'autre bout à la queue
+
+                    //remplacer par une croix
+                }
+            }
+        }
+        
+    }
+
+            
     
     /**
     private List<Coordinates> searchTech1Grid(Integer [][] gridNumber, Grid route, int size) {
