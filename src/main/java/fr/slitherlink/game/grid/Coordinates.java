@@ -1,4 +1,4 @@
-package fr.slitherlink.game.help;
+package fr.slitherlink.game.grid;
 
 /**
  * Classe représentant les coordonnées d'une case
@@ -7,10 +7,10 @@ package fr.slitherlink.game.help;
  */
 public class Coordinates {
     
-    private int x;
-    private int y;
+    protected int x;
+    protected int y;
 
-    public Coordinates(int x, int y) {
+    public Coordinates(int y, int x) {
         this.x = x;
         this.y = y;
     }
