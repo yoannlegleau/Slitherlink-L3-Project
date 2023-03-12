@@ -13,6 +13,29 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlJavaTypeAdapter(GameActionAdapter.class)
 public abstract class GameAction {
 
+    private Boolean canceled = false;
+
+    private Boolean cancelable = true;
+
     public abstract void doAction(Game game);
 
+    public Boolean isCanceled() {
+        return canceled;
+    }
+
+    public Boolean isCancelable() {
+        return cancelable;
+    }
+
+    public void setCancelable(Boolean cancelable) {
+        this.cancelable = cancelable;
+    }
+
+    public void setCanceled(Boolean canceled) {
+        this.canceled = canceled;
+    }
+
+    public  void swapCanceled(){
+        canceled = !canceled;
+    }
 }

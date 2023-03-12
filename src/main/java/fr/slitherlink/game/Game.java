@@ -74,14 +74,23 @@ public class Game {
         solution = puzzle.getSolution();
     }
 
-    private void loadGameSave(){
+    public void loadGameSave(){
         GameSave gameSave = GameSaveResourceManageur.LoadLevel(puzzleId);
         if (gameSave == null || gameSave.getActions() == null)
             return;
-
-        for (GameAction action: gameSave.getActions())
-            action(action);
+        actions = gameSave.getActions();
+        redoAllAction();
     }
+
+    public void redoAllAction(){
+        currentGrid = new Grid(solution.getSize());
+        for (GameAction action: actions) {
+            if (!action.isCanceled() && action.isCancelable())
+                action.doAction(this);
+        }
+    }
+
+
 
     private void saveGame(){
         GameSaveResourceManageur.saveGameSave(new GameSave(this));

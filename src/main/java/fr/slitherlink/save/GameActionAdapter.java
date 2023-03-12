@@ -1,10 +1,8 @@
 package fr.slitherlink.save;
 
-import fr.slitherlink.game.action.EdgeAction;
-import fr.slitherlink.game.action.GameAction;
-import fr.slitherlink.game.grid.EdgeType;
+import fr.slitherlink.game.action.*;
 
-import javax.swing.*;
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
 /**
@@ -16,32 +14,79 @@ public class GameActionAdapter extends XmlAdapter<GameActionAdapter.AdaptedActio
 
 
     @Override
-    public AdaptedAction marshal(GameAction v) throws Exception {
-        if (v instanceof EdgeAction){
-            AdaptedAction adaptedAction = new AdaptedAction();
-            adaptedAction.x = ((EdgeAction) v).getX();
-            adaptedAction.y = ((EdgeAction) v).getY();
-            adaptedAction.t = ((EdgeAction) v).getT();
-            adaptedAction.edgeType = EdgeType.getValue(((EdgeAction) v).getType());
-            return adaptedAction;
+    public AdaptedAction marshal(GameAction action) throws Exception {
+        AdaptedAction adaptedAction = new AdaptedAction();
+        if (action instanceof EdgeAction){
+            adaptedAction.x = ((EdgeAction) action).getX();
+            adaptedAction.y = ((EdgeAction) action).getY();
+            adaptedAction.t = ((EdgeAction) action).getT();
+            switch (((EdgeAction) action).getType()){
+                case LINE:
+                    adaptedAction.gameActionTypes = GameActionTypes.SET_LINE.value();
+                    break;
+                case CROSS:
+                    adaptedAction.gameActionTypes = GameActionTypes.SET_CROSS.value();
+                    break;
+                case EMPTY:
+                    adaptedAction.gameActionTypes = GameActionTypes.SET_EMPTY.value();
+                    break;
+            }
+
         }
-        return null;
+        if (action instanceof UndoAction){
+            adaptedAction.gameActionTypes = GameActionTypes.UNDO.value();
+            adaptedAction.target = ((ActionTargeter)action).getTargetId();
+        }
+        if (action instanceof RedoAction){
+            adaptedAction.gameActionTypes = GameActionTypes.REDO.value();
+            adaptedAction.target = ((ActionTargeter)action).getTargetId();
+        }
+        if (action.isCanceled())
+            adaptedAction.canceled = true;
+        return adaptedAction;
     }
 
     @Override
     public GameAction unmarshal(AdaptedAction v) throws Exception {
-        if (v.t != null){
-            return new EdgeAction(v.x, v.y, v.t, EdgeType.getType(v.edgeType));
+        GameAction action = null;
+        switch (GameActionTypes.fromValue(v.gameActionTypes)) {
+            case SET_LINE:
+                action = ActionFactory.setEdgeLine(v.x, v.y, v.t);
+                break;
+            case SET_CROSS:
+                action = ActionFactory.setEdgeCross(v.x, v.y, v.t);
+                break;
+            case SET_EMPTY:
+                action = ActionFactory.setEdgeEmpty(v.x, v.y, v.t);
+                break;
+            case UNDO:
+                action = ActionFactory.undo();
+                ((ActionTargeter)action).setTargetId(v.target);
+                break;
+            case REDO:
+                action = ActionFactory.redo();
+                ((ActionTargeter)action).setTargetId(v.target);
+                break;
         }
-
-        return null;
+        if (v.canceled != null)
+            action.setCanceled(true);
+        return action;
     }
 
-    public static class AdaptedAction {
+        public static class AdaptedAction {
 
-        public int x;
-        public int y;
-        public String t;
-        public int edgeType;
+            @XmlAttribute(name = "type")
+            public String gameActionTypes;
+
+            @XmlAttribute(name = "canceled")
+            public Boolean canceled;
+
+            public Integer target;
+            public Integer x;
+            public Integer y;
+            public String t;
+
+
+
+        }
     }
-}

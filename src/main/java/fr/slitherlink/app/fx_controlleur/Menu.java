@@ -1,5 +1,6 @@
 package fr.slitherlink.app.fx_controlleur;
 
+import fr.slitherlink.app.Navigation;
 import fr.slitherlink.app.Slitherlink;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,10 +22,6 @@ public class Menu {
 
     @FXML
     public void onPlayButonClick(ActionEvent actionEvent) throws IOException {
-        Stage stage = (Stage) buttonPlay.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(Slitherlink.class.getResource("gui/level_play_sceen/level-play-screen.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
-        stage.show();
+        Navigation.toGameScreen((Stage) buttonPlay.getScene().getWindow());
     }
 }

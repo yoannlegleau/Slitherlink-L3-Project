@@ -21,5 +21,12 @@ public  interface ActionFactory {
         return new EdgeAction(x, y, t , EdgeType.EMPTY);
     }
 
+    static GameAction undo(){
+        return new UndoAction();
+    }
+
+    static GameAction redo(){
+        return new RedoAction();
+    }
 
 }

@@ -34,11 +34,6 @@ public class GameSave {
         return levelId;
     }
 
-    public void reloadGame(Game game){
-        for (GameAction action: actions)
-            action.doAction(game);
-    }
-
     public List<GameAction> getActions() {
         return actions;
     }
