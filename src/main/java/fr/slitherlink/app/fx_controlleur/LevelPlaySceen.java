@@ -30,11 +30,6 @@ public class LevelPlaySceen {
     public Pane gamePane;
 
     @FXML
-    public void start() {
-        System.out.println("start");
-    }
-
-    @FXML
     public void initialize() {
         int pxSize = 500; //TODO trouver un moyen de le recuperer la taille de gamePane
         game = new Game(levelid);
@@ -47,21 +42,16 @@ public class LevelPlaySceen {
             }
 
             if (event.getCode() == KeyCode.Z && event.isControlDown()) {
-                System.out.println("Touche ctrl+z appuyée !");
-                game.action(ActionFactory.undo());
-                puzlGridGroup.update();
+                undo();
             }
 
             if (event.getCode() == KeyCode.Y && event.isControlDown()) {
-                System.out.println("Touche ctrl+y appuyée !");
-                game.action(ActionFactory.redo());
-                puzlGridGroup.update();
+                redo();
             }
 
         });
 
     }
-
 
     public void resetAction(ActionEvent actionEvent) {
         game.reset();

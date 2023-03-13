@@ -12,7 +12,7 @@ import java.io.IOException;
  */
 public class Navigation {
     public static void toGameScreen(Stage context) throws IOException {;
-        FXMLLoader fxmlLoader = new FXMLLoader(Slitherlink.class.getResource("gui/level_play_sceen/level-play-screen.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Slitherlink.class.getResource("gui/level_play_sceen/level-editor.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         context.setScene(scene);
         context.show();

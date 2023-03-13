@@ -24,6 +24,8 @@ public class Game {
 
     private List<GameAction> actions;
 
+    private Boolean doSave = true;
+
     private boolean assumptionMode;
 
     private boolean isSolved;
@@ -41,12 +43,24 @@ public class Game {
         loadGameSave();
     }
 
+    public void setDoSave(Boolean doSave) {
+        this.doSave = doSave;
+    }
+
     public Grid getSolution( ){
         return solution;
     }
 
     public Grid getCurrentGrid() {
         return currentGrid;
+    }
+
+    /**
+    * modifie la grille courante ! Attention , Utilisable pour le LevelEditor
+     * @param grid la grille à mettre en courante
+     */
+    public void setCurrentGrid(Grid grid) {
+        currentGrid = grid;
     }
 
     public List<GameAction> getActions() {
@@ -93,7 +107,8 @@ public class Game {
 
 
     private void saveGame(){
-        GameSaveResourceManageur.saveGameSave(new GameSave(this));
+        if (doSave)
+            GameSaveResourceManageur.saveGameSave(new GameSave(this));
     }
 
     public void reset() {

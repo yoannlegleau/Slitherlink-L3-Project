@@ -88,14 +88,15 @@ public class PuzzleSave {
     }
     public Grid getSolution() {
         Grid g = new Grid(size);
-        for (Solution.SaveEdge edge : solution.getEdgeList()) {
-            switch (edge.direction) {
-                case "T" -> g.getCell(edge.row, edge.column).getTop().setType(EdgeType.LINE);
-                case "B" -> g.getCell(edge.row, edge.column).getBottom().setType(EdgeType.LINE);
-                case "L" -> g.getCell(edge.row, edge.column).getLeft().setType(EdgeType.LINE);
-                case "R" -> g.getCell(edge.row, edge.column).getRight().setType(EdgeType.LINE);
+        if (solution != null)
+            for (Solution.SaveEdge edge : solution.getEdgeList()) {
+                switch (edge.direction) {
+                    case "T" -> g.getCell(edge.column, edge.row).getTop().setType(EdgeType.LINE);
+                    case "B" -> g.getCell(edge.column, edge.row).getBottom().setType(EdgeType.LINE);
+                    case "L" -> g.getCell(edge.column, edge.row).getLeft().setType(EdgeType.LINE);
+                    case "R" -> g.getCell(edge.column, edge.row).getRight().setType(EdgeType.LINE);
+                }
             }
-        }
         return g;
     }
 
@@ -185,7 +186,7 @@ public class PuzzleSave {
     @XmlRootElement
     private static class Solution {
 
-        @XmlElement(name="number")
+        @XmlElement(name="edge")
         private List<SaveEdge> edgeList;
 
         public Solution() {
@@ -195,8 +196,8 @@ public class PuzzleSave {
 
         public Solution(Grid gameGrid) {
             this();
-            for (int y = 0; y < gameGrid.getSize(); y++) {
                 for (int x = 0; x < gameGrid.getSize(); x++) {
+                    for (int y = 0; y < gameGrid.getSize(); y++) {
                     GridCell cell = gameGrid.getCell(y, x);
                     if (x == 0 && cell.getTop().getType().equals(EdgeType.LINE))
                         edgeList.add(new SaveEdge(x, y, "T"));

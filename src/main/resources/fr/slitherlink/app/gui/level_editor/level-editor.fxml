@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #333337;" stylesheets="@../../css/default-style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.slitherlink.app.fx_controlleur.LevelEditor">
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="75.0" prefWidth="600.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label text="File: " textFill="WHITE" />
+                        <TextField fx:id="fileField" />
+                        <Button mnemonicParsing="false" onAction="#loadLevel" text="Load" />
+                        <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveLevel" text="Save">
+                           <HBox.margin>
+                              <Insets left="25.0" right="25.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#newLevel" text="New" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label text="Id: " textFill="WHITE" />
+                        <TextField fx:id="idField" editable="false" />
+                        <Label text=" Size: " textFill="WHITE" />
+                        <TextField fx:id="sizeField" />
+                        <Button mnemonicParsing="false" onAction="#setsize" text="Ok" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <FlowPane fx:id="gamePane" alignment="TOP_CENTER" prefHeight="258.0" prefWidth="600.0" style="-fx-background-color: #252525; -fx-border-width: 5; -fx-border-color: #535353; -fx-border-radius: 15;">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="10.0" top="10.0" />
+               </padding>
+            </FlowPane>
+            <HBox alignment="CENTER" prefHeight="58.0" prefWidth="600.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#resetAction" text="Reset" />
+               </children></HBox>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>
