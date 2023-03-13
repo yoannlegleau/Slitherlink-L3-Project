@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <puzzleSave id="1">
-    <size>4</size>
+    <size>10</size>
     <grid>
         <number column="0" row="0">1</number>
         <number column="2" row="0">2</number>

@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.input.MouseButton;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
@@ -55,15 +56,19 @@ public class PuzlGridGroup extends Group {
         double marging = thickness / 2;
         double length = (pxSize - thickness) / game.getSolution().getSize() ;
         double fontSize = length * FONT_SIZE_FACTOR;
+        double sizeText = fontSize * 0.7;
 
 
         for (int x = 0; x < game.getSolution().getSize(); x++) {
             for (int y = 0; y < game.getSolution().getSize(); y++) {
                 if (game.getNumbers()[x][y] != null){
                     Text text = new Text(String.valueOf(game.getNumbers()[x][y]));
+                    text.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
                     text.setX( marging + x * length + length/2 - fontSize/2);
                     text.setY( marging + y * length + length/2 + fontSize/2);
-                    text.setStyle("-fx-fill: white; -fx-font-size: "+fontSize+"px;");
+                    text.setStyle("-fx-fill: white; -fx-font-size: "+sizeText+"px;");
+
+
                     getChildren().add(text);
                 }
 
@@ -96,6 +101,12 @@ public class PuzlGridGroup extends Group {
                         x,y,"B",
                         game
                 ));
+                getChildren().add(new DrawingCircle(
+                        marging + x * length + length/2,
+                        marging + y * length + length/2,
+                        length/2,
+                        game,
+                        x,y));
                 getChildren().add(new DrawingEdge(
                         x * length + length,
                         marging + y * length,
@@ -173,5 +184,15 @@ public class PuzlGridGroup extends Group {
         }
 
 
+    }
+    
+    public DrawingCirlce ( double centerX, double centerY, double radius, Game game, int coodonatX, int coodonatY) {
+        super(centerX, centerY, radius);
+        this.coodonatX = coodonatX;
+        this.coodonatY = coodonatY;
+        this.game = game;
+        setFill(Color.GRAY);
+        //setStroke(Color.BLACK);
+        }
     }
 }
