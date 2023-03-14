@@ -23,4 +23,6 @@ public enum EdgeType {
             default -> throw new IllegalArgumentException("Invalid value");
         };
     }
+
+
 }

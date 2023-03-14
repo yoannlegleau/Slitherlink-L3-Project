@@ -4,8 +4,10 @@ import fr.slitherlink.game.Game;
 import fr.slitherlink.game.grid.Edge;
 import fr.slitherlink.game.grid.EdgeType;
 
+import javax.swing.*;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.awt.event.ActionEvent;
 
 /**
  * @author LE GLEAU Yoann
@@ -52,6 +54,8 @@ public class EdgeAction extends GameAction {
                 break;
         }
         curent.setType(type);
+        game.checkisWin();
+        game.notifyListeners(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "SET_"+type));
     }
 
     public int getX() {

@@ -12,7 +12,10 @@ public enum GameActionTypes {
     SET_CROSS,
     SET_EMPTY,
     UNDO,
-    REDO;
+    REDO,
+    RESET,
+    WIN;
+
 
     public String value() {
         return name();

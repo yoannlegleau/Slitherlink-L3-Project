@@ -2,6 +2,7 @@ package fr.slitherlink.game.action;
 
 import fr.slitherlink.game.Game;
 
+import java.awt.event.ActionEvent;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -57,5 +58,6 @@ public class UndoAction extends GameAction implements ActionTargeter{
         }
 
         game.redoAllAction();
+        game.notifyListeners(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, GameActionTypes.UNDO.toString()));
     }
 }

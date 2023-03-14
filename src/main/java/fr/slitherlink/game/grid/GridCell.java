@@ -47,12 +47,17 @@ public class GridCell {
         edges[3] = left;
     }
 
+    /**
+     * compare tous les cotter de la cellule
+     * @param obj
+     * @return
+     */
     @Override
     public boolean equals(Object obj) {
         GridCell cell = (GridCell) obj;
         for (int i = 0; i < 4; i++) {
-            if (!edges[i].equals(cell.edges[i]))
-                return false;
+                if (!edges[i].equals(cell.edges[i]))
+                    return false;
         }
         return true;
     }

@@ -1,12 +1,15 @@
 package fr.slitherlink.game;
 
 import fr.slitherlink.game.action.GameAction;
+import fr.slitherlink.game.action.GameActionTypes;
 import fr.slitherlink.game.grid.Grid;
 import fr.slitherlink.save.GameSave;
 import fr.slitherlink.save.GameSaveResourceManageur;
 import fr.slitherlink.save.PuzzleResourceManageur;
 import fr.slitherlink.save.PuzzleSave;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +28,8 @@ public class Game {
     private List<GameAction> actions;
 
     private Boolean doSave = true;
+
+    private List<ActionListener> listeners = new ArrayList<>();
 
     private boolean assumptionMode;
 
@@ -63,6 +68,10 @@ public class Game {
         currentGrid = grid;
     }
 
+    public boolean isWin() {
+        return isSolved;
+    }
+
     public List<GameAction> getActions() {
         return actions;
     }
@@ -72,6 +81,19 @@ public class Game {
     }
     public Integer[][] getNumbers() {
         return numbers;
+    }
+
+    public void subscribe(ActionListener listener){
+        listeners.add(listener);
+    }
+
+    public void unsubscribe(ActionListener listener){
+        listeners.remove(listener);
+    }
+
+    public void notifyListeners(ActionEvent action){
+        for (ActionListener listener: listeners)
+            listener.actionPerformed(action);
     }
 
     public void action(GameAction action){
@@ -112,8 +134,18 @@ public class Game {
     }
 
     public void reset() {
+        isSolved = false;
         actions.clear();
         currentGrid = new Grid(solution.getSize());
         saveGame();
+        notifyListeners(new ActionEvent(this, 0, GameActionTypes.RESET.toString()));
+    }
+
+    public void checkisWin() {
+        if (currentGrid.equals(solution)) {
+            isSolved = true;
+            notifyListeners(new ActionEvent(this, 0, GameActionTypes.WIN.toString()));
+        }else
+            isSolved = false;
     }
 }

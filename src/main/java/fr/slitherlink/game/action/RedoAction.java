@@ -2,6 +2,7 @@ package fr.slitherlink.game.action;
 
 import fr.slitherlink.game.Game;
 
+import java.awt.event.ActionEvent;
 import java.util.List;
 
 /**
@@ -56,5 +57,6 @@ public class RedoAction extends GameAction implements ActionTargeter{
         }
 
         game.redoAllAction();
+        game.notifyListeners(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, GameActionTypes.REDO.toString()));
     }
 }

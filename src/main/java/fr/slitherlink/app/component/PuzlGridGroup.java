@@ -2,7 +2,11 @@ package fr.slitherlink.app.component;
 
 import fr.slitherlink.game.Game;
 import fr.slitherlink.game.action.ActionFactory;
+import fr.slitherlink.game.action.GameActionTypes;
+import fr.slitherlink.game.grid.Edge;
 import fr.slitherlink.game.grid.EdgeType;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.input.MouseButton;
@@ -13,13 +17,16 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.EventListener;
 
 /**
  * @author LE GLEAU Yoann
  * @version 1, 07/03/2023
  * @pakage fr.slitherlink.app
  */
-public class PuzlGridGroup extends Group {
+public class PuzlGridGroup extends Group implements ActionListener {
 
     private static final double LINE_THICKNESS_FACTOR = 0.03;
     private static final double FONT_SIZE_FACTOR = 0.7;
@@ -32,6 +39,7 @@ public class PuzlGridGroup extends Group {
     public PuzlGridGroup(Game game , int pxSize){
         this.game = game;
         this.pxSize = pxSize;
+        game.subscribe(this);
         createGrid();
     }
 
@@ -49,7 +57,6 @@ public class PuzlGridGroup extends Group {
         getChildren().clear();
         createGrid();
     }
-
 
 
     private void createGrid() {
@@ -128,7 +135,31 @@ public class PuzlGridGroup extends Group {
         return text;
     }
 
-    class DrawingEdge extends Rectangle{
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        switch (GameActionTypes.fromValue(e.getActionCommand())){
+            case SET_CROSS:
+                update();
+                break;
+            case SET_LINE:
+                update();
+                break;
+            case SET_EMPTY:
+                update();
+                break;
+            case REDO:
+                update();
+                break;
+            case UNDO:
+                update();
+                break;
+            case RESET:
+                update();
+                break;
+        }
+    }
+
+    class DrawingEdge extends Rectangle {
 
         private int coodonatX;
         private int coodonatY;
@@ -191,7 +222,6 @@ public class PuzlGridGroup extends Group {
                     return null;
             }
         }
-
 
     }
     //TODO luca
