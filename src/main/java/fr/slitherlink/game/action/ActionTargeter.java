@@ -1,13 +1,15 @@
 package fr.slitherlink.game.action;
 
+import java.util.List;
+
 /**
  * @author LE GLEAU Yoann
  * @version 1, 12/03/2023
  */
 public interface ActionTargeter {
 
-    Integer getTargetId();
+    List<GameAction> getTargets();
 
-    Integer setTargetId(Integer targetId);
+    void addTarge(GameAction targetId);
 
 }

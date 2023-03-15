@@ -3,8 +3,8 @@ package fr.slitherlink.game.action;
 import fr.slitherlink.game.Game;
 
 import java.awt.event.ActionEvent;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.Stream;
 
 /**
  * @author LE GLEAU Yoann
@@ -12,7 +12,7 @@ import java.util.stream.Stream;
  */
 public class UndoAction extends GameAction implements ActionTargeter{
 
-    private Integer targetId;
+    private GameAction target;
 
     public UndoAction() {
         super();
@@ -20,13 +20,15 @@ public class UndoAction extends GameAction implements ActionTargeter{
     }
 
     @Override
-    public Integer getTargetId() {
-        return targetId;
+    public List<GameAction> getTargetId() {
+        LinkedList<GameAction> list = new LinkedList<>();
+        list.add(target);
+        return list;
     }
 
     @Override
-    public Integer setTargetId(Integer targetId) {
-        return this.targetId = targetId;
+    public void setTargetId(GameAction target) {
+        this.target = target;
     }
 
     @Override
@@ -36,7 +38,7 @@ public class UndoAction extends GameAction implements ActionTargeter{
             return;
 
         //passer les chaines d'annulation
-        targetId = actions.size() - 1;
+        fondTargetId = actions.size() - 1;
         while (targetId >= 0 && actions.get(targetId) instanceof UndoAction)
             targetId--;
 
