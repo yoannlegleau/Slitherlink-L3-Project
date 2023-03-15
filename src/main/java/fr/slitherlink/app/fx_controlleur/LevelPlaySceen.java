@@ -1,6 +1,6 @@
 package fr.slitherlink.app.fx_controlleur;
 
-import fr.slitherlink.app.component.PuzlGridGroup;
+import fr.slitherlink.app.component.PuzllGridGroup;
 import fr.slitherlink.game.Game;
 import fr.slitherlink.game.action.ActionFactory;
 import fr.slitherlink.game.action.GameActionTypes;
@@ -24,7 +24,7 @@ public class LevelPlaySceen implements ActionListener {
 
     Game game;
 
-    PuzlGridGroup puzlGridGroup;
+    PuzllGridGroup puzlGridGroup;
 
     @FXML
     public BorderPane root;
@@ -37,7 +37,7 @@ public class LevelPlaySceen implements ActionListener {
         int pxSize = 500; //TODO trouver un moyen de le recuperer la taille de gamePane
         game = new Game(levelid);
         game.subscribe(this);
-        puzlGridGroup = new PuzlGridGroup(game, pxSize);
+        puzlGridGroup = new PuzllGridGroup(game, pxSize);
         gamePane.getChildren().add(puzlGridGroup);
 
         root.setOnKeyPressed(event -> {

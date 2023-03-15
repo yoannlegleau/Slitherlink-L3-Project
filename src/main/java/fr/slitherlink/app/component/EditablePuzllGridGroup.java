@@ -1,16 +1,10 @@
 package fr.slitherlink.app.component;
 
 import fr.slitherlink.game.Game;
-import fr.slitherlink.game.action.ActionFactory;
-import fr.slitherlink.game.grid.EdgeType;
-import javafx.scene.Group;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseButton;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 
 /**
@@ -18,9 +12,9 @@ import javafx.scene.text.TextAlignment;
  * @version 1, 07/03/2023
  * @pakage fr.slitherlink.app
  */
-public class EditablePuzlGridGroup extends PuzlGridGroup {
+public class EditablePuzllGridGroup extends PuzllGridGroup {
 
-    public EditablePuzlGridGroup(Game game, int pxSize) {
+    public EditablePuzllGridGroup(Game game, int pxSize) {
         super(game, pxSize);
     }
 

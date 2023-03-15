@@ -3,30 +3,23 @@ package fr.slitherlink.app.component;
 import fr.slitherlink.game.Game;
 import fr.slitherlink.game.action.ActionFactory;
 import fr.slitherlink.game.action.GameActionTypes;
-import fr.slitherlink.game.grid.Edge;
 import fr.slitherlink.game.grid.EdgeType;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.input.MouseButton;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Circle;
-import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.EventListener;
 
 /**
  * @author LE GLEAU Yoann
  * @version 1, 07/03/2023
  * @pakage fr.slitherlink.app
  */
-public class PuzlGridGroup extends Group implements ActionListener {
+public class PuzllGridGroup extends Group implements ActionListener {
 
     private static final double LINE_THICKNESS_FACTOR = 0.03;
     private static final double FONT_SIZE_FACTOR = 0.7;
@@ -36,7 +29,7 @@ public class PuzlGridGroup extends Group implements ActionListener {
     int pxSize;
 
 
-    public PuzlGridGroup(Game game , int pxSize){
+    public PuzllGridGroup(Game game , int pxSize){
         this.game = game;
         this.pxSize = pxSize;
         game.subscribe(this);
@@ -200,10 +193,16 @@ public class PuzlGridGroup extends Group implements ActionListener {
                     setFill(Color.GRAY);
                     break;
                 case LINE:
-                    setFill(Color.valueOf("66F4FF"));
+                    if (game.isWin())
+                        setFill(Color.WHITE);
+                    else
+                        setFill(Color.valueOf("66F4FF"));
                     break;
                 case CROSS:
-                    setFill(Color.valueOf("E35151"));
+                    if (game.isWin())
+                        setFill(Color.WHITE);
+                    else
+                        setFill(Color.valueOf("E35151"));
                     break;
             }
         }

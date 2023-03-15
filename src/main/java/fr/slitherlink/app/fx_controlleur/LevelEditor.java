@@ -1,14 +1,11 @@
 package fr.slitherlink.app.fx_controlleur;
 
-import fr.slitherlink.app.component.EditablePuzlGridGroup;
-import fr.slitherlink.app.component.PuzlGridGroup;
+import fr.slitherlink.app.component.EditablePuzllGridGroup;
 import fr.slitherlink.game.Game;
-import fr.slitherlink.game.action.ActionFactory;
 import fr.slitherlink.game.grid.Grid;
 import fr.slitherlink.save.PuzzleResourceManageur;
 import fr.slitherlink.save.PuzzleSave;
 import fr.slitherlink.save.XmlResourcesManageur;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -17,7 +14,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 
 import java.io.File;
-import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -38,7 +34,7 @@ public class LevelEditor {
     public TextField sizeField;
 
     // custom FXML elements
-    private EditablePuzlGridGroup puzlGridGroup;
+    private EditablePuzllGridGroup puzlGridGroup;
 
     // Game elements
     private Game game;
@@ -78,7 +74,7 @@ public class LevelEditor {
         game.setCurrentGrid(game.getSolution());
         if (puzlGridGroup != null)
             gamePane.getChildren().remove(puzlGridGroup);
-        puzlGridGroup = new EditablePuzlGridGroup(game, pxSize);
+        puzlGridGroup = new EditablePuzllGridGroup(game, pxSize);
         gamePane.getChildren().add(puzlGridGroup);
 
         idField.setText(String.valueOf(game.getPuzzleId()));
