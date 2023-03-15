@@ -32,10 +32,21 @@
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#resetAction" text="Reset" />
-                  <Button mnemonicParsing="false" text="Hint" />
-                  <Button mnemonicParsing="false" onAction="#undo" text="&lt;" />
-                  <Button mnemonicParsing="false" onAction="#redo" text="&gt;" />
-                  <Button mnemonicParsing="false" text="hypothes" />
+                  <Button mnemonicParsing="false" text="Hint">
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin></Button>
+                  <Button mnemonicParsing="false" onAction="#undo" text="&lt;">
+                     <HBox.margin>
+                        <Insets left="15.0" right="5.0" />
+                     </HBox.margin></Button>
+                  <Button mnemonicParsing="false" onAction="#redo" text="&gt;">
+                     <HBox.margin>
+                        <Insets right="15.0" />
+                     </HBox.margin></Button>
+                  <Button fx:id="assumptionButton" mnemonicParsing="false" onAction="#assumptionStart" text="hypothes" />
+                  <Button fx:id="assumptionCancelButton" layoutX="313.0" layoutY="48.0" mnemonicParsing="false" onAction="#assumptionCancel" style="-fx-background-color: #E35151;" text="annuler" visible="false" />
+                  <Button fx:id="assumptionValidButton" mnemonicParsing="false" onAction="#assumptionValid" style="-fx-background-color: #41B641;" text="valider" visible="false" />
                </children></HBox>
          </children>
       </VBox>

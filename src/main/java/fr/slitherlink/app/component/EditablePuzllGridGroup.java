@@ -14,6 +14,8 @@ import javafx.scene.text.TextAlignment;
  */
 public class EditablePuzllGridGroup extends PuzllGridGroup {
 
+    Game game;
+
     public EditablePuzllGridGroup(Game game, int pxSize) {
         super(game, pxSize);
     }
@@ -22,10 +24,11 @@ public class EditablePuzllGridGroup extends PuzllGridGroup {
     protected Node createText(double marging, double length, double fontSize, double sizeText, int x, int y) {
         class EditableNumber extends Label {
 
+
             int x;
             int y;
 
-            public EditableNumber(double marging, double length, double fontSize, double sizeText, int x, int y) {
+            public EditableNumber(double marging, double length, double fontSize, double sizeText, int x, int y, Game game) {
                 this.x = x;
                 this.y = y;
                 setPrefSize(length-marging, length-marging);
@@ -55,6 +58,6 @@ public class EditablePuzllGridGroup extends PuzllGridGroup {
             }
 
         }
-        return new EditableNumber(marging, length, fontSize, sizeText, x, y);
+        return new EditableNumber(marging, length, fontSize, sizeText, x, y ,game);
     }
 }

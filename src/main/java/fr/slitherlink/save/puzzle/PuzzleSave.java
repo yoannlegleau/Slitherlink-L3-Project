@@ -1,8 +1,9 @@
-package fr.slitherlink.save;
+package fr.slitherlink.save.puzzle;
 
 import fr.slitherlink.game.grid.EdgeType;
 import fr.slitherlink.game.grid.Grid;
 import fr.slitherlink.game.grid.GridCell;
+import fr.slitherlink.save.puzzle.Difficulty;
 
 import javax.xml.bind.annotation.*;
 import java.util.ArrayList;

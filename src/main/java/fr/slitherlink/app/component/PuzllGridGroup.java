@@ -13,6 +13,8 @@ import javafx.scene.text.Text;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author LE GLEAU Yoann
@@ -24,14 +26,17 @@ public class PuzllGridGroup extends Group implements ActionListener {
     private static final double LINE_THICKNESS_FACTOR = 0.03;
     private static final double FONT_SIZE_FACTOR = 0.7;
 
-    Game game;
+    private Game game;
 
-    int pxSize;
+    private int pxSize;
+
+    private List<DrawingEdge> drawingEdges;
 
 
     public PuzllGridGroup(Game game , int pxSize){
         this.game = game;
         this.pxSize = pxSize;
+        drawingEdges = new ArrayList<>();
         game.subscribe(this);
         createGrid();
     }
@@ -47,8 +52,7 @@ public class PuzllGridGroup extends Group implements ActionListener {
 
     public void update(){
         //TODO faire une methode mois brutale
-        getChildren().clear();
-        createGrid();
+        // \ faire un evenement pour changer la taille en px de la grille
     }
 
 
@@ -71,35 +75,54 @@ public class PuzllGridGroup extends Group implements ActionListener {
                     getChildren().add(text);
                 }
 
+
+                DrawingEdge drawingEdgeT = null;
+                DrawingEdge drawingEdgeL = null;
+                DrawingEdge drawingEdgeB = null;
+                DrawingEdge drawingEdgeR = null;
+
                 if (y == 0) {
-                    getChildren().add(new DrawingEdge(
+                    drawingEdgeT = new DrawingEdge(
                             marging + x * length,
                             y * length,
                             length,
                             thickness,
                             x,y,"T",
-                            game
-                    ));
+                            game);
+                    getChildren().add(drawingEdgeT);
+                    drawingEdges.add(drawingEdgeT);
                 }
                 if (x == 0) {
-                    getChildren().add(new DrawingEdge(
+                    drawingEdgeL = new DrawingEdge(
                             x * length,
                             marging + y * length,
                             thickness,
                             length,
                             x,y,"L",
-                            game
-                    ));
+                            game);
+                    getChildren().add(drawingEdgeL);
+                    drawingEdges.add(drawingEdgeL);
                 }
-
-                getChildren().add(new DrawingEdge(
+                drawingEdgeB = new DrawingEdge(
                         marging + x * length,
                         y * length + length,
                         length,
                         thickness,
                         x,y,"B",
-                        game
-                ));
+                        game);
+                getChildren().add(drawingEdgeB);
+                drawingEdges.add(drawingEdgeB);
+
+                drawingEdgeR = new DrawingEdge(
+                        x * length + length,
+                        marging + y * length,
+                        thickness,
+                        length,
+                        x,y,"R",
+                        game);
+                getChildren().add(drawingEdgeR);
+                drawingEdges.add(drawingEdgeR);
+
                 //TODO luca
 //                getChildren().add(new DrawingCircle(
 //                        marging + x * length + length/2,
@@ -107,14 +130,6 @@ public class PuzllGridGroup extends Group implements ActionListener {
 //                        length/2,
 //                        game,
 //                        x,y));
-                getChildren().add(new DrawingEdge(
-                        x * length + length,
-                        marging + y * length,
-                        thickness,
-                        length,
-                        x,y,"R"
-                        ,game
-                ));
             }
         }
     }
@@ -130,99 +145,14 @@ public class PuzllGridGroup extends Group implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        switch (GameActionTypes.fromValue(e.getActionCommand())){
-            case SET_CROSS:
-                update();
-                break;
-            case SET_LINE:
-                update();
-                break;
-            case SET_EMPTY:
-                update();
-                break;
-            case REDO:
-                update();
-                break;
-            case UNDO:
-                update();
-                break;
-            case RESET:
-                update();
-                break;
+        switch (GameActionTypes.valueOf(e.getActionCommand())){
+            case SET_CROSS, SET_LINE, SET_EMPTY, UNDO, REDO, WIN, RESET, ASSUMPTION_STOP  ->
+                    update();
+
+
         }
     }
 
-    class DrawingEdge extends Rectangle {
-
-        private int coodonatX;
-        private int coodonatY;
-        private String direction;
-
-        private Game game;
-
-        public DrawingEdge(double x, double y, double width, double height, int coodonatX, int coodonatY, String direction, Game game) {
-            super(x, y, width, height);
-            this.coodonatX = coodonatX;
-            this.coodonatY = coodonatY;
-            this.direction = direction;
-            this.game = game;
-            setFill(Color.GRAY);
-            //setStroke(Color.BLACK);
-            setOnMouseClicked(event -> {
-                EdgeType newTipe = EdgeType.EMPTY;
-
-                if (event.getButton() == MouseButton.PRIMARY)
-                    if (getEdgeType().equals(EdgeType.LINE))
-                        game.action(ActionFactory.setEdgeEmpty(coodonatX, coodonatY, direction));
-                    else
-                        game.action(ActionFactory.setEdgeLine(coodonatX, coodonatY, direction));
-                else if (event.getButton() == MouseButton.SECONDARY)
-                    if (getEdgeType().equals(EdgeType.CROSS))
-                        game.action(ActionFactory.setEdgeEmpty(coodonatX, coodonatY, direction));
-                    else
-                        game.action(ActionFactory.setEdgeCross(coodonatX, coodonatY, direction));
-                updateColor();
-            });
-            updateColor();
-        }
-
-        private void updateColor() {
-            //TODO recupere la couleur dans le css
-            switch (getEdgeType()){
-                case EMPTY:
-                    setFill(Color.GRAY);
-                    break;
-                case LINE:
-                    if (game.isWin())
-                        setFill(Color.WHITE);
-                    else
-                        setFill(Color.valueOf("66F4FF"));
-                    break;
-                case CROSS:
-                    if (game.isWin())
-                        setFill(Color.WHITE);
-                    else
-                        setFill(Color.valueOf("E35151"));
-                    break;
-            }
-        }
-
-        private EdgeType getEdgeType(){
-            switch (direction){
-                case "T":
-                    return game.getCurrentGrid().getCell(coodonatX, coodonatY).getTop().getType();
-                case "B":
-                    return game.getCurrentGrid().getCell(coodonatX, coodonatY).getBottom().getType();
-                case "L":
-                    return game.getCurrentGrid().getCell(coodonatX, coodonatY).getLeft().getType();
-                case "R":
-                    return game.getCurrentGrid().getCell(coodonatX, coodonatY).getRight().getType();
-                default:
-                    return null;
-            }
-        }
-
-    }
     //TODO luca
 //    public DrawingCirlce ( double centerX, double centerY, double radius, Game game, int coodonatX, int coodonatY) {
 //        super(centerX, centerY, radius);

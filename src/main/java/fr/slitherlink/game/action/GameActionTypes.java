@@ -11,15 +11,6 @@ public enum GameActionTypes {
     SET_LINE, SET_CROSS, SET_EMPTY,
     UNDO, REDO,
     HINT,
-    ASSUMPTION_START, ASSUMPTION_VALID, ASSUMPTION_CANCEL,
+    ASSUMPTION_START, ASSUMPTION_STOP,
     RESET, WIN;
-
-
-    public String value() {
-        return name();
-    }
-
-    public static GameActionTypes fromValue(String v) {
-        return valueOf(v);
-    }
 }

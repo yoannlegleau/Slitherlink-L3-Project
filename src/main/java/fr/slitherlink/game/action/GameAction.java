@@ -2,7 +2,6 @@ package fr.slitherlink.game.action;
 
 
 import fr.slitherlink.game.Game;
-import fr.slitherlink.save.GameActionAdapter;
 
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
@@ -10,25 +9,34 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * @author LE GLEAU Yoann
  * @version 1, 23/02/2023
  */
-@XmlJavaTypeAdapter(GameActionAdapter.class)
 public abstract class GameAction {
+
+    GameActionTypes gameActionTypes;
 
     private Boolean canceled = false;
 
-    private Boolean cancelable = true;
+    public GameAction() {
+        super();
+    }
 
-    public abstract void doAction(Game game);
+    public GameActionTypes getGameActionTypes() {
+        return gameActionTypes;
+    }
 
-    public Boolean isCanceled() {
+    public void setGameActionTypes(GameActionTypes gameActionTypes) {
+        this.gameActionTypes = gameActionTypes;
+    }
+
+    public Boolean getCanceled() {
         return canceled;
     }
 
-    public Boolean isCancelable() {
-        return cancelable;
-    }
+    public abstract void doAction(Game game);
 
-    public void setCancelable(Boolean cancelable) {
-        this.cancelable = cancelable;
+    public abstract void accept(ActionVisitore visitore);
+
+    public Boolean isCanceled() {
+        return canceled;
     }
 
     public void setCanceled(Boolean canceled) {
@@ -38,4 +46,5 @@ public abstract class GameAction {
     public  void swapCanceled(){
         canceled = !canceled;
     }
+
 }

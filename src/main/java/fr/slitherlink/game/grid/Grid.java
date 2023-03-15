@@ -49,4 +49,11 @@ public class Grid {
         return true;
     }
 
+    public void clear() {
+        for (int x = 0; x < getSize(); x++) {
+            for (int y = 0; y < getSize(); y++) {
+                getCell(x, y).clear();
+            }
+        }
+    }
 }

@@ -1,6 +1,9 @@
-package fr.slitherlink.game.action;
+package fr.slitherlink.game.action.actions;
 
 import fr.slitherlink.game.Game;
+import fr.slitherlink.game.action.ActionVisitore;
+import fr.slitherlink.game.action.GameAction;
+import fr.slitherlink.game.action.GameActionTypes;
 import fr.slitherlink.game.grid.Edge;
 import fr.slitherlink.game.grid.EdgeType;
 
@@ -14,26 +17,33 @@ import java.awt.event.ActionEvent;
  * @version 1, 01/03/2023
  * @pakage fr.levelEditor
  */
-@XmlRootElement
+
 public class EdgeAction extends GameAction {
 
-    @XmlElement
-    private final EdgeType type;
 
-    @XmlElement
-    private final int x;
+    private EdgeType type;
 
-    @XmlElement
-    private final int y;
+    private int x;
 
-    @XmlElement
-    private final String t;
+    private int y;
+
+    private String t;
+
+    public EdgeAction() {
+        super();
+    }
 
     public EdgeAction(int i, int i1, String t, EdgeType line) {
+        this();
         this.x = i;
         this.y = i1;
         this.t = t;
         this.type = line;
+    }
+
+    @Override
+    public void accept(ActionVisitore visitore) {
+        visitore.visit(this);
     }
 
     @Override
@@ -72,5 +82,21 @@ public class EdgeAction extends GameAction {
 
     public EdgeType getType() {
         return type;
+    }
+
+    public void setType(EdgeType type) {
+        this.type = type;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public void setT(String t) {
+        this.t = t;
     }
 }

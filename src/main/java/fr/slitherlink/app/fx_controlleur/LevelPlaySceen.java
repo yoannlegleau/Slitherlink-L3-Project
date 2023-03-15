@@ -6,6 +6,7 @@ import fr.slitherlink.game.action.ActionFactory;
 import fr.slitherlink.game.action.GameActionTypes;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
@@ -21,6 +22,9 @@ public class LevelPlaySceen implements ActionListener {
 
     private static final int levelid = 1;
     public Label winLabel;
+    public Button assumptionButton;
+    public Button assumptionCancelButton;
+    public Button assumptionValidButton;
 
     Game game;
 
@@ -40,6 +44,8 @@ public class LevelPlaySceen implements ActionListener {
         puzlGridGroup = new PuzllGridGroup(game, pxSize);
         gamePane.getChildren().add(puzlGridGroup);
 
+        game.redoAllAction();
+
         root.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ESCAPE) {
                 System.out.println("Touche Echap appuyée !");
@@ -52,9 +58,7 @@ public class LevelPlaySceen implements ActionListener {
             if (event.getCode() == KeyCode.Y && event.isControlDown()) {
                 redo();
             }
-
         });
-
     }
 
     public void resetAction(ActionEvent actionEvent) {
@@ -69,21 +73,38 @@ public class LevelPlaySceen implements ActionListener {
         game.action(ActionFactory.redo());
     }
 
-
     @Override
     public void actionPerformed(java.awt.event.ActionEvent e) {
-        switch (GameActionTypes.fromValue(e.getActionCommand())) {
-            case WIN:
-                update();
-                break;
-            case RESET:
-                update();
-                break;
+        switch (GameActionTypes.valueOf(e.getActionCommand())) {
+            case WIN -> updateWin();
+            case RESET -> {
+                updateWin();
+                updateAssumptionButton(false);
+            }
+            case ASSUMPTION_START -> updateAssumptionButton(true);
+            case ASSUMPTION_STOP -> updateAssumptionButton(false);
         }
     }
 
-    private void update(){
+    private void updateAssumptionButton(boolean assumption) {
+        assumptionButton.setVisible(!assumption);
+        assumptionCancelButton.setVisible(assumption);
+        assumptionValidButton.setVisible(assumption);
+    }
+
+    private void updateWin(){
         winLabel.setVisible(game.isWin());
     }
 
+    public void assumptionStart(ActionEvent actionEvent) {
+        game.action(ActionFactory.assumptionStart());
+    }
+
+    public void assumptionCancel(ActionEvent actionEvent) {
+        game.action(ActionFactory.assumptionCancel());
+    }
+
+    public void assumptionValid(ActionEvent actionEvent) {
+        game.action(ActionFactory.assumptionValid());
+    }
 }

@@ -2,11 +2,13 @@ package fr.slitherlink.game;
 
 import fr.slitherlink.game.action.GameAction;
 import fr.slitherlink.game.action.GameActionTypes;
+import fr.slitherlink.game.action.actions.RedoAction;
+import fr.slitherlink.game.action.actions.UndoAction;
 import fr.slitherlink.game.grid.Grid;
-import fr.slitherlink.save.GameSave;
-import fr.slitherlink.save.GameSaveResourceManageur;
-import fr.slitherlink.save.PuzzleResourceManageur;
-import fr.slitherlink.save.PuzzleSave;
+import fr.slitherlink.save.gamesave.GameSave;
+import fr.slitherlink.save.gamesave.GameSaveResourceManageur;
+import fr.slitherlink.save.puzzle.PuzzleResourceManageur;
+import fr.slitherlink.save.puzzle.PuzzleSave;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -41,11 +43,22 @@ public class Game {
         this.puzzleId = puzzleId;
         loadPuzzle(puzzleId);
         actions = new ArrayList<>();
-        assumptionMode = false;
-        isSolved = false;
-        NbHint = 0;
         currentGrid = new Grid(solution.getSize());
+        init();
         loadGameSave();
+    }
+    public void init(){
+        isSolved = false;
+        assumptionMode = false;
+        NbHint = 0;
+        currentGrid.clear();
+    }
+
+    public void reset() {
+        init();
+        actions.clear();
+        saveGame();
+        notifyListeners(new ActionEvent(this, 0, GameActionTypes.RESET.toString()));
     }
 
     public void setDoSave(Boolean doSave) {
@@ -78,6 +91,10 @@ public class Game {
 
     public void setAssumptionMode(boolean assumptionMode) {
         this.assumptionMode = assumptionMode;
+    }
+
+    public void incrementNbHint(){
+        NbHint++;
     }
 
     public List<GameAction> getActions() {
@@ -120,34 +137,25 @@ public class Game {
 
     public void loadGameSave(){
         GameSave gameSave = GameSaveResourceManageur.LoadLevel(puzzleId);
-        if (gameSave == null || gameSave.getActions() == null)
+        if (gameSave == null || gameSave.getActionsToGameAction() == null)
             return;
-        actions = gameSave.getActions();
+        actions = gameSave.getActionsToGameAction();
         redoAllAction();
     }
 
     public void redoAllAction(){
-        currentGrid = new Grid(solution.getSize());
+        init();
         for (GameAction action: actions) {
-            if (!action.isCanceled() && action.isCancelable())
+            if (!action.isCanceled() &&
+                    action.getGameActionTypes() != GameActionTypes.UNDO &&
+                    action.getGameActionTypes() != GameActionTypes.REDO)
                 action.doAction(this);
         }
     }
 
-
-
-
     private void saveGame(){
         if (doSave)
             GameSaveResourceManageur.saveGameSave(new GameSave(this));
-    }
-
-    public void reset() {
-        isSolved = false;
-        actions.clear();
-        currentGrid = new Grid(solution.getSize());
-        saveGame();
-        notifyListeners(new ActionEvent(this, 0, GameActionTypes.RESET.toString()));
     }
 
     public void checkisWin() {

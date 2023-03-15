@@ -61,4 +61,10 @@ public class GridCell {
         }
         return true;
     }
+
+    public void clear() {
+        for (int i = 0; i < 4; i++) {
+            edges[i].setType(EdgeType.EMPTY);
+        }
+    }
 }
