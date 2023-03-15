@@ -8,13 +8,11 @@ package fr.slitherlink.game.action;
 
 
 public enum GameActionTypes {
-    SET_LINE,
-    SET_CROSS,
-    SET_EMPTY,
-    UNDO,
-    REDO,
-    RESET,
-    WIN;
+    SET_LINE, SET_CROSS, SET_EMPTY,
+    UNDO, REDO,
+    HINT,
+    ASSUMPTION_START, ASSUMPTION_VALID, ASSUMPTION_CANCEL,
+    RESET, WIN;
 
 
     public String value() {

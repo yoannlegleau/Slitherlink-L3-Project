@@ -3,13 +3,14 @@ package fr.slitherlink.game.action;
 import fr.slitherlink.game.Game;
 
 import java.awt.event.ActionEvent;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
  * @author LE GLEAU Yoann
  * @version 1, 12/03/2023
  */
-public class RedoAction extends GameAction implements ActionTargeter{
+public mpiclass RedoAction extends GameAction implements ActionTargeter{
 
     private Integer targetId;
 
@@ -19,13 +20,15 @@ public class RedoAction extends GameAction implements ActionTargeter{
     }
 
     @Override
-    public Integer getTargetId() {
-        return targetId;
+    public List<Integer> getTargetId() {
+        LinkedList<Integer> list = new LinkedList<>();
+        list.add(targetId);
+        return list;
     }
 
     @Override
-    public Integer setTargetId(Integer targetId) {
-        return this.targetId = targetId;
+    public void setTargetId(Integer targetId) {
+        this.targetId = targetId;
     }
 
     @Override
@@ -43,20 +46,14 @@ public class RedoAction extends GameAction implements ActionTargeter{
                 !( actions.get(targetId) instanceof UndoAction && !actions.get(targetId).isCanceled()))
             targetId--;
 
-        if (targetId >= 0) {
-            try {
-                int subTargetId = ((ActionTargeter) game.getActions().get(targetId)).getTargetId();
-                while (game.getActions().get(subTargetId) instanceof ActionTargeter )
-                    subTargetId = ((ActionTargeter) game.getActions().get(subTargetId)).getTargetId();
-                game.getActions().get(subTargetId).swapCanceled();
-            }catch (Exception ignored){}
-            game.getActions().get(targetId).swapCanceled();
-        } else {
-            targetId = null;
-            game.getActions().remove(this);
-        }
+        game.getActions().get(targetId).swapCanceled();
 
         game.redoAllAction();
         game.notifyListeners(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, GameActionTypes.REDO.toString()));
+    }
+
+    @Override
+    public void swapCanceled() {
+        super.swapCanceled();
     }
 }

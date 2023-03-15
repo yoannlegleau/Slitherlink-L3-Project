@@ -72,6 +72,14 @@ public class Game {
         return isSolved;
     }
 
+    public boolean isAssumptionMode() {
+        return assumptionMode;
+    }
+
+    public void setAssumptionMode(boolean assumptionMode) {
+        this.assumptionMode = assumptionMode;
+    }
+
     public List<GameAction> getActions() {
         return actions;
     }
@@ -125,6 +133,7 @@ public class Game {
                 action.doAction(this);
         }
     }
+
 
 
 
