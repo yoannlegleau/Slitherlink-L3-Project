@@ -28,10 +28,24 @@ public class AssumptionStart extends GameAction implements ActionListener {
     }
 
     public void addTarget(GameAction gameAction) {
+        targets.add(gameAction);
     }
 
     public List<GameAction> getTargets() {
         return targets;
+    }
+
+    public void setSubscribed(boolean subscribed) {
+        if (game == null)
+            return;
+
+        if (subscribed) {
+            if (!game.isSubscribed(this))
+                game.subscribe(this);
+        } else
+            if (game.isSubscribed(this))
+                game.unsubscribe(this);
+
     }
 
     @Override
@@ -41,45 +55,59 @@ public class AssumptionStart extends GameAction implements ActionListener {
 
     @Override
     public void doAction(Game game) {
-        if (!isCanceled())
-            if (game.isAssumptionMode()) {
-                game.getActions().remove(this);
+        if (isCanceled())
+            return;
 
-            } else {
-                this.game = game;
-                game.setAssumptionMode(true);
-                game.notifyListeners(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, GameActionTypes.ASSUMPTION_START.toString()));
-            }
+        this.game = game;
+        if (game.isAssumptionMode())
+            game.getActions().remove(this);
+        else {
+            setSubscribed(true);
+            game.setAssumptionMode(true);
+            game.notifyListeners(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, GameActionTypes.ASSUMPTION_START.toString()));
+        }
+
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (!isCanceled())
-            switch (GameActionTypes.valueOf( e.getActionCommand())) {
-                //TODO savoir si il faut ajouter les Fin au targets
-                case ASSUMPTION_START -> this.game.subscribe(this);
-                case ASSUMPTION_STOP -> {
-                    game.unsubscribe(this);
-                    if(!((AssumptionStop) e.getSource()).isValid());
-                        swapCanceled();
+            switch (GameActionTypes.valueOf(e.getActionCommand())) {
+                case ASSUMPTION_CANCEL,ASSUMPTION_VALID -> {
+                        setSubscribed(false);
                 }
-                default -> targets.add((GameAction) e.getSource());
-
+                case RESET -> setSubscribed(false);
+                case UNDO, REDO, SET_CROSS,SET_EMPTY,SET_LINE -> {
+                    if (!targets.contains(e.getSource()) && !asAssumptionStartTarget((GameAction) e.getSource()))
+                        targets.add((GameAction) e.getSource());
+                }
             }
     }
+
+    private boolean asAssumptionStartTarget(GameAction gameAction){
+        return switch (gameAction.getGameActionTypes()) {
+            case ASSUMPTION_START -> true;
+            case UNDO -> asAssumptionStartTarget(((UndoAction) gameAction).getTarget());
+            case REDO -> asAssumptionStartTarget(((RedoAction) gameAction).getTarget());
+            case ASSUMPTION_VALID, ASSUMPTION_CANCEL -> asAssumptionStartTarget(((AssumptionStop) gameAction).getTarget());
+            default -> false;
+        };
+    }
+
 
     @Override
     public void swapCanceled() {
         super.swapCanceled();
+        setSubscribed(!isCanceled());
         game.setAssumptionMode(!isCanceled());
-
-        //metre a jour l'interface meme pour les undo redo
         if(isCanceled())
-            game.notifyListeners(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, GameActionTypes.ASSUMPTION_STOP.toString()));
+            game.notifyListeners(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, GameActionTypes.ASSUMPTION_CANCEL.toString()));
         else
             game.notifyListeners(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, GameActionTypes.ASSUMPTION_START.toString()));
 
         for (GameAction g : targets)
             g.swapCanceled();
+
+
     }
 }

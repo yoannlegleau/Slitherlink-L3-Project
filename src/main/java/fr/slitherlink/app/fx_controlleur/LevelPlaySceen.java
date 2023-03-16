@@ -82,7 +82,7 @@ public class LevelPlaySceen implements ActionListener {
                 updateAssumptionButton(false);
             }
             case ASSUMPTION_START -> updateAssumptionButton(true);
-            case ASSUMPTION_STOP -> updateAssumptionButton(false);
+            case ASSUMPTION_VALID,ASSUMPTION_CANCEL -> updateAssumptionButton(false);
         }
     }
 

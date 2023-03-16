@@ -2,6 +2,8 @@ package fr.slitherlink.app.component;
 
 import fr.slitherlink.game.Game;
 import fr.slitherlink.game.action.ActionFactory;
+import fr.slitherlink.game.action.GameAction;
+import fr.slitherlink.game.action.actions.AssumptionStart;
 import fr.slitherlink.game.action.actions.AssumptionStop;
 import fr.slitherlink.game.grid.EdgeType;
 import javafx.scene.input.MouseButton;
@@ -90,11 +92,9 @@ class DrawingEdge extends Rectangle implements ActionListener {
                 isGameAssumption = true;
                 updateColor();
             }
-            case "ASSUMPTION_STOP" -> {
+            case "ASSUMPTION_VALID", "ASSUMPTION_CANCEL" -> {
                 isGameAssumption = false;
-                AssumptionStop action = (AssumptionStop) e.getSource();
-                if (action.isValid())
-                    isAssumption = false;
+                isAssumption = false;
                 updateColor();
             }
             case "RESET" -> {

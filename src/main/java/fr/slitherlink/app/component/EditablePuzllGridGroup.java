@@ -54,7 +54,6 @@ public class EditablePuzllGridGroup extends PuzllGridGroup {
                 number = number % 4;
                 game.getNumbers()[x][y] = number;
                 setText(String.valueOf(number));
-                update();
             }
 
         }

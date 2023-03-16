@@ -49,7 +49,8 @@ public class ReloadGameActionVisitore implements ActionVisitore {
             case REDO -> gameAction = new RedoAction();
             case UNDO -> gameAction = new UndoAction();
             case ASSUMPTION_START -> gameAction = new AssumptionStart();
-            case ASSUMPTION_STOP -> gameAction = new AssumptionStop();
+            case ASSUMPTION_VALID -> gameAction = new AssumptionStop(true);
+            case ASSUMPTION_CANCEL -> gameAction = new AssumptionStop(false);
             case SET_LINE, SET_CROSS, SET_EMPTY -> gameAction = new EdgeAction();
             case HINT -> gameAction = new HintAction();
         }
@@ -68,14 +69,23 @@ public class ReloadGameActionVisitore implements ActionVisitore {
 
     @Override
     public void visit(AssumptionStop assumptionStop) {
+        GameActionTypes gameActionTypes;
+        if (assumptionStop.isValid())
+            gameActionTypes = GameActionTypes.ASSUMPTION_VALID;
+        else
+            gameActionTypes = GameActionTypes.ASSUMPTION_CANCEL;
+
         GameActionSave source = gameActionSaves.get(gameActions.indexOf(assumptionStop));
         assumptionStop.setCanceled(source.isCanceled());
-        //TODO ajouter le boolean
+        assumptionStop.setGameActionTypes(gameActionTypes);
+        assumptionStop.setValid(source.getValidated());
+        assumptionStop.setTarget(gameActions.get(source.getTarget().get(0)));
     }
 
     @Override
     public void visit(EdgeAction edgeAction) {
         GameActionSave source = gameActionSaves.get(gameActions.indexOf(edgeAction));
+        edgeAction.setGameActionTypes(GameActionTypes.valueOf(source.gameActionTypes));
         edgeAction.setType(EdgeType.valueOf(source.gameActionTypes.replace("SET_", "")));
         edgeAction.setCanceled(source.isCanceled());
         edgeAction.setX(source.x);

@@ -2,6 +2,7 @@ package fr.slitherlink.game;
 
 import fr.slitherlink.game.action.GameAction;
 import fr.slitherlink.game.action.GameActionTypes;
+import fr.slitherlink.game.action.actions.AssumptionStart;
 import fr.slitherlink.game.action.actions.RedoAction;
 import fr.slitherlink.game.action.actions.UndoAction;
 import fr.slitherlink.game.grid.Grid;
@@ -52,13 +53,13 @@ public class Game {
         assumptionMode = false;
         NbHint = 0;
         currentGrid.clear();
+        notifyListeners(new ActionEvent(this, 0, GameActionTypes.RESET.toString()));
     }
 
     public void reset() {
         init();
         actions.clear();
         saveGame();
-        notifyListeners(new ActionEvent(this, 0, GameActionTypes.RESET.toString()));
     }
 
     public void setDoSave(Boolean doSave) {
@@ -74,7 +75,7 @@ public class Game {
     }
 
     /**
-    * modifie la grille courante ! Attention , Utilisable pour le LevelEditor
+     * modifie la grille courante ! Attention , Utilisable pour le LevelEditor
      * @param grid la grille à mettre en courante
      */
     public void setCurrentGrid(Grid grid) {
@@ -108,6 +109,10 @@ public class Game {
         return numbers;
     }
 
+
+    public boolean isSubscribed(AssumptionStart assumptionStart) {
+        return listeners.contains(assumptionStart);
+    }
     public void subscribe(ActionListener listener){
         listeners.add(listener);
     }
@@ -117,8 +122,13 @@ public class Game {
     }
 
     public void notifyListeners(ActionEvent action){
-        for (ActionListener listener: listeners)
-            listener.actionPerformed(action);
+        //for simple pour pouvoir supprimer des listeners pendant la boucle
+        for (int i = 0; i < listeners.size() ; i++) {
+            listeners.get(i).actionPerformed(action);
+        }
+
+        //for (ActionListener listener: listeners)
+        //    listener.actionPerformed(action);
     }
 
     public void action(GameAction action){
@@ -144,12 +154,28 @@ public class Game {
     }
 
     public void redoAllAction(){
+        //TODO trouver un moyen de faire ça plus proprement le cancel des actions
         init();
         for (GameAction action: actions) {
-            if (!action.isCanceled() &&
-                    action.getGameActionTypes() != GameActionTypes.UNDO &&
-                    action.getGameActionTypes() != GameActionTypes.REDO)
-                action.doAction(this);
+            if (!action.isCanceled()) {
+                switch (action.getGameActionTypes()){
+                    case ASSUMPTION_VALID:
+                        assumptionMode = false;
+                        notifyListeners(new ActionEvent(this, 0, GameActionTypes.ASSUMPTION_VALID.toString()));
+                        break;
+                    case ASSUMPTION_CANCEL:
+                        assumptionMode = false;
+                        notifyListeners(new ActionEvent(this, 0, GameActionTypes.ASSUMPTION_CANCEL.toString()));
+                        break;
+                    case UNDO:
+                        assumptionMode = false;
+                        break;
+                    case REDO:
+                        NbHint++;
+                        break;
+                    default: action.doAction(this);
+                }
+            }
         }
     }
 
@@ -165,4 +191,5 @@ public class Game {
         }else
             isSolved = false;
     }
+
 }

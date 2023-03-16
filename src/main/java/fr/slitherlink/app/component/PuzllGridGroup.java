@@ -37,24 +37,17 @@ public class PuzllGridGroup extends Group implements ActionListener {
         this.game = game;
         this.pxSize = pxSize;
         drawingEdges = new ArrayList<>();
-        game.subscribe(this);
         createGrid();
     }
 
     public void setPxSize(int pxSize) {
         this.pxSize = pxSize;
-        update();
+        //TODO faire un evenement pour changer la taille en px de la grille
     }
 
     public int getPxSize() {
         return pxSize;
     }
-
-    public void update(){
-        //TODO faire une methode mois brutale
-        // \ faire un evenement pour changer la taille en px de la grille
-    }
-
 
     private void createGrid() {
 
@@ -145,12 +138,7 @@ public class PuzllGridGroup extends Group implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        switch (GameActionTypes.valueOf(e.getActionCommand())){
-            case SET_CROSS, SET_LINE, SET_EMPTY, UNDO, REDO, WIN, RESET, ASSUMPTION_STOP  ->
-                    update();
 
-
-        }
     }
 
     //TODO luca

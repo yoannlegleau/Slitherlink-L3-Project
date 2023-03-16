@@ -65,7 +65,12 @@ public class EdgeAction extends GameAction {
         }
         curent.setType(type);
         game.checkisWin();
-        game.notifyListeners(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, "SET_"+type));
+        switch (type){
+            case LINE -> setGameActionTypes(GameActionTypes.SET_LINE);
+            case CROSS -> setGameActionTypes(GameActionTypes.SET_CROSS);
+            case EMPTY -> setGameActionTypes(GameActionTypes.SET_EMPTY);
+        }
+        game.notifyListeners(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, getGameActionTypes().name()));
     }
 
     public int getX() {

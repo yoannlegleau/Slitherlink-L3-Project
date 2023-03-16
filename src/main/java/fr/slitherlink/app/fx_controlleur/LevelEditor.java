@@ -84,7 +84,7 @@ public class LevelEditor {
     public void resetAction() {
         if (game != null)
             game.reset();
-        puzlGridGroup.update();
+
     }
 
     public void loadLevel() {

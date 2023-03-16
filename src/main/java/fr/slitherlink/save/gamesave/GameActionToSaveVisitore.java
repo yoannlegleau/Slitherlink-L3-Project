@@ -52,10 +52,14 @@ public class GameActionToSaveVisitore implements ActionVisitore {
 
     @Override
     public void visit(AssumptionStop assumptionStop) {
+        ArrayList<Integer> target = new ArrayList<>();
+        target.add(gameActions.indexOf(assumptionStop.getTarget()));
+
         gameActionSaves.add(GameActionSave.getGameActionSave()
                 .setCanceled(assumptionStop.isCanceled())
                 .setGameActionTypes(assumptionStop.getGameActionTypes())
                 .setValidated(assumptionStop.isValid())
+                .setTarget(target)
         );
     }
 
@@ -74,6 +78,7 @@ public class GameActionToSaveVisitore implements ActionVisitore {
     public void visit(RedoAction redoAction) {
         ArrayList<Integer> target = new ArrayList<>();
         target.add(gameActions.indexOf(redoAction.getTarget()));
+
         gameActionSaves.add(GameActionSave.getGameActionSave()
                 .setCanceled(redoAction.isCanceled())
                 .setGameActionTypes(redoAction.getGameActionTypes())
