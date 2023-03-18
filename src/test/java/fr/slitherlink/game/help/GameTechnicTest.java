@@ -11,7 +11,7 @@ public class GameTechnicTest {
     
     @BeforeEach
     void initTechnic(){
-        technic = new Technic("title", "desc", "imagePath");
+        technic = new Technic("title", "desc");
     }
 
     @Test
@@ -24,8 +24,4 @@ public class GameTechnicTest {
         assertEquals("desc", technic.getDesc());
     }
 
-    @Test
-    void getSetImagePath() {
-        assertEquals("imagePath", technic.getImagePath());
-    }
 }
