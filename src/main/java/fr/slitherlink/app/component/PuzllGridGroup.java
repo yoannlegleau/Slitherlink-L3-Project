@@ -61,7 +61,7 @@ public class PuzllGridGroup extends Group implements ActionListener {
         for (int x = 0; x < game.getSolution().getSize(); x++) {
             for (int y = 0; y < game.getSolution().getSize(); y++) {
                 if (game.getNumbers()[x][y] != null){
-                    Node text = createText(marging, length, fontSize, sizeText, x, y);
+                    Node text = createText(marging, length, fontSize, sizeText, x, y, game);
                     text.setStyle("-fx-fill: white; -fx-font-size: "+sizeText+"px;");
 
 
@@ -127,7 +127,7 @@ public class PuzllGridGroup extends Group implements ActionListener {
         }
     }
 
-    protected Node createText(double marging, double length, double fontSize, double sizeText, int x, int y) {
+    protected Node createText(double marging, double length, double fontSize, double sizeText, int x, int y, Game game) {
         Text text = new Text(String.valueOf(game.getNumbers()[x][y]));
         text.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
         text.setX( marging + x * length + length /2 - fontSize /2);

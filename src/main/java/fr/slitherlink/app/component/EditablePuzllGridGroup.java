@@ -21,7 +21,7 @@ public class EditablePuzllGridGroup extends PuzllGridGroup {
     }
 
     @Override
-    protected Node createText(double marging, double length, double fontSize, double sizeText, int x, int y) {
+    protected Node createText(double marging, double length, double fontSize, double sizeText, int x, int y , Game game) {
         class EditableNumber extends Label {
 
 
