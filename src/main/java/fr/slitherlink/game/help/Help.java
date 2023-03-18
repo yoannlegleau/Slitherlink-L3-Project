@@ -1,6 +1,8 @@
 package fr.slitherlink.game.help;
 
 import java.util.List;
+
+import fr.slitherlink.game.grid.Coordinates;
 /**
  * Classe représentant une aide demandée par le joueur
  * @author Bruneau Antoine

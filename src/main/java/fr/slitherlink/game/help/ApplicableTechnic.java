@@ -17,7 +17,34 @@ public class ApplicableTechnic {
     public static final int BOTTOM = 2;
     public static final int LEFT = 3;
 
+    private int size;
+    private int [][] gridNumber;
+    private Grid route;
+    protected LinkedList<Coordinates> listCoord;
 
+    public ApplicableTechnic(int [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
+        this.gridNumber = initGrid(gridNumber,size);
+        this.route = route;
+        this.size = size;
+        this.listCoord = listCoord;
+    }
+
+    /**
+     * Initialise la grille avec des -1
+     * @param grid la grille à initialiser
+     * @param size la taille de la grille
+     * @return
+     */
+    private int [][] initGrid(int[][] grid,int size) {
+        grid = new int[size][size];
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                grid[i][j] = -1;
+            }
+        }
+        return grid;
+    }
+    
     /**
      * Vérifie si la case de coordonnées x, y existe dans la grille
      * @param size la taille de la grille
@@ -36,7 +63,7 @@ public class ApplicableTechnic {
      * @param listCoord la liste des coordonnées des cases faisant partie de la technique (si elle est applicable)
      * @return true si la technique est applicable, false sinon
      */
-    private boolean searchTech1Pos(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
+    protected boolean searchTech1Pos(int y, int x, int [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
         if (coordExist(y, x, size) && gridNumber[y][x] == 0){
             listCoord.add(new Coordinates(y, x));
 
@@ -71,7 +98,7 @@ public class ApplicableTechnic {
      * @param listCoord la liste des coordonnées des cases faisant partie de la technique (si elle est applicable)
      * @return true si la technique est applicable, false sinon
      */
-    private boolean searchTech2Pos(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
+    protected boolean searchTech2Pos(int y, int x, int [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
         if (coordExist(y, x, size) && gridNumber[y][x] == 0){
             listCoord.add(new Coordinates(y, x));
 
@@ -106,7 +133,7 @@ public class ApplicableTechnic {
      * @param listCoord la liste des coordonnées des cases faisant partie de la technique (si elle est applicable)
      * @return true si la technique est applicable, false sinon
      */
-    private boolean searchTech3Pos(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
+    protected boolean searchTech3Pos(int y, int x, int [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
         if (coordExist(y, x, size) && gridNumber[y][x] == 3){
             listCoord.add(new Coordinates(y, x));
 
@@ -135,7 +162,7 @@ public class ApplicableTechnic {
      * @param listCoord la liste des coordonnées des cases faisant partie de la technique (si elle est applicable)
      * @return true si la technique est applicable, false sinon
      */
-    private boolean searchTech4Pos(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
+    protected boolean searchTech4Pos(int y, int x, int [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
         if (coordExist(y, x, size) && gridNumber[y][x] == 3){
             listCoord.add(new Coordinates(y, x));
 
@@ -164,7 +191,7 @@ public class ApplicableTechnic {
      * @param listCoord la liste des coordonnées des cases faisant partie de la technique (si elle est applicable)
      * @return true si la technique est applicable, false sinon
      */
-    private boolean searchTech5Pos(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
+    protected boolean searchTech5Pos(int y, int x, int [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
         if (coordExist(y, x, size) && gridNumber[y][x] == 2){
 
             if (coordExist(y-1, x-1, size) && (route.getCell(y-1, x-1).getBottom().isLine() && route.getCell(y-1, x-1).getRight().isLine())
@@ -197,7 +224,7 @@ public class ApplicableTechnic {
      * @param listCoord la liste des coordonnées des cases faisant partie de la technique (si elle est applicable)
      * @return true si la technique est applicable, false sinon
      */
-    private boolean searchTech6Pos(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
+    protected boolean searchTech6Pos(int y, int x, int [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
         if (coordExist(y, x, size) && gridNumber[y][x] == 2){
             
             if (!coordExist(y, x-1, size) && !coordExist(y-1, x, size)
@@ -230,7 +257,7 @@ public class ApplicableTechnic {
      * @param listCoord la liste des coordonnées des cases faisant partie de la technique (si elle est applicable)
      * @return true si la technique est applicable, false sinon
      */
-    private boolean searchTech7Pos(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
+    protected boolean searchTech7Pos(int y, int x, int [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
         if (coordExist(y, x, size) && gridNumber[y][x] == 3){
 
             if (!coordExist(y, x-1, size) && !coordExist(y-1, x, size)
@@ -261,7 +288,7 @@ public class ApplicableTechnic {
      * @param listCoord la liste des coordonnées des cases faisant partie de la technique (si elle est applicable)
      * @return true si le patern est valide, false sinon
      */
-    private boolean searchTech8PosSW(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
+    protected boolean searchTech8PosSW(int y, int x, int [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
         int xSave = x, ySave = y;
 
         if (coordExist(y, x, size) && gridNumber[y][x] == 3 && gridNumber[y+1][x-1] == 2){
@@ -291,7 +318,7 @@ public class ApplicableTechnic {
      * @param listCoord la liste des coordonnées des cases faisant partie de la technique (si elle est applicable)
      * @return true si le patern est valide, false sinon
      */
-    private boolean searchTech8PosSE(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
+    protected boolean searchTech8PosSE(int y, int x, int [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
         int xSave = x, ySave = y;
 
         if (coordExist(y, x, size) && gridNumber[y][x] == 3 && gridNumber[y+1][x+1] == 2){
@@ -323,12 +350,12 @@ public class ApplicableTechnic {
      * @param listCoord la liste des coordonnées des cases faisant partie de la technique (si elle est applicable)
      * @return true si la technique est applicable, false sinon
      */
-    private boolean searchTech8Pos(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
+    protected boolean searchTech8Pos(int y, int x, int [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
         if (coordExist(y, x, size) && gridNumber[y][x] == 3){
 
-            if (searchTech8PosSW(x, y, gridNumber, route, size, listCoord))
+            if (searchTech8PosSW(y, x, gridNumber, route, size, listCoord))
                     return true;
-            else if (searchTech8PosSE(x, y, gridNumber, route, size, listCoord))
+            else if (searchTech8PosSE(y, x, gridNumber, route, size, listCoord))
                     return true;
             else
                 return false;
@@ -346,7 +373,7 @@ public class ApplicableTechnic {
      * @param listCoord la liste des coordonnées des cases faisant partie de la technique (si elle est applicable)
      * @return true si la technique est applicable, false sinon
      */
-    private boolean searchTech9Pos(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
+    protected boolean searchTech9Pos(int y, int x, int [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
         if (coordExist(y, x, size) && gridNumber[y][x] == 3){
 
             if (coordExist(y-1, x-1, size) && (route.getCell(y-1, x-1).getBottom().isCross() && route.getCell(y-1, x-1).getRight().isCross())
@@ -379,7 +406,7 @@ public class ApplicableTechnic {
      * @param listCoord la liste des coordonnées des cases faisant partie de la technique (si elle est applicable)
      * @return true si la technique est applicable, false sinon
      */
-    private boolean searchTech10Pos(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
+    protected boolean searchTech10Pos(int y, int x, int [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
         if (coordExist(y, x, size) && gridNumber[y][x] == 3){
 
             if ((coordExist(y, x-1, size) && route.getCell(y, x-1).getTop().isLine()) || (coordExist(y-1, x, size) && route.getCell(y-1, x).getLeft().isLine())
@@ -410,7 +437,7 @@ public class ApplicableTechnic {
      * @param listCoord la liste des coordonnées des cases faisant partie de la technique (si elle est applicable)
      * @return true si le patern est valide, false sinon
      */
-    private boolean searchTech11PosNW(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
+    protected boolean searchTech11PosNW(int y, int x, int [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
         if (coordExist(y, x, size) && gridNumber[y][x] == 2
             && (coordExist(y, x+1, size) && route.getCell(y, x+1).getBottom().isLine()) || (coordExist(y+1, x, size) && route.getCell(y+1, x).getRight().isLine()) ){
             listCoord.add(new Coordinates(y, x));
@@ -439,7 +466,7 @@ public class ApplicableTechnic {
      * @param listCoord la liste des coordonnées des cases faisant partie de la technique (si elle est applicable)
      * @return true si le patern est valide, false sinon
      */
-    private boolean searchTech11PosNE(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
+    protected boolean searchTech11PosNE(int y, int x, int [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
         if (coordExist(y, x, size) && gridNumber[y][x] == 2
             && (coordExist(y+1, x, size) && route.getCell(y+1, x).getLeft().isLine()) || (coordExist(y, x-1, size) && route.getCell(y, x-1).getBottom().isLine()) ){
             listCoord.add(new Coordinates(y, x));
@@ -468,7 +495,7 @@ public class ApplicableTechnic {
      * @param listCoord la liste des coordonnées des cases faisant partie de la technique (si elle est applicable)
      * @return true si le patern est valide, false sinon
      */
-    private boolean searchTech11PosSE(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
+    protected boolean searchTech11PosSE(int y, int x, int [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
         if (coordExist(y, x, size) && gridNumber[y][x] == 2
             && (coordExist(y, x-1, size) && route.getCell(y, x-1).getTop().isLine()) || (coordExist(y-1, x, size) && route.getCell(y-1, x).getLeft().isLine()) ){
             listCoord.add(new Coordinates(y, x));
@@ -497,7 +524,7 @@ public class ApplicableTechnic {
      * @param listCoord la liste des coordonnées des cases faisant partie de la technique (si elle est applicable)
      * @return true si le patern est valide, false sinon
      */
-    private boolean searchTech11PosSW(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
+    protected boolean searchTech11PosSW(int y, int x, int [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
         if (coordExist(y, x, size) && gridNumber[y][x] == 2
             && (coordExist(y-1, x, size) && route.getCell(y-1, x).getRight().isLine()) || (coordExist(y, x+1, size) && route.getCell(y, x+1).getTop().isLine()) ){
             listCoord.add(new Coordinates(y, x));
@@ -528,16 +555,16 @@ public class ApplicableTechnic {
      * @param listCoord la liste des coordonnées des cases faisant partie de la technique (si elle est applicable)
      * @return true si la technique est applicable, false sinon
      */
-    private boolean searchTech11Pos(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
+    protected boolean searchTech11Pos(int y, int x, int [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
         if (coordExist(y, x, size) && gridNumber[y][x] == 2){
             
-            if (searchTech11PosNW(x, y, gridNumber, route, size, listCoord))
+            if (searchTech11PosNW(y, x, gridNumber, route, size, listCoord))
                 return true;
-            else if (searchTech11PosNE(x, y, gridNumber, route, size, listCoord))
+            else if (searchTech11PosNE(y, x, gridNumber, route, size, listCoord))
                 return true;
-            else if (searchTech11PosSE(x, y, gridNumber, route, size, listCoord))
+            else if (searchTech11PosSE(y, x, gridNumber, route, size, listCoord))
                 return true;
-            else if (searchTech11PosSW(x, y, gridNumber, route, size, listCoord))
+            else if (searchTech11PosSW(y, x, gridNumber, route, size, listCoord))
                 return true;
         }
         return false;
@@ -553,7 +580,7 @@ public class ApplicableTechnic {
      * @param listCoord la liste des coordonnées des cases faisant partie de la technique (si elle est applicable)
      * @return true si la technique est applicable, false sinon
      */
-    private boolean searchTech12Pos(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
+    protected boolean searchTech12Pos(int y, int x, int [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
         if (coordExist(y, x, size) && gridNumber[y][x] == 2){
             listCoord.add(new Coordinates(y, x));
 
@@ -601,7 +628,7 @@ public class ApplicableTechnic {
      * @param listCoord la liste des coordonnées des cases faisant partie de la technique (si elle est applicable)
      * @return true si la technique est applicable, false sinon
      */
-    private boolean searchTech13Pos(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
+    protected boolean searchTech13Pos(int y, int x, int [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
         if (coordExist(y, x, size) && gridNumber[y][x] == 2){
             listCoord.add(new Coordinates(y, x));
 
@@ -649,7 +676,7 @@ public class ApplicableTechnic {
      * @param listCoord la liste des coordonnées des cases faisant partie de la technique (si elle est applicable)
      * @return true si la technique est applicable, false sinon
      */
-    private boolean searchTech14Pos(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
+    protected boolean searchTech14Pos(int y, int x, int [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
         if (coordExist(y, x, size) && gridNumber[y][x] == 2){
             listCoord.add(new Coordinates(y, x));
 
@@ -685,7 +712,7 @@ public class ApplicableTechnic {
      * @param listCoord la liste des coordonnées des cases faisant partie de la technique (si elle est applicable)
      * @return true si la technique est applicable, false sinon
      */
-    private boolean searchTech15Pos(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
+    protected boolean searchTech15Pos(int y, int x, int [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
         if (coordExist(y, x, size) && gridNumber[y][x] == 1){
             listCoord.add(new Coordinates(y, x));
 
@@ -719,7 +746,7 @@ public class ApplicableTechnic {
      * @param listCoord la liste des coordonnées des cases faisant partie de la technique (si elle est applicable)
      * @return true si le patern est valide, false sinon
      */
-    private boolean searchTech16PosNW(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
+    protected boolean searchTech16PosNW(int y, int x, int [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
         if (coordExist(y+1, x+1, size) && ((route.getCell(y+1, x+1).getLeft().isLine() && route.getCell(y+1, x+1).getTop().isCross()) || (route.getCell(y+1, x+1).getLeft().isCross() && route.getCell(y+1, x+1).getTop().isLine()) ) ){
             
             while(coordExist(y, x, size) && gridNumber[y][x] == 2){
@@ -741,7 +768,7 @@ public class ApplicableTechnic {
      * @param listCoord la liste des coordonnées des cases faisant partie de la technique (si elle est applicable)
      * @return true si le patern est valide, false sinon
      */
-    private boolean searchTech16PosNE(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
+    protected boolean searchTech16PosNE(int y, int x, int [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
         if (coordExist(y+1, x-1, size) && ((route.getCell(y+1, x-1).getTop().isLine() && route.getCell(y+1, x-1).getRight().isCross()) || (route.getCell(y+1, x-1).getTop().isCross() && route.getCell(y+1, x-1).getRight().isLine()) ) ){
             
             while(coordExist(y, x, size) && gridNumber[y][x] == 2){
@@ -763,7 +790,7 @@ public class ApplicableTechnic {
      * @param listCoord la liste des coordonnées des cases faisant partie de la technique (si elle est applicable)
      * @return true si le patern est valide, false sinon
      */
-    private boolean searchTech16PosSE(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
+    protected boolean searchTech16PosSE(int y, int x, int [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
         if (coordExist(y-1, x-1, size) && ((route.getCell(y-1, x-1).getBottom().isLine() && route.getCell(y-1, x-1).getRight().isCross()) || (route.getCell(y-1, x-1).getBottom().isCross() && route.getCell(y-1, x-1).getRight().isLine()) ) ){
             
             while(coordExist(y, x, size) && gridNumber[y][x] == 2){
@@ -785,7 +812,7 @@ public class ApplicableTechnic {
      * @param listCoord la liste des coordonnées des cases faisant partie de la technique (si elle est applicable)
      * @return true si le patern est valide, false sinon
      */
-    private boolean searchTech16PosSW(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
+    protected boolean searchTech16PosSW(int y, int x, int [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
         if (coordExist(y-1, x+1, size) && ((route.getCell(y-1, x+1).getLeft().isLine() && route.getCell(y-1, x+1).getBottom().isCross()) || (route.getCell(y-1, x+1).getLeft().isCross() && route.getCell(y-1, x+1).getBottom().isLine()) ) ){
             
             while(coordExist(y, x, size) && gridNumber[y][x] == 2){
@@ -809,16 +836,16 @@ public class ApplicableTechnic {
      * @param listCoord la liste des coordonnées des cases faisant partie de la technique (si elle est applicable)
      * @return true si la technique est applicable, false sinon
      */
-    private boolean searchTech16Pos(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
+    protected boolean searchTech16Pos(int y, int x, int [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
         if (coordExist(y, x, size) && gridNumber[y][x] == 2){
             
-            if (searchTech16PosNW(x, y, gridNumber, route, size, listCoord))
+            if (searchTech16PosNW(y, x, gridNumber, route, size, listCoord))
                 return true;
-            else if (searchTech16PosNE(x, y, gridNumber, route, size, listCoord))
+            else if (searchTech16PosNE(y, x, gridNumber, route, size, listCoord))
                 return true;
-            else if (searchTech16PosSE(x, y, gridNumber, route, size, listCoord))
+            else if (searchTech16PosSE(y, x, gridNumber, route, size, listCoord))
                 return true;
-            else if (searchTech16PosSW(x, y, gridNumber, route, size, listCoord))
+            else if (searchTech16PosSW(y, x, gridNumber, route, size, listCoord))
                 return true;
         }
         return false;
@@ -834,7 +861,7 @@ public class ApplicableTechnic {
      * @param listCoord la liste des coordonnées des cases faisant partie de la technique (si elle est applicable)
      * @return true si la technique est applicable, false sinon
      */
-    private boolean searchTech17Pos(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
+    protected boolean searchTech17Pos(int y, int x, int [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
         if (coordExist(y, x, size) && gridNumber[y][x] == 2){
 
             if ((coordExist(y, x-1, size) && route.getCell(y, x-1).getTop().isLine()) || (coordExist(y-1, x, size) && route.getCell(y-1, x).getLeft().isLine())
@@ -867,7 +894,7 @@ public class ApplicableTechnic {
      * @param listCoord la liste des coordonnées des cases faisant partie de la technique (si elle est applicable)
      * @return true si la technique est applicable, false sinon
      */
-    private boolean searchTech18Pos(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
+    protected boolean searchTech18Pos(int y, int x, int [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
         if (coordExist(y, x, size) && gridNumber[y][x] == 1){
             listCoord.add(new Coordinates(y, x));
 
@@ -923,7 +950,7 @@ public class ApplicableTechnic {
      * @param listCoord la liste des coordonnées des cases faisant partie de la technique (si elle est applicable)
      * @return true si la technique est applicable, false sinon
      */
-    private boolean searchTech19Pos(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
+    protected boolean searchTech19Pos(int y, int x, int [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
         if (coordExist(y, x, size) && gridNumber[y][x] == 0
             && !(route.getCell(y, x).getTop().isCross() && route.getCell(y, x).getRight().isCross() && route.getCell(y, x).getBottom().isCross() && route.getCell(y, x).getLeft().isCross()) ) {
                     listCoord.add(new Coordinates(y, x));
@@ -943,7 +970,7 @@ public class ApplicableTechnic {
      * @param listCoord la liste des coordonnées des cases faisant partie de la technique (si elle est applicable)
      * @return true si la technique est applicable, false sinon
      */
-    private boolean searchTech20Pos(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
+    protected boolean searchTech20Pos(int y, int x, int [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
         if (coordExist(y, x, size) && gridNumber[y][x] == 1){
 
             if (!coordExist(y, x-1, size) && !coordExist(y-1, x, size)
@@ -976,7 +1003,7 @@ public class ApplicableTechnic {
      * @param listCoord la liste des coordonnées des cases faisant partie de la technique (si elle est applicable)
      * @return true si la technique est applicable, false sinon
      */
-    private boolean searchTech21Pos(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
+    protected boolean searchTech21Pos(int y, int x, int [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
         if (coordExist(y, x, size) && gridNumber[y][x] == 3){
             listCoord.add(new Coordinates(y, x));
 
@@ -1012,7 +1039,7 @@ public class ApplicableTechnic {
      * @param listCoord la liste des coordonnées des cases faisant partie de la technique (si elle est applicable)
      * @return true si la technique est applicable, false sinon
      */
-    private boolean searchTech22Pos(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
+    protected boolean searchTech22Pos(int y, int x, int [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
         if (coordExist(y, x, size) && gridNumber[y][x] == 1){
             
             if ( ( (coordExist(y, x-1, size) && route.getCell(y, x-1).getTop().isLine() && (!coordExist(y-1, x, size) || route.getCell(y-1, x).getLeft().isCross()) )
@@ -1049,7 +1076,7 @@ public class ApplicableTechnic {
      * @param listCoord la liste des coordonnées des cases faisant partie de la technique (si elle est applicable)
      * @return true si la technique est applicable, false sinon
      */
-    private boolean searchTech23Pos(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
+    protected boolean searchTech23Pos(int y, int x, int [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
         if (coordExist(y, x, size) && gridNumber[y][x] == 1){
 
             if (coordExist(y-1, x-1, size) && (route.getCell(y-1, x-1).getBottom().isCross() && route.getCell(y-1, x-1).getRight().isCross())
@@ -1082,7 +1109,7 @@ public class ApplicableTechnic {
      * @param listCoord la liste des coordonnées des cases faisant partie de la technique (si elle est applicable)
      * @return true si la technique est applicable, false sinon
      */
-    private boolean searchTech24Pos(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
+    protected boolean searchTech24Pos(int y, int x, int [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
         if (coordExist(y, x, size) && gridNumber[y][x] == 1){
             listCoord.add(new Coordinates(y, x));
 
@@ -1118,7 +1145,7 @@ public class ApplicableTechnic {
      * @param listCoord la liste des coordonnées des cases faisant partie de la technique (si elle est applicable)
      * @return true si la technique est applicable, false sinon
      */
-    private boolean searchTech25Pos(int x, int y, Integer [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
+    protected boolean searchTech25Pos(int y, int x, int [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
         if (coordExist(y, x, size) && gridNumber[y][x] == 3){
             listCoord.add(new Coordinates(y, x));
 
@@ -1148,6 +1175,7 @@ public class ApplicableTechnic {
         return false;
     }
 
+    /*
 
     //listEndsPath
     private List<EdgePos> getEndsPath(Grid route, int size) {
