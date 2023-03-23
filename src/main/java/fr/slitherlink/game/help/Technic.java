@@ -9,12 +9,10 @@ public class Technic {
 
     private String title;
     private String desc;
-    private String imagePath; // le chemin vers l'image représentant la technique
 
-    public Technic(String title, String desc, String imagePath) {
+    public Technic(String title, String desc) {
         this.title = title;
         this.desc = desc;
-        this.imagePath = imagePath;
     }
 
     public String getTitle() {
@@ -25,7 +23,4 @@ public class Technic {
         return desc;
     }
 
-    public String getImagePath() {
-        return imagePath;
-    }
 }
