@@ -1,4 +1,4 @@
-package fr.slitherlink.save.puzzle;
+package fr.slitherlink.save;
 
 /**
  * @author LE GLEAU Yoann

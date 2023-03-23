@@ -2,25 +2,16 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
 <BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #333337;" stylesheets="@../../css/default-style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.slitherlink.app.fx_controlleur.LevelPlaySceen">
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Label fx:id="winLabel" text="Gagné !" textFill="WHITE" visible="false">
-                     <font>
-                        <Font size="36.0" />
-                     </font>
-                  </Label>
-               </children></HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0" />
             <FlowPane fx:id="gamePane" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #252525; -fx-border-width: 5; -fx-border-color: #535353; -fx-border-radius: 15;">
                <VBox.margin>
                   <Insets />
@@ -32,21 +23,10 @@
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#resetAction" text="Reset" />
-                  <Button mnemonicParsing="false" text="Hint">
-                     <HBox.margin>
-                        <Insets left="15.0" />
-                     </HBox.margin></Button>
-                  <Button mnemonicParsing="false" onAction="#undo" text="&lt;">
-                     <HBox.margin>
-                        <Insets left="15.0" right="5.0" />
-                     </HBox.margin></Button>
-                  <Button mnemonicParsing="false" onAction="#redo" text="&gt;">
-                     <HBox.margin>
-                        <Insets right="15.0" />
-                     </HBox.margin></Button>
-                  <Button fx:id="assumptionButton" mnemonicParsing="false" onAction="#assumptionStart" text="hypothes" />
-                  <Button fx:id="assumptionCancelButton" layoutX="313.0" layoutY="48.0" mnemonicParsing="false" onAction="#assumptionCancel" style="-fx-background-color: #E35151;" text="annuler" visible="false" />
-                  <Button fx:id="assumptionValidButton" mnemonicParsing="false" onAction="#assumptionValid" style="-fx-background-color: #41B641;" text="valider" visible="false" />
+                  <Button mnemonicParsing="false" text="Hint" />
+                  <Button mnemonicParsing="false" onAction="#undo" text="&lt;" />
+                  <Button mnemonicParsing="false" onAction="#redo" text="&gt;" />
+                  <Button mnemonicParsing="false" text="hypothes" />
                </children></HBox>
          </children>
       </VBox>

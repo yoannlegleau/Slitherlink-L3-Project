@@ -37,6 +37,7 @@ public class Grid {
     public boolean equals(Object obj) {
         if (obj == null)
             return false;
+        //TODO ingnorer les EdgeType.CROSS
         Grid grid = (Grid) obj;
         if (getSize() != grid.getSize())
             return false;
@@ -49,11 +50,4 @@ public class Grid {
         return true;
     }
 
-    public void clear() {
-        for (int x = 0; x < getSize(); x++) {
-            for (int y = 0; y < getSize(); y++) {
-                getCell(x, y).clear();
-            }
-        }
-    }
 }

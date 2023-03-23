@@ -1,10 +1,16 @@
 package fr.slitherlink.app.component;
 
 import fr.slitherlink.game.Game;
+import fr.slitherlink.game.action.ActionFactory;
+import fr.slitherlink.game.grid.EdgeType;
+import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseButton;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 
 /**
@@ -12,23 +18,20 @@ import javafx.scene.text.TextAlignment;
  * @version 1, 07/03/2023
  * @pakage fr.slitherlink.app
  */
-public class EditablePuzllGridGroup extends PuzllGridGroup {
+public class EditablePuzlGridGroup extends PuzlGridGroup {
 
-    Game game;
-
-    public EditablePuzllGridGroup(Game game, int pxSize) {
+    public EditablePuzlGridGroup(Game game, int pxSize) {
         super(game, pxSize);
     }
 
     @Override
-    protected Node createText(double marging, double length, double fontSize, double sizeText, int x, int y , Game game) {
+    protected Node createText(double marging, double length, double fontSize, double sizeText, int x, int y) {
         class EditableNumber extends Label {
-
 
             int x;
             int y;
 
-            public EditableNumber(double marging, double length, double fontSize, double sizeText, int x, int y, Game game) {
+            public EditableNumber(double marging, double length, double fontSize, double sizeText, int x, int y) {
                 this.x = x;
                 this.y = y;
                 setPrefSize(length-marging, length-marging);
@@ -54,9 +57,10 @@ public class EditablePuzllGridGroup extends PuzllGridGroup {
                 number = number % 4;
                 game.getNumbers()[x][y] = number;
                 setText(String.valueOf(number));
+                update();
             }
 
         }
-        return new EditableNumber(marging, length, fontSize, sizeText, x, y ,game);
+        return new EditableNumber(marging, length, fontSize, sizeText, x, y);
     }
 }

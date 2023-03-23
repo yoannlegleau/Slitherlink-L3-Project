@@ -1,19 +1,25 @@
 package fr.slitherlink.app.fx_controlleur;
 
-import fr.slitherlink.app.component.EditablePuzllGridGroup;
+import fr.slitherlink.app.component.EditablePuzlGridGroup;
+import fr.slitherlink.app.component.PuzlGridGroup;
 import fr.slitherlink.game.Game;
+import fr.slitherlink.game.action.ActionFactory;
 import fr.slitherlink.game.grid.Grid;
-import fr.slitherlink.save.puzzle.PuzzleResourceManageur;
-import fr.slitherlink.save.puzzle.PuzzleSave;
+import fr.slitherlink.save.Difficulty;
+import fr.slitherlink.save.PuzzleResourceManageur;
+import fr.slitherlink.save.PuzzleSave;
 import fr.slitherlink.save.XmlResourcesManageur;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 
 import java.io.File;
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -25,6 +31,7 @@ import java.util.stream.Stream;
  */
 public class LevelEditor {
 
+    public ChoiceBox<String> difficulty;
     // FXML elements
     public FlowPane gamePane;
     public BorderPane root;
@@ -33,8 +40,9 @@ public class LevelEditor {
     public TextField idField;
     public TextField sizeField;
 
+
     // custom FXML elements
-    private EditablePuzllGridGroup puzlGridGroup;
+    private EditablePuzlGridGroup puzlGridGroup;
 
     // Game elements
     private Game game;
@@ -72,9 +80,10 @@ public class LevelEditor {
         game = new Game(levelid);
         game.setDoSave(false);
         game.setCurrentGrid(game.getSolution());
+        difficulty.setValue(game.getDificulty().name());
         if (puzlGridGroup != null)
             gamePane.getChildren().remove(puzlGridGroup);
-        puzlGridGroup = new EditablePuzllGridGroup(game, pxSize);
+        puzlGridGroup = new EditablePuzlGridGroup(game, pxSize);
         gamePane.getChildren().add(puzlGridGroup);
 
         idField.setText(String.valueOf(game.getPuzzleId()));
@@ -84,7 +93,7 @@ public class LevelEditor {
     public void resetAction() {
         if (game != null)
             game.reset();
-
+        puzlGridGroup.update();
     }
 
     public void loadLevel() {
@@ -94,7 +103,10 @@ public class LevelEditor {
     public void saveLevel() {
         if (game == null)
             return;
-        PuzzleSave curentLevel = new PuzzleSave(game.getPuzzleId(), game.getCurrentGrid(), game.getNumbers());
+        PuzzleSave curentLevel = new PuzzleSave(game.getPuzzleId(),
+                game.getCurrentGrid(),
+                game.getNumbers(),
+                Difficulty.valueOf(difficulty.getValue()));
         PuzzleResourceManageur.saveLevel(curentLevel);
     }
 
@@ -116,7 +128,6 @@ public class LevelEditor {
 
         PuzzleResourceManageur.saveLevel(newLevel);
 
-        //newLevel.setSize(6);
         createGame(id);
     }
 

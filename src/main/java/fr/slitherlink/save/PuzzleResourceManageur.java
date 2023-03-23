@@ -1,6 +1,4 @@
-package fr.slitherlink.save.puzzle;
-
-import fr.slitherlink.save.XmlResourcesManageur;
+package fr.slitherlink.save;
 
 import javax.xml.bind.JAXBException;
 

@@ -12,7 +12,7 @@ public class Slitherlink extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         //FXMLLoader fxmlLoader = new FXMLLoader(Slitherlink.class.getResource("gui/mainMenu/menu.fxml"));
-        FXMLLoader fxmlLoader = new FXMLLoader(Slitherlink.class.getResource("gui/level_play_sceen/level-play-screen.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Slitherlink.class.getResource("gui/level_play_sceen/level-editor.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
 
         stage.setWidth(Screen.getPrimary().getBounds().getWidth()/1.5);

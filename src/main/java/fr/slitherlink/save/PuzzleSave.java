@@ -1,9 +1,8 @@
-package fr.slitherlink.save.puzzle;
+package fr.slitherlink.save;
 
 import fr.slitherlink.game.grid.EdgeType;
 import fr.slitherlink.game.grid.Grid;
 import fr.slitherlink.game.grid.GridCell;
-import fr.slitherlink.save.puzzle.Difficulty;
 
 import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
@@ -43,6 +42,11 @@ public class PuzzleSave {
         this.size = grid.getSize();
         this.difficulty = Difficulty.UNKNOWN;
         setGameGrid(grid, numbers);
+    }
+
+    public PuzzleSave(int puzzleId, Grid currentGrid, Integer[][] numbers, Difficulty dificulty) {
+        this(puzzleId, currentGrid, numbers);
+        this.difficulty = dificulty;
     }
 
     @XmlAttribute(name = "id")

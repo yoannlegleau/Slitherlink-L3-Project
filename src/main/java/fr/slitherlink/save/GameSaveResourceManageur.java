@@ -1,7 +1,4 @@
-package fr.slitherlink.save.gamesave;
-
-import fr.slitherlink.save.XmlResourcesManageur;
-import fr.slitherlink.save.gamesave.GameSave;
+package fr.slitherlink.save;
 
 import javax.xml.bind.JAXBException;
 
@@ -20,7 +17,7 @@ public class GameSaveResourceManageur {
      * @return
      */
     public static GameSave LoadLevel(int id){
-        GameSave gameSave = null;
+        GameSave gameSave;
         try {
             gameSave = (GameSave) XmlResourcesManageur.concertXmlToJava(GameSave.class,SAVE_PATH+ id);
         } catch (JAXBException e) {

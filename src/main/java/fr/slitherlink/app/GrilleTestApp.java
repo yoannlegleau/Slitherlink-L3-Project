@@ -1,8 +1,9 @@
 package fr.slitherlink.app;
 
 import fr.slitherlink.game.Game;
-import fr.slitherlink.app.component.PuzllGridGroup;
+import fr.slitherlink.app.component.PuzlGridGroup;
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -10,7 +11,7 @@ public class GrilleTestApp extends Application{
 
     int width = 500, height = 500;
 
-    PuzllGridGroup gridGroup;
+    PuzlGridGroup gridGroup;
 
     public static void main(String[] args) {
         launch(args);
@@ -23,7 +24,7 @@ public class GrilleTestApp extends Application{
 
         Game game = new Game(1);
 
-        gridGroup = new PuzllGridGroup(game,width);
+        gridGroup = new PuzlGridGroup(game,width);
         Scene scene = new Scene(gridGroup, width, height);
         primaryStage.setScene(scene);
 

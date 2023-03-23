@@ -1,10 +1,10 @@
 package fr.slitherlink.save;
 
 import fr.slitherlink.game.grid.Grid;
-import fr.slitherlink.save.puzzle.PuzzleResourceManageur;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import static fr.slitherlink.game.grid.EdgeType.LINE;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
