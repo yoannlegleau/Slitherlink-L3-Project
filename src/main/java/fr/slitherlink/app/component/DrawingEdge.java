@@ -5,6 +5,7 @@ import fr.slitherlink.game.action.ActionFactory;
 import fr.slitherlink.game.action.GameAction;
 import fr.slitherlink.game.action.actions.AssumptionStart;
 import fr.slitherlink.game.action.actions.AssumptionStop;
+import fr.slitherlink.game.grid.Edge;
 import fr.slitherlink.game.grid.EdgeType;
 import javafx.scene.input.MouseButton;
 import javafx.scene.paint.Color;
@@ -12,6 +13,7 @@ import javafx.scene.shape.Rectangle;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 /**
  * @author LE GLEAU Yoann
@@ -19,6 +21,7 @@ import java.awt.event.ActionListener;
  */
 class DrawingEdge extends Rectangle implements ActionListener {
 
+    private Edge edge;
     private int coodonatX;
     private int coodonatY;
     private String direction;
@@ -30,6 +33,9 @@ class DrawingEdge extends Rectangle implements ActionListener {
 
     private boolean isWin;
 
+    private GameColor gameColor;
+    private List<ActionListener> subscribeur;
+
     public DrawingEdge(double x, double y, double width, double height, int coodonatX, int coodonatY, String direction, Game game) {
         super(x, y, width, height);
         this.coodonatX = coodonatX;
@@ -39,13 +45,16 @@ class DrawingEdge extends Rectangle implements ActionListener {
         this.isAssumption = false;
         this.isWin = false;
 
+
+
         game.subscribe(this);
         switch (direction) {
-            case "T" -> game.getCurrentGrid().getCell(coodonatX, coodonatY).getTop().subscribe(this);
-            case "B" -> game.getCurrentGrid().getCell(coodonatX, coodonatY).getBottom().subscribe(this);
-            case "L" -> game.getCurrentGrid().getCell(coodonatX, coodonatY).getLeft().subscribe(this);
-            case "R" -> game.getCurrentGrid().getCell(coodonatX, coodonatY).getRight().subscribe(this);
+            case "T" -> this.edge = game.getCurrentGrid().getCell(coodonatX, coodonatY).getTop();
+            case "B" -> this.edge = game.getCurrentGrid().getCell(coodonatX, coodonatY).getBottom();
+            case "L" -> this.edge = game.getCurrentGrid().getCell(coodonatX, coodonatY).getLeft();
+            case "R" -> this.edge = game.getCurrentGrid().getCell(coodonatX, coodonatY).getRight();
         }
+        edge.subscribe(this);
 
         // TODO Recupere la couleur dans le css
         edgeType = EdgeType.EMPTY;
@@ -67,6 +76,10 @@ class DrawingEdge extends Rectangle implements ActionListener {
                 else
                     game.action(ActionFactory.setEdgeCross(coodonatX, coodonatY, direction));
         });
+    }
+
+    public Edge getEdge() {
+        return edge;
     }
 
     @Override
@@ -116,25 +129,55 @@ class DrawingEdge extends Rectangle implements ActionListener {
         //TODO recupere la couleur dans le css
         switch (edgeType){
             case EMPTY:
-                setFill(Color.GRAY);
+                gameColor = GameColor.EMPTY;
                 break;
             case LINE:
                 if (isWin)
-                    setFill(Color.WHITE);
+                    gameColor = GameColor.WIN;
                 else if ( isGameAssumption && isAssumption )
-                    setFill(Color.valueOf("41B641"));
+                    gameColor = GameColor.ASSUMPTION_LINE;
                 else
-                    setFill(Color.valueOf("66F4FF"));
+                    gameColor = GameColor.LINE;
                 break;
             case CROSS:
                 if (isWin)
-                    setFill(Color.GRAY);
+                    gameColor = GameColor.EMPTY;
                 else if ( isGameAssumption && isAssumption )
-                    setFill(Color.valueOf("E39351"));
+                    gameColor = GameColor.ASSUMPTION_CROSS;
                 else
-                    setFill(Color.valueOf("E35151"));
+                    gameColor = GameColor.CROSS;
                 break;
+        }
+        notyfy();
+        changeColor();
+    }
+
+    public GameColor getGameColor() {
+        return gameColor;
+    }
+
+    private void changeColor() {
+        switch (gameColor) {
+            case WIN:
+                setFill(Color.WHITE);
+            case EMPTY:
+                setFill( Color.GRAY);
+            case LINE:
+                setFill(Color.valueOf("66F4FF"));
+            case CROSS:
+                setFill(Color.valueOf("E39351"));
+                case ASSUMPTION_LINE:
+                setFill(Color.valueOf("41B641"));
+            case ASSUMPTION_CROSS:
+                setFill(Color.valueOf("E35151"));
         }
     }
 
+    private  void notyfy() {
+        for (ActionListener actionListener : subscribeur)
+            actionListener.actionPerformed(new ActionEvent(this, 0, "UPDATE"));
+    }
+    public void subscribe(CircleDraw circleDraw) {
+        subscribeur.add(circleDraw);
+    }
 }

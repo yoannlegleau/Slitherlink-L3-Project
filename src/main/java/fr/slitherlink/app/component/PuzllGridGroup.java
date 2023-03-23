@@ -57,6 +57,12 @@ public class PuzllGridGroup extends Group implements ActionListener {
         double fontSize = length * FONT_SIZE_FACTOR;
         double sizeText = fontSize * 0.7;
 
+        for (int x = 0; x <= game.getSolution().getSize(); x++) {
+            for (int y = 0; y <= game.getSolution().getSize(); y++) {
+                getChildren().add(new CircleDraw(x, y, thickness));
+            }
+        }
+
 
         for (int x = 0; x < game.getSolution().getSize(); x++) {
             for (int y = 0; y < game.getSolution().getSize(); y++) {
@@ -117,12 +123,7 @@ public class PuzllGridGroup extends Group implements ActionListener {
                 drawingEdges.add(drawingEdgeR);
 
                 //TODO luca
-//                getChildren().add(new DrawingCircle(
-//                        marging + x * length + length/2,
-//                        marging + y * length + length/2,
-//                        length/2,
-//                        game,
-//                        x,y));
+
             }
         }
     }
@@ -151,4 +152,6 @@ public class PuzllGridGroup extends Group implements ActionListener {
 //        //setStroke(Color.BLACK);
 //        }
 //    }
+
+
 }
