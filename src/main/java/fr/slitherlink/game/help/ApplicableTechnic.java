@@ -291,7 +291,7 @@ public class ApplicableTechnic {
     protected boolean searchTech8PosSW(int y, int x, int [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
         int xSave = x, ySave = y;
 
-        if (coordExist(y, x, size) && gridNumber[y][x] == 3 && gridNumber[y+1][x-1] == 2){
+        if (coordExist(y, x, size) && gridNumber[y][x] == 3 && coordExist(y+1, x-1, size) && gridNumber[y+1][x-1] == 2){
             listCoord.add(new Coordinates(y, x));
 
             while(coordExist(y+1, x-1, size) && gridNumber[y+1][x-1] == 2){
@@ -299,7 +299,7 @@ public class ApplicableTechnic {
                 x--; y++;
             }
             if(coordExist(y+1, x-1, size) && gridNumber[y+1][x-1] == 3
-                && route.getCell(y+1, x-1).getLeft().isLine() && route.getCell(y+1, x-1).getBottom().isLine() && route.getCell(ySave, xSave).getLeft().isLine() && route.getCell(ySave, xSave).getTop().isLine() ){
+                && !(route.getCell(y+1, x-1).getLeft().isLine() && route.getCell(y+1, x-1).getBottom().isLine() && route.getCell(ySave, xSave).getLeft().isLine() && route.getCell(ySave, xSave).getTop().isLine()) ){
                     listCoord.add(new Coordinates(y+1, x-1));
                     return true;
             }else{
@@ -321,7 +321,7 @@ public class ApplicableTechnic {
     protected boolean searchTech8PosSE(int y, int x, int [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
         int xSave = x, ySave = y;
 
-        if (coordExist(y, x, size) && gridNumber[y][x] == 3 && gridNumber[y+1][x+1] == 2){
+        if (coordExist(y, x, size) && gridNumber[y][x] == 3 && coordExist(y+1, x+1, size) && gridNumber[y+1][x+1] == 2){
             listCoord.add(new Coordinates(y, x));
             
             while(coordExist(y+1, x+1, size) && gridNumber[y+1][x+1] == 2){
