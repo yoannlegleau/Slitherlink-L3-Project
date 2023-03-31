@@ -1,6 +1,5 @@
 package fr.slitherlink.app;
 
-import fr.slitherlink.app.gui.MainWindowController;
 import javafx.application.Application;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
@@ -18,12 +17,20 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Slitherlink extends Application {
+    public static final String MAIN_MENU = "mainMenu";
 
+    public static final String GAME_SELECTION_MENU = "levelSelectionMenu";
+
+    public static final String FREEPLAY_MENU = "freeplayMenu";
+
+    private static Slitherlink instance = null;
     private AnchorPane mainPane;
     private ButtonBar mainButtonBar;
 
     // Les différents écrans
     private Map<String, Pane> scenes;
+
+    private Pane active;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -47,11 +54,12 @@ public class Slitherlink extends Application {
         AnchorPane.setLeftAnchor(mainButtonBar, 0d);
 
 
-        scenes.put("mainMenu", (Pane) FXMLLoader.load(getClass().getResource("gui/mainMenu/menu.fxml")));
+        scenes.put(MAIN_MENU, (Pane) FXMLLoader.load(getClass().getResource("gui/mainMenu/menu.fxml")));
+        scenes.put(GAME_SELECTION_MENU, (Pane) FXMLLoader.load(getClass().getResource("gui/gameTypeSelectionMenu/main.fxml")));
+        scenes.put(FREEPLAY_MENU, (Pane) FXMLLoader.load(getClass().getResource("gui/freeplay/main.fxml")));
+
 
         ObservableList<Node> children = mainPane.getChildren();
-
-
 
         for(Pane p : scenes.values()){
             AnchorPane.setLeftAnchor(p, 0d);
@@ -64,7 +72,7 @@ public class Slitherlink extends Application {
 
         children.add(mainButtonBar);
 
-        scenes.get("mainMenu").setVisible(true);
+        setActive(MAIN_MENU);
 
         Scene mainScene = new Scene(mainPane);
 
@@ -74,6 +82,23 @@ public class Slitherlink extends Application {
         stage.setScene(mainScene);
         stage.show();
 
+        instance = this;
+    }
+
+    public void setActive(String paneName){
+        // On récupère le paneau
+        Pane p = scenes.get(paneName);
+
+        // On regarde si aucun panneau n'est actif
+        if(active != null)
+            active.setVisible(false);
+
+        p.setVisible(true);
+        active = p;
+    }
+
+    public static Slitherlink getMainInstance(){
+        return instance;
     }
 
     public static void main(String[] args) {
