@@ -107,4 +107,8 @@ public class LevelPlaySceen implements ActionListener {
     public void assumptionValid(ActionEvent actionEvent) {
         game.action(ActionFactory.assumptionValid());
     }
+
+    public void hintAction(ActionEvent actionEvent) {
+        game.action(ActionFactory.hint());
+    }
 }

@@ -13,6 +13,7 @@ import javafx.scene.shape.Rectangle;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -44,6 +45,7 @@ class DrawingEdge extends Rectangle implements ActionListener {
         this.isGameAssumption = false;
         this.isAssumption = false;
         this.isWin = false;
+        subscribeur = new ArrayList<>();
 
 
 
@@ -158,18 +160,12 @@ class DrawingEdge extends Rectangle implements ActionListener {
 
     private void changeColor() {
         switch (gameColor) {
-            case WIN:
-                setFill(Color.WHITE);
-            case EMPTY:
-                setFill( Color.GRAY);
-            case LINE:
-                setFill(Color.valueOf("66F4FF"));
-            case CROSS:
-                setFill(Color.valueOf("E39351"));
-                case ASSUMPTION_LINE:
-                setFill(Color.valueOf("41B641"));
-            case ASSUMPTION_CROSS:
-                setFill(Color.valueOf("E35151"));
+            case WIN -> setFill(Color.WHITE);
+            case EMPTY -> setFill( Color.GRAY);
+            case LINE -> setFill(Color.valueOf("66F4FF"));
+            case CROSS -> setFill(Color.valueOf("41B641"));
+            case ASSUMPTION_LINE -> setFill(Color.valueOf("E39351"));
+            case ASSUMPTION_CROSS -> setFill(Color.valueOf("E35151"));
         }
     }
 
