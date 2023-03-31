@@ -27,6 +27,8 @@ public class Slitherlink extends Application {
     private AnchorPane mainPane;
     private ButtonBar mainButtonBar;
 
+    private Pane backButton;
+
     // Les différents écrans
     private Map<String, Pane> scenes;
 
@@ -53,6 +55,9 @@ public class Slitherlink extends Application {
         AnchorPane.setRightAnchor(mainButtonBar, 0d);
         AnchorPane.setLeftAnchor(mainButtonBar, 0d);
 
+        backButton = (Pane) FXMLLoader.load(getClass().getResource("gui/backButton/main.fxml"));
+        AnchorPane.setTopAnchor(backButton, 0d);
+        AnchorPane.setLeftAnchor(backButton, 30d);
 
         scenes.put(MAIN_MENU, (Pane) FXMLLoader.load(getClass().getResource("gui/mainMenu/menu.fxml")));
         scenes.put(GAME_SELECTION_MENU, (Pane) FXMLLoader.load(getClass().getResource("gui/gameTypeSelectionMenu/main.fxml")));
@@ -71,7 +76,7 @@ public class Slitherlink extends Application {
         }
 
         children.add(mainButtonBar);
-
+        children.add(backButton);
         setActive(MAIN_MENU);
 
         Scene mainScene = new Scene(mainPane);
@@ -94,6 +99,7 @@ public class Slitherlink extends Application {
             active.setVisible(false);
 
         p.setVisible(true);
+        backButton.setVisible(paneName != MAIN_MENU);
         active = p;
     }
 
