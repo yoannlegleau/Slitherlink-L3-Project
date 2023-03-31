@@ -37,26 +37,49 @@ public class EditablePuzlGridGroup extends PuzlGridGroup {
                 setPrefSize(length-marging, length-marging);
                 setLayoutX(marging*2 + x * length);
                 setLayoutY(marging*2 + y * length);
-                setText(game.getNumbers()[x][y] + "");
+
+
+                if (game.getNumbers()[x][y] == null)
+                    setText("");
+                else
+                    setText(game.getNumbers()[x][y].toString());
                 setTextFill(Color.WHITE);
                 setStyle("-fx-font-size: "+ sizeText +"px;");
                 setTextAlignment(TextAlignment.CENTER);
                 setOnMouseClicked(event -> {
                     if (event.getButton() == MouseButton.PRIMARY) {
-                        setNumber(game.getNumbers()[x][y] + 1);
+                        nextNumber();
                     }
                     if (event.getButton() == MouseButton.SECONDARY) {
-                        setNumber(game.getNumbers()[x][y] - 1);
+                        previousNumber();
                     }
                 });
             }
 
-            private void setNumber(int number){
-                if (number == -1)
-                    number = 3;
-                number = number % 4;
+            private void nextNumber(){
+                if (game.getNumbers()[x][y] == null)
+                    setNumber(0);
+                else if (game.getNumbers()[x][y] == 3)
+                    setNumber(null);
+                else
+                    setNumber(game.getNumbers()[x][y] + 1);
+            }
+
+            private void previousNumber(){
+                if (game.getNumbers()[x][y] == null)
+                    setNumber(3);
+                else if (game.getNumbers()[x][y] == 0)
+                    setNumber(null);
+                else
+                    setNumber(game.getNumbers()[x][y] - 1);
+            }
+
+            private void setNumber(Integer number){
                 game.getNumbers()[x][y] = number;
-                setText(String.valueOf(number));
+                if (number == null)
+                    setText("");
+                else
+                    setText(String.valueOf(number));
                 update();
             }
 

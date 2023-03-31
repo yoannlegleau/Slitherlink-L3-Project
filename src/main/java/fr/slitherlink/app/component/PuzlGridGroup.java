@@ -63,13 +63,9 @@ public class PuzlGridGroup extends Group {
 
         for (int x = 0; x < game.getSolution().getSize(); x++) {
             for (int y = 0; y < game.getSolution().getSize(); y++) {
-                if (game.getNumbers()[x][y] != null){
                     Node text = createText(marging, length, fontSize, sizeText, x, y);
                     text.setStyle("-fx-fill: white; -fx-font-size: "+sizeText+"px;");
-
-
                     getChildren().add(text);
-                }
 
                 if (y == 0) {
                     getChildren().add(new DrawingEdge(
