@@ -1,3 +1,9 @@
 #backButton {
-    -fx-background-radius: 1px 10px 50px 1px;
+    -fx-background-radius: 0px 0px 50px 50px;
+    -fx-background-color : #93e4ea;
+
+}
+
+#backButtonSVG {
+    -fx-shape: "M250 700q-14-14-14.5-33t13.5-33l198-198q7-7 15.5-10.5T480 422q9 0 17.5 3.5T513 436l198 197q14 14 14 33.5T711 699q-14 14-33.5 14T644 699L480 536 316 701q-13 14-32.5 13.5T250 700Z";
 }
