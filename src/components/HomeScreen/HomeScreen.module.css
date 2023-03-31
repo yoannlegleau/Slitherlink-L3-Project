@@ -1,0 +1,322 @@
+.root {
+  position: relative;
+  width: 480px;
+  height: 270px;
+  align-items: flex-start;
+  background-color: #333337;
+  overflow: hidden;
+}
+.footer {
+  position: absolute;
+  left: 0;
+  top: 257px;
+  width: 480px;
+  height: 13px;
+  outline: solid 1px #414141;
+  background-color: #252525;
+}
+.slitherLink {
+  color: #fff;
+  font-size: 45px;
+  font-family: Ruluko, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 145px;
+  top: 47px;
+  width: 338px;
+  height: 47px;
+  flex-direction: column;
+}
+.rectangle1 {
+  position: absolute;
+  left: calc(50% - 3.9686px);
+  top: 112px;
+  width: 124.0628px;
+  height: 27px;
+  border-radius: 50px;
+  background-color: #93e4ea;
+  transform: translateX(-50%);
+}
+.jouer {
+  color: #000;
+  font-size: 16px;
+  font-family: Ruluko, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 224px;
+  top: 116px;
+  width: 38px;
+  height: 16px;
+  flex-direction: column;
+}
+.vector {
+  position: absolute;
+  left: 38.3333%;
+  right: 58.4953%;
+  top: 43.7037%;
+  bottom: 51.1681%;
+  overflow: visible;
+}
+.icon {
+  width: 100%;
+  height: 100%;
+}
+.rectangle12 {
+  position: absolute;
+  left: calc(50% - 3.9686px);
+  top: 180px;
+  width: 124.0628px;
+  height: 27px;
+  border-radius: 50px;
+  background-color: #93e4ea;
+  transform: translateX(-50%);
+}
+.tutoriel {
+  color: #000;
+  font-size: 16px;
+  font-family: Ruluko, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 217px;
+  top: 185px;
+  width: 81.0206px;
+  height: 15.75px;
+  flex-direction: column;
+}
+.rectangle13 {
+  position: absolute;
+  left: calc(50% - 3.9686px);
+  top: 146px;
+  width: 124.0628px;
+  height: 27px;
+  border-radius: 50px;
+  background-color: #93e4ea;
+  transform: translateX(-50%);
+}
+.regles {
+  color: #000;
+  font-size: 16px;
+  font-family: Ruluko, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 220px;
+  top: 151px;
+  width: 81.0206px;
+  height: 15.75px;
+  flex-direction: column;
+}
+.askQuestion {
+  position: absolute;
+  left: 184px;
+  top: 187px;
+  width: 15.22px;
+  height: 13.85px;
+  background-image:/* webpackIgnore: true */ url('/assets/askQuestion.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.rules {
+  position: absolute;
+  left: 184px;
+  top: 151px;
+  width: 15.22px;
+  height: 13.85px;
+  background-image:/* webpackIgnore: true */ url('/assets/rules.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.rectangle14 {
+  position: absolute;
+  left: calc(50% - 205.5px);
+  top: 248px;
+  width: 59px;
+  height: 15px;
+  border-radius: 50px;
+  background-color: #93e4ea;
+  transform: translateX(-50%);
+}
+.rectangle2 {
+  position: absolute;
+  left: calc(50% - 205.5px);
+  top: 248px;
+  width: 59px;
+  height: 15px;
+  border-radius: 50px;
+  background-color: #93e4ea;
+  transform: translateX(-50%);
+}
+.parametres {
+  color: #000;
+  font-size: 8px;
+  font-family: Ruluko, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 18px;
+  top: 251px;
+  width: 50px;
+  height: 9px;
+  flex-direction: column;
+}
+.settings {
+  position: absolute;
+  left: 8px;
+  top: 251px;
+  width: 9px;
+  height: 9px;
+}
+.icon2 {
+  width: 100%;
+  height: 100%;
+}
+.ellipse2 {
+  position: absolute;
+  left: 453px;
+  top: 244px;
+  width: 20px;
+  height: 20px;
+  overflow: visible;
+}
+.icon3 {
+  width: 100%;
+  height: 100%;
+}
+.image2 {
+  position: absolute;
+  left: 456px;
+  top: 248px;
+  width: 15px;
+  height: 12px;
+  background-image:/* webpackIgnore: true */ url('/assets/image2.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.rectangle15 {
+  position: absolute;
+  left: calc(50% - 143.5px);
+  top: 248px;
+  width: 59px;
+  height: 15px;
+  border-radius: 50px;
+  background-color: #93e4ea;
+  transform: translateX(-50%);
+}
+.rectangle22 {
+  position: absolute;
+  left: calc(50% - 143.5px);
+  top: 248px;
+  width: 59px;
+  height: 15px;
+  border-radius: 50px;
+  background-color: #93e4ea;
+  transform: translateX(-50%);
+}
+.statistiques {
+  color: #000;
+  font-size: 8px;
+  font-family: Ruluko, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 81px;
+  top: 252px;
+  width: 50px;
+  height: 9px;
+  flex-direction: column;
+}
+.rectangle16 {
+  position: absolute;
+  left: calc(50% - 143.5px);
+  top: 248px;
+  width: 59px;
+  height: 15px;
+  border-radius: 50px;
+  background-color: #93e4ea;
+  transform: translateX(-50%);
+}
+.rectangle23 {
+  position: absolute;
+  left: calc(50% - 143.5px);
+  top: 248px;
+  width: 59px;
+  height: 15px;
+  border-radius: 50px;
+  background-color: #93e4ea;
+  transform: translateX(-50%);
+}
+.statistiques2 {
+  position: absolute;
+  left: 82px;
+  top: 251px;
+  width: 50px;
+  height: 9px;
+  flex-direction: column;
+}
+.textBlock {
+  color: #000;
+  font-size: 8px;
+  font-family: Ruluko, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+}
+.textBlock2 {
+  margin-top: 0;
+  color: #000;
+  font-size: 8px;
+  font-family: Ruluko, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+}
+.rectangle17 {
+  position: absolute;
+  left: calc(50% - 6.5px);
+  top: 214px;
+  width: 59px;
+  height: 15px;
+  border-radius: 50px;
+  background-color: #93e4ea;
+  transform: translateX(-50%);
+}
+.rectangle24 {
+  position: absolute;
+  left: calc(50% - 6.5px);
+  top: 214px;
+  width: 59px;
+  height: 15px;
+  border-radius: 50px;
+  background-color: #93e4ea;
+  transform: translateX(-50%);
+}
+.statistiques3 {
+  color: #000;
+  font-size: 8px;
+  font-family: Ruluko, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    'Liberation Sans', sans-serif;
+  position: absolute;
+  left: 219px;
+  top: 217px;
+  width: 50px;
+  height: 9px;
+  flex-direction: column;
+}
+.user {
+  position: absolute;
+  left: 71px;
+  top: 251px;
+  width: 9px;
+  height: 9px;
+  background-image:/* webpackIgnore: true */ url('/assets/user.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.exitToApp {
+  position: absolute;
+  left: 207px;
+  top: 216px;
+  width: 11px;
+  height: 11px;
+}
+.icon4 {
+  width: 100%;
+  height: 100%;
+}

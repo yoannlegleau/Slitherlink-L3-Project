@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #333337;" stylesheets="@main.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+    <top>
+        <HBox maxHeight="-Infinity" prefHeight="35.0" prefWidth="580.0" BorderPane.alignment="CENTER">
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets></HBox>
+    </top>
+    <opaqueInsets>
+        <Insets />
+    </opaqueInsets>
+    <center>
+        <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" spacing="10.0" BorderPane.alignment="CENTER">
+            <children>
+                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Jeu Libre" textAlignment="CENTER">
+                    <font>
+                        <Font name="Apple Braille" size="50.0" />
+                    </font>
+                </Text>
+                <HBox alignment="CENTER" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="52.0" prefWidth="600.0" spacing="10.0">
+               <children>
+                  <Button mnemonicParsing="false" text="Nouvelle partie">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" text="Reprendre">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Button>
+               </children>
+                </HBox>
+            <Line endX="456.79290771484375" endY="0.2928932309150696" startX="-100.0" stroke="#9f9f9f" />
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Paramètres de la partie">
+               <font>
+                  <Font size="31.0" />
+               </font>
+            </Text>
+            <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+               <children>
+                  <HBox prefHeight="40.0" prefWidth="600.0">
+                     <children>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Grille : ">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Text>
+                        <MenuButton mnemonicParsing="false" text="6x6">
+                          <items>
+                            <MenuItem mnemonicParsing="false" text="8x8" />
+                            <MenuItem mnemonicParsing="false" text="10x10" />
+                          </items>
+                        </MenuButton>
+                     </children>
+                  </HBox>
+                  <HBox alignment="BASELINE_LEFT" prefHeight="40.0" prefWidth="600.0">
+                     <children>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Difficulté : ">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Facile">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </Text>
+                        <RadioButton mnemonicParsing="false" prefHeight="18.0" prefWidth="23.0" text="RadioButton" />
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Moyen">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </Text>
+                        <RadioButton mnemonicParsing="false" prefHeight="18.0" prefWidth="23.0" text="RadioButton" />
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Difficile">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </Text>
+                        <RadioButton mnemonicParsing="false" prefHeight="18.0" prefWidth="23.0" text="RadioButton" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="40.0" prefWidth="600.0">
+                     <children>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Aide : ">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Text>
+                        <ToggleButton mnemonicParsing="false" text="ToggleButton" />
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text=" Auto-completion : ">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Text>
+                        <ToggleButton mnemonicParsing="false" text="ToggleButton" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            </children>
+        </VBox>
+    </center>
+</BorderPane>

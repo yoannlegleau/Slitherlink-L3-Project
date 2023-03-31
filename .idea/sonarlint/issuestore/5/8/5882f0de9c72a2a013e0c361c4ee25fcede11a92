@@ -1,0 +1,9 @@
+
+d
+java:S2259;"BA "NullPointerException" could be thrown; "cell" is nullable here.(ÑŒºøÿÿÿÿ8¿€¥íğ0
+m
+java:S12068"PThis class overrides "equals()" and should therefore also override "hashCode()".(ÜÑã8Á€¥íğ0
+H
+java:S1172"-Remove this unused method parameter "number".(×øÈêúÿÿÿÿ
+<
+java:S20978"Add a type test to this method.(ÜÑã8È€¥íğ0
