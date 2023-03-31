@@ -7,9 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -20,6 +18,7 @@ public class Slitherlink extends Application {
     public static final String MAIN_MENU = "mainMenu";
 
     public static final String GAME_SELECTION_MENU = "levelSelectionMenu";
+    public static final String LEVEL_PLAY_SRCEEN = "levelPlayScreen";
 
     public static final String FREEPLAY_MENU = "freeplayMenu";
 
@@ -46,7 +45,7 @@ public class Slitherlink extends Application {
         mainPane = new AnchorPane();
         mainPane.setMinSize(960, 720);
 
-        mainButtonBar = (ButtonBar) FXMLLoader.load(getClass().getResource("gui/navBar/main.fxml"));
+        mainButtonBar = FXMLLoader.load(getClass().getResource("gui/navBar/main.fxml"));
         if(mainButtonBar == null){
             System.err.println("Erreur lors du chargement de la barre de navigation !");
             System.exit(1);
@@ -55,13 +54,14 @@ public class Slitherlink extends Application {
         AnchorPane.setRightAnchor(mainButtonBar, 0d);
         AnchorPane.setLeftAnchor(mainButtonBar, 0d);
 
-        backButton = (Pane) FXMLLoader.load(getClass().getResource("gui/backButton/main.fxml"));
+        backButton = FXMLLoader.load(getClass().getResource("gui/backButton/main.fxml"));
         AnchorPane.setTopAnchor(backButton, 0d);
         AnchorPane.setLeftAnchor(backButton, 30d);
 
-        scenes.put(MAIN_MENU, (Pane) FXMLLoader.load(getClass().getResource("gui/mainMenu/menu.fxml")));
-        scenes.put(GAME_SELECTION_MENU, (Pane) FXMLLoader.load(getClass().getResource("gui/gameTypeSelectionMenu/main.fxml")));
-        scenes.put(FREEPLAY_MENU, (Pane) FXMLLoader.load(getClass().getResource("gui/freeplay/main.fxml")));
+        scenes.put(MAIN_MENU,FXMLLoader.load(getClass().getResource("gui/mainMenu/menu.fxml")));
+        scenes.put(GAME_SELECTION_MENU,  FXMLLoader.load(getClass().getResource("gui/gameTypeSelectionMenu/main.fxml")));
+        scenes.put(FREEPLAY_MENU, FXMLLoader.load(getClass().getResource("gui/freeplay/main.fxml")));
+        scenes.put(LEVEL_PLAY_SRCEEN, FXMLLoader.load(getClass().getResource("gui/level_play_sceen/level-play-screen.fxml")));
 
 
         ObservableList<Node> children = mainPane.getChildren();

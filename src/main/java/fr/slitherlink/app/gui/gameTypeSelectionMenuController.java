@@ -2,7 +2,6 @@ package fr.slitherlink.app.gui;
 
 import fr.slitherlink.app.Slitherlink;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 
 public class gameTypeSelectionMenuController {
@@ -23,6 +22,7 @@ public class gameTypeSelectionMenuController {
 
     public void onAdventurePlayButtonClick(){
         System.out.println("On appuye sur le bouton aventure");
+        Slitherlink.getMainInstance().setActive(Slitherlink.LEVEL_PLAY_SRCEEN);
     }
 
     public void onRushPlayButtonClick(){
