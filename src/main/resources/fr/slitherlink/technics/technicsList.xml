@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<technique id="1">
+    <title>adjacent 0 et 3</title>
+    <description>Si un 0 et un 3 sont adjacents.    
+    Alors, tous les côtés de ce 3 excepté celui qui touche le 0 sont remplis.
+    De plus, les deux lignes perpendiculaires aux cases adjacentes sont remplies.</description>
+</technique>
+
+<technique id="2">
+    <title>diagonale 0 et 3</title>
+    <description>Si un 3 est en diagonale d’un 0.
+    Alors, les deux côtés du 3 atteignant le 0 sont remplis.</description>
+</technique>
+
+<technique id="3">
+    <title>adjacent 3 et 3</title>
+    <description>Si deux ou plusieurs 3 sont adjacents.
+    Alors, leurs côtés communs sont remplis ainsi que les deux côtés extérieurs du groupe (parallèles aux côtés communs).
+    De plus, les extrémités des côtés communs sont barrés.</description>
+</technique>
+
+<technique id="4">
+    <title>diagonale 3 et 3</title>
+    <description>Si deux 3 sont en diagonale.
+    Alors, leurs 2 côtés opposés sont remplis.</description>
+</technique>
+
+<technique id="5">
+    <title>coin d'un 2 trace</title>
+    <description>Si l’un des coins d’un 2 est atteint par 2 lignes sortante.
+    Alors, les deux côtés du 2, opposés à ce coin sont remplis.</description>
+</technique>
+
+<technique id="6">
+    <title>2 en coin</title>
+    <description>Si un 2 est dans un coin.
+    Alors, deux lignes doivent s’éloigner du 2 à la frontière.</description>
+</technique>
+
+<technique id="7">
+    <title>3 en coin</title>
+    <description>Si un 3 est dans un coin.
+    Alors, ses deux côtés en bordure sont remplis.</description>
+</technique>
+
+<technique id="8">
+    <title>diagonale 3 et 3 avec 2 internes</title>
+    <description>Si deux 3 sont séparés diagonalement par un ou plusieurs 2.
+    Alors, leurs deux côtés opposés sont remplis.</description>
+</technique>
+
+<technique id="9">
+    <title>coin d'un 3 barre</title>
+    <description>Si un 3 est présent et que un de ces coins est inatteignable de l’extérieur (présence de deux croix).
+    Alors, les deux côtés du 3 formant ce coin sont remplis.</description>
+</technique>
+
+<technique id="10">
+    <title>3 atteint</title>
+    <description>Si une ligne atteint un 3.
+    Alors, les deux côtés du 3 opposés à la ligne sont remplis.</description>
+</technique>
+
+<technique id="11">
+    <title>brochette de 2 atteint 3</title>
+    <description>Si une ligne atteint le point de départ d’une diagonale qui contient un ou plusieurs 2 et se termine par un 3.
+    Alors, les deux côtés du 3 les plus éloignés de ce point sont remplis.</description>
+</technique>
+
+<technique id="12">
+    <title>diagonale 3 et 2</title>
+    <description>Si un 3 et un 2 sont en diagonale et que l’un des côtés du 2, opposés au 3 est barré.
+    Alors, les deux côtés du 3, opposés au 2 et l’autre côté du 2, opposé au 3 sont remplis.</description>
+</technique>
+
+<technique id="13">
+    <title>adjacent 3 et 2</title>
+    <description>Si un 3 et un 2 sont adjacents et que l’un des coins du 2, non commun au 3 est inatteignable de l’extérieur (présence de deux croix).
+    Alors, le côté du 3, opposé au 2 est rempli et l’autre côté du 3, aligné avec le coin du 2 inatteignable est rempli.</description>
+</technique>
+
+<technique id="14">
+    <title>adjacent 3 et 2</title>
+    <description>Si un 3 et un 2 sont adjacents et que le côté du 2, opposé au 3 est barré.
+    Alors, le côté du 3, opposé au 2 est rempli et les deux chemins atteignant le côté commun au 2 et au 3 sont barrés.</description>
+</technique>
+
+<technique id="15">
+    <title>diagonale 3 et 1</title>
+    <description>Si un 3 et un 1 sont en diagonale et que les deux côtés du 1 opposés au 3 sont barrés.
+    Alors,  les 2 côtés du 3 opposés au 1 sont remplis.</description>
+</technique>
+
+<technique id="16">
+    <title>brochette de 2</title>
+    <description>Si une ligne atteint une diagonale de plusieurs 2, qu’elle est obligée de s’y engouffrer et qu’un chemin soit barré à la sortie de cette diagonale.
+    Alors, le chemin restant de la sortie est rempli.</description>
+</technique>
+
+<technique id="17">
+    <title>2 atteint</title>
+    <description>Si un côté d’un 2 est barré et que l’un des deux coins du 2 non adjacent à  ce côté barré est atteint par une ligne.
+    Alors, le côté opposé à la ligne est rempli.</description>
+</technique>
+
+<technique id="18">
+    <title>adjacent 3 et 1</title>
+    <description>Si un 3 et un 1 sont adjacents et que l’un des chemins les atteignant tous deux est barré.
+    Alors, le côté du 3, adjacent et perpendiculaire au chemin barré est rempli et les 2 côtés du 1, opposés au chemin barré sont barrés.</description>
+</technique>
+
+<technique id="19">
+    <title>0 present</title>
+    <description>Si un 0 est présent.
+    Alors, ses côtés sont barrés.</description>
+</technique>
+
+<technique id="20">
+    <title>1 en coin</title>
+    <description>Si un 1 est dans un coin.
+    Alors, ses deux côtés en bordure sont barrés.</description>
+</technique>
+
+<technique id="21">
+    <title>diagonale 3 et 1</title>
+    <description>Si un 3 et un 1 sont en diagonale et que les deux côtés du 3 opposés au 1 sont remplis.
+    Alors, les 2 côtés du 1 opposés au 3 sont barrés.</description>
+</technique>
+
+<technique id="22">
+    <title>1 atteint</title>
+    <description>Si une ligne atteint un 1 et que la direction pour éviter ce 1 est barré.
+    Alors, les deux côtés du 1 opposés à la ligne sont barrés.</description>
+</technique>
+
+<technique id="23">
+    <title>coin d'un 1 barre</title>
+    <description>Si un 1 est présent et que un de ces coins n’est pas directement atteignable de l’extérieur (présence de deux croix).
+    Alors, les deux côtés du 1 atteignant ce coin sont barrés.</description>
+</technique>
+
+<technique id="24">
+    <title>diagonale de 1 symetrique</title>
+    <description>Si un 1 est présent et que un de ces coins n’est pas directement atteignable de l’extérieur (présence de deux croix).
+    Alors, les deux côtés du 1 atteignant ce coin sont barrés.</description>
+</technique>
+
+<technique id="25">
+    <title>3 adjacent à deux 1 en diagonale</title>
+    <description>Si deux 1 sont en diagonale et qu’un 3 est adjacent à ces deux 1.
+    Alors,  les deux côtés opposés des 1 sont barrés.</description>
+</technique>

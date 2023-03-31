@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author LE GLEAU Yoann
+ * @author LE GLEAU Yoann BRUNEAU Antoine
  * @version 1, 23/02/2023
  */
 public class Edge {
@@ -25,6 +25,7 @@ public class Edge {
         type = newType;
         notifySubscribers();
     }
+
     public EdgeType getType() {
         return type;
     }
@@ -33,6 +34,18 @@ public class Edge {
         for (ActionListener subscriber : subscribers) {
             subscriber.actionPerformed(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, type.toString() ));
         }
+    }
+
+    public boolean isLine() {
+        return type == EdgeType.LINE;
+    }
+
+    public boolean isCross() {
+        return type == EdgeType.CROSS;
+    }
+
+    public boolean isEmpty() {
+        return type == EdgeType.EMPTY;
     }
 
     /**
@@ -53,4 +66,5 @@ public class Edge {
     public void subscribe(ActionListener drawingEdge) {
         subscribers.add(drawingEdge);
     }
+
 }

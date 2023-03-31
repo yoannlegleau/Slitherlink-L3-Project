@@ -18,9 +18,9 @@ public class Grid {
             for (int y = 0; y < size; y++) {
                 grid[x][y] = new GridCell(null);
                 if (x > 0)
-                    grid[x][y].setLeft(grid[x - 1][y].getRight());
+                    grid[x][y].setTop(grid[x - 1][y].getBottom());
                 if (y > 0)
-                    grid[x][y].setTop(grid[x][y - 1].getBottom());
+                    grid[x][y].setLeft(grid[x][y - 1].getRight());
             }
         }
     }
