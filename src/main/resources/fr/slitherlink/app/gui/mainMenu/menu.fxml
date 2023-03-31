@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="p" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="960.0" prefHeight="720.0" prefWidth="960.0" style="-fx-background-color: #333337;" stylesheets="@../../style/default-style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="960.0" prefHeight="720.0" prefWidth="960.0" style="-fx-background-color: #333337;" stylesheets="@../../style/default-style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.slitherlink.app.gui.MainMenuController">
    <top>
       <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-translate-y: 86;" BorderPane.alignment="CENTER">
          <children>
@@ -24,7 +24,7 @@
    <center>
       <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="89.0" minWidth="255.0" BorderPane.alignment="CENTER">
          <children>
-            <Button alignment="CENTER" graphicTextGap="5.0" maxWidth="1.7976931348623157E308" minHeight="54.0" minWidth="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" styleClass="MenuButton" stylesheets="@../../style/default-style.css" text="Jouer" textAlignment="CENTER">
+            <Button fx:id="playButton" alignment="CENTER" graphicTextGap="5.0" maxWidth="1.7976931348623157E308" minHeight="54.0" minWidth="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#onPlayButtonClick" styleClass="MenuButton" stylesheets="@../../style/default-style.css" text="Jouer" textAlignment="CENTER">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -41,7 +41,7 @@
                   <Region id="Button_play" prefHeight="200.0" prefWidth="200.0" styleClass="Button_icon" />
                </graphic>
             </Button>
-            <Button alignment="CENTER" graphicTextGap="5.0" maxWidth="1.7976931348623157E308" minHeight="54.0" minWidth="-Infinity" mnemonicParsing="false" styleClass="MenuButton" stylesheets="@../../style/default-style.css" text="Règles">
+            <Button fx:id="rulesButton" alignment="CENTER" graphicTextGap="5.0" maxWidth="1.7976931348623157E308" minHeight="54.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#onRulesButtonClick" styleClass="MenuButton" stylesheets="@../../style/default-style.css" text="Règles">
                <VBox.margin>
                   <Insets bottom="6.0" top="6.0" />
                </VBox.margin>
@@ -58,7 +58,7 @@
                   <Region id="Button_rules" prefHeight="200.0" prefWidth="200.0" styleClass="Button_icon" stylesheets="@../../style/default-style.css" />
                </graphic>
             </Button>
-            <Button alignment="CENTER" graphicTextGap="2.0" maxWidth="1.7976931348623157E308" minHeight="54.0" mnemonicParsing="false" styleClass="MenuButton" stylesheets="@../../style/default-style.css" text="Tutoriel">
+            <Button fx:id="tutorialButton" alignment="CENTER" graphicTextGap="2.0" maxWidth="1.7976931348623157E308" minHeight="54.0" mnemonicParsing="false" onAction="#onTutorialButtonClick" styleClass="MenuButton" stylesheets="@../../style/default-style.css" text="Tutoriel">
                <VBox.margin>
                   <Insets bottom="6.0" top="6.0" />
                </VBox.margin>
@@ -75,7 +75,7 @@
                   <Region id="Button_tuto" prefHeight="50.0" prefWidth="90.0" styleClass="Button_icon" stylesheets="@../../style/default-style.css" />
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" prefWidth="118.0" styleClass="MenuButton" stylesheets="@../../style/default-style.css" text="Quitter">
+            <Button fx:id="quitButton" mnemonicParsing="false" onAction="#onQuitButtonClick" prefWidth="118.0" styleClass="MenuButton" stylesheets="@../../style/default-style.css" text="Quitter">
                <VBox.margin>
                   <Insets top="6.0" />
                </VBox.margin>
