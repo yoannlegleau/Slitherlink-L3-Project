@@ -1,4 +1,4 @@
-package fr.slitherlink.app.component;
+package fr.slitherlink.app.fx_controlleur.component;
 
 import fr.slitherlink.game.Game;
 import fr.slitherlink.game.action.ActionFactory;
@@ -86,7 +86,7 @@ public class PuzllGridGroup extends Group implements ActionListener {
                             y * length,
                             length,
                             thickness,
-                            x,y,"T",
+                            x,y,"L",
                             game);
                     getChildren().add(drawingEdgeT);
                     drawingEdges.add(drawingEdgeT);
@@ -97,7 +97,7 @@ public class PuzllGridGroup extends Group implements ActionListener {
                             marging + y * length,
                             thickness,
                             length,
-                            x,y,"L",
+                            x,y,"T",
                             game);
                     getChildren().add(drawingEdgeL);
                     drawingEdges.add(drawingEdgeL);

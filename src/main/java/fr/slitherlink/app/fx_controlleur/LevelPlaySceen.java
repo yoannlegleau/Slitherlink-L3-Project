@@ -1,6 +1,6 @@
 package fr.slitherlink.app.fx_controlleur;
 
-import fr.slitherlink.app.component.PuzllGridGroup;
+import fr.slitherlink.app.fx_controlleur.component.PuzllGridGroup;
 import fr.slitherlink.game.Game;
 import fr.slitherlink.game.action.ActionFactory;
 import fr.slitherlink.game.action.GameActionTypes;
