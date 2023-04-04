@@ -28,7 +28,7 @@ public class ListTechnic {
 
     public void loadTechnics(){
         try {
-            listTechnic = (ArrayList<Technic>) XmlResourcesManageur.concertXmlToJava(ArrayList<Technic>.class, "technic/list");
+            this.listTechnic = (ArrayList<Technic>) XmlResourcesManageur.concertXmlToJava(ArrayList<Technic>.class, "technics/technicsList");
         } catch (JAXBException e) {
             throw new RuntimeException(e);
         }
