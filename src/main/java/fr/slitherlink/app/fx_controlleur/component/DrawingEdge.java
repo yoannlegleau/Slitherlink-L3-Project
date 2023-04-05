@@ -48,24 +48,20 @@ class DrawingEdge extends Rectangle implements ActionListener {
         subscribeur = new ArrayList<>();
 
 
-
         game.subscribe(this);
         switch (direction) {
-            case "T" -> this.edge = game.getCurrentGrid().getCell(coodonatX, coodonatY).getTop();
-            case "B" -> this.edge = game.getCurrentGrid().getCell(coodonatX, coodonatY).getBottom();
-            case "L" -> this.edge = game.getCurrentGrid().getCell(coodonatX, coodonatY).getLeft();
-            case "R" -> this.edge = game.getCurrentGrid().getCell(coodonatX, coodonatY).getRight();
+            case "T" -> this.edge = game.getCurrentGrid().getCell(coodonatY, coodonatX).getTop();
+            case "B" -> this.edge = game.getCurrentGrid().getCell(coodonatY, coodonatX).getBottom();
+            case "L" -> this.edge = game.getCurrentGrid().getCell(coodonatY, coodonatX).getLeft();
+            case "R" -> this.edge = game.getCurrentGrid().getCell(coodonatY, coodonatX).getRight();
         }
         edge.subscribe(this);
 
-        // TODO Recupere la couleur dans le css
-        edgeType = EdgeType.EMPTY;
-        setFill(Color.GRAY);
+        edgeType = edge.getType();
+        updateColor();
 
         setOnMouseClicked(event -> {
-            EdgeType newTipe = EdgeType.EMPTY;
 
-            isAssumption = game.isAssumptionMode();
 
             if (event.getButton() == MouseButton.PRIMARY)
                 if (edgeType.equals(EdgeType.LINE))
@@ -158,14 +154,16 @@ class DrawingEdge extends Rectangle implements ActionListener {
         return gameColor;
     }
 
+
     private void changeColor() {
+        // TODO Recupere la couleur dans le css
         switch (gameColor) {
             case WIN -> setFill(Color.WHITE);
             case EMPTY -> setFill( Color.GRAY);
             case LINE -> setFill(Color.valueOf("66F4FF"));
-            case CROSS -> setFill(Color.valueOf("41B641"));
-            case ASSUMPTION_LINE -> setFill(Color.valueOf("E39351"));
-            case ASSUMPTION_CROSS -> setFill(Color.valueOf("E35151"));
+            case CROSS -> setFill(Color.valueOf("E35151"));
+            case ASSUMPTION_LINE -> setFill(Color.valueOf("41B641"));
+            case ASSUMPTION_CROSS -> setFill(Color.valueOf("E39351"));
         }
     }
 
@@ -173,7 +171,7 @@ class DrawingEdge extends Rectangle implements ActionListener {
         for (ActionListener actionListener : subscribeur)
             actionListener.actionPerformed(new ActionEvent(this, 0, "UPDATE"));
     }
-    public void subscribe(CircleDraw circleDraw) {
+    public void subscribe(ActionListener circleDraw) {
         subscribeur.add(circleDraw);
     }
 }

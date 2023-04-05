@@ -86,7 +86,7 @@ public class PuzllGridGroup extends Group implements ActionListener {
                             y * length,
                             length,
                             thickness,
-                            x,y,"L",
+                            x,y,"T",
                             game);
                     getChildren().add(drawingEdgeT);
                     drawingEdges.add(drawingEdgeT);
@@ -97,7 +97,7 @@ public class PuzllGridGroup extends Group implements ActionListener {
                             marging + y * length,
                             thickness,
                             length,
-                            x,y,"T",
+                            x,y,"L",
                             game);
                     getChildren().add(drawingEdgeL);
                     drawingEdges.add(drawingEdgeL);

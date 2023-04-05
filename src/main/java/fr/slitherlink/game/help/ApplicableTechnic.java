@@ -1,8 +1,6 @@
 package fr.slitherlink.game.help;
 
-import java.util.List;
 import java.util.LinkedList;
-import java.util.Queue;
 import fr.slitherlink.game.grid.*;
 
 /**
@@ -11,39 +9,11 @@ import fr.slitherlink.game.grid.*;
  * @version 1, 04/03/2023
  */
 public class ApplicableTechnic {
-    
-    public static final int TOP = 0;
-    public static final int RIGHT = 1;
-    public static final int BOTTOM = 2;
-    public static final int LEFT = 3;
-
-    private int size;
-    private int [][] gridNumber;
-    private Grid route;
-    protected LinkedList<Coordinates> listCoord;
 
     public ApplicableTechnic(int [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {
-        this.gridNumber = initGrid(gridNumber,size);
-        this.route = route;
-        this.size = size;
-        this.listCoord = listCoord;
+
     }
 
-    /**
-     * Initialise la grille avec des -1
-     * @param grid la grille à initialiser
-     * @param size la taille de la grille
-     * @return
-     */
-    private int [][] initGrid(int[][] grid,int size) {
-        grid = new int[size][size];
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                grid[i][j] = -1;
-            }
-        }
-        return grid;
-    }
     
     /**
      * Vérifie si la case de coordonnées x, y existe dans la grille
@@ -55,12 +25,9 @@ public class ApplicableTechnic {
     
     /**
      * [Technique 0 & 3 adjacents]
-     * 
+     *
      * Vérifie si cette technique est applicable à la position x, y
-     * @param gridNumber la grille de nombres
      * @param route la grille de tracés
-     * @param size la taille de la grille
-     * @param listCoord la liste des coordonnées des cases faisant partie de la technique (si elle est applicable)
      * @return true si la technique est applicable, false sinon
      */
     protected boolean searchTech1Pos(int y, int x, int [][] gridNumber, Grid route, int size, LinkedList<Coordinates> listCoord) {

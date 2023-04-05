@@ -92,10 +92,10 @@ public class PuzzleSave {
         if (solution != null)
             for (Solution.SaveEdge edge : solution.getEdgeList()) {
                 switch (edge.direction) {
-                    case "T" -> g.getCell(edge.column, edge.row).getTop().setType(EdgeType.LINE);
-                    case "B" -> g.getCell(edge.column, edge.row).getBottom().setType(EdgeType.LINE);
-                    case "L" -> g.getCell(edge.column, edge.row).getLeft().setType(EdgeType.LINE);
-                    case "R" -> g.getCell(edge.column, edge.row).getRight().setType(EdgeType.LINE);
+                    case "T" -> g.getCell(edge.row, edge.column).getTop().setType(EdgeType.LINE);
+                    case "B" -> g.getCell(edge.row, edge.column).getBottom().setType(EdgeType.LINE);
+                    case "L" -> g.getCell(edge.row, edge.column).getLeft().setType(EdgeType.LINE);
+                    case "R" -> g.getCell(edge.row, edge.column).getRight().setType(EdgeType.LINE);
                 }
             }
         return g;

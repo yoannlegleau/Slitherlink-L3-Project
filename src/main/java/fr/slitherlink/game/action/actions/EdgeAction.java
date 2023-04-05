@@ -48,19 +48,19 @@ public class EdgeAction extends GameAction {
 
     @Override
     public void doAction(Game game) {
-        Edge curent = game.getCurrentGrid().getCell(x, y).getTop();
+        Edge curent = game.getCurrentGrid().getCell(y, x).getTop();
         switch (t){
             case "T":
-                curent = game.getCurrentGrid().getCell(x, y).getTop();
+                curent = game.getCurrentGrid().getCell(y, x).getTop();
                 break;
             case "R":
-                curent = game.getCurrentGrid().getCell(x, y).getRight();
+                curent = game.getCurrentGrid().getCell(y, x).getRight();
                 break;
             case "B":
-                curent = game.getCurrentGrid().getCell(x, y).getBottom();
+                curent = game.getCurrentGrid().getCell(y, x).getBottom();
                 break;
             case "L":
-                curent = game.getCurrentGrid().getCell(x, y).getLeft();
+                curent = game.getCurrentGrid().getCell(y, x).getLeft();
                 break;
         }
         curent.setType(type);
