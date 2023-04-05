@@ -2,63 +2,7 @@
 <gameSave id="1">
     <action type="SET_LINE">
         <x>0</x>
-        <y>1</y>
-        <t>T</t>
-    </action>
-    <action type="SET_LINE" canceled="true">
-        <x>0</x>
-        <y>1</y>
-        <t>B</t>
-    </action>
-    <action type="SET_LINE" canceled="true">
-        <x>1</x>
-        <y>1</y>
-        <t>B</t>
-    </action>
-    <action type="UNDO">
-        <target>2</target>
-    </action>
-    <action type="UNDO">
-        <target>1</target>
-    </action>
-    <action type="SET_LINE">
-        <x>0</x>
-        <y>2</y>
-        <t>T</t>
-    </action>
-    <action type="ASSUMPTION_START">
-        <target>7</target>
-        <target>8</target>
-        <target>9</target>
-        <target>10</target>
-    </action>
-    <action type="SET_LINE">
-        <x>0</x>
-        <y>2</y>
-        <t>B</t>
-    </action>
-    <action type="SET_LINE">
-        <x>1</x>
-        <y>2</y>
-        <t>B</t>
-    </action>
-    <action type="SET_LINE">
-        <x>2</x>
-        <y>2</y>
-        <t>B</t>
-    </action>
-    <action type="SET_LINE">
-        <x>2</x>
-        <y>3</y>
-        <t>R</t>
-    </action>
-    <action type="ASSUMPTION_CANCEL" canceled="true" validated="false">
-        <target>6</target>
-    </action>
-    <action type="UNDO">
-        <target>11</target>
-    </action>
-    <action type="ASSUMPTION_VALID" validated="true">
-        <target>6</target>
+        <y>0</y>
+        <t>L</t>
     </action>
 </gameSave>

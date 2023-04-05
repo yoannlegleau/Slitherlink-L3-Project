@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Object représentant les informations stoker d'un puzzle
  * @author LE GLEAU Yoann
  * @version 1, 14/02/2023
  * @version 2, 23/02/2023
@@ -72,9 +73,14 @@ public class PuzzleSave {
 
     @Override
     public String toString() {
-        return this.getClass().toString()+"[id="+id+", name="+ size +"]";
+        return "PuzzleSave{" +
+                "id=" + id +
+                ", size=" + size +
+                ", difficulty=" + difficulty +
+                ", grid=" + grid +
+                ", solution=" + solution +
+                '}';
     }
-
     public void setGrid(Integer[][] grid) {
         this.size = grid.length;
         this.grid = new GridSave(grid);
@@ -106,6 +112,9 @@ public class PuzzleSave {
         solution = new Solution(newGrid);
     }
 
+
+
+
     @XmlRootElement(name = "grid")
     private static class GridSave {
         @XmlElement(name="number")
@@ -115,6 +124,8 @@ public class PuzzleSave {
             super();
             numberList = new ArrayList<>();
         }
+
+
 
         public GridSave(Integer[][] gridNumbers) {
             this();
