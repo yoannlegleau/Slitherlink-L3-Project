@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 
-<technics>
+<ListTechnic>
 
     <technic id="1">
         <title>adjacent 0 et 3</title>
@@ -154,4 +154,4 @@
         Alors,  les deux côtés opposés des 1 sont barrés.</description>
     </technic>
     
-</technics>
+</ListTechnic>

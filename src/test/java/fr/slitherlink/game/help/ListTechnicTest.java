@@ -3,15 +3,24 @@ package fr.slitherlink.game.help;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.BeforeAll;
+
 public class ListTechnicTest {
-    
+    private static ListTechnic listTechnic;
+
+    @BeforeAll
+    static void init(){
+        listTechnic =  ListTechnic.generate();
+    }
+
     @Test
     void getTitle1() {
-        assertTrue(ListTechnic.generate().getTechnic(0).getTitle().equals("adjacent 0 et 3"));
+        assertEquals("adjacent 0 et 3", listTechnic.getTechnic(0).getTitle());
     }
+    
     @Test
     void getTitle25(){
-        assertTrue(ListTechnic.generate().getTechnic(24).getTitle().equals("3 adjacent à deux 1 en diagonale"));
+        assertEquals("3 adjacent à deux 1 en diagonale", listTechnic.getTechnic(24).getTitle());
     } 
 
 }
