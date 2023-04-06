@@ -1,4 +1,4 @@
-package fr.slitherlink.game.help;
+package fr.slitherlink.save.technic;
 
 import java.util.ArrayList;
 import fr.slitherlink.save.XmlResourcesManageur;
@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @version 1, 31/03/2023
  */
 
-@XmlRootElement
+@XmlRootElement(name = "technicList")
 public class ListTechnic {
 
     @XmlTransient
@@ -23,26 +23,26 @@ public class ListTechnic {
     private ArrayList<Technic> listTechnic;
 
     private ListTechnic() {
-        loadTechnics();
-    }
-
-    public static ListTechnic generate() {
-        if (instance == null) {
-            instance = new ListTechnic();
-        }
-        return instance;
-    }
-
-    public void loadTechnics(){
         try {
-            instance = (ListTechnic) XmlResourcesManageur.concertXmlToJava(ListTechnic.class, "technics/technicsList");
+            instance = (ListTechnic) XmlResourcesManageur.concertXmlToJava(ListTechnic.class, "technic/technicList");
         } catch (JAXBException e) {
             throw new RuntimeException(e);
         }
     }
 
+    public static synchronized ListTechnic generate() {
+        if (instance == null)
+            new ListTechnic();
+        return instance;
+    }
+
     public Technic getTechnic(int id){
         return listTechnic.get(id);
+    }
+
+    public static void main(String[] args) {
+        ListTechnic listTechnic = ListTechnic.generate();
+        System.out.println(listTechnic.getTechnic(0).getTitle());
     }
 
 }

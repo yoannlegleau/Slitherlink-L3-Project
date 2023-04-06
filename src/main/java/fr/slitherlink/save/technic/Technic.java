@@ -1,4 +1,4 @@
-package fr.slitherlink.game.help;
+package fr.slitherlink.save.technic;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlAttribute;
  * @author Bruneau Antoine
  * @version 1, 23/02/2023
  */
-@XmlRootElement
+@XmlRootElement(name = "technic")
 public class Technic {
 
     @XmlAttribute(name = "title")
@@ -16,9 +16,8 @@ public class Technic {
     @XmlAttribute(name = "description")
     private String desc;
 
-    public Technic(String title, String desc) {
-        this.title = title;
-        this.desc = desc;
+    public Technic() {
+        super();
     }
 
     public String getTitle() {

@@ -1,6 +1,9 @@
 package fr.slitherlink.game.help;
 
 import org.junit.jupiter.api.Test;
+
+import fr.slitherlink.save.technic.ListTechnic;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeAll;

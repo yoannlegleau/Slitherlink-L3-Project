@@ -3,6 +3,7 @@ package fr.slitherlink.game.help;
 import java.util.List;
 
 import fr.slitherlink.game.grid.Coordinates;
+import fr.slitherlink.save.technic.Technic;
 /**
  * Classe représentant une aide demandée par le joueur
  * @author Bruneau Antoine

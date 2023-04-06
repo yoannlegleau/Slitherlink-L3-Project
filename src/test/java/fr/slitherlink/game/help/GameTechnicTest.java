@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import fr.slitherlink.save.technic.Technic;
+
 public class GameTechnicTest {
 
     private static Technic technic;
