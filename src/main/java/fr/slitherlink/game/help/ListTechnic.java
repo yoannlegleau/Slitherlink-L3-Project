@@ -3,6 +3,9 @@ package fr.slitherlink.game.help;
 import java.util.ArrayList;
 import fr.slitherlink.save.XmlResourcesManageur;
 import javax.xml.bind.JAXBException;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  * Classe stockant les techniques de résolution
@@ -10,9 +13,13 @@ import javax.xml.bind.JAXBException;
  * @version 1, 31/03/2023
  */
 
+@XmlRootElement
 public class ListTechnic {
 
+    @XmlTransient
     private static ListTechnic instance = null;
+
+    @XmlElement(name = "technic")
     private ArrayList<Technic> listTechnic;
 
     private ListTechnic() {
