@@ -28,10 +28,14 @@ public class ListTechnic {
 
     public void loadTechnics(){
         try {
-            this.listTechnic = (ArrayList<Technic>) XmlResourcesManageur.concertXmlToJava(ArrayList<Technic>.class, "technics/technicsList");
+            instance = (ListTechnic) XmlResourcesManageur.concertXmlToJava(ListTechnic.class, "technics/technicsList");
         } catch (JAXBException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public Technic getTechnic(int id){
+        return listTechnic.get(id);
     }
 
 }
