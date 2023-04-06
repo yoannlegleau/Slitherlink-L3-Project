@@ -1097,7 +1097,7 @@ public class GameApplicableTechnicTest {
         grid = new Grid(4);
         gridNumber = new int[4][4];
         gridNumber[1][1] = 2;
-        gridNumber[2][2] = 2;
+        gridNumber[2][2] = 2; // 2 de référence
         grid.getCell(1, 0).getTop().setType(EdgeType.CROSS);
         grid.getCell(2, 3).getBottom().setType(EdgeType.CROSS);
         grid.getCell(3, 2).getRight().setType(EdgeType.LINE);
@@ -1114,7 +1114,7 @@ public class GameApplicableTechnicTest {
         grid = new Grid(4);
         gridNumber = new int[4][4];
         gridNumber[1][1] = 2;
-        gridNumber[2][2] = 2;
+        gridNumber[2][2] = 2; // 2 de référence
         grid.getCell(1, 0).getTop().setType(EdgeType.CROSS);
         grid.getCell(2, 3).getBottom().setType(EdgeType.LINE);
         grid.getCell(3, 2).getRight().setType(EdgeType.CROSS);
@@ -1132,7 +1132,7 @@ public class GameApplicableTechnicTest {
         grid = new Grid(4);
         gridNumber = new int[4][4];
         gridNumber[1][1] = 2;
-        gridNumber[2][2] = 2;
+        gridNumber[2][2] = 2; // 2 de référence
         grid.getCell(0, 1).getLeft().setType(EdgeType.CROSS);
         grid.getCell(2, 3).getBottom().setType(EdgeType.CROSS);
         grid.getCell(3, 2).getRight().setType(EdgeType.LINE);
@@ -1149,7 +1149,7 @@ public class GameApplicableTechnicTest {
         grid = new Grid(4);
         gridNumber = new int[4][4];
         gridNumber[1][1] = 2;
-        gridNumber[2][2] = 2;
+        gridNumber[2][2] = 2; // 2 de référence
         grid.getCell(0, 1).getLeft().setType(EdgeType.CROSS);
         grid.getCell(2, 3).getBottom().setType(EdgeType.LINE);
         grid.getCell(3, 2).getRight().setType(EdgeType.CROSS);
@@ -1162,7 +1162,7 @@ public class GameApplicableTechnicTest {
         grid = new Grid(4);
         gridNumber = new int[4][4];
         gridNumber[1][1] = 2;
-        gridNumber[2][2] = 2;
+        gridNumber[2][2] = 2; // 2 de référence
         grid.getCell(0, 1).getLeft().setType(EdgeType.CROSS);
         grid.getCell(2, 3).getBottom().setType(EdgeType.LINE);
         assertFalse(apTech.searchTech16PosNW(2,2,gridNumber,grid,grid.getSize(),listCoord));
@@ -1181,10 +1181,75 @@ public class GameApplicableTechnicTest {
         grid = new Grid(4);
         gridNumber = new int[4][4];
         gridNumber[1][2] = 2;
-        gridNumber[2][1] = 2;
+        gridNumber[2][1] = 2; // 2 de référence
         grid.getCell(1, 3).getTop().setType(EdgeType.CROSS);
-        grid.getCell(1, 0).getTop().setType(EdgeType.CROSS);
+        grid.getCell(2, 0).getBottom().setType(EdgeType.CROSS);
         grid.getCell(3, 1).getLeft().setType(EdgeType.LINE);
         assertTrue(apTech.searchTech16PosNE(2,1,gridNumber,grid,grid.getSize(),listCoord));
     }
+
+    @Test
+    /*     x
+     *    2
+     *  _2 <-- 2 de référence
+     *   x
+     */
+    void getSearchTech16PosNE2() {
+        grid = new Grid(4);
+        gridNumber = new int[4][4];
+        gridNumber[1][2] = 2;
+        gridNumber[2][1] = 2; // 2 de référence
+        grid.getCell(1, 3).getTop().setType(EdgeType.CROSS);
+        grid.getCell(2, 0).getBottom().setType(EdgeType.LINE);
+        grid.getCell(3, 1).getLeft().setType(EdgeType.CROSS);
+        assertTrue(apTech.searchTech16PosNE(2,1,gridNumber,grid,grid.getSize(),listCoord));
+    }
+
+    @Test
+    /*    x
+     *    2
+     *   2 <-- 2 de référence
+     * x
+     *  |
+     */
+    void getSearchTech16PosNE3() {
+        grid = new Grid(4);
+        gridNumber = new int[4][4];
+        gridNumber[1][2] = 2;
+        gridNumber[2][1] = 2; // 2 de référence
+        grid.getCell(0, 2).getRight().setType(EdgeType.CROSS);
+        grid.getCell(2, 0).getBottom().setType(EdgeType.CROSS);
+        grid.getCell(3, 1).getLeft().setType(EdgeType.LINE);
+        assertTrue(apTech.searchTech16PosNE(2,1,gridNumber,grid,grid.getSize(),listCoord));
+    }
+
+    @Test
+    /*    x
+     *    2
+     *  _2 <-- 2 de référence
+     *   x
+     */
+    void getSearchTech16PosNE4() {
+        grid = new Grid(4);
+        gridNumber = new int[4][4];
+        gridNumber[1][2] = 2;
+        gridNumber[2][1] = 2; // 2 de référence
+        grid.getCell(0, 2).getRight().setType(EdgeType.CROSS);
+        grid.getCell(2, 0).getBottom().setType(EdgeType.LINE);
+        grid.getCell(3, 1).getLeft().setType(EdgeType.CROSS);
+        assertTrue(apTech.searchTech16PosNE(2,1,gridNumber,grid,grid.getSize(),listCoord));
+    }
+
+    @Test
+    /* retourne faux */
+    void getSearchTech16PosNE5() {
+        grid = new Grid(4);
+        gridNumber = new int[4][4];
+        gridNumber[1][2] = 2;
+        gridNumber[2][1] = 2; // 2 de référence
+        grid.getCell(0, 2).getRight().setType(EdgeType.CROSS);
+        grid.getCell(2, 0).getBottom().setType(EdgeType.LINE);
+        assertFalse(apTech.searchTech16PosNE(2,1,gridNumber,grid,grid.getSize(),listCoord));
+    }
+
 }
