@@ -12,6 +12,22 @@
         <number column="3" row="3">1</number>
     </grid>
     <solution>
-        <number column="0" row="0">R</number>
+        <edge column="0" row="0">B</edge>
+        <edge column="1" row="0">R</edge>
+        <edge column="1" row="0">B</edge>
+        <edge column="2" row="0">T</edge>
+        <edge column="2" row="0">R</edge>
+        <edge column="3" row="0">B</edge>
+        <edge column="0" row="1">L</edge>
+        <edge column="3" row="1">R</edge>
+        <edge column="3" row="1">B</edge>
+        <edge column="0" row="2">L</edge>
+        <edge column="0" row="2">B</edge>
+        <edge column="2" row="2">R</edge>
+        <edge column="0" row="3">R</edge>
+        <edge column="1" row="3">B</edge>
+        <edge column="2" row="3">R</edge>
+        <edge column="2" row="3">B</edge>
     </solution>
+    <difficulty>UNKNOWN</difficulty>
 </puzzleSave>

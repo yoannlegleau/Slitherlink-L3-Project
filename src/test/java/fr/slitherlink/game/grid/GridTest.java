@@ -16,17 +16,19 @@ class GridTest {
 
     @BeforeAll
     static void setUp() {
-        grid = new Grid(3);
-        grid2 = new Grid(3); // equals to grid 1
+        grid = new Grid(1);
+        grid2 = new Grid(1); // equals to grid 1
 
         grid.getCell(0,0).getRight().setType(EdgeType.LINE);
         grid2.getCell(0,0).getRight().setType(EdgeType.LINE);
+
 
     }
 
     @Test
     void testEquals() {
         assertTrue(grid.equals(grid2));
-        assertFalse(grid.equals(new Grid(4)));
+        grid2.getCell(0,0).getBottom().setType(EdgeType.LINE);
+        assertFalse(grid.equals(grid2));
     }
 }

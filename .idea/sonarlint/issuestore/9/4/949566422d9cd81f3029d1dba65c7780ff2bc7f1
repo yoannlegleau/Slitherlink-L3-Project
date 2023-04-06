@@ -1,0 +1,9 @@
+
+)
+java:S1700	"Rename field "grid"(ÑÁÁ‘
+f
+java:S1206%"PThis class overrides "equals()" and should therefore also override "hashCode()".(ÜÑã
+5
+java:S2097%"Add a type test to this method.(ÜÑã
+T
+java:S1117("7Rename "grid" which hides the field declared at line 9.(ËŸôÆ8€€¥íğ0

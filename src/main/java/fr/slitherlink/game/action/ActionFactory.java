@@ -1,6 +1,6 @@
 package fr.slitherlink.game.action;
 
-import fr.slitherlink.game.grid.Edge;
+import fr.slitherlink.game.action.actions.*;
 import fr.slitherlink.game.grid.EdgeType;
 
 /**
@@ -21,5 +21,26 @@ public  interface ActionFactory {
         return new EdgeAction(x, y, t , EdgeType.EMPTY);
     }
 
+    static GameAction undo(){
+        return new UndoAction();
+    }
+
+    static GameAction redo(){
+        return new RedoAction();
+    }
+
+    static GameAction hint(){return new HintAction();}
+
+    static GameAction assumptionStart(){
+        return new AssumptionStart();
+    }
+
+    static GameAction assumptionValid(){
+        return new AssumptionStop(true);
+    }
+
+    static GameAction assumptionCancel(){
+        return new AssumptionStop(false);
+    }
 
 }
