@@ -9,8 +9,8 @@ module fr.slitherlink {
     exports fr.slitherlink.app;
     exports fr.slitherlink.app.fx_controlleur;
     opens fr.slitherlink.app.fx_controlleur to javafx.fxml;
-    exports fr.slitherlink.app.component;
-    opens fr.slitherlink.app.component to javafx.fxml;
+    exports fr.slitherlink.app.fx_controlleur.component;
+    opens fr.slitherlink.app.fx_controlleur.component to javafx.fxml;
     exports fr.slitherlink.game;
     opens fr.slitherlink.game to javafx.fxml;
     opens fr.slitherlink.save.puzzle to java.xml.bind;
