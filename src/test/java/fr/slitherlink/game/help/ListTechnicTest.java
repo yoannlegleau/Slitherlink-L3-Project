@@ -1,19 +1,19 @@
 package fr.slitherlink.game.help;
 
-import org.junit.jupiter.api.Test;
-
 import fr.slitherlink.save.technic.ListTechnic;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 public class ListTechnicTest {
+
     private static ListTechnic listTechnic;
 
     @BeforeAll
-    static void init(){
-        listTechnic =  ListTechnic.generate();
+    static void createListTechnic(){
+        listTechnic = ListTechnic.getInstance();
+        assertNotNull(listTechnic);
     }
 
     @Test

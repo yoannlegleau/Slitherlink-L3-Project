@@ -1,7 +1,9 @@
 package fr.slitherlink.save.technic;
 
 import java.util.ArrayList;
+
 import fr.slitherlink.save.XmlResourcesManageur;
+
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlElement;
@@ -12,7 +14,6 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Bruneau Antoine
  * @version 1, 31/03/2023
  */
-
 @XmlRootElement(name = "technicList")
 public class ListTechnic {
 
@@ -22,27 +23,31 @@ public class ListTechnic {
     @XmlElement(name = "technic")
     private ArrayList<Technic> listTechnic;
 
-    private ListTechnic() {
-        try {
-            instance = (ListTechnic) XmlResourcesManageur.concertXmlToJava(ListTechnic.class, "technic/technicList");
-        } catch (JAXBException e) {
-            throw new RuntimeException(e);
-        }
+    /**
+     * Constructeur vide pour JAXB
+     * utilisable uniquement pour la génération du fichier XML
+     */ 
+    public ListTechnic() {
+        super();
+        listTechnic = new ArrayList<>();
     }
 
-    public static synchronized ListTechnic generate() {
+    /**
+     * Constructeur de la classe (singleton)
+     * @return une instance de la classe contenant les informations des techniques 
+     */
+    public static ListTechnic getInstance() {
         if (instance == null)
-            new ListTechnic();
+            try {
+                instance = (ListTechnic) XmlResourcesManageur.concertXmlToJava(ListTechnic.class, "technic/technicList");
+            } catch (JAXBException e) {
+                throw new RuntimeException(e);
+            }
         return instance;
     }
 
     public Technic getTechnic(int id){
         return listTechnic.get(id);
-    }
-
-    public static void main(String[] args) {
-        ListTechnic listTechnic = ListTechnic.generate();
-        System.out.println(listTechnic.getTechnic(0).getTitle());
     }
 
 }

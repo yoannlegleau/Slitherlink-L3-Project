@@ -1,7 +1,7 @@
 package fr.slitherlink.save.technic;
 
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
 
 /**
  * Classe représentant les informations d'une technique
@@ -11,11 +11,15 @@ import javax.xml.bind.annotation.XmlAttribute;
 @XmlRootElement(name = "technic")
 public class Technic {
 
-    @XmlAttribute(name = "title")
+    @XmlElement(name = "title")
     private String title;
-    @XmlAttribute(name = "description")
+    @XmlElement(name = "description")
     private String desc;
 
+    /**
+     * Constructeur vide pour JAXB
+     * utilisable uniquement pour la génération du fichier XML
+     */
     public Technic() {
         super();
     }
