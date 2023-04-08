@@ -46,8 +46,8 @@ public class ListTechnic {
         return instance;
     }
 
-    public Technic getTechnic(int id){
-        return listTechnic.get(id);
+    public Technic getTechnic(int num){
+        return listTechnic.get(num-1);
     }
 
 }

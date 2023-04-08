@@ -2,12 +2,10 @@ package fr.slitherlink.game.help;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.LinkedList;
-
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import fr.slitherlink.game.grid.Coordinates;
 import fr.slitherlink.game.grid.EdgeType;
 import fr.slitherlink.game.grid.Grid;
 
@@ -19,13 +17,19 @@ import fr.slitherlink.game.grid.Grid;
 public class GameApplicableTechnicTest {
 
     private static Grid grid;
-    private static int[][] gridNumber;
-    private static LinkedList<Coordinates> listCoord;
+    private static Integer[][] gridNumber;
+    private static ApplicableTechnic appTech;
     
+    @BeforeAll
+    static void createApplicableTechnic(){
+        appTech = ApplicableTechnic.getInstance();
+        assertNotNull(appTech);
+    }
+
     @BeforeEach
     void initApplicableTechnic(){
         grid = new Grid(3);
-        gridNumber = new int[3][3];
+        gridNumber = new Integer[3][3];
     }
 
     /* Tests [Technique 0 & 3 adjacents]
@@ -37,7 +41,7 @@ public class GameApplicableTechnicTest {
     void getSearchTech1Pos1() {
         gridNumber[0][1] = 0;
         gridNumber[0][0] = 3;
-        assertNotNull(ApplicableTechnic.searchTech1Pos(0,1,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(1, 0, 1, gridNumber, grid, grid.getSize()));
     }
 
     @Test
@@ -45,7 +49,7 @@ public class GameApplicableTechnicTest {
     void getSearchTech1Pos2() {
         gridNumber[0][0] = 0;
         gridNumber[0][1] = 3;
-        assertNotNull(ApplicableTechnic.searchTech1Pos(0,0,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(1, 0,0,gridNumber,grid,grid.getSize()));
     }
 
     @Test
@@ -55,7 +59,7 @@ public class GameApplicableTechnicTest {
     void getSearchTech1Pos3() {
         gridNumber[1][0] = 0;
         gridNumber[0][0] = 3;
-        assertNotNull(ApplicableTechnic.searchTech1Pos(0,1,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(1, 1,0,gridNumber,grid,grid.getSize()));
     }
 
     @Test
@@ -65,7 +69,7 @@ public class GameApplicableTechnicTest {
     void getSearchTech1Pos4() {
         gridNumber[1][1] = 0;
         gridNumber[2][1] = 3;
-        assertNotNull(ApplicableTechnic.searchTech1Pos(1,1,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(1, 1,1,gridNumber,grid,grid.getSize()));
     }
 
     @Test
@@ -73,7 +77,7 @@ public class GameApplicableTechnicTest {
     void getSearchTech1Pos5() {
         gridNumber[0][2] = 0;
         gridNumber[0][0] = 3;
-        assertNull(ApplicableTechnic.searchTech1Pos(0,2,gridNumber,grid,grid.getSize()));
+        assertNull(appTech.searchTech(1, 0,2,gridNumber,grid,grid.getSize()));
     }
 
     /* Tests [Technique 0 & 3 diagonaux] 
@@ -87,7 +91,7 @@ public class GameApplicableTechnicTest {
     void getSearchTech2Pos1() {
         gridNumber[1][1] = 0;
         gridNumber[0][0] = 3;
-        assertNotNull(ApplicableTechnic.searchTech2Pos(1,1,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(2, 1,1,gridNumber,grid,grid.getSize()));
     }
 
     @Test
@@ -97,7 +101,7 @@ public class GameApplicableTechnicTest {
     void getSearchTech2Pos2() {
         gridNumber[1][1] = 0;
         gridNumber[0][2] = 3;
-        assertNotNull(ApplicableTechnic.searchTech2Pos(1,1,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(2, 1,1,gridNumber,grid,grid.getSize()));
     }
 
     @Test
@@ -107,7 +111,7 @@ public class GameApplicableTechnicTest {
     void getSearchTech2Pos3() {
         gridNumber[1][1] = 0;
         gridNumber[2][0] = 3;
-        assertNotNull(ApplicableTechnic.searchTech2Pos(1,1,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(2, 1,1,gridNumber,grid,grid.getSize()));
     }
 
     @Test
@@ -117,7 +121,7 @@ public class GameApplicableTechnicTest {
     void getSearchTech2Pos4() {
         gridNumber[1][1] = 0;
         gridNumber[2][2] = 3;
-        assertNotNull(ApplicableTechnic.searchTech2Pos(1,1,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(2, 1,1,gridNumber,grid,grid.getSize()));
     }
 
     @Test
@@ -125,7 +129,7 @@ public class GameApplicableTechnicTest {
     void getSearchTech2Pos5() {
         gridNumber[1][1] = 0;
         gridNumber[0][1] = 3;
-        assertNull(ApplicableTechnic.searchTech2Pos(1,1,gridNumber,grid,grid.getSize()));
+        assertNull(appTech.searchTech(2, 1,1,gridNumber,grid,grid.getSize()));
     }
 
     /* Tests [Technique 3 & 3 adjacents] */
@@ -136,7 +140,7 @@ public class GameApplicableTechnicTest {
     void getSearchTech3Pos1() {
         gridNumber[0][0] = 3; // 3 de référence
         gridNumber[0][1] = 3;
-        assertNotNull(ApplicableTechnic.searchTech3Pos(0,0,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(3, 0,0,gridNumber,grid,grid.getSize()));
     }
 
     @Test
@@ -146,7 +150,7 @@ public class GameApplicableTechnicTest {
     void getSearchTech3Pos2() {
         gridNumber[0][0] = 3; // 3 de référence
         gridNumber[1][0] = 3;
-        assertNotNull(ApplicableTechnic.searchTech3Pos(0,0,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(3, 0,0,gridNumber,grid,grid.getSize()));
     }
 
     @Test
@@ -154,7 +158,7 @@ public class GameApplicableTechnicTest {
     void getSearchTech3Pos3() {
         gridNumber[0][0] = 3;
         gridNumber[2][1] = 3;
-        assertNull(ApplicableTechnic.searchTech3Pos(0,0,gridNumber,grid,grid.getSize()));
+        assertNull(appTech.searchTech(3, 0,0,gridNumber,grid,grid.getSize()));
     }
 
     /* Tests [Technique 3 & 3 diagonaux] */
@@ -166,7 +170,7 @@ public class GameApplicableTechnicTest {
     void getSearchTech4Pos1() {
         gridNumber[0][1] = 3; // 3 de référence
         gridNumber[1][0] = 3;
-        assertNotNull(ApplicableTechnic.searchTech4Pos(0,1,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(4, 0,1,gridNumber,grid,grid.getSize()));
     }
 
     @Test
@@ -176,7 +180,7 @@ public class GameApplicableTechnicTest {
     void getSearchTech4Pos2() {
         gridNumber[0][0] = 3; // 3 de référence
         gridNumber[1][1] = 3;
-        assertNotNull(ApplicableTechnic.searchTech4Pos(0,0,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(4, 0,0,gridNumber,grid,grid.getSize()));
     }
 
     @Test
@@ -184,7 +188,7 @@ public class GameApplicableTechnicTest {
     void getSearchTech4Pos3() {
         gridNumber[0][0] = 3;
         gridNumber[2][1] = 3;
-        assertNull(ApplicableTechnic.searchTech4Pos(0,0,gridNumber,grid,grid.getSize()));
+        assertNull(appTech.searchTech(4, 0,0,gridNumber,grid,grid.getSize()));
     }
 
     /* Tests [Coin d'un 2 tracé] */
@@ -197,7 +201,7 @@ public class GameApplicableTechnicTest {
         gridNumber[1][1] = 2;
         grid.getCell(0, 0).getBottom().setType(EdgeType.LINE);
         grid.getCell(0, 0).getRight().setType(EdgeType.LINE);
-        assertNotNull(ApplicableTechnic.searchTech5Pos(1,1,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(5, 1,1,gridNumber,grid,grid.getSize()));
     }
 
     @Test
@@ -208,7 +212,7 @@ public class GameApplicableTechnicTest {
         gridNumber[0][1] = 2;
         grid.getCell(1, 0).getTop().setType(EdgeType.LINE);
         grid.getCell(1, 0).getRight().setType(EdgeType.LINE);
-        assertNotNull(ApplicableTechnic.searchTech5Pos(0,1,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(5, 0,1,gridNumber,grid,grid.getSize()));
     }
 
     @Test
@@ -219,7 +223,7 @@ public class GameApplicableTechnicTest {
         gridNumber[1][0] = 2;
         grid.getCell(0,1).getBottom().setType(EdgeType.LINE);
         grid.getCell(0,1).getLeft().setType(EdgeType.LINE);
-        assertNotNull(ApplicableTechnic.searchTech5Pos(1,0,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(5, 1,0,gridNumber,grid,grid.getSize()));
     }
 
     @Test
@@ -230,14 +234,14 @@ public class GameApplicableTechnicTest {
         gridNumber[0][0] = 2;
         grid.getCell(1,1).getTop().setType(EdgeType.LINE);
         grid.getCell(1,1).getLeft().setType(EdgeType.LINE);
-        assertNotNull(ApplicableTechnic.searchTech5Pos(0,0,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(5, 0,0,gridNumber,grid,grid.getSize()));
     }
 
     @Test
     /* retourne faux */
     void getSearchTech5Pos5() {
         gridNumber[0][0] = 2;
-        assertNull(ApplicableTechnic.searchTech5Pos(0,0,gridNumber,grid,grid.getSize()));
+        assertNull(appTech.searchTech(5, 0,0,gridNumber,grid,grid.getSize()));
     }
 
     /* Tests [2 en coin] */
@@ -246,35 +250,35 @@ public class GameApplicableTechnicTest {
     /* 2 en haut à gauche */
     void getSearchTech6Pos1() {
         gridNumber[0][0] = 2;
-        assertNotNull(ApplicableTechnic.searchTech6Pos(0,0,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(6, 0,0,gridNumber,grid,grid.getSize()));
     }
 
     @Test
     /* 2 en haut à droite */
     void getSearchTech6Pos2() {
         gridNumber[0][2] = 2;
-        assertNotNull(ApplicableTechnic.searchTech6Pos(0,2,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(6, 0,2,gridNumber,grid,grid.getSize()));
     }
 
     @Test
     /* 2 en bas à gauche */
     void getSearchTech6Pos3() {
         gridNumber[2][0] = 2;
-        assertNotNull(ApplicableTechnic.searchTech6Pos(2,0,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(6, 2,0,gridNumber,grid,grid.getSize()));
     }
 
     @Test
     /* 2 en bas à droite */
     void getSearchTech6Pos4() {
         gridNumber[2][2] = 2;
-        assertNotNull(ApplicableTechnic.searchTech6Pos(2,2,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(6, 2,2,gridNumber,grid,grid.getSize()));
     }
 
     @Test
     /* retourne faux */
     void getSearchTech6Pos5() {
         gridNumber[0][1] = 2;
-        assertNull(ApplicableTechnic.searchTech6Pos(0,1,gridNumber,grid,grid.getSize()));
+        assertNull(appTech.searchTech(6, 0,1,gridNumber,grid,grid.getSize()));
     }
 
     /* Tests [3 en coin] */
@@ -283,35 +287,35 @@ public class GameApplicableTechnicTest {
     /* 3 en haut à gauche */
     void getSearchTech7Pos1() {
         gridNumber[0][0] = 3;
-        assertNotNull(ApplicableTechnic.searchTech7Pos(0,0,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(7, 0,0,gridNumber,grid,grid.getSize()));
     }
 
     @Test
     /* 3 en haut à droite */
     void getSearchTech7Pos2() {
         gridNumber[0][2] = 3;
-        assertNotNull(ApplicableTechnic.searchTech7Pos(0,2,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(7, 0,2,gridNumber,grid,grid.getSize()));
     }
 
     @Test
     /* 3 en bas à gauche */
     void getSearchTech7Pos3() {
         gridNumber[2][0] = 3;
-        assertNotNull(ApplicableTechnic.searchTech7Pos(2,0,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(7, 2,0,gridNumber,grid,grid.getSize()));
     }
 
     @Test
     /* 3 en bas à droite */
     void getSearchTech7Pos4() {
         gridNumber[2][2] = 3;
-        assertNotNull(ApplicableTechnic.searchTech7Pos(2,2,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(7, 2,2,gridNumber,grid,grid.getSize()));
     }
 
     @Test
     /* retourne faux */
     void getSearchTech7Pos5() {
         gridNumber[0][1] = 3;
-        assertNull(ApplicableTechnic.searchTech7Pos(0,1,gridNumber,grid,grid.getSize()));
+        assertNull(appTech.searchTech(7, 0,1,gridNumber,grid,grid.getSize()));
     }
 
     /* Tests [3 & 3 diagnonaux avec des 2 entre] */
@@ -369,12 +373,12 @@ public class GameApplicableTechnicTest {
      */
     void getSearchTech8Pos1(){
         grid = new Grid(4);
-        gridNumber = new int[4][4];
+        gridNumber = new Integer[4][4];
         gridNumber[0][0] = 3;
         gridNumber[1][1] = 2;
         gridNumber[2][2] = 2;
         gridNumber[3][3] = 3;
-        assertNotNull(ApplicableTechnic.searchTech8Pos(0,0,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(8, 0,0,gridNumber,grid,grid.getSize()));
     }
 
     /* Test avec la direction Sud-Ouest */
@@ -386,24 +390,24 @@ public class GameApplicableTechnicTest {
      */
     void getSearchTech8Pos2(){
         grid = new Grid(4);
-        gridNumber = new int[4][4];
+        gridNumber = new Integer[4][4];
         gridNumber[0][3] = 3;
         gridNumber[1][2] = 2;
         gridNumber[2][1] = 2;
         gridNumber[3][0] = 3;
-        assertNotNull(ApplicableTechnic.searchTech8Pos(0,3,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(8, 0,3,gridNumber,grid,grid.getSize()));
     }
 
     @Test
     /* retourne faux */
     void getSearchTech8Pos3(){
         grid = new Grid(4);
-        gridNumber = new int[4][4];
+        gridNumber = new Integer[4][4];
         gridNumber[0][0] = 3;
         gridNumber[1][1] = 2;
         gridNumber[2][2] = 2;
         gridNumber[3][2] = 3;
-        assertNull(ApplicableTechnic.searchTech8Pos(0,0,gridNumber,grid,grid.getSize()));
+        assertNull(appTech.searchTech(8, 0,0,gridNumber,grid,grid.getSize()));
     }
 
     /* Tests [Coin d'un 3 barré] */
@@ -416,7 +420,7 @@ public class GameApplicableTechnicTest {
         gridNumber[1][1] = 3;
         grid.getCell(0, 0).getBottom().setType(EdgeType.CROSS);
         grid.getCell(0, 0).getRight().setType(EdgeType.CROSS);
-        assertNotNull(ApplicableTechnic.searchTech9Pos(1,1,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(9, 1,1,gridNumber,grid,grid.getSize()));
     }
 
     @Test
@@ -427,7 +431,7 @@ public class GameApplicableTechnicTest {
         gridNumber[0][1] = 3;
         grid.getCell(1,0).getTop().setType(EdgeType.CROSS);
         grid.getCell(1,0).getRight().setType(EdgeType.CROSS);
-        assertNotNull(ApplicableTechnic.searchTech9Pos(0,1,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(9, 0,1,gridNumber,grid,grid.getSize()));
     }
 
     @Test
@@ -438,7 +442,7 @@ public class GameApplicableTechnicTest {
         gridNumber[1][0] = 3;
         grid.getCell(0,1).getBottom().setType(EdgeType.CROSS);
         grid.getCell(0,1).getLeft().setType(EdgeType.CROSS);
-        assertNotNull(ApplicableTechnic.searchTech9Pos(1,0,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(9, 1,0,gridNumber,grid,grid.getSize()));
     }
 
     @Test
@@ -449,7 +453,7 @@ public class GameApplicableTechnicTest {
         gridNumber[0][0] = 3;
         grid.getCell(1, 1).getTop().setType(EdgeType.CROSS);
         grid.getCell(1, 1).getLeft().setType(EdgeType.CROSS);
-        assertNotNull(ApplicableTechnic.searchTech9Pos(0,0,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(9, 0,0,gridNumber,grid,grid.getSize()));
     }
 
     @Test
@@ -457,7 +461,7 @@ public class GameApplicableTechnicTest {
     void getSearchTech9Pos5() {
         gridNumber[0][0] = 3;
         grid.getCell(1, 1).getTop().setType(EdgeType.CROSS);
-        assertNull(ApplicableTechnic.searchTech9Pos(0,0,gridNumber,grid,grid.getSize()));
+        assertNull(appTech.searchTech(9, 0,0,gridNumber,grid,grid.getSize()));
     }
 
     /* Tests [3 atteint] */
@@ -469,7 +473,7 @@ public class GameApplicableTechnicTest {
     void getSearchTech10Pos1() {
         gridNumber[1][1] = 3;
         grid.getCell(0, 0).getBottom().setType(EdgeType.LINE);
-        assertNotNull(ApplicableTechnic.searchTech10Pos(1,1,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(10, 1,1,gridNumber,grid,grid.getSize()));
     }
 
     @Test
@@ -479,7 +483,7 @@ public class GameApplicableTechnicTest {
     void getSearchTech10Pos1b() {
         gridNumber[1][1] = 3;
         grid.getCell(0,0).getRight().setType(EdgeType.LINE);
-        assertNotNull(ApplicableTechnic.searchTech10Pos(1,1,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(10, 1,1,gridNumber,grid,grid.getSize()));
     }
 
     @Test
@@ -489,7 +493,7 @@ public class GameApplicableTechnicTest {
     void getSearchTech10Pos2() {
         gridNumber[1][0] = 3;
         grid.getCell(0,1).getBottom().setType(EdgeType.LINE);
-        assertNotNull(ApplicableTechnic.searchTech10Pos(1,0,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(10, 1,0,gridNumber,grid,grid.getSize()));
     }
 
     @Test
@@ -499,7 +503,7 @@ public class GameApplicableTechnicTest {
     void getSearchTech10Pos2b() {
         gridNumber[1][0] = 3;
         grid.getCell(0,1).getLeft().setType(EdgeType.LINE);
-        assertNotNull(ApplicableTechnic.searchTech10Pos(1,0,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(10, 1,0,gridNumber,grid,grid.getSize()));
     }
 
     @Test
@@ -507,7 +511,7 @@ public class GameApplicableTechnicTest {
     void getSearchTech10Pos3() {
         gridNumber[0][1] = 3;
         grid.getCell(1, 0).getTop().setType(EdgeType.LINE);
-        assertNotNull(ApplicableTechnic.searchTech10Pos(0,1,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(10, 0,1,gridNumber,grid,grid.getSize()));
     }
 
     @Test
@@ -517,7 +521,7 @@ public class GameApplicableTechnicTest {
     void getSearchTech10Pos3b() {
         gridNumber[0][1] = 3;
         grid.getCell(1,0).getRight().setType(EdgeType.LINE);
-        assertNotNull(ApplicableTechnic.searchTech10Pos(0,1,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(10, 0,1,gridNumber,grid,grid.getSize()));
     }
 
     @Test
@@ -525,7 +529,7 @@ public class GameApplicableTechnicTest {
     void getSearchTech10Pos4() {
         gridNumber[0][0] = 3;
         grid.getCell(1, 1).getTop().setType(EdgeType.LINE);
-        assertNotNull(ApplicableTechnic.searchTech10Pos(0,0,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(10, 0,0,gridNumber,grid,grid.getSize()));
     }
 
     @Test
@@ -535,14 +539,14 @@ public class GameApplicableTechnicTest {
     void getSearchTech10Pos4b() {
         gridNumber[0][0] = 3;
         grid.getCell(1,1).getLeft().setType(EdgeType.LINE);
-        assertNotNull(ApplicableTechnic.searchTech10Pos(0,0,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(10, 0,0,gridNumber,grid,grid.getSize()));
     }
 
     @Test
     /* retourne faux */
     void getSearchTech10Pos5() {
         gridNumber[0][0] = 3;
-        assertNull(ApplicableTechnic.searchTech10Pos(0,0,gridNumber,grid,grid.getSize()));
+        assertNull(appTech.searchTech(10, 0,0,gridNumber,grid,grid.getSize()));
     }
 
     /* Tests [brochette de 2 atteignant un 3] */
@@ -686,12 +690,12 @@ public class GameApplicableTechnicTest {
      */
     void getSearchTech11Pos5() {
         grid = new Grid(4);
-        gridNumber = new int[4][4];
+        gridNumber = new Integer[4][4];
         gridNumber[0][0] = 3;
         gridNumber[1][1] = 2;
         gridNumber[2][2] = 2;
         grid.getCell(3, 3).getLeft().setType(EdgeType.LINE);
-        assertNotNull(ApplicableTechnic.searchTech11Pos(2,2,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(11, 2,2,gridNumber,grid,grid.getSize()));
     }
 
     /* Test avec la direction Nord-Est */
@@ -703,12 +707,12 @@ public class GameApplicableTechnicTest {
      */
     void getSearchTech11Pos6() {
         grid = new Grid(4);
-        gridNumber = new int[4][4];
+        gridNumber = new Integer[4][4];
         gridNumber[0][3] = 3;
         gridNumber[1][2] = 2;
         gridNumber[2][1] = 2;
         grid.getCell(3, 0).getRight().setType(EdgeType.LINE);
-        assertNotNull(ApplicableTechnic.searchTech11Pos(2,1,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(11, 2,1,gridNumber,grid,grid.getSize()));
     }
 
     /* Test avec la direction Sud-Est */
@@ -720,12 +724,12 @@ public class GameApplicableTechnicTest {
      */
     void getSearchTech11Pos7() {
         grid = new Grid(4);
-        gridNumber = new int[4][4];
+        gridNumber = new Integer[4][4];
         gridNumber[3][3] = 3;
         gridNumber[2][2] = 2;
         gridNumber[1][1] = 2;
         grid.getCell(0, 0).getRight().setType(EdgeType.LINE);
-        assertNotNull(ApplicableTechnic.searchTech11Pos(1,1,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(11, 1,1,gridNumber,grid,grid.getSize()));
     }
 
     /* Test avec la direction Sud-Ouest */
@@ -737,23 +741,23 @@ public class GameApplicableTechnicTest {
      */
     void getSearchTech11Pos8() {
         grid = new Grid(4);
-        gridNumber = new int[4][4];
+        gridNumber = new Integer[4][4];
         gridNumber[3][0] = 3;
         gridNumber[2][1] = 2;
         gridNumber[1][2] = 2;
         grid.getCell(0, 3).getLeft().setType(EdgeType.LINE);
-        assertNotNull(ApplicableTechnic.searchTech11Pos(1,2,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(11, 1,2,gridNumber,grid,grid.getSize()));
     }
 
     @Test
     /* retourne faux */
     void getSearchTech11Pos9() {
         grid = new Grid(4);
-        gridNumber = new int[4][4];
+        gridNumber = new Integer[4][4];
         gridNumber[3][0] = 3;
         gridNumber[2][1] = 2;
         gridNumber[1][2] = 2;
-        assertNull(ApplicableTechnic.searchTech11Pos(1,2,gridNumber,grid,grid.getSize()));
+        assertNull(appTech.searchTech(11, 1,2,gridNumber,grid,grid.getSize()));
     }
 
 
@@ -767,7 +771,7 @@ public class GameApplicableTechnicTest {
         gridNumber[0][0] = 3;
         gridNumber[1][1] = 2;
         grid.getCell(2, 1).getTop().setType(EdgeType.CROSS);
-        assertNotNull(ApplicableTechnic.searchTech12Pos(1,1,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(12, 1,1,gridNumber,grid,grid.getSize()));
     }
 
     @Test
@@ -778,7 +782,7 @@ public class GameApplicableTechnicTest {
         gridNumber[0][0] = 3;
         gridNumber[1][1] = 2;
         grid.getCell(1, 2).getLeft().setType(EdgeType.CROSS);
-        assertNotNull(ApplicableTechnic.searchTech12Pos(1,1,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(12, 1,1,gridNumber,grid,grid.getSize()));
     }
 
     @Test
@@ -789,7 +793,7 @@ public class GameApplicableTechnicTest {
         gridNumber[0][2] = 3;
         gridNumber[1][1] = 2;
         grid.getCell(1, 0).getRight().setType(EdgeType.CROSS);
-        assertNotNull(ApplicableTechnic.searchTech12Pos(1,1,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(12, 1,1,gridNumber,grid,grid.getSize()));
     }
 
     @Test
@@ -801,7 +805,7 @@ public class GameApplicableTechnicTest {
         gridNumber[0][2] = 3;
         gridNumber[1][1] = 2;
         grid.getCell(2, 1).getTop().setType(EdgeType.CROSS);
-        assertNotNull(ApplicableTechnic.searchTech12Pos(1,1,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(12, 1,1,gridNumber,grid,grid.getSize()));
     }
 
     @Test
@@ -812,7 +816,7 @@ public class GameApplicableTechnicTest {
         gridNumber[2][0] = 3;
         gridNumber[1][1] = 2;
         grid.getCell(1, 2).getLeft().setType(EdgeType.CROSS);
-        assertNotNull(ApplicableTechnic.searchTech12Pos(1,1,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(12, 1,1,gridNumber,grid,grid.getSize()));
     }
 
     @Test
@@ -824,7 +828,7 @@ public class GameApplicableTechnicTest {
         gridNumber[2][0] = 3;
         gridNumber[1][1] = 2;
         grid.getCell(0, 1).getBottom().setType(EdgeType.CROSS);
-        assertNotNull(ApplicableTechnic.searchTech12Pos(1,1,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(12, 1,1,gridNumber,grid,grid.getSize()));
     }
 
     @Test
@@ -835,7 +839,7 @@ public class GameApplicableTechnicTest {
         gridNumber[2][2] = 3;
         gridNumber[1][1] = 2;
         grid.getCell(1, 0).getRight().setType(EdgeType.CROSS);
-        assertNotNull(ApplicableTechnic.searchTech12Pos(1,1,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(12, 1,1,gridNumber,grid,grid.getSize()));
     }
 
     @Test
@@ -847,7 +851,7 @@ public class GameApplicableTechnicTest {
         gridNumber[2][2] = 3;
         gridNumber[1][1] = 2;
         grid.getCell(0, 1).getBottom().setType(EdgeType.CROSS);
-        assertNotNull(ApplicableTechnic.searchTech12Pos(1,1,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(12, 1,1,gridNumber,grid,grid.getSize()));
     }
 
     @Test
@@ -855,7 +859,7 @@ public class GameApplicableTechnicTest {
     void getSearchTech12Pos9() {
         gridNumber[2][2] = 3;
         gridNumber[1][1] = 2;
-        assertNull(ApplicableTechnic.searchTech12Pos(1,1,gridNumber,grid,grid.getSize()));
+        assertNull(appTech.searchTech(12, 1,1,gridNumber,grid,grid.getSize()));
     }
 
     /* Tests [3 & 2 adjacents] */
@@ -869,7 +873,7 @@ public class GameApplicableTechnicTest {
         gridNumber[1][1] = 2;
         grid.getCell(1, 0).getTop().setType(EdgeType.CROSS);
         grid.getCell(0, 1).getLeft().setType(EdgeType.CROSS);
-        assertNotNull(ApplicableTechnic.searchTech13Pos(1,1,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(13, 1,1,gridNumber,grid,grid.getSize()));
     }
 
     @Test
@@ -882,7 +886,7 @@ public class GameApplicableTechnicTest {
         gridNumber[1][1] = 2;
         grid.getCell(0, 1).getRight().setType(EdgeType.CROSS);
         grid.getCell(1, 2).getTop().setType(EdgeType.CROSS);
-        assertNotNull(ApplicableTechnic.searchTech13Pos(1,1,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(13, 1,1,gridNumber,grid,grid.getSize()));
     }
 
     @Test
@@ -894,7 +898,7 @@ public class GameApplicableTechnicTest {
         gridNumber[1][1] = 2;
         grid.getCell(1,2).getBottom().setType(EdgeType.CROSS);
         grid.getCell(2,1).getRight().setType(EdgeType.CROSS);
-        assertNotNull(ApplicableTechnic.searchTech13Pos(1,1,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(13, 1,1,gridNumber,grid,grid.getSize()));
     }
 
     @Test
@@ -906,7 +910,7 @@ public class GameApplicableTechnicTest {
         gridNumber[1][1] = 2;
         grid.getCell(0,1).getRight().setType(EdgeType.CROSS);
         grid.getCell(1,2).getTop().setType(EdgeType.CROSS);
-        assertNotNull(ApplicableTechnic.searchTech13Pos(1,1,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(13, 1,1,gridNumber,grid,grid.getSize()));
     }
 
     @Test
@@ -919,7 +923,7 @@ public class GameApplicableTechnicTest {
         gridNumber[1][1] = 2;
         grid.getCell(1, 2).getBottom().setType(EdgeType.CROSS);
         grid.getCell(2, 1).getRight().setType(EdgeType.CROSS);
-        assertNotNull(ApplicableTechnic.searchTech13Pos(1,1,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(13, 1,1,gridNumber,grid,grid.getSize()));
     }
 
     @Test
@@ -932,7 +936,7 @@ public class GameApplicableTechnicTest {
         gridNumber[1][1] = 2;
         grid.getCell(1, 0).getBottom().setType(EdgeType.CROSS);
         grid.getCell(2, 1).getLeft().setType(EdgeType.CROSS);
-        assertNotNull(ApplicableTechnic.searchTech13Pos(1,1,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(13, 1,1,gridNumber,grid,grid.getSize()));
     }
 
     @Test
@@ -944,7 +948,7 @@ public class GameApplicableTechnicTest {
         gridNumber[1][1] = 2;
         grid.getCell(1, 0).getTop().setType(EdgeType.CROSS);
         grid.getCell(0, 1).getLeft().setType(EdgeType.CROSS);
-        assertNotNull(ApplicableTechnic.searchTech13Pos(1,1,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(13, 1,1,gridNumber,grid,grid.getSize()));
     }
 
     @Test
@@ -956,7 +960,7 @@ public class GameApplicableTechnicTest {
         gridNumber[1][1] = 2;
         grid.getCell(2, 1).getLeft().setType(EdgeType.CROSS);
         grid.getCell(1, 0).getBottom().setType(EdgeType.CROSS);
-        assertNotNull(ApplicableTechnic.searchTech13Pos(1,1,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(13, 1,1,gridNumber,grid,grid.getSize()));
     }
 
     @Test
@@ -964,7 +968,7 @@ public class GameApplicableTechnicTest {
     void getSearchTech13Pos9() {
         gridNumber[1][2] = 3;
         gridNumber[1][1] = 2;
-        assertNull(ApplicableTechnic.searchTech13Pos(1,1,gridNumber,grid,grid.getSize()));
+        assertNull(appTech.searchTech(13, 1,1,gridNumber,grid,grid.getSize()));
     }
 
     /* Tests [3 & 2 adjacents bis] */
@@ -977,7 +981,7 @@ public class GameApplicableTechnicTest {
         gridNumber[0][1] = 3;
         gridNumber[1][1] = 2;
         grid.getCell(2, 1).getTop().setType(EdgeType.CROSS);
-        assertNotNull(ApplicableTechnic.searchTech14Pos(1,1,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(14, 1,1,gridNumber,grid,grid.getSize()));
     }
 
     @Test
@@ -989,7 +993,7 @@ public class GameApplicableTechnicTest {
         gridNumber[2][1] = 3;
         gridNumber[1][1] = 2;
         grid.getCell(0, 1).getBottom().setType(EdgeType.CROSS);
-        assertNotNull(ApplicableTechnic.searchTech14Pos(1,1,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(14, 1,1,gridNumber,grid,grid.getSize()));
     }
 
     @Test
@@ -998,7 +1002,7 @@ public class GameApplicableTechnicTest {
         gridNumber[1][2] = 3;
         gridNumber[1][1] = 2;
         grid.getCell(1, 0).getRight().setType(EdgeType.CROSS);
-        assertNotNull(ApplicableTechnic.searchTech14Pos(1,1,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(14, 1,1,gridNumber,grid,grid.getSize()));
     }
 
     @Test
@@ -1007,7 +1011,7 @@ public class GameApplicableTechnicTest {
         gridNumber[1][0] = 3;
         gridNumber[1][1] = 2;
         grid.getCell(1, 2).getLeft().setType(EdgeType.CROSS);
-        assertNotNull(ApplicableTechnic.searchTech14Pos(1,1,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(14, 1,1,gridNumber,grid,grid.getSize()));
     }
 
     @Test
@@ -1015,7 +1019,7 @@ public class GameApplicableTechnicTest {
     void getSearchTech14Pos5() {
         gridNumber[1][2] = 3;
         gridNumber[1][1] = 2;
-        assertNull(ApplicableTechnic.searchTech14Pos(1,1,gridNumber,grid,grid.getSize()));
+        assertNull(appTech.searchTech(14, 1,1,gridNumber,grid,grid.getSize()));
     }
 
     /* Tests [3 & 1 diagonaux] */
@@ -1029,7 +1033,7 @@ public class GameApplicableTechnicTest {
         gridNumber[1][1] = 1;
         grid.getCell(2, 1).getTop().setType(EdgeType.CROSS);
         grid.getCell(1, 2).getLeft().setType(EdgeType.CROSS);
-        assertNotNull(ApplicableTechnic.searchTech15Pos(1,1,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(15, 1,1,gridNumber,grid,grid.getSize()));
     }
 
     @Test
@@ -1042,7 +1046,7 @@ public class GameApplicableTechnicTest {
         gridNumber[1][1] = 1;
         grid.getCell(2, 1).getTop().setType(EdgeType.CROSS);
         grid.getCell(1, 0).getRight().setType(EdgeType.CROSS);
-        assertNotNull(ApplicableTechnic.searchTech15Pos(1,1,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(15, 1,1,gridNumber,grid,grid.getSize()));
     }
 
     @Test
@@ -1055,7 +1059,7 @@ public class GameApplicableTechnicTest {
         gridNumber[1][1] = 1;
         grid.getCell(0, 1).getBottom().setType(EdgeType.CROSS);
         grid.getCell(1, 0).getRight().setType(EdgeType.CROSS);
-        assertNotNull(ApplicableTechnic.searchTech15Pos(1,1,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(15, 1,1,gridNumber,grid,grid.getSize()));
     }
 
     @Test
@@ -1068,7 +1072,7 @@ public class GameApplicableTechnicTest {
         gridNumber[1][1] = 1;
         grid.getCell(0, 1).getBottom().setType(EdgeType.CROSS);
         grid.getCell(1, 2).getLeft().setType(EdgeType.CROSS);
-        assertNotNull(ApplicableTechnic.searchTech15Pos(1,1,gridNumber,grid,grid.getSize()));
+        assertNotNull(appTech.searchTech(15, 1,1,gridNumber,grid,grid.getSize()));
     }
 
     @Test
@@ -1076,7 +1080,7 @@ public class GameApplicableTechnicTest {
     void getSearchTech15Pos5() {
         gridNumber[1][1] = 1;
         gridNumber[2][2] = 3;
-        assertNull(ApplicableTechnic.searchTech15Pos(1,1,gridNumber,grid,grid.getSize()));
+        assertNull(appTech.searchTech(15, 1,1,gridNumber,grid,grid.getSize()));
     }
 
     /* Tests [brochette de 2] */
@@ -1092,7 +1096,7 @@ public class GameApplicableTechnicTest {
      */
     void getSearchTech16PosNW1() {
         grid = new Grid(4);
-        gridNumber = new int[4][4];
+        gridNumber = new Integer[4][4];
         gridNumber[1][1] = 2;
         gridNumber[2][2] = 2; // 2 de référence
         grid.getCell(1, 0).getTop().setType(EdgeType.CROSS);
@@ -1109,7 +1113,7 @@ public class GameApplicableTechnicTest {
      */
     void getSearchTech16PosNW2() {
         grid = new Grid(4);
-        gridNumber = new int[4][4];
+        gridNumber = new Integer[4][4];
         gridNumber[1][1] = 2;
         gridNumber[2][2] = 2; // 2 de référence
         grid.getCell(1, 0).getTop().setType(EdgeType.CROSS);
@@ -1127,7 +1131,7 @@ public class GameApplicableTechnicTest {
      */
     void getSearchTech16PosNW3() {
         grid = new Grid(4);
-        gridNumber = new int[4][4];
+        gridNumber = new Integer[4][4];
         gridNumber[1][1] = 2;
         gridNumber[2][2] = 2; // 2 de référence
         grid.getCell(0, 1).getLeft().setType(EdgeType.CROSS);
@@ -1144,7 +1148,7 @@ public class GameApplicableTechnicTest {
      */
     void getSearchTech16PosNW4() {
         grid = new Grid(4);
-        gridNumber = new int[4][4];
+        gridNumber = new Integer[4][4];
         gridNumber[1][1] = 2;
         gridNumber[2][2] = 2; // 2 de référence
         grid.getCell(0, 1).getLeft().setType(EdgeType.CROSS);
@@ -1157,7 +1161,7 @@ public class GameApplicableTechnicTest {
     /* retourne faux */
     void getSearchTech16PosNW5() {
         grid = new Grid(4);
-        gridNumber = new int[4][4];
+        gridNumber = new Integer[4][4];
         gridNumber[1][1] = 2;
         gridNumber[2][2] = 2; // 2 de référence
         grid.getCell(0, 1).getLeft().setType(EdgeType.CROSS);
@@ -1176,7 +1180,7 @@ public class GameApplicableTechnicTest {
      */
     void getSearchTech16PosNE1() {
         grid = new Grid(4);
-        gridNumber = new int[4][4];
+        gridNumber = new Integer[4][4];
         gridNumber[1][2] = 2;
         gridNumber[2][1] = 2; // 2 de référence
         grid.getCell(1, 3).getTop().setType(EdgeType.CROSS);
@@ -1193,7 +1197,7 @@ public class GameApplicableTechnicTest {
      */
     void getSearchTech16PosNE2() {
         grid = new Grid(4);
-        gridNumber = new int[4][4];
+        gridNumber = new Integer[4][4];
         gridNumber[1][2] = 2;
         gridNumber[2][1] = 2; // 2 de référence
         grid.getCell(1, 3).getTop().setType(EdgeType.CROSS);
@@ -1211,7 +1215,7 @@ public class GameApplicableTechnicTest {
      */
     void getSearchTech16PosNE3() {
         grid = new Grid(4);
-        gridNumber = new int[4][4];
+        gridNumber = new Integer[4][4];
         gridNumber[1][2] = 2;
         gridNumber[2][1] = 2; // 2 de référence
         grid.getCell(0, 2).getRight().setType(EdgeType.CROSS);
@@ -1228,7 +1232,7 @@ public class GameApplicableTechnicTest {
      */
     void getSearchTech16PosNE4() {
         grid = new Grid(4);
-        gridNumber = new int[4][4];
+        gridNumber = new Integer[4][4];
         gridNumber[1][2] = 2;
         gridNumber[2][1] = 2; // 2 de référence
         grid.getCell(0, 2).getRight().setType(EdgeType.CROSS);
@@ -1241,7 +1245,7 @@ public class GameApplicableTechnicTest {
     /* retourne faux */
     void getSearchTech16PosNE5() {
         grid = new Grid(4);
-        gridNumber = new int[4][4];
+        gridNumber = new Integer[4][4];
         gridNumber[1][2] = 2;
         gridNumber[2][1] = 2; // 2 de référence
         grid.getCell(0, 2).getRight().setType(EdgeType.CROSS);

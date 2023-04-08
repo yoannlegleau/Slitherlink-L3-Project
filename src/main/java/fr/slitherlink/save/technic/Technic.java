@@ -11,6 +11,8 @@ import javax.xml.bind.annotation.XmlElement;
 @XmlRootElement(name = "technic")
 public class Technic {
 
+    @XmlElement(name = "id")
+    private int id;
     @XmlElement(name = "title")
     private String title;
     @XmlElement(name = "description")
@@ -30,6 +32,10 @@ public class Technic {
 
     public String getDesc() {
         return desc;
+    }
+
+    public int getId() {
+        return id;
     }
 
 }

@@ -17,6 +17,11 @@ public class ListTechnicTest {
     }
 
     @Test
+    void getId1() {
+        assertEquals(1, listTechnic.getTechnic(0).getId());
+    }
+
+    @Test
     void getTitle1() {
         assertEquals("adjacent 0 et 3", listTechnic.getTechnic(0).getTitle());
     }
@@ -26,4 +31,8 @@ public class ListTechnicTest {
         assertEquals("3 adjacent à deux 1 en diagonale", listTechnic.getTechnic(24).getTitle());
     } 
 
+    @Test
+    void getId25() {
+        assertEquals(25, listTechnic.getTechnic(24).getId());
+    }
 }

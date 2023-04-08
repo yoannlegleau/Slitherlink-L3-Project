@@ -6,6 +6,7 @@ import fr.slitherlink.game.action.actions.AssumptionStart;
 import fr.slitherlink.game.action.actions.RedoAction;
 import fr.slitherlink.game.action.actions.UndoAction;
 import fr.slitherlink.game.grid.Grid;
+import fr.slitherlink.game.help.Help;
 import fr.slitherlink.save.gamesave.GameSave;
 import fr.slitherlink.save.gamesave.GameSaveResourceManageur;
 import fr.slitherlink.save.puzzle.PuzzleResourceManageur;
@@ -41,6 +42,8 @@ public class Game {
     private boolean isSolved;
 
     private int NbHint;
+
+    private Help help; /**la dernière aide demandée*/
 
     public Game(int puzzleId){
         this.puzzleId = puzzleId;
@@ -107,10 +110,18 @@ public class Game {
     public int getPuzzleId() {
         return puzzleId;
     }
+
     public Integer[][] getNumbers() {
         return numbers;
     }
 
+    public Help getHelp() {
+        return help;
+    }
+
+    public void setHelp(Help help) {
+        this.help = help;
+    }
 
     public boolean isSubscribed(AssumptionStart assumptionStart) {
         return listeners.contains(assumptionStart);
