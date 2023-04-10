@@ -44,15 +44,13 @@ public class HintAction extends GameAction {
             //surlignage des cases
             game.incrementNbHint();
         } else{
-
-            listTechnic = ListTechnic.getInstance();
             nbTechnics = appTech.getNbTechnics();
-
             for(int i = 1; i <= nbTechnics; i++){
                 taillePuzzle = game.getSolution().getSize();
                 for(int y = 0; y < taillePuzzle; y++)
                     for(int x = 0; x < taillePuzzle; x++)
                         if( (listCoord = appTech.searchTech(i, y, x, game)) != null){
+                            listTechnic = ListTechnic.getInstance();
                             game.setHelp(new Help(listTechnic.getTechnic(i), listCoord));
                             game.incrementNbHint();
                             return ;
@@ -61,6 +59,7 @@ public class HintAction extends GameAction {
             
             //si aucune aide n'a été trouvée
             //decrementer le nombre d'aide
+            game.setHelp(null);
             JOptionPane.showMessageDialog(null, "Aucune aide disponible", "Aide", JOptionPane.INFORMATION_MESSAGE);
         }
 
