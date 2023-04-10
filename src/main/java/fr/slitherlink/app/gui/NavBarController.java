@@ -1,6 +1,7 @@
 package fr.slitherlink.app.gui;
 
 import fr.slitherlink.app.Slitherlink;
+import fr.slitherlink.app.gui.popup.ConnectionPopup;
 import fr.slitherlink.app.gui.popup.ProfilPopup;
 import fr.slitherlink.app.gui.popup.SettingsPopup;
 import javafx.event.ActionEvent;
@@ -28,11 +29,11 @@ public class NavBarController {
     @FXML
     public void onAccountButtonClick() {
         try {
-            FXMLLoader loader = new FXMLLoader(Slitherlink.class.getResource("gui/popup/profil-popup.fxml"));
+            FXMLLoader loader = new FXMLLoader(Slitherlink.class.getResource("gui/popup/connection-popup.fxml"));
             Pane root = loader.load();
-            ProfilPopup profilPopup = new ProfilPopup();
-            profilPopup.addContent(root);
-            profilPopup.show();
+            ConnectionPopup connectionPopup = new ConnectionPopup();
+            connectionPopup.addContent(root);
+            connectionPopup.show();
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -41,7 +41,7 @@
          <children>
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Statistiques">
                <font>
-                  <Font size="39.0" />
+                  <Font name="System Bold" size="39.0" />
                </font>
                <VBox.margin>
                   <Insets bottom="10.0" />
