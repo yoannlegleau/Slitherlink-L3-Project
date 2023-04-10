@@ -29,7 +29,9 @@ public  interface ActionFactory {
         return new RedoAction();
     }
 
-    static GameAction hint(){return new HintAction();}
+    static GameAction help(){
+        return new HelpAction();
+    }
 
     static GameAction assumptionStart(){
         return new AssumptionStart();

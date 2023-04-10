@@ -8,8 +8,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #333337;" stylesheets="@../../css/default-style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.slitherlink.app.fx_controlleur.LevelPlaySceen">
+<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #333337;" stylesheets="@../../css/default-style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.slitherlink.app.fx_controlleur.LevelPlaySceen">
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
@@ -32,7 +33,7 @@
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#resetAction" text="Reset" />
-                  <Button mnemonicParsing="false" onAction="#hintAction" text="Hint">
+                  <Button mnemonicParsing="false" onAction="#helpAction" text="Help">
                      <HBox.margin>
                         <Insets left="15.0" />
                      </HBox.margin></Button>
@@ -51,4 +52,12 @@
          </children>
       </VBox>
    </center>
+   <right>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text fx:id="titleHelpText" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="descriptionHelpText" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+         </children>
+      </VBox>
+   </right>
 </BorderPane>

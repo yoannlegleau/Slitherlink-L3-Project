@@ -1,6 +1,6 @@
 package fr.slitherlink.app.fx_controlleur;
 
-import fr.slitherlink.app.component.EditablePuzllGridGroup;
+import fr.slitherlink.app.fx_controlleur.component.EditablePuzllGridGroup;
 import fr.slitherlink.game.Game;
 import fr.slitherlink.game.grid.Grid;
 import fr.slitherlink.save.puzzle.PuzzleResourceManageur;

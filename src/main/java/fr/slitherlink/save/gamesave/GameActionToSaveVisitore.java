@@ -98,7 +98,7 @@ public class GameActionToSaveVisitore implements ActionVisitore {
     }
 
     @Override
-    public void visit(HintAction hintAction) {
+    public void visit(HelpAction hintAction) {
         gameActionSaves.add(GameActionSave.getGameActionSave()
                 .setCanceled(hintAction.isCanceled())
                 .setGameActionTypes(hintAction.getGameActionTypes())

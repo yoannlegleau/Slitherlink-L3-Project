@@ -19,6 +19,6 @@ public interface ActionVisitore {
 
     void visit(UndoAction undoAction);
 
-    void visit(HintAction hintAction);
+    void visit(HelpAction hintAction);
 
 }

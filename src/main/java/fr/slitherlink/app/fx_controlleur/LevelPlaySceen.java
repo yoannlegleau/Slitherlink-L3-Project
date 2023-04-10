@@ -1,9 +1,12 @@
 package fr.slitherlink.app.fx_controlleur;
 
-import fr.slitherlink.app.component.PuzllGridGroup;
+import fr.slitherlink.app.fx_controlleur.component.PuzllGridGroup;
 import fr.slitherlink.game.Game;
 import fr.slitherlink.game.action.ActionFactory;
 import fr.slitherlink.game.action.GameActionTypes;
+import fr.slitherlink.game.action.actions.HelpAction;
+import fr.slitherlink.save.technic.ListTechnic;
+import fr.slitherlink.save.technic.Technic;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -11,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 
 import java.awt.event.ActionListener;
 
@@ -35,6 +39,12 @@ public class LevelPlaySceen implements ActionListener {
 
     @FXML
     public Pane gamePane;
+
+    @FXML
+    public Text titleHelpText;
+
+    @FXML
+    public Text descriptionHelpText;
 
     @FXML
     public void initialize() {
@@ -73,6 +83,13 @@ public class LevelPlaySceen implements ActionListener {
         game.action(ActionFactory.redo());
     }
 
+    public void updateHelpDisplay(HelpAction helpAction) {
+        ListTechnic listTechnic = ListTechnic.getInstance();
+        Technic technic = listTechnic.getTechnic(helpAction.getTechnicId());
+        titleHelpText.setText(technic.getTitle());
+        descriptionHelpText.setText(technic.getDesc());
+    }
+
     @Override
     public void actionPerformed(java.awt.event.ActionEvent e) {
         switch (GameActionTypes.valueOf(e.getActionCommand())) {
@@ -83,6 +100,7 @@ public class LevelPlaySceen implements ActionListener {
             }
             case ASSUMPTION_START -> updateAssumptionButton(true);
             case ASSUMPTION_VALID,ASSUMPTION_CANCEL -> updateAssumptionButton(false);
+            case NEW_HELP, HIGHLIGTH_HELP -> updateHelpDisplay((HelpAction) e.getSource());
         }
     }
 
@@ -108,7 +126,7 @@ public class LevelPlaySceen implements ActionListener {
         game.action(ActionFactory.assumptionValid());
     }
 
-    public void hintAction(ActionEvent actionEvent) {
-        game.action(ActionFactory.hint());
+    public void helpAction(ActionEvent actionEvent) {
+        game.action(ActionFactory.help());
     }
 }

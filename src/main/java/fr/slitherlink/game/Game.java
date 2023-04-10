@@ -6,7 +6,6 @@ import fr.slitherlink.game.action.actions.AssumptionStart;
 import fr.slitherlink.game.action.actions.RedoAction;
 import fr.slitherlink.game.action.actions.UndoAction;
 import fr.slitherlink.game.grid.Grid;
-import fr.slitherlink.game.help.Help;
 import fr.slitherlink.save.gamesave.GameSave;
 import fr.slitherlink.save.gamesave.GameSaveResourceManageur;
 import fr.slitherlink.save.puzzle.PuzzleResourceManageur;
@@ -41,10 +40,6 @@ public class Game {
 
     private boolean isSolved;
 
-    private int NbHint;
-
-    private Help help; /**la dernière aide demandée*/
-
     public Game(int puzzleId){
         this.puzzleId = puzzleId;
         loadPuzzle(puzzleId);
@@ -56,7 +51,6 @@ public class Game {
     public void init(){
         isSolved = false;
         assumptionMode = false;
-        NbHint = 0;
         currentGrid.clear();
         notifyListeners(new ActionEvent(this, 0, GameActionTypes.RESET.toString()));
     }
@@ -99,10 +93,6 @@ public class Game {
         this.assumptionMode = assumptionMode;
     }
 
-    public void incrementNbHint(){
-        NbHint++;
-    }
-
     public List<GameAction> getActions() {
         return actions;
     }
@@ -113,14 +103,6 @@ public class Game {
 
     public Integer[][] getNumbers() {
         return numbers;
-    }
-
-    public Help getHelp() {
-        return help;
-    }
-
-    public void setHelp(Help help) {
-        this.help = help;
     }
 
     public boolean isSubscribed(AssumptionStart assumptionStart) {
@@ -180,12 +162,9 @@ public class Game {
                         assumptionMode = false;
                         notifyListeners(new ActionEvent(this, 0, GameActionTypes.ASSUMPTION_CANCEL.toString()));
                         break;
-                    case UNDO:
-                        assumptionMode = false;
+                    case UNDO, REDO:
                         break;
-                    case REDO:
-                        NbHint++;
-                        break;
+
                     default: action.doAction(this);
                 }
             }
