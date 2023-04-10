@@ -4,6 +4,7 @@ import fr.slitherlink.app.fx_controlleur.component.PuzllGridGroup;
 import fr.slitherlink.game.Game;
 import fr.slitherlink.game.action.ActionFactory;
 import fr.slitherlink.game.action.GameActionTypes;
+import fr.slitherlink.save.gamesave.GameSaveResourceManageur;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -19,8 +20,6 @@ import java.awt.event.ActionListener;
  * @version 1, 08/03/2023
  */
 public class LevelPlaySceen implements ActionListener {
-
-    private static final int levelid = 1;
     public Label winLabel;
     public Button assumptionButton;
     public Button assumptionCancelButton;
@@ -38,13 +37,7 @@ public class LevelPlaySceen implements ActionListener {
 
     @FXML
     public void initialize() {
-        int pxSize = 500; //TODO trouver un moyen de le recuperer la taille de gamePane
-        game = new Game(levelid);
-        game.subscribe(this);
-        puzlGridGroup = new PuzllGridGroup(game, pxSize);
-        gamePane.getChildren().add(puzlGridGroup);
-
-        game.redoAllAction();
+        //TODO trouver un moyen de le recuperer la taille de gamePane
 
         root.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ESCAPE) {
@@ -59,6 +52,15 @@ public class LevelPlaySceen implements ActionListener {
                 redo();
             }
         });
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+        game.subscribe(this);
+        int pxSize = 500;
+        puzlGridGroup = new PuzllGridGroup(game, pxSize);
+        gamePane.getChildren().add(puzlGridGroup);
+        game.redoAllAction();
     }
 
     public void resetAction(ActionEvent actionEvent) {

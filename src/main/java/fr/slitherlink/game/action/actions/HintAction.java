@@ -27,6 +27,8 @@ public class HintAction extends GameAction {
 
     @Override
     public void doAction(Game game) {
+
+
         //TODO Antoine : faire la recherche d'indice
 
         //TODO Antoine : ajouter l'utilisation si un indice est trouvé

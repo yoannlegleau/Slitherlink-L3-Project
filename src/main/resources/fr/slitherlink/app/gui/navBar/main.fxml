@@ -45,7 +45,7 @@
             <Insets left="20.0" right="20.0" />
          </padding>
       </Button>
-      <Button contentDisplay="CENTER" graphicTextGap="0.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" style="-fx-translate-y: -18; -fx-background-radius: 100%;" styleClass="MenuButton" stylesheets="@../../style/default-style.css" text=" " textAlignment="CENTER">
+      <Button contentDisplay="CENTER" graphicTextGap="0.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" style="-fx-translate-y: -18; -fx-background-radius: 100%;" styleClass="MenuButton" text=" " textAlignment="CENTER">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>

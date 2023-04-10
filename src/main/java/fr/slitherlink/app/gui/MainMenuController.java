@@ -1,6 +1,9 @@
 package fr.slitherlink.app.gui;
 
 import fr.slitherlink.app.Slitherlink;
+import fr.slitherlink.app.fx_controlleur.LevelPlaySceen;
+import fr.slitherlink.game.Game;
+import fr.slitherlink.save.gamesave.GameSaveResourceManageur;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
@@ -20,6 +23,7 @@ public class MainMenuController {
 
     public void onPlayButtonClick(){
         System.out.println("On a appuyé sur le bouton jouer");
+
         Slitherlink.getMainInstance().setActive(Slitherlink.GAME_SELECTION_MENU);
     }
 

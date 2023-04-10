@@ -2,6 +2,7 @@ package fr.slitherlink.app;
 
 import fr.slitherlink.app.fx_controlleur.component.PuzllGridGroup;
 import fr.slitherlink.game.Game;
+import fr.slitherlink.save.gamesave.GameSaveResourceManageur;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -21,7 +22,7 @@ public class GrilleTestApp extends Application{
         primaryStage.setTitle("Grille");
         primaryStage.show();
 
-        Game game = new Game(1);
+        Game game = new Game(new GameSaveResourceManageur(1));
 
         gridGroup = new PuzllGridGroup(game,width);
         Scene scene = new Scene(gridGroup, width, height);

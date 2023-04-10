@@ -35,14 +35,14 @@ public class XmlResourcesManageur {
      * @return Objectde la classe c
      * @throws JAXBException
      */
-    public static Object concertXmlToJava(Class<?> c , String fileName) throws JAXBException {
+    public static <T> T  concertXmlToJava(Class<T> c , String fileName) throws JAXBException {
         JAXBContext jaxbContext = JAXBContext.newInstance(c);
         Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
         File xmlFile = new File(RESOURCES_PATH +fileName+".xml");
 
-        Object unmarshal = null;
+        T unmarshal = null;
         try {
-            unmarshal = unmarshaller.unmarshal(xmlFile);
+            unmarshal = (T) unmarshaller.unmarshal(xmlFile);
         }
         catch (IllegalArgumentException ignored){}
 

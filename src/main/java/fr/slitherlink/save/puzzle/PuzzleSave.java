@@ -17,7 +17,7 @@ import java.util.List;
  */
 
 @XmlRootElement
-@XmlType(propOrder={"size", "grid", "solution","difficulty"})
+@XmlType(propOrder={"size","difficulty", "grid", "solution"})
 public class PuzzleSave {
     private int id;
     private int size;
