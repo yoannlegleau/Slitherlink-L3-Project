@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../../css/style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0" BorderPane.alignment="CENTER_LEFT">
+         <children>
+            <ImageView fitHeight="121.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../icons/user.png" />
+               </image>
+            </ImageView>
+            <VBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="272.0" spacing="10.0">
+               <children>
+                  <TextField prefHeight="26.0" prefWidth="214.0" text="John" VBox.vgrow="ALWAYS" />
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Vous jouer depuis 5 ans">
+                     <font>
+                        <Font name="System Italic" size="13.0" />
+                     </font>
+                  </Text>
+               </children>
+            </VBox>
+         </children>
+         <BorderPane.margin>
+            <Insets left="20.0" right="20.0" top="20.0" />
+         </BorderPane.margin>
+      </HBox>
+   </top>
+   <center>
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="200.0" prefWidth="551.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Statistiques">
+               <font>
+                  <Font size="39.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </Text>
+            <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: transparent;" vbarPolicy="ALWAYS">
+               <content>
+                  <VBox>
+                     <children>
+                        <HBox prefHeight="26.0" prefWidth="542.0">
+                           <children>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de parties jouées" wrappingWidth="511.90576171875" HBox.hgrow="ALWAYS" />
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="5" />
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox prefHeight="26.0" prefWidth="542.0">
+                           <children>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de parties gagné d'affilé" wrappingWidth="511.90576171875" HBox.hgrow="ALWAYS" />
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="5" />
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox prefHeight="26.0" prefWidth="542.0">
+                           <children>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Temps de jeu total" wrappingWidth="511.90576171875" HBox.hgrow="ALWAYS" />
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="5" />
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox prefHeight="27.0" prefWidth="499.0">
+                           <children>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Temps de jeu total" wrappingWidth="510.90576171875" HBox.hgrow="ALWAYS" />
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="5" />
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox prefHeight="26.0" prefWidth="542.0">
+                           <children>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Temps de jeu total" wrappingWidth="510.90576171875" HBox.hgrow="ALWAYS" />
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="5" />
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox prefHeight="26.0" prefWidth="542.0">
+                           <children>
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Temps de jeu total" wrappingWidth="510.90576171875" HBox.hgrow="ALWAYS" />
+                              <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="5" />
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </content>
+            </ScrollPane>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>
