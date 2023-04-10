@@ -22,8 +22,6 @@ public class MainMenuController {
     private Button quitButton;
 
     public void onPlayButtonClick(){
-        System.out.println("On a appuyé sur le bouton jouer");
-
         Slitherlink.getMainInstance().setActive(Slitherlink.GAME_SELECTION_MENU);
     }
 

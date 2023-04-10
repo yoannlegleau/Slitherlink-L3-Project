@@ -3,6 +3,10 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+### Loacl Save ###
+/src/main/resources/fr/slitherlink/save/*
+/src/main/resources/fr/slitherlink/config/*
+
 ### IntelliJ IDEA ###
 .idea/modules.xml
 .idea/jarRepositories.xml
@@ -36,3 +40,4 @@ build/
 
 ### Mac OS ###
 .DS_Store
+

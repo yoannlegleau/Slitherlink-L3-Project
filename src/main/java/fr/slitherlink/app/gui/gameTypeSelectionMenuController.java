@@ -19,7 +19,6 @@ public class gameTypeSelectionMenuController {
     private VBox rushPlayButton;
 
     public void onFreePlayButtonClick(){
-        System.out.println("On appuye sur le boutton freeplay");
         Slitherlink.getMainInstance().setActive(Slitherlink.FREEPLAY_MENU);
     }
 
