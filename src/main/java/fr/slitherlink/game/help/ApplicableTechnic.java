@@ -1227,7 +1227,7 @@ public class ApplicableTechnic {
         return null;
     }
 
-    /* [Futures Techniques à finir d'implémenter]
+    /* [Futures Techniques avancées à finir d'implémenter]
 
     private static final int TOP = 0;
     private static final int RIGHT = 1;
