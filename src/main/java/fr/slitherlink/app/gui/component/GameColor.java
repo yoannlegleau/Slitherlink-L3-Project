@@ -1,4 +1,4 @@
-package fr.slitherlink.app.component;
+package fr.slitherlink.app.gui.component;
 
 import java.awt.*;
 

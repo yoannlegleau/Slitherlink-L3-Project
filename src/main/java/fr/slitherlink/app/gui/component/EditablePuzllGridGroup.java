@@ -1,4 +1,4 @@
-package fr.slitherlink.app.component;
+package fr.slitherlink.app.gui.component;
 
 import fr.slitherlink.game.Game;
 import javafx.scene.Node;
