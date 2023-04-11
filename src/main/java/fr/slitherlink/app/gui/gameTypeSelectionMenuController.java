@@ -24,8 +24,7 @@ public class gameTypeSelectionMenuController {
 
     public void onAdventurePlayButtonClick(){
         System.out.println("On appuye sur le bouton aventure");
-        Slitherlink.getMainInstance().setActive(Slitherlink.LEVEL_PLAY_SRCEEN);
-        ((LevelPlaySceen)Slitherlink.getMainInstance().getController(Slitherlink.LEVEL_PLAY_SRCEEN)).setGame(new Game(new GameSaveResourceManageur(1)));
+        Slitherlink.getMainInstance().setActive(Slitherlink.SELECT_LEVEL);
     }
 
     public void onRushPlayButtonClick(){
