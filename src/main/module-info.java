@@ -3,6 +3,7 @@ module fr.slitherlink {
     requires javafx.fxml;
     requires java.desktop;
     requires java.xml.bind;
+    requires javafx.scene.web;
 
     opens fr.slitherlink.save to java.xml.bind;
     opens fr.slitherlink.app to javafx.fxml;

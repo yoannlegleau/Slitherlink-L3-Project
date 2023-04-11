@@ -28,7 +28,7 @@
                               <Font name="System Bold Italic" size="17.0" />
                            </font>
                         </Text>
-                        <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="170.0" style="-fx-background-color: white; -fx-background-radius: 10px;" styleClass="connexion_btn" text="Se connecter">
+                        <Button onAction="#onGoogleButtonClick" mnemonicParsing="false" prefHeight="29.0" prefWidth="170.0" style="-fx-background-color: white; -fx-background-radius: 10px;" styleClass="connexion_btn" text="Se connecter">
                            <graphic>
                               <ImageView fitHeight="20" fitWidth="20" pickOnBounds="true" preserveRatio="true">
                                     <image>
