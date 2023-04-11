@@ -46,13 +46,14 @@ public class LevelPlaySceen implements ActionListener {
 
 
 
-    private int seconds = 0;
-    private Boolean boolHandle=false;
+    public static int seconds = 0;
+    private static Boolean boolHandle=false;
     @FXML
-    private Label timeLabel=new Label("00:00:00");
+    public Label timeLabel=new Label("00:00:00");
     @FXML
     private Button pauseButton;
-    private Timeline timeline;
+    private static Timeline timeline;
+    public static LevelPlaySceen lpc=null;
 
 
 
@@ -63,8 +64,9 @@ public class LevelPlaySceen implements ActionListener {
         game.subscribe(this);
         puzlGridGroup = new PuzllGridGroup(game, pxSize);
         gamePane.getChildren().add(puzlGridGroup);
-        seconds=0;
-        startTimer();
+        /*seconds=0;
+        startTimer();*/
+        lpc=this;
         System.out.println("Arrivé sur la page");
 
         game.redoAllAction();
@@ -138,7 +140,8 @@ public class LevelPlaySceen implements ActionListener {
 
 
 
-    private void startTimer() {
+
+    public static void startTimer() {
         timeline = new Timeline(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -150,18 +153,18 @@ public class LevelPlaySceen implements ActionListener {
         timeline.play();
     }
 
-    private void stopTimer() {
+    private void stopTimer(){
         timeline.stop();
     }
 
-    private void updateTimer() {
+    private static void updateTimer() {
         int hours = seconds / 3600;
         int minutes = (seconds % 3600) / 60;
         int secs = seconds % 60;
         String time = String.format("%02d:%02d:%02d", hours, minutes, secs);
         StringProperty str=new SimpleStringProperty();
         str.setValue(time);
-        timeLabel.textProperty().bind(str);
+        lpc.timeLabel.textProperty().bind(str);
     }
 
     public void pauseAction(ActionEvent event) {

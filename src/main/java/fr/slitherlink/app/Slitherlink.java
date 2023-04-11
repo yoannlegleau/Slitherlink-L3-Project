@@ -1,6 +1,7 @@
 package fr.slitherlink.app;
 
 import javafx.application.Application;
+import fr.slitherlink.app.fx_controlleur.LevelPlaySceen;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -97,6 +98,11 @@ public class Slitherlink extends Application {
         // On regarde si aucun panneau n'est actif
         if(active != null)
             active.setVisible(false);
+
+        if(paneName==LEVEL_PLAY_SRCEEN){
+            LevelPlaySceen.seconds=0;
+            LevelPlaySceen.startTimer();
+        }
 
         p.setVisible(true);
         backButton.setVisible(paneName != MAIN_MENU);

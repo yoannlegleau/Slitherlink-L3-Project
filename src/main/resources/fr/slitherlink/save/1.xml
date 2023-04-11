@@ -126,4 +126,24 @@
         <y>0</y>
         <t>R</t>
     </action>
+    <action type="SET_LINE">
+        <x>1</x>
+        <y>0</y>
+        <t>B</t>
+    </action>
+    <action type="SET_EMPTY">
+        <x>0</x>
+        <y>0</y>
+        <t>R</t>
+    </action>
+    <action type="SET_EMPTY">
+        <x>0</x>
+        <y>0</y>
+        <t>B</t>
+    </action>
+    <action type="SET_LINE">
+        <x>0</x>
+        <y>1</y>
+        <t>B</t>
+    </action>
 </gameSave>
