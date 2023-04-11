@@ -4,13 +4,20 @@ import fr.slitherlink.app.component.PuzllGridGroup;
 import fr.slitherlink.game.Game;
 import fr.slitherlink.game.action.ActionFactory;
 import fr.slitherlink.game.action.GameActionTypes;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.util.Duration;
 
 import java.awt.event.ActionListener;
 
@@ -36,6 +43,19 @@ public class LevelPlaySceen implements ActionListener {
     @FXML
     public Pane gamePane;
 
+
+
+
+    private int seconds = 0;
+    private Boolean boolHandle=false;
+    @FXML
+    private Label timeLabel=new Label("00:00:00");
+    @FXML
+    private Button pauseButton;
+    private Timeline timeline;
+
+
+
     @FXML
     public void initialize() {
         int pxSize = 500; //TODO trouver un moyen de le recuperer la taille de gamePane
@@ -43,6 +63,9 @@ public class LevelPlaySceen implements ActionListener {
         game.subscribe(this);
         puzlGridGroup = new PuzllGridGroup(game, pxSize);
         gamePane.getChildren().add(puzlGridGroup);
+        seconds=0;
+        startTimer();
+        System.out.println("Arrivé sur la page");
 
         game.redoAllAction();
 
@@ -110,5 +133,44 @@ public class LevelPlaySceen implements ActionListener {
 
     public void hintAction(ActionEvent actionEvent) {
         game.action(ActionFactory.hint());
+    }
+
+
+
+
+    private void startTimer() {
+        timeline = new Timeline(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                seconds++;
+                updateTimer();
+            }
+        }));
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
+    }
+
+    private void stopTimer() {
+        timeline.stop();
+    }
+
+    private void updateTimer() {
+        int hours = seconds / 3600;
+        int minutes = (seconds % 3600) / 60;
+        int secs = seconds % 60;
+        String time = String.format("%02d:%02d:%02d", hours, minutes, secs);
+        StringProperty str=new SimpleStringProperty();
+        str.setValue(time);
+        timeLabel.textProperty().bind(str);
+    }
+
+    public void pauseAction(ActionEvent event) {
+        if(boolHandle){
+            startTimer();
+            boolHandle=false;
+        }else{
+            stopTimer();
+            boolHandle=true;
+        }
     }
 }
