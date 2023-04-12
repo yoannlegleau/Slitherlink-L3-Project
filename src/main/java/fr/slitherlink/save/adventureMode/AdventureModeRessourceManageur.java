@@ -26,6 +26,8 @@ public class AdventureModeRessourceManageur {
         } catch (JAXBException e) {
             throw new RuntimeException(e);
         }
+        if (save == null)
+            save = new AdventureModeSave();
     }
 
     public Boolean isLevelFinished(int levelId){

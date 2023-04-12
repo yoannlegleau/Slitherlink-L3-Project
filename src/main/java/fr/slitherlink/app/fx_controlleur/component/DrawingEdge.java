@@ -229,7 +229,7 @@ class DrawingEdge extends Group implements ActionListener {
             double lineLength = Math.sqrt(Math.pow(line.getEndX() - line.getStartX(), 2) + Math.pow(line.getEndY() - line.getStartY(), 2));
             double sectionLength = (0.7 * lineLength) / 5;
             double spaceLength = (0.3 * lineLength) / 6;
-            line.getStrokeDashArray().setAll(sectionLength, spaceLength, sectionLength, spaceLength, sectionLength);
+
         } else {
             line.getStrokeDashArray().clear();
         }
