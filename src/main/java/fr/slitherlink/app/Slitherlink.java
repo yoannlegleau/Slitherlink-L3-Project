@@ -34,7 +34,7 @@ public class Slitherlink extends Application {
     private Map<String, Pane> scenes;
 
     /* Pile qui contient les écrans affichées */
-    private Stack<Pane> screenStack;
+    private Stack<String> screenStack;
 
     private Pane active;
 
@@ -106,16 +106,21 @@ public class Slitherlink extends Application {
             active.setVisible(false);
         }
             
-        screenStack.push(active);
+        System.out.println("On ajoute l'écran" + paneName + " à la pile");
+        if(screenStack.size() > 1 && screenStack.peek().equals(paneName))
+            screenStack.pop();
+        screenStack.push(paneName);
         p.setVisible(true);
         backButton.setVisible(paneName != MAIN_MENU);
         active = p;
     }
 
     public void onBackButtonClicked(){
+        System.out.println(screenStack);
         if(screenStack.size() > 1){
-            screenStack.pop().setVisible(false);;
-            screenStack.peek().setVisible(true);
+            screenStack.pop();
+            setActive(screenStack.pop());
+            System.out.println("On reviens au menu précédent" + screenStack);
         }
     }
 
