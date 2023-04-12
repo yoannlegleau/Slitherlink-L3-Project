@@ -1,4 +1,4 @@
-package fr.slitherlink.app.fx_controlleur;
+package fr.slitherlink.app.gui;
 
 import fr.slitherlink.app.gui.component.PuzllGridGroup;
 import fr.slitherlink.game.Game;

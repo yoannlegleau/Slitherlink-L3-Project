@@ -1,7 +1,7 @@
 package fr.slitherlink.app;
 
+import fr.slitherlink.app.gui.LevelPlaySceen;
 import javafx.application.Application;
-import fr.slitherlink.app.fx_controlleur.LevelPlaySceen;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -146,7 +146,6 @@ public class Slitherlink extends Application {
             LevelPlaySceen.startTimer();
         }
 
-        System.out.println("On ajoute l'écran" + paneName + " à la pile");
         if(screenStack.size() > 1 && screenStack.peek().equals(paneName))
             screenStack.pop();
         screenStack.push(paneName);
@@ -160,11 +159,9 @@ public class Slitherlink extends Application {
     }
 
     public void onBackButtonClicked(){
-        System.out.println(screenStack);
         if(screenStack.size() > 1){
             screenStack.pop();
             setActive(screenStack.pop());
-            System.out.println("On reviens au menu précédent" + screenStack);
         }
     }
 

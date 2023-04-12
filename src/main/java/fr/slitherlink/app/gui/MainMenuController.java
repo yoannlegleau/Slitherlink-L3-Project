@@ -1,7 +1,6 @@
 package fr.slitherlink.app.gui;
 
 import fr.slitherlink.app.Slitherlink;
-import fr.slitherlink.app.fx_controlleur.LevelPlaySceen;
 import fr.slitherlink.game.Game;
 import fr.slitherlink.save.gamesave.GameSaveResourceManageur;
 import javafx.fxml.FXML;

@@ -13,7 +13,8 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="960.0" prefHeight="720.0" prefWidth="960.0" style="-fx-background-color: #333337;" stylesheets="@menu.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.slitherlink.app.gui.SelectLevelController">
+<?import javafx.scene.layout.FlowPane?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="960.0" prefHeight="720.0" prefWidth="960.0" style="-fx-background-color: #333337;" stylesheets="@../../style/default-style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.slitherlink.app.gui.SelectLevelController">
 
     <top>
         <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="499.0" style="-fx-translate-y: 86;" BorderPane.alignment="CENTER">
@@ -28,7 +29,7 @@
     </top>
 
     <center>
-        <AnchorPane minHeight="-Infinity" prefHeight="437.0" prefWidth="960.0" scaleX="0.9" styleClass="PanelSelect" stylesheets="@selectLevel.css" translateY="-50.0" BorderPane.alignment="CENTER">
+        <AnchorPane minHeight="-Infinity" prefHeight="437.0" prefWidth="960.0" scaleX="0.9" styleClass="PanelSelect" stylesheets="@../../style/default-style.css" translateY="-50.0" BorderPane.alignment="CENTER">
             <children>
                 <FlowPane fx:id="buttonLevelPanel" hgap="100" prefHeight="520.0" prefWidth="960.0" prefWrapLength="960.0" vgap="40" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="100.0">
                 </FlowPane>

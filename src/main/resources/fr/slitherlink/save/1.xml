@@ -1,2 +1,75 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<gameSave id="1"/>
+<gameSave id="1">
+    <action type="SET_LINE">
+        <x>1</x>
+        <y>2</y>
+        <t>R</t>
+    </action>
+    <action type="SET_LINE">
+        <x>2</x>
+        <y>1</y>
+        <t>B</t>
+    </action>
+    <action type="SET_LINE">
+        <x>3</x>
+        <y>0</y>
+        <t>B</t>
+    </action>
+    <action type="SET_LINE">
+        <x>3</x>
+        <y>1</y>
+        <t>B</t>
+    </action>
+    <action type="SET_EMPTY">
+        <x>3</x>
+        <y>0</y>
+        <t>B</t>
+    </action>
+    <action type="SET_LINE">
+        <x>3</x>
+        <y>0</y>
+        <t>B</t>
+    </action>
+    <action type="SET_EMPTY">
+        <x>3</x>
+        <y>0</y>
+        <t>B</t>
+    </action>
+    <action type="SET_LINE">
+        <x>2</x>
+        <y>0</y>
+        <t>R</t>
+    </action>
+    <action type="SET_LINE">
+        <x>1</x>
+        <y>0</y>
+        <t>R</t>
+    </action>
+    <action type="SET_EMPTY">
+        <x>1</x>
+        <y>0</y>
+        <t>R</t>
+    </action>
+    <action type="SET_LINE">
+        <x>1</x>
+        <y>0</y>
+        <t>R</t>
+    </action>
+    <action type="SET_LINE">
+        <x>0</x>
+        <y>1</y>
+        <t>R</t>
+    </action>
+    <action type="SET_CROSS">
+        <x>0</x>
+        <y>1</y>
+        <t>R</t>
+    </action>
+    <action type="SET_LINE">
+        <x>1</x>
+        <y>1</y>
+        <t>B</t>
+    </action>
+    <action type="ASSUMPTION_START"/>
+    <action type="HINT"/>
+</gameSave>

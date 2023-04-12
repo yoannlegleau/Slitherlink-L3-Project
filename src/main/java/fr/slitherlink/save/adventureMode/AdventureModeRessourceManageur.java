@@ -23,9 +23,7 @@ public class AdventureModeRessourceManageur {
     private AdventureModeRessourceManageur(){
         try {
             save = XmlResourcesManageur.concertXmlToJava(AdventureModeSave.class,ADVENTURE_MODE_SAVE_FILE_NAME);
-        } catch (JAXBException e) {
-            throw new RuntimeException(e);
-        }
+        } catch (JAXBException ignored) {}
         if (save == null)
             save = new AdventureModeSave();
     }

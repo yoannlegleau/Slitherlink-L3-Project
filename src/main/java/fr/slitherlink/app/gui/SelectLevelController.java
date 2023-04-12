@@ -1,7 +1,7 @@
 package fr.slitherlink.app.gui;
 
 import fr.slitherlink.app.Slitherlink;
-import fr.slitherlink.app.fx_controlleur.LevelPlaySceen;
+
 import fr.slitherlink.game.Game;
 import fr.slitherlink.game.action.GameActionTypes;
 import fr.slitherlink.save.adventureMode.AdventureModeRessourceManageur;
@@ -63,7 +63,8 @@ public class SelectLevelController implements ActionListener {
         button.setScaleX(1.1);
         button.setStyle("-fx-translate-y: -50;");
         button.getStyleClass().add("SelectButton");
-        button.getStylesheets().add("@selectLevel.css");
+        // TODO: 12/04/2023 Touver le bon chemin pour le css
+        //        button.getStylesheets().add("@../../style/default-style.css");
         button.setTextAlignment(TextAlignment.CENTER);
         button.setCursor(Cursor.HAND);
         button.setFont(new Font(30.0));
