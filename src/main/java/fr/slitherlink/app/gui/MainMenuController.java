@@ -26,7 +26,7 @@ public class MainMenuController {
     }
 
     public void onRulesButtonClick(){
-        System.out.println("On a appuyé sur le bouton des règles");
+        Slitherlink.getMainInstance().setActive(Slitherlink.RULE_SCREEN);
     }
 
     public void onTutorialButtonClick(){

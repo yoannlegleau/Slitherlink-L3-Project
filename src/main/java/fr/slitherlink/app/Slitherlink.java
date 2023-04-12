@@ -19,6 +19,7 @@ public class Slitherlink extends Application {
 
     public static final String GAME_SELECTION_MENU = "levelSelectionMenu";
     public static final String LEVEL_PLAY_SRCEEN = "levelPlayScreen";
+    public static final String RULE_SCREEN = "ruleScreen";
 
     public static final String SELECT_LEVEL = "selectLevel";
 
@@ -63,7 +64,8 @@ public class Slitherlink extends Application {
         sceneLoaders.put(MAIN_MENU,new FXMLLoader(getClass().getResource("gui/mainMenu/menu.fxml")));
         sceneLoaders.put(GAME_SELECTION_MENU,new FXMLLoader(getClass().getResource("gui/gameTypeSelectionMenu/main.fxml")));
         sceneLoaders.put(FREEPLAY_MENU,new FXMLLoader(getClass().getResource("gui/freeplay/main.fxml")));
-            sceneLoaders.put(SELECT_LEVEL,new FXMLLoader(getClass().getResource("gui/select_Level/selectLevel.fxml")));
+        sceneLoaders.put(RULE_SCREEN,new FXMLLoader(getClass().getResource("gui/rule_screen/ruleScreen.fxml")));
+        sceneLoaders.put(SELECT_LEVEL,new FXMLLoader(getClass().getResource("gui/select_Level/selectLevel.fxml")));
         sceneLoaders.put(LEVEL_PLAY_SRCEEN,new FXMLLoader(getClass().getResource("gui/level_play_sceen/level-play-screen.fxml")));
 
 
