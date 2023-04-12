@@ -5,7 +5,6 @@ import fr.slitherlink.app.fx_controlleur.LevelPlaySceen;
 import fr.slitherlink.game.Game;
 import fr.slitherlink.save.gamesave.GameSaveResourceManageur;
 import fr.slitherlink.save.puzzle.PuzzleResourceManageur;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
@@ -17,22 +16,35 @@ import javafx.scene.text.TextAlignment;
 
 import java.util.List;
 
-
 public class SelectLevelController {
 
     @FXML
     public FlowPane buttonLevelPanel;
-    
+
     @FXML
-    public void initialize(){
+    public void initialize() {
         List<Integer> listID = PuzzleResourceManageur.getLevelIdList();
-        for(Integer id : listID)
-            buttonLevelPanel.getChildren().add(createButton(id));
+        int i = 1;
+        for (Integer id : listID) {
+            Button button = createButton(id);
+            if (i <= 9) {
+                buttonLevelPanel.getChildren().add(button);
+            } else {
+                FlowPane newFlowPane = new FlowPane();
+                newFlowPane.getChildren().add(button);
+                buttonLevelPanel.setMaxWidth(600);
+                newFlowPane.setMaxWidth(400); // largeur maximale du FlowPane
+                newFlowPane.setMaxHeight(400); // largeur maximale du FlowPane
+
+                buttonLevelPanel.getChildren().add(newFlowPane);
+            }
+            i++;
+        }
     }
 
     public Button createButton(int id) { // TODO: 11/04/2023 modif interface pour que ce soit clean + sauvegarder partie en cours avec id
 
-        Button button = new Button(id+"");
+        Button button = new Button(id + "");
         button.setContentDisplay(ContentDisplay.CENTER);
         button.setGraphicTextGap(0.0);
         button.setMaxHeight(100.0);
@@ -52,7 +64,7 @@ public class SelectLevelController {
 
         button.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             Slitherlink.getMainInstance().setActive(Slitherlink.LEVEL_PLAY_SRCEEN);
-            ((LevelPlaySceen)Slitherlink.getMainInstance().getController(Slitherlink.LEVEL_PLAY_SRCEEN)).setGame(new Game(new GameSaveResourceManageur(id)));
+            ((LevelPlaySceen) Slitherlink.getMainInstance().getController(Slitherlink.LEVEL_PLAY_SRCEEN)).setGame(new Game(new GameSaveResourceManageur(id)));
         });
         return button;
     }
