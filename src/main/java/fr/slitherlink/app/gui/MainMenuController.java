@@ -23,9 +23,7 @@ public class MainMenuController {
         Slitherlink.getMainInstance().setActive(Slitherlink.GAME_SELECTION_MENU);
     }
 
-    public void onRulesButtonClick(){
-        System.out.println("On a appuyé sur le bouton des règles");
-    }
+    public void onRulesButtonClick(){ System.out.println("On a appuyé sur le bouton des règles"); }
 
     public void onTutorialButtonClick(){
         System.out.println("On a appuyé sur le bouton du tutoriel");

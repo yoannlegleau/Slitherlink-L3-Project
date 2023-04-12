@@ -1,7 +1,7 @@
 package fr.slitherlink.app;
 
 import fr.slitherlink.game.Game;
-import fr.slitherlink.app.component.PuzllGridGroup;
+import fr.slitherlink.app.gui.component.PuzllGridGroup;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
