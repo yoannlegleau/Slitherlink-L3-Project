@@ -1,4 +1,4 @@
-package fr.slitherlink.app.fx_controlleur.component;
+package fr.slitherlink.app.gui.component;
 
 import fr.slitherlink.game.Game;
 import fr.slitherlink.game.action.ActionFactory;

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Point3D?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #333337;" stylesheets="@style/style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+
+   <children>
+      <ButtonBar buttonMinWidth="2.0" layoutX="-2.0" layoutY="1025.0" minWidth="-Infinity" prefHeight="68.0" prefWidth="1922.0" style="-fx-background-color: #252525;" AnchorPane.bottomAnchor="-0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <buttons>
+            <Button maxHeight="60.0" maxWidth="258.0" minHeight="15.0" minWidth="59.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="129.0" style="-fx-background-radius: 50px; -fx-background-color: #93e4ea; -fx-translate-y: -18;" text="Paramètres" ButtonBar.buttonData="LEFT">
+               <cursor>
+                  <Cursor fx:constant="CLOSED_HAND" />
+               </cursor>
+               <graphic>
+                  <SVGPath content="M27.3 44h-6.6q-.55 0-.975-.35-.425-.35-.525-.9l-.8-5.05q-.95-.35-2-.95t-1.85-1.25L9.9 37.65q-.55.25-1.1.075T7.95 37l-3.3-5.85q-.3-.5-.15-1.05t.6-.9l4.3-3.15q-.1-.45-.125-1.025Q9.25 24.45 9.25 24q0-.45.025-1.025T9.4 21.95L5.1 18.8q-.45-.35-.6-.9-.15-.55.15-1.05L7.95 11q.3-.55.85-.725.55-.175 1.1.075l4.65 2.15q.8-.65 1.85-1.25t2-.9l.8-5.1q.1-.55.525-.9Q20.15 4 20.7 4h6.6q.55 0 .975.35.425.35.525.9l.8 5.05q.95.35 2.025.925Q32.7 11.8 33.45 12.5l4.65-2.15q.55-.25 1.1-.075t.85.725l3.3 5.8q.3.5.175 1.075t-.625.925l-4.3 3.05q.1.5.125 1.075.025.575.025 1.075t-.025 1.05q-.025.55-.125 1.05l4.3 3.1q.45.35.6.9.15.55-.15 1.05L40.05 37q-.3.55-.85.725-.55.175-1.1-.075l-4.65-2.15q-.8.65-1.825 1.275-1.025.625-2.025.925l-.8 5.05q-.1.55-.525.9-.425.35-.975.35ZM24 30.5q2.7 0 4.6-1.9 1.9-1.9 1.9-4.6 0-2.7-1.9-4.6-1.9-1.9-4.6-1.9-2.7 0-4.6 1.9-1.9 1.9-1.9 4.6 0 2.7 1.9 4.6 1.9 1.9 4.6 1.9Zm0-3q-1.45 0-2.475-1.025Q20.5 25.45 20.5 24q0-1.45 1.025-2.475Q22.55 20.5 24 20.5q1.45 0 2.475 1.025Q27.5 22.55 27.5 24q0 1.45-1.025 2.475Q25.45 27.5 24 27.5Zm0-3.5Zm-2.2 17h4.4l.7-5.6q1.65-.4 3.125-1.25T32.7 32.1l5.3 2.3 2-3.6-4.7-3.45q.2-.85.325-1.675.125-.825.125-1.675 0-.85-.1-1.675-.1-.825-.35-1.675L40 17.2l-2-3.6-5.3 2.3q-1.15-1.3-2.6-2.175-1.45-.875-3.2-1.125L26.2 7h-4.4l-.7 5.6q-1.7.35-3.175 1.2-1.475.85-2.625 2.1L10 13.6l-2 3.6 4.7 3.45q-.2.85-.325 1.675-.125.825-.125 1.675 0 .85.125 1.675.125.825.325 1.675L8 30.8l2 3.6 5.3-2.3q1.2 1.2 2.675 2.05Q19.45 35 21.1 35.4Z" scaleX="0.5" scaleY="0.5" style="-fx-stroke-width: 24;" translateX="-5.0" />
+               </graphic>
+            </Button>
+            <Button minHeight="30.0" minWidth="130.0" mnemonicParsing="false" style="-fx-translate-y: -18; -fx-background-radius: 50; -fx-background-color: #93e4ea;" text="Profil" ButtonBar.buttonData="LEFT">
+               <cursor>
+                  <Cursor fx:constant="CLOSED_HAND" />
+               </cursor>
+               <graphic>
+                  <SVGPath content="M24 23.95q-3.3 0-5.4-2.1-2.1-2.1-2.1-5.4 0-3.3 2.1-5.4 2.1-2.1 5.4-2.1 3.3 0 5.4 2.1 2.1 2.1 2.1 5.4 0 3.3-2.1 5.4-2.1 2.1-5.4 2.1ZM37 40H11q-1.25 0-2.125-.875T8 37v-1.7q0-1.9.95-3.25T11.4 30q3.35-1.5 6.425-2.25Q20.9 27 24 27q3.1 0 6.15.775 3.05.775 6.4 2.225 1.55.7 2.5 2.05.95 1.35.95 3.25V37q0 1.25-.875 2.125T37 40Zm-26-3h26v-1.7q0-.8-.475-1.525-.475-.725-1.175-1.075-3.2-1.55-5.85-2.125Q26.85 30 24 30t-5.55.575q-2.7.575-5.85 2.125-.7.35-1.15 1.075Q11 34.5 11 35.3Zm13-16.05q1.95 0 3.225-1.275Q28.5 18.4 28.5 16.45q0-1.95-1.275-3.225Q25.95 11.95 24 11.95q-1.95 0-3.225 1.275Q19.5 14.5 19.5 16.45q0 1.95 1.275 3.225Q22.05 20.95 24 20.95Zm0-4.5ZM24 37Z" scaleX="0.5" scaleY="0.5" scaleZ="0.5" style="-fx-translate-x: -2500%;">
+                     <rotationAxis>
+                        <Point3D />
+                     </rotationAxis>
+                  </SVGPath>
+               </graphic>
+               <rotationAxis>
+                  <Point3D />
+               </rotationAxis>
+            </Button>
+            <Button maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" style="-fx-translate-y: -18; -fx-background-radius: 100%; -fx-max-width: 40; -fx-min-width: 40; -fx-background-color: #93e4ea;" textAlignment="CENTER">
+               <graphic>
+                  <SVGPath content="M7.5 38.5h9v-17h-9Zm12 0h9v-29h-9Zm12 0h9v-13h-9Zm-27 3v-23h12v-12h15v16h12v19Z" scaleX="0.5" scaleY="0.5" />
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </Button>
+         </buttons>
+         <padding>
+            <Insets left="10.0" right="10.0" />
+         </padding>
+      </ButtonBar>
+      <Text fill="WHITE" layoutX="431.0" layoutY="93.36979103088379" scaleX="5.0" scaleY="5.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Règles et astuces" translateX="-16.0" translateY="-15.0" AnchorPane.bottomAnchor="983.3750009536743" AnchorPane.leftAnchor="431.0" AnchorPane.rightAnchor="1384.2994842529297" AnchorPane.topAnchor="81.0" />
+      <TabPane layoutX="884.0" layoutY="636.0" prefHeight="492.0" prefWidth="1900.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="425.0">
+        <tabs>
+            <Tab text="Techniques de départ">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #252525; -fx-border-color: #535353;">
+                     <children>
+                        <ScrollPane layoutX="570.0" layoutY="159.0" prefHeight="517.0" prefWidth="1880.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <content>
+                              <AnchorPane prefHeight="1952.0" prefWidth="1790.0" style="-fx-background-color: #252525;">
+                                 <children>
+                                    <Text fill="WHITE" layoutX="41.0" layoutY="44.0" scaleX="2.0" scaleY="2.0" scaleZ="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Aucune ligne autour du 0" AnchorPane.leftAnchor="90.0" AnchorPane.topAnchor="30.0" />
+                                    <Text fill="WHITE" layoutX="54.0" layoutY="788.0" scaleX="2.0" scaleY="2.0" scaleZ="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                                    <Text fill="WHITE" layoutX="368.0" layoutY="98.0" scaleX="2.0" scaleY="2.0" scaleZ="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lors de la résolution d'énigmes Slitherlink, il est tout aussi important d'éliminer les liens où" AnchorPane.leftAnchor="368.0" AnchorPane.topAnchor="85.63020896911621" />
+                                    <Text fill="WHITE" layoutX="378.0" layoutY="139.0" scaleX="2.0" scaleY="2.0" scaleZ="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="les lignes ne sont PAS autorisées. La meilleure façon de le faire est de les marquer avec un X." AnchorPane.leftAnchor="378.0" AnchorPane.topAnchor="126.63020896911621" />
+                                    <Text fill="WHITE" layoutX="376.0" layoutY="210.0" scaleX="2.0" scaleY="2.0" scaleZ="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Regardons le 0 au centre de cet exemple. Le 0 signifie qu'il n'est entouré d'aucune ligne, nous" AnchorPane.leftAnchor="378.0" AnchorPane.topAnchor="167.0" />
+                                    <Text fill="WHITE" layoutX="370.0" layoutY="269.0" scaleX="2.0" scaleY="2.0" scaleZ="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="pouvons donc placer quatre X autour de lui pour montrer que les quatre liens sont exclus." AnchorPane.leftAnchor="370.0" AnchorPane.topAnchor="208.0" />
+                                    <Text fill="WHITE" layoutX="376.0" layoutY="328.0" scaleX="2.0" scaleY="2.0" scaleZ="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cet exemple montre également un 0 dans un coin et un 0 sur un côté. Dans les deux cas, deux" AnchorPane.leftAnchor="376.0" AnchorPane.topAnchor="249.0" />
+                                    <Text fill="WHITE" layoutX="370.0" layoutY="382.0" scaleX="2.0" scaleY="2.0" scaleZ="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="X supplémentaires sont marqués pour indiquer que les lignes ne sont pas autorisées car" AnchorPane.leftAnchor="370.0" AnchorPane.topAnchor="290.0" />
+                                    <Text fill="WHITE" layoutX="217.0" layoutY="434.0" scaleX="2.0" scaleY="2.0" scaleZ="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="elles ne peuvent pas être poursuivies." AnchorPane.leftAnchor="217.0" AnchorPane.topAnchor="331.0" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+          <Tab text="Techniques basiques">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #252525; -fx-border-color: #535353;" />
+            </content>
+          </Tab>
+          <Tab text="Techniques avancées">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #252525; -fx-border-color: #535353;" />
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+      <TextArea layoutX="596.0" layoutY="213.0" prefHeight="133.0" prefWidth="787.0" scaleX="2.0" scaleY="2.0" scaleZ="2.0" styleClass="text-area" text="Chaque puzzle se compose d'un réseau rectangulaire de points avec des indices à divers endroits. &#10;L'objet est de relier des points adjacents ainsi :&#10;&#10;-La valeur de chaque indice est égale au nombre de liens qui l'entourent.&#10;-Les cases vides peuvent être entourées par n'importe quel nombre de liens.&#10;-Une fois terminée, la solution forme une seule boucle continue sans croisements ni branches.&#10;&#10;&#10;" AnchorPane.leftAnchor="596.0" AnchorPane.rightAnchor="537.0" />
+   </children>
+</AnchorPane>

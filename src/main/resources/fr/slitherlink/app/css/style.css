@@ -1,0 +1,57 @@
+/* Custom scroll pane */
+
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+/* Custom scroll bar */
+
+.scroll-bar:vertical .track{
+    -fx-background-color : #252525;
+    -fx-border-color :transparent;
+    -fx-background-radius : 0.0em;
+    -fx-border-radius :2.0em;
+}
+
+.scroll-bar:vertical .increment-button ,
+.scroll-bar:vertical .decrement-button {
+    -fx-background-color : #252525;
+    -fx-background-radius : 0.0em;
+    -fx-padding :0.0 10.0 0.0 0.0;
+
+}
+
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow{
+    -fx-shape : "";
+    -fx-padding :0.15em 0.0;
+}
+
+.scroll-bar:vertical .increment-arrow,
+.scroll-bar:vertical .decrement-arrow{
+    -fx-shape : "";
+    -fx-padding :0.0 0.10em;
+}
+
+.scroll-bar:vertical {
+    -fx-pref-width: 7px;
+}
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color :derive(black,90.0%);
+    -fx-background-insets : 2.0, 0.0, 0.0;
+    -fx-background-radius : 2.0em;
+}
+
+.scroll-bar:vertical .thumb:hover {
+    -fx-background-color :derive(#4D4C4F,10.0%);
+    -fx-background-insets : 2.0, 0.0, 0.0;
+    -fx-background-radius : 2.0em;
+}
+
+/* Connexion btn */
+
+.connexion_btn {
+    -fx-border-radius: 50px;
+    -fx-background-color: red;
+}

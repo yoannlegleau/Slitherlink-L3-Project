@@ -8,9 +8,9 @@
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.layout.Region?>
 
-<ButtonBar buttonMinWidth="2.0" minWidth="-Infinity" prefHeight="40.0" style="-fx-background-color: #252525;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" stylesheets="@../../css/default-style.css">
+<ButtonBar buttonMinWidth="2.0" minWidth="-Infinity" prefHeight="40.0" style="-fx-background-color: #252525;" fx:controller="fr.slitherlink.app.gui.NavBarController" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" stylesheets="@../../css/default-style.css">
    <buttons>
-      <Button graphicTextGap="5.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-translate-y: -18;" styleClass="MenuButton"  text="Paramètres" textAlignment="CENTER" textOverrun="CLIP" ButtonBar.buttonData="LEFT">
+      <Button onAction="#onSettingsButtonClick"  graphicTextGap="5.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" style="-fx-translate-y: -18;" styleClass="MenuButton"  text="Paramètres" textAlignment="CENTER" textOverrun="CLIP" ButtonBar.buttonData="LEFT">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -26,7 +26,7 @@
             <Insets left="20.0" right="20.0" />
          </padding>
       </Button>
-      <Button alignment="CENTER" graphicTextGap="5.0" maxHeight="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" style="-fx-translate-y: -18;" styleClass="MenuButton" text="Profil" ButtonBar.buttonData="LEFT">
+      <Button alignment="CENTER" onAction="#onAccountButtonClick" graphicTextGap="5.0" maxHeight="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" style="-fx-translate-y: -18;" styleClass="MenuButton" text="Profil" ButtonBar.buttonData="LEFT">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -45,7 +45,7 @@
             <Insets left="20.0" right="20.0" />
          </padding>
       </Button>
-      <Button contentDisplay="CENTER" graphicTextGap="0.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" style="-fx-translate-y: -18; -fx-background-radius: 100%;" styleClass="MenuButton" text=" " textAlignment="CENTER">
+      <Button contentDisplay="CENTER" graphicTextGap="0.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" style="-fx-translate-y: -18; -fx-background-radius: 100%;" styleClass="MenuButton"  text=" " textAlignment="CENTER">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>

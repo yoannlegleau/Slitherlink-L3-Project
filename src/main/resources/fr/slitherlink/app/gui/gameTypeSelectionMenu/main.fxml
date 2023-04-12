@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #333337;" stylesheets="@main.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.slitherlink.app.gui.gameTypeSelectionMenuController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #333337;" stylesheets="@main.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.slitherlink.app.gui.GameTypeSelectionMenuController">
     <opaqueInsets>
         <Insets />
     </opaqueInsets>
@@ -31,7 +31,7 @@
                                     </font></Text>
                                 <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@assets/grid.png" />
+                                        <Image url="@../../../icons/grid.png" />
                                     </image>
                                 </ImageView>
                             </children>
@@ -48,7 +48,7 @@
                                 </Text>
                                 <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@assets/grid.png" />
+                                        <Image url="@../../../icons/grid.png" />
                                     </image>
                                 </ImageView>
                             </children>
@@ -65,7 +65,7 @@
                                 </Text>
                                 <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@assets/grid.png" />
+                                        <Image url="@../../../icons/grid.png" />
                                     </image>
                                 </ImageView>
                             </children>

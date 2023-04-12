@@ -1,7 +1,4 @@
-package fr.slitherlink.app.fx_controlleur.component;
-
-
-import fr.slitherlink.game.grid.Edge;
+package fr.slitherlink.app.gui.component;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import java.awt.event.ActionEvent;
