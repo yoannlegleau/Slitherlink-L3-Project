@@ -29,7 +29,8 @@ public class SelectLevelController {
         for(Integer id : listID)
             buttonLevelPanel.getChildren().add(createButton(id));
     }
-    public Button createButton(int id) {
+
+    public Button createButton(int id) { // TODO: 11/04/2023 modif interface pour que ce soit clean + sauvegarder partie en cours avec id
 
         Button button = new Button(id+"");
         button.setContentDisplay(ContentDisplay.CENTER);
