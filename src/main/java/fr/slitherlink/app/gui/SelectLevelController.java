@@ -26,16 +26,31 @@ public class SelectLevelController implements ActionListener {
 
     @FXML
     public FlowPane buttonLevelPanel;
-    
-    @FXML
-    public void initialize(){
-        List<Integer> listID = PuzzleResourceManageur.getLevelIdList();
-        for(Integer id : listID)
-            buttonLevelPanel.getChildren().add(createButton(id));
-    }
-    public Button createButton(int id) {
 
-        Button button = new Button(id+"");
+    @FXML
+    public void initialize() {
+        List<Integer> listID = PuzzleResourceManageur.getLevelIdList();
+        int i = 1;
+        for (Integer id : listID) {
+            Button button = createButton(id);
+            if (i <= 9) {
+                buttonLevelPanel.getChildren().add(button);
+            } else {
+                FlowPane newFlowPane = new FlowPane();
+                newFlowPane.getChildren().add(button);
+                buttonLevelPanel.setMaxWidth(600);
+                newFlowPane.setMaxWidth(400); // largeur maximale du FlowPane
+                newFlowPane.setMaxHeight(400); // largeur maximale du FlowPane
+
+                buttonLevelPanel.getChildren().add(newFlowPane);
+            }
+            i++;
+        }
+    }
+
+    public Button createButton(int id) { // TODO: 11/04/2023 modif interface pour que ce soit clean + sauvegarder partie en cours avec id
+
+        Button button = new Button(id + "");
         button.setContentDisplay(ContentDisplay.CENTER);
         button.setGraphicTextGap(0.0);
         button.setMaxHeight(100.0);

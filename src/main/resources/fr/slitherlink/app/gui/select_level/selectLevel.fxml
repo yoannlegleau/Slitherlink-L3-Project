@@ -9,27 +9,28 @@
 <?import javafx.scene.text.Text?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="960.0" prefHeight="720.0" prefWidth="960.0" style="-fx-background-color: #333337;" stylesheets="@menu.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.slitherlink.app.gui.SelectLevelController">
-   
-   <top>
-      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="499.0" style="-fx-translate-y: 86;" BorderPane.alignment="CENTER">
-         <children>
-            <Text fill="WHITE" scaleX="0.5" scaleY="0.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Séléction du niveau" textAlignment="CENTER" translateY="-50.0" VBox.vgrow="ALWAYS">
-               <font>
-                  <Font size="90.0" />
-               </font>
-            </Text>
-         </children>
-      </VBox>
-   </top>
-   
-   <center>
-         <AnchorPane prefHeight="200.0" prefWidth="200.0" scaleX="0.9" styleClass="PanelSelect" stylesheets="@selectLevel.css" translateY="-50.0" BorderPane.alignment="CENTER">
-         <children>
-            <FlowPane fx:id="buttonLevelPanel" prefHeight="520.0" prefWidth="960.0" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="16.0" />
-         </children>
-         <BorderPane.margin>
-            <Insets bottom="50.0" />
-         </BorderPane.margin></AnchorPane>  
 
-   </center>
+    <top>
+        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="499.0" style="-fx-translate-y: 86;" BorderPane.alignment="CENTER">
+            <children>
+                <Text fill="WHITE" scaleX="0.5" scaleY="0.5" strokeType="OUTSIDE" strokeWidth="0.0" text="Séléction du niveau" textAlignment="CENTER" translateY="-70.0" VBox.vgrow="ALWAYS">
+                    <font>
+                        <Font size="90.0" />
+                    </font>
+                </Text>
+            </children>
+        </VBox>
+    </top>
+
+    <center>
+        <AnchorPane minHeight="-Infinity" prefHeight="437.0" prefWidth="960.0" scaleX="0.9" styleClass="PanelSelect" stylesheets="@selectLevel.css" translateY="-50.0" BorderPane.alignment="CENTER">
+            <children>
+                <FlowPane fx:id="buttonLevelPanel" hgap="100" prefHeight="520.0" prefWidth="960.0" prefWrapLength="960.0" vgap="40" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="100.0">
+                </FlowPane>
+            </children>
+            <BorderPane.margin>
+                <Insets bottom="50.0" />
+            </BorderPane.margin>
+        </AnchorPane>
+    </center>
 </BorderPane>
