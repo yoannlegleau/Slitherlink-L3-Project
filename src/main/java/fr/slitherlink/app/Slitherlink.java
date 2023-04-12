@@ -13,23 +13,28 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Stack;
 
 public class Slitherlink extends Application {
-    public static final String MAIN_MENU = "mainMenu";
 
+    /* Constantes de sélection de menu */
+    public static final String MAIN_MENU = "mainMenu";
     public static final String GAME_SELECTION_MENU = "levelSelectionMenu";
     public static final String LEVEL_PLAY_SRCEEN = "levelPlayScreen";
-
     public static final String FREEPLAY_MENU = "freeplayMenu";
 
     private static Slitherlink instance = null;
     private AnchorPane mainPane;
     private ButtonBar mainButtonBar;
-
     private Pane backButton;
+
+
 
     // Les différents écrans
     private Map<String, Pane> scenes;
+
+    /* Pile qui contient les écrans affichées */
+    private Stack<Pane> screenStack;
 
     private Pane active;
 
@@ -41,6 +46,7 @@ public class Slitherlink extends Application {
         // Et le barre de boutons
 
         scenes = new HashMap<>();
+        screenStack = new Stack<>();
 
         mainPane = new AnchorPane();
         mainPane.setMinSize(960, 720);
@@ -57,6 +63,7 @@ public class Slitherlink extends Application {
         backButton = FXMLLoader.load(getClass().getResource("gui/backButton/main.fxml"));
         AnchorPane.setTopAnchor(backButton, 0d);
         AnchorPane.setLeftAnchor(backButton, 30d);
+        backButton.addEventHandler(javafx.scene.input.MouseEvent.MOUSE_CLICKED, event -> onBackButtonClicked());
 
         scenes.put(MAIN_MENU,FXMLLoader.load(getClass().getResource("gui/mainMenu/menu.fxml")));
         scenes.put(GAME_SELECTION_MENU,  FXMLLoader.load(getClass().getResource("gui/gameTypeSelectionMenu/main.fxml")));
@@ -95,12 +102,21 @@ public class Slitherlink extends Application {
         Pane p = scenes.get(paneName);
 
         // On regarde si aucun panneau n'est actif
-        if(active != null)
+        if(active != null){
             active.setVisible(false);
-
+        }
+            
+        screenStack.push(active);
         p.setVisible(true);
         backButton.setVisible(paneName != MAIN_MENU);
         active = p;
+    }
+
+    public void onBackButtonClicked(){
+        if(screenStack.size() > 1){
+            screenStack.pop().setVisible(false);;
+            screenStack.peek().setVisible(true);
+        }
     }
 
     public static Slitherlink getMainInstance(){
