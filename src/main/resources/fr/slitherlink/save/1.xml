@@ -3,56 +3,21 @@
     <action type="SET_LINE">
         <x>2</x>
         <y>0</y>
-        <t>R</t>
-    </action>
-    <action type="SET_LINE">
-        <x>2</x>
-        <y>1</y>
-        <t>R</t>
+        <t>T</t>
     </action>
     <action type="SET_LINE">
         <x>2</x>
         <y>0</y>
-        <t>B</t>
+        <t>R</t>
     </action>
     <action type="SET_LINE">
-        <x>1</x>
+        <x>3</x>
         <y>0</y>
         <t>B</t>
     </action>
     <action type="SET_LINE">
-        <x>1</x>
+        <x>3</x>
         <y>1</y>
-        <t>B</t>
-    </action>
-    <action type="SET_LINE">
-        <x>1</x>
-        <y>2</y>
-        <t>B</t>
-    </action>
-    <action type="SET_LINE">
-        <x>1</x>
-        <y>2</y>
-        <t>R</t>
-    </action>
-    <action type="SET_LINE">
-        <x>1</x>
-        <y>1</y>
-        <t>R</t>
-    </action>
-    <action type="SET_LINE">
-        <x>0</x>
-        <y>2</y>
-        <t>R</t>
-    </action>
-    <action type="SET_LINE">
-        <x>2</x>
-        <y>2</y>
-        <t>B</t>
-    </action>
-    <action type="SET_LINE">
-        <x>2</x>
-        <y>2</y>
         <t>R</t>
     </action>
     <action type="SET_LINE">
@@ -61,89 +26,108 @@
         <t>B</t>
     </action>
     <action type="SET_LINE">
+        <x>2</x>
+        <y>2</y>
+        <t>R</t>
+    </action>
+    <action type="SET_LINE">
+        <x>2</x>
+        <y>2</y>
+        <t>B</t>
+    </action>
+    <action type="SET_LINE">
         <x>1</x>
-        <y>0</y>
-        <t>T</t>
+        <y>3</y>
+        <t>R</t>
+    </action>
+    <action type="SET_LINE">
+        <x>1</x>
+        <y>3</y>
+        <t>B</t>
+    </action>
+    <action type="SET_LINE">
+        <x>0</x>
+        <y>3</y>
+        <t>R</t>
+    </action>
+    <action type="SET_LINE">
+        <x>0</x>
+        <y>2</y>
+        <t>B</t>
+    </action>
+    <action type="SET_LINE">
+        <x>0</x>
+        <y>2</y>
+        <t>L</t>
+    </action>
+    <action type="SET_LINE">
+        <x>0</x>
+        <y>1</y>
+        <t>B</t>
+    </action>
+    <action type="SET_LINE">
+        <x>0</x>
+        <y>1</y>
+        <t>R</t>
     </action>
     <action type="SET_EMPTY">
-        <x>1</x>
-        <y>0</y>
-        <t>T</t>
-    </action>
-    <action type="SET_LINE">
-        <x>1</x>
-        <y>0</y>
-        <t>T</t>
-    </action>
-    <action type="SET_LINE">
         <x>0</x>
-        <y>0</y>
-        <t>T</t>
-    </action>
-    <action type="SET_LINE">
-        <x>0</x>
-        <y>0</y>
-        <t>R</t>
-    </action>
-    <action type="HINT"/>
-    <action type="HINT"/>
-    <action type="ASSUMPTION_START">
-        <target>20</target>
-        <target>21</target>
-        <target>22</target>
-        <target>23</target>
-    </action>
-    <action type="SET_LINE">
-        <x>3</x>
-        <y>2</y>
+        <y>1</y>
         <t>B</t>
     </action>
     <action type="SET_LINE">
-        <x>3</x>
-        <y>2</y>
-        <t>R</t>
-    </action>
-    <action type="SET_LINE">
-        <x>3</x>
+        <x>0</x>
         <y>1</y>
-        <t>R</t>
+        <t>L</t>
     </action>
     <action type="SET_LINE">
-        <x>3</x>
-        <y>0</y>
-        <t>R</t>
-    </action>
-    <action type="ASSUMPTION_VALID" validated="true">
-        <target>19</target>
-    </action>
-    <action type="SET_EMPTY">
-        <x>2</x>
-        <y>0</y>
-        <t>T</t>
-    </action>
-    <action type="SET_LINE">
-        <x>1</x>
-        <y>0</y>
-        <t>R</t>
-    </action>
-    <action type="SET_LINE">
-        <x>1</x>
+        <x>0</x>
         <y>0</y>
         <t>B</t>
     </action>
     <action type="SET_EMPTY">
         <x>0</x>
-        <y>0</y>
+        <y>1</y>
         <t>R</t>
     </action>
-    <action type="SET_EMPTY">
-        <x>0</x>
+    <action type="SET_LINE">
+        <x>1</x>
         <y>0</y>
         <t>B</t>
     </action>
     <action type="SET_LINE">
-        <x>0</x>
-        <y>1</y>
+        <x>1</x>
+        <y>0</y>
+        <t>R</t>
+    </action>
+    <action type="SET_EMPTY">
+        <x>2</x>
+        <y>2</y>
+        <t>R</t>
+    </action>
+    <action type="SET_EMPTY">
+        <x>2</x>
+        <y>2</y>
         <t>B</t>
+    </action>
+    <action type="SET_LINE">
+        <x>2</x>
+        <y>2</y>
+        <t>R</t>
+    </action>
+    <action type="SET_LINE">
+        <x>2</x>
+        <y>3</y>
+        <t>R</t>
+    </action>
+    <action type="SET_LINE">
+        <x>2</x>
+        <y>3</y>
+        <t>B</t>
+    </action>
+    <action type="SET_EMPTY">
+        <x>1</x>
+        <y>3</y>
+        <t>R</t>
     </action>
 </gameSave>

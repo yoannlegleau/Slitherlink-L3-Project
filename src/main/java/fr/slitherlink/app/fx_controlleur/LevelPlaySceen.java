@@ -4,20 +4,13 @@ import fr.slitherlink.app.component.PuzllGridGroup;
 import fr.slitherlink.game.Game;
 import fr.slitherlink.game.action.ActionFactory;
 import fr.slitherlink.game.action.GameActionTypes;
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import javafx.util.Duration;
 
 import java.awt.event.ActionListener;
 
@@ -59,17 +52,9 @@ public class LevelPlaySceen implements ActionListener {
 
     @FXML
     public void initialize() {
-        int pxSize = 500; //TODO trouver un moyen de le recuperer la taille de gamePane
-        game = new Game(levelid);
-        game.subscribe(this);
-        puzlGridGroup = new PuzllGridGroup(game, pxSize);
-        gamePane.getChildren().add(puzlGridGroup);
-        /*seconds=0;
-        startTimer();*/
-        lpc=this;
-        System.out.println("Arrivé sur la page");
+        //TODO trouver un moyen de le recuperer la taille de gamePane
 
-        game.redoAllAction();
+        lpc=this;
 
         root.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ESCAPE) {
@@ -84,6 +69,15 @@ public class LevelPlaySceen implements ActionListener {
                 redo();
             }
         });
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+        game.subscribe(this);
+        int pxSize = 500;
+        puzlGridGroup = new PuzllGridGroup(game, pxSize);
+        gamePane.getChildren().add(puzlGridGroup);
+        game.redoAllAction();
     }
 
     public void resetAction(ActionEvent actionEvent) {

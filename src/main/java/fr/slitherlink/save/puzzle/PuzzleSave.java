@@ -10,13 +10,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Object représentant les informations stoker d'un puzzle
  * @author LE GLEAU Yoann
  * @version 1, 14/02/2023
  * @version 2, 23/02/2023
  */
 
 @XmlRootElement
-@XmlType(propOrder={"size", "grid", "solution","difficulty"})
+@XmlType(propOrder={"size","difficulty", "grid", "solution"})
 public class PuzzleSave {
     private int id;
     private int size;
@@ -72,9 +73,14 @@ public class PuzzleSave {
 
     @Override
     public String toString() {
-        return this.getClass().toString()+"[id="+id+", name="+ size +"]";
+        return "PuzzleSave{" +
+                "id=" + id +
+                ", size=" + size +
+                ", difficulty=" + difficulty +
+                ", grid=" + grid +
+                ", solution=" + solution +
+                '}';
     }
-
     public void setGrid(Integer[][] grid) {
         this.size = grid.length;
         this.grid = new GridSave(grid);
@@ -92,10 +98,10 @@ public class PuzzleSave {
         if (solution != null)
             for (Solution.SaveEdge edge : solution.getEdgeList()) {
                 switch (edge.direction) {
-                    case "T" -> g.getCell(edge.column, edge.row).getTop().setType(EdgeType.LINE);
-                    case "B" -> g.getCell(edge.column, edge.row).getBottom().setType(EdgeType.LINE);
-                    case "L" -> g.getCell(edge.column, edge.row).getLeft().setType(EdgeType.LINE);
-                    case "R" -> g.getCell(edge.column, edge.row).getRight().setType(EdgeType.LINE);
+                    case "T" -> g.getCell(edge.row, edge.column).getTop().setType(EdgeType.LINE);
+                    case "B" -> g.getCell(edge.row, edge.column).getBottom().setType(EdgeType.LINE);
+                    case "L" -> g.getCell(edge.row, edge.column).getLeft().setType(EdgeType.LINE);
+                    case "R" -> g.getCell(edge.row, edge.column).getRight().setType(EdgeType.LINE);
                 }
             }
         return g;
@@ -106,6 +112,9 @@ public class PuzzleSave {
         solution = new Solution(newGrid);
     }
 
+
+
+
     @XmlRootElement(name = "grid")
     private static class GridSave {
         @XmlElement(name="number")
@@ -115,6 +124,8 @@ public class PuzzleSave {
             super();
             numberList = new ArrayList<>();
         }
+
+
 
         public GridSave(Integer[][] gridNumbers) {
             this();

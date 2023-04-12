@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<freePlayConfig>
+    <size>7</size>
+    <difficulty>HARD</difficulty>
+    <finishedFilter>true</finishedFilter>
+    <gameSave id="6"/>
+</freePlayConfig>

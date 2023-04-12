@@ -20,6 +20,9 @@ public class Slitherlink extends Application {
 
     public static final String GAME_SELECTION_MENU = "levelSelectionMenu";
     public static final String LEVEL_PLAY_SRCEEN = "levelPlayScreen";
+    public static final String RULE_SCREEN = "ruleScreen";
+
+    public static final String SELECT_LEVEL = "selectLevel";
 
     public static final String FREEPLAY_MENU = "freeplayMenu";
 
@@ -30,7 +33,7 @@ public class Slitherlink extends Application {
     private Pane backButton;
 
     // Les différents écrans
-    private Map<String, Pane> scenes;
+    private Map<String, FXMLLoader> sceneLoaders;
 
     private Pane active;
 
@@ -41,7 +44,7 @@ public class Slitherlink extends Application {
         // Le bouton retour
         // Et le barre de boutons
 
-        scenes = new HashMap<>();
+        sceneLoaders = new HashMap<>();
 
         mainPane = new AnchorPane();
         mainPane.setMinSize(960, 720);
@@ -59,15 +62,18 @@ public class Slitherlink extends Application {
         AnchorPane.setTopAnchor(backButton, 0d);
         AnchorPane.setLeftAnchor(backButton, 30d);
 
-        scenes.put(MAIN_MENU,FXMLLoader.load(getClass().getResource("gui/mainMenu/menu.fxml")));
-        scenes.put(GAME_SELECTION_MENU,  FXMLLoader.load(getClass().getResource("gui/gameTypeSelectionMenu/main.fxml")));
-        scenes.put(FREEPLAY_MENU, FXMLLoader.load(getClass().getResource("gui/freeplay/main.fxml")));
-        scenes.put(LEVEL_PLAY_SRCEEN, FXMLLoader.load(getClass().getResource("gui/level_play_sceen/level-play-screen.fxml")));
+        sceneLoaders.put(MAIN_MENU,new FXMLLoader(getClass().getResource("gui/mainMenu/menu.fxml")));
+        sceneLoaders.put(GAME_SELECTION_MENU,new FXMLLoader(getClass().getResource("gui/gameTypeSelectionMenu/main.fxml")));
+        sceneLoaders.put(FREEPLAY_MENU,new FXMLLoader(getClass().getResource("gui/freeplay/main.fxml")));
+        sceneLoaders.put(RULE_SCREEN,new FXMLLoader(getClass().getResource("gui/rule_screen/ruleScreen.fxml")));
+        sceneLoaders.put(SELECT_LEVEL,new FXMLLoader(getClass().getResource("gui/select_Level/selectLevel.fxml")));
+        sceneLoaders.put(LEVEL_PLAY_SRCEEN,new FXMLLoader(getClass().getResource("gui/level_play_sceen/level-play-screen.fxml")));
 
 
         ObservableList<Node> children = mainPane.getChildren();
 
-        for(Pane p : scenes.values()){
+        for(FXMLLoader fxmlLoader : sceneLoaders.values()){
+            Pane p = fxmlLoader.load();
             AnchorPane.setLeftAnchor(p, 0d);
             AnchorPane.setRightAnchor(p, 0d);
             AnchorPane.setTopAnchor(p, 0d);
@@ -93,7 +99,7 @@ public class Slitherlink extends Application {
 
     public void setActive(String paneName){
         // On récupère le paneau
-        Pane p = scenes.get(paneName);
+        Pane p = sceneLoaders.get(paneName).getRoot();
 
         // On regarde si aucun panneau n'est actif
         if(active != null)
@@ -107,6 +113,10 @@ public class Slitherlink extends Application {
         p.setVisible(true);
         backButton.setVisible(paneName != MAIN_MENU);
         active = p;
+    }
+
+    public Object getController(String paneName){
+        return sceneLoaders.get(paneName).getController();
     }
 
     public static Slitherlink getMainInstance(){

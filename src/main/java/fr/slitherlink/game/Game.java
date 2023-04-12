@@ -8,6 +8,7 @@ import fr.slitherlink.game.action.actions.UndoAction;
 import fr.slitherlink.game.grid.Grid;
 import fr.slitherlink.save.gamesave.GameSave;
 import fr.slitherlink.save.gamesave.GameSaveResourceManageur;
+import fr.slitherlink.save.gamesave.GameSaver;
 import fr.slitherlink.save.puzzle.PuzzleResourceManageur;
 import fr.slitherlink.save.puzzle.PuzzleSave;
 
@@ -24,10 +25,6 @@ import static java.lang.Thread.sleep;
  */
 public class Game {
 
-    int puzzleId;
-    private Integer[][] numbers;
-    private Grid solution;
-
     private Grid currentGrid;
 
     private List<GameAction> actions;
@@ -42,11 +39,15 @@ public class Game {
 
     private int NbHint;
 
-    public Game(int puzzleId){
-        this.puzzleId = puzzleId;
-        loadPuzzle(puzzleId);
+    private GameSaver gameSaver;
+
+    private PuzzleSave puzzleSave;
+
+    public Game(GameSaver gameSaver) {
+        this.gameSaver = gameSaver;
+        puzzleSave = gameSaver.loadPuzzle();
         actions = new ArrayList<>();
-        currentGrid = new Grid(solution.getSize());
+        currentGrid = new Grid(puzzleSave.getSolution().getSize());
         init();
         loadGameSave();
     }
@@ -69,7 +70,7 @@ public class Game {
     }
 
     public Grid getSolution( ){
-        return solution;
+        return puzzleSave.getSolution();
     }
 
     public Grid getCurrentGrid() {
@@ -104,11 +105,8 @@ public class Game {
         return actions;
     }
 
-    public int getPuzzleId() {
-        return puzzleId;
-    }
     public Integer[][] getNumbers() {
-        return numbers;
+        return puzzleSave.getGridNumbers();
     }
 
 
@@ -140,15 +138,8 @@ public class Game {
         action.doAction(this);
         saveGame();
     }
-
-    private void loadPuzzle(int puzzleId){
-        PuzzleSave puzzle = PuzzleResourceManageur.LoadPuzzle(puzzleId);
-        numbers = puzzle.getGridNumbers();
-        solution = puzzle.getSolution();
-    }
-
     public void loadGameSave(){
-        GameSave gameSave = GameSaveResourceManageur.LoadLevel(puzzleId);
+        GameSave gameSave = gameSaver.loadSave();
         if (gameSave == null || gameSave.getActionsToGameAction() == null)
             return;
         actions = gameSave.getActionsToGameAction();
@@ -183,15 +174,18 @@ public class Game {
 
     private void saveGame(){
         if (doSave)
-            GameSaveResourceManageur.saveGameSave(new GameSave(this));
+            gameSaver.save(new GameSave(this));
     }
 
     public void checkisWin() {
-        if (currentGrid.equals(solution)) {
+        if (currentGrid.equals(puzzleSave.getSolution())) {
             isSolved = true;
             notifyListeners(new ActionEvent(this, 0, GameActionTypes.WIN.toString()));
         }else
             isSolved = false;
     }
 
+    public Integer getPuzzleId() {
+        return puzzleSave.getId();
+    }
 }

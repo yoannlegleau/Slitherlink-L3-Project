@@ -1,6 +1,9 @@
 package fr.slitherlink.app.gui;
 
 import fr.slitherlink.app.Slitherlink;
+import fr.slitherlink.app.fx_controlleur.LevelPlaySceen;
+import fr.slitherlink.game.Game;
+import fr.slitherlink.save.gamesave.GameSaveResourceManageur;
 import javafx.fxml.FXML;
 import javafx.scene.layout.VBox;
 
@@ -16,13 +19,12 @@ public class gameTypeSelectionMenuController {
     private VBox rushPlayButton;
 
     public void onFreePlayButtonClick(){
-        System.out.println("On appuye sur le boutton freeplay");
         Slitherlink.getMainInstance().setActive(Slitherlink.FREEPLAY_MENU);
     }
 
     public void onAdventurePlayButtonClick(){
         System.out.println("On appuye sur le bouton aventure");
-        Slitherlink.getMainInstance().setActive(Slitherlink.LEVEL_PLAY_SRCEEN);
+        Slitherlink.getMainInstance().setActive(Slitherlink.SELECT_LEVEL);
     }
 
     public void onRushPlayButtonClick(){

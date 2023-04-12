@@ -1,4 +1,4 @@
-package fr.slitherlink.app.component;
+package fr.slitherlink.app.fx_controlleur.component;
 
 import fr.slitherlink.game.Game;
 import fr.slitherlink.game.action.ActionFactory;
@@ -141,17 +141,5 @@ public class PuzllGridGroup extends Group implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
     }
-
-    //TODO luca
-//    public DrawingCirlce ( double centerX, double centerY, double radius, Game game, int coodonatX, int coodonatY) {
-//        super(centerX, centerY, radius);
-//        this.coodonatX = coodonatX;
-//        this.coodonatY = coodonatY;
-//        this.game = game;
-//        setFill(Color.GRAY);
-//        //setStroke(Color.BLACK);
-//        }
-//    }
-
 
 }

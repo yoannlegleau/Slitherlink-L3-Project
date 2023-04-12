@@ -18,14 +18,14 @@ public class Grid {
             for (int y = 0; y < size; y++) {
                 grid[x][y] = new GridCell(null);
                 if (x > 0)
-                    grid[x][y].setTop(grid[x - 1][y].getBottom());
+                    grid[x][y].setLeft(grid[x - 1][y].getRight());
                 if (y > 0)
-                    grid[x][y].setLeft(grid[x][y - 1].getRight());
+                    grid[x][y].setTop(grid[x][y - 1].getBottom());
             }
         }
     }
 
-    public GridCell getCell(int x, int y) {
+    public GridCell getCell(int y, int x) {
         return grid[x][y];
     }
 
@@ -42,7 +42,7 @@ public class Grid {
             return false;
         for (int x = 0; x < getSize(); x++) {
             for (int y = 0; y < getSize(); y++) {
-                if (!getCell(x,y).equals(grid.getCell(x, y)))
+                if (!getCell(y,x).equals(grid.getCell(y, x)))
                     return false;
             }
         }
@@ -52,7 +52,7 @@ public class Grid {
     public void clear() {
         for (int x = 0; x < getSize(); x++) {
             for (int y = 0; y < getSize(); y++) {
-                getCell(x, y).clear();
+                getCell(y, x).clear();
             }
         }
     }

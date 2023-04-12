@@ -18,7 +18,14 @@ import java.util.List;
 @XmlRootElement
 public class GameSave {
 
-    Integer levelId;
+    private Integer levelId;
+    @XmlAttribute(name = "id")
+    public int getLevelId() {
+        return levelId;
+    }
+    public void setLevelId(int levelId) {
+        this.levelId = levelId;
+    }
 
     @XmlElement(name = "action")
     private List<GameActionSave> gameActionSaves;
@@ -32,10 +39,7 @@ public class GameSave {
         setActionsFromGameAction(game.getActions());
     }
 
-    @XmlAttribute(name = "id")
-    public int getLevelId() {
-        return levelId;
-    }
+
 
     public void setActionsFromGameAction(List<GameAction> gameActions) {
         gameActionSaves = GameActionConverter.toGameActionSave(gameActions);
