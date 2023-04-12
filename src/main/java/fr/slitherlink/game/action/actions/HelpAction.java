@@ -66,11 +66,17 @@ public class HelpAction extends GameAction {
         int taillePuzzle;
 
         // si la dernière aide demandée n'a pas été utilisée
+        System.out.println("ligne = " + game.getCurrentGrid().getCell(3,1).getRight().isLine());
+        System.out.println("ligne = " + game.getCurrentGrid().getCell(3,1).getBottom().isLine());
+        System.out.println("ligne = " + game.getCurrentGrid().getCell(3,1).getTop().isLine());
+        System.out.println("ligne = " + game.getCurrentGrid().getCell(3,1).getLeft().isLine());
         if(lastHelp != null && appTech.searchTech(lastHelp.getTechnicId(), lastHelp.getListCoord().get(0).getY(), lastHelp.getListCoord().get(0).getX(), game) != null){
             //TODO surlignage des cases
             //envoi de l'evenement pour la vue
+            System.out.println("Surlignage de l'aide précédente");
             setGameActionTypes(GameActionTypes.HIGHLIGTH_HELP);
             game.notifyListeners(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, GameActionTypes.HIGHLIGTH_HELP.toString()));
+            System.out.println("Aide précédente surlignée");
         } else{
             nbTechnics = appTech.getNbTechnics();
             for(int i = 1; i <= nbTechnics; i++){
@@ -87,6 +93,7 @@ public class HelpAction extends GameAction {
                         }
             }
             
+            System.out.println("Aucune aide disponible");
             //si aucune aide n'a été trouvée
             game.getActions().remove(this);
             JOptionPane.showMessageDialog(null, "Aucune aide disponible", "Aide", JOptionPane.INFORMATION_MESSAGE);

@@ -100,7 +100,7 @@ public class LevelPlaySceen implements ActionListener {
             }
             case ASSUMPTION_START -> updateAssumptionButton(true);
             case ASSUMPTION_VALID,ASSUMPTION_CANCEL -> updateAssumptionButton(false);
-            case NEW_HELP, HIGHLIGTH_HELP -> updateHelpDisplay((HelpAction) e.getSource());
+            case NEW_HELP -> updateHelpDisplay((HelpAction) e.getSource());
         }
     }
 
