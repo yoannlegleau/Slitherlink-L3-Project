@@ -52,7 +52,7 @@ public class ReloadGameActionVisitore implements ActionVisitore {
             case ASSUMPTION_VALID -> gameAction = new AssumptionStop(true);
             case ASSUMPTION_CANCEL -> gameAction = new AssumptionStop(false);
             case SET_LINE, SET_CROSS, SET_EMPTY -> gameAction = new EdgeAction();
-            case HINT -> gameAction = new HintAction();
+            case NEW_HELP, HIGHLIGTH_HELP -> gameAction = new HelpAction();
         }
         return gameAction;
     }
@@ -112,7 +112,7 @@ public class ReloadGameActionVisitore implements ActionVisitore {
     }
 
     @Override
-    public void visit(HintAction hintAction) {
+    public void visit(HelpAction hintAction) {
 
     }
 }

@@ -37,8 +37,6 @@ public class Game {
 
     private boolean isSolved;
 
-    private int NbHint;
-
     private GameSaver gameSaver;
 
     private PuzzleSave puzzleSave;
@@ -54,7 +52,6 @@ public class Game {
     public void init(){
         isSolved = false;
         assumptionMode = false;
-        NbHint = 0;
         currentGrid.clear();
         notifyListeners(new ActionEvent(this, 0, GameActionTypes.RESET.toString()));
     }
@@ -97,18 +94,17 @@ public class Game {
         this.assumptionMode = assumptionMode;
     }
 
-    public void incrementNbHint(){
-        NbHint++;
-    }
-
     public List<GameAction> getActions() {
         return actions;
+    }
+
+    public Integer getPuzzleId() {
+        return puzzleSave.getId();
     }
 
     public Integer[][] getNumbers() {
         return puzzleSave.getGridNumbers();
     }
-
 
     public boolean isSubscribed(AssumptionStart assumptionStart) {
         return listeners.contains(assumptionStart);
@@ -160,11 +156,7 @@ public class Game {
                         assumptionMode = false;
                         notifyListeners(new ActionEvent(this, 0, GameActionTypes.ASSUMPTION_CANCEL.toString()));
                         break;
-                    case UNDO:
-                        assumptionMode = false;
-                        break;
-                    case REDO:
-                        NbHint++;
+                    case UNDO, REDO:
                         break;
                     default: action.doAction(this);
                 }
@@ -185,7 +177,4 @@ public class Game {
             isSolved = false;
     }
 
-    public Integer getPuzzleId() {
-        return puzzleSave.getId();
-    }
 }

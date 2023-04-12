@@ -43,8 +43,11 @@ public class LevelPlaySceen implements ActionListener {
     @FXML
     public Pane gamePane;
 
+    @FXML
+    public Text titleHelpText;
 
-
+    @FXML
+    public Text descriptionHelpText;
 
     public static int seconds = 0;
     private static Boolean boolHandle=false;
@@ -54,8 +57,6 @@ public class LevelPlaySceen implements ActionListener {
     private Button pauseButton;
     private static Timeline timeline;
     public static LevelPlaySceen lpc=null;
-
-
 
     @FXML
     public void initialize() {
@@ -99,6 +100,13 @@ public class LevelPlaySceen implements ActionListener {
         game.action(ActionFactory.redo());
     }
 
+    public void updateHelpDisplay(HelpAction helpAction) {
+        ListTechnic listTechnic = ListTechnic.getInstance();
+        Technic technic = listTechnic.getTechnic(helpAction.getTechnicId());
+        titleHelpText.setText(technic.getTitle());
+        descriptionHelpText.setText(technic.getDesc());
+    }
+
     @Override
     public void actionPerformed(java.awt.event.ActionEvent e) {
         switch (GameActionTypes.valueOf(e.getActionCommand())) {
@@ -109,6 +117,7 @@ public class LevelPlaySceen implements ActionListener {
             }
             case ASSUMPTION_START -> updateAssumptionButton(true);
             case ASSUMPTION_VALID,ASSUMPTION_CANCEL -> updateAssumptionButton(false);
+            case NEW_HELP -> updateHelpDisplay((HelpAction) e.getSource());
         }
     }
 
@@ -134,13 +143,9 @@ public class LevelPlaySceen implements ActionListener {
         game.action(ActionFactory.assumptionValid());
     }
 
-    public void hintAction(ActionEvent actionEvent) {
-        game.action(ActionFactory.hint());
+    public void helpAction(ActionEvent actionEvent) {
+        game.action(ActionFactory.help());
     }
-
-
-
-
 
     public static void startTimer() {
         timeline = new Timeline(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
