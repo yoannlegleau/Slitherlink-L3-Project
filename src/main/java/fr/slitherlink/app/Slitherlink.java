@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.ButtonBar;
+import javafx.scene.effect.GaussianBlur;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -28,7 +29,9 @@ public class Slitherlink extends Application {
     private ButtonBar mainButtonBar;
     private Pane backButton;
 
+    private Pane popupBackground;
 
+    private AnchorPane blur = new AnchorPane();
 
     // Les différents écrans
     private Map<String, Pane> scenes;
@@ -70,7 +73,6 @@ public class Slitherlink extends Application {
         scenes.put(FREEPLAY_MENU, FXMLLoader.load(getClass().getResource("gui/freeplay/main.fxml")));
         scenes.put(LEVEL_PLAY_SRCEEN, FXMLLoader.load(getClass().getResource("gui/level_play_sceen/level-play-screen.fxml")));
 
-
         ObservableList<Node> children = mainPane.getChildren();
 
         for(Pane p : scenes.values()){
@@ -86,6 +88,25 @@ public class Slitherlink extends Application {
         children.add(backButton);
         setActive(MAIN_MENU);
 
+        //toggleBlur();
+        AnchorPane.setLeftAnchor(blur, 0d);
+        AnchorPane.setRightAnchor(blur, 0d);
+        AnchorPane.setTopAnchor(blur, 0d);
+        AnchorPane.setBottomAnchor(blur, 0d);
+
+        popupBackground = FXMLLoader.load(getClass().getResource("gui/popup/popup-background.fxml"));
+
+        blur.getChildren().add(popupBackground);
+
+
+        //mainPane.getChildren().add(blur);
+
+        AnchorPane.setLeftAnchor(popupBackground, 200d);
+        AnchorPane.setTopAnchor(popupBackground, 60d);
+        AnchorPane.setBottomAnchor(popupBackground, 60d);
+        AnchorPane.setRightAnchor(popupBackground, 200d);
+
+
         Scene mainScene = new Scene(mainPane);
 
         stage.setWidth(960);
@@ -95,6 +116,11 @@ public class Slitherlink extends Application {
         stage.show();
 
         instance = this;
+    }
+
+    public void toggleBlur(){
+        active.setEffect(active.getEffect() != null ? null : new GaussianBlur());
+        mainButtonBar.setEffect(mainButtonBar.getEffect() != null ? null : new GaussianBlur());
     }
 
     public void setActive(String paneName){
