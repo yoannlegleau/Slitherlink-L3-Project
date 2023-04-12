@@ -3,6 +3,12 @@ module fr.slitherlink {
     requires javafx.fxml;
     requires java.desktop;
     requires java.xml.bind;
+    requires com.google.api.client.extensions.java6.auth;
+    requires com.google.api.client.extensions.jetty.auth;
+    requires google.api.client;
+    requires com.google.api.client;
+    requires google.api.services.oauth2.v2.rev50;
+    requires com.google.api.client.json.jackson2;
 
     opens fr.slitherlink.save to java.xml.bind;
     opens fr.slitherlink.app to javafx.fxml;
