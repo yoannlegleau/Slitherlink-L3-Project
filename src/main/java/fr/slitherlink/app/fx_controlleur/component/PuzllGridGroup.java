@@ -142,16 +142,4 @@ public class PuzllGridGroup extends Group implements ActionListener {
 
     }
 
-    //TODO luca
-//    public DrawingCirlce ( double centerX, double centerY, double radius, Game game, int coodonatX, int coodonatY) {
-//        super(centerX, centerY, radius);
-//        this.coodonatX = coodonatX;
-//        this.coodonatY = coodonatY;
-//        this.game = game;
-//        setFill(Color.GRAY);
-//        //setStroke(Color.BLACK);
-//        }
-//    }
-
-
 }
