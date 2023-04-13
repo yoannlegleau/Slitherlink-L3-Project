@@ -7,14 +7,20 @@ import fr.slitherlink.game.action.GameActionTypes;
 import fr.slitherlink.game.action.actions.HelpAction;
 import fr.slitherlink.save.technic.ListTechnic;
 import fr.slitherlink.save.technic.Technic;
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 
 import java.awt.event.ActionListener;
 
@@ -47,12 +53,24 @@ public class LevelPlaySceen implements ActionListener {
     public Text descriptionHelpText;
 
     @FXML
+    private HBox retractablePanel;
+
+    @FXML
+    private VBox helpContent;
+
+    @FXML
+    private Button toggleButton;
+
+    private TranslateTransition transition;
+
+    @FXML
     public void initialize() {
         int pxSize = 500; //TODO trouver un moyen de le recuperer la taille de gamePane
         game = new Game(levelid);
         game.subscribe(this);
         puzlGridGroup = new PuzllGridGroup(game, pxSize);
         gamePane.getChildren().add(puzlGridGroup);
+        transition = new TranslateTransition(Duration.millis(250), retractablePanel);
 
         game.redoAllAction();
 
@@ -102,6 +120,18 @@ public class LevelPlaySceen implements ActionListener {
             case ASSUMPTION_VALID,ASSUMPTION_CANCEL -> updateAssumptionButton(false);
             case NEW_HELP -> updateHelpDisplay((HelpAction) e.getSource());
         }
+    }
+
+    @FXML
+    public void togglePanel() {
+        if (retractablePanel.getTranslateX() == 0) {
+            // Si le panneau est étendu, le rétracter
+            transition.setToX(helpContent.getWidth());
+        } else {
+            // Si le panneau est rétracté, l'étendre
+            transition.setToX(0);
+        }
+        transition.play();
     }
 
     private void updateAssumptionButton(boolean assumption) {
