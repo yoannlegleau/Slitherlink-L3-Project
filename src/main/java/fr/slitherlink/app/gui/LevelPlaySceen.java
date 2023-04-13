@@ -6,6 +6,10 @@ import fr.slitherlink.game.Game;
 import fr.slitherlink.game.action.ActionFactory;
 import fr.slitherlink.game.action.GameActionTypes;
 import fr.slitherlink.game.action.actions.HelpAction;
+import fr.slitherlink.game.grid.GridCell;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.animation.*;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -48,7 +52,7 @@ public class LevelPlaySceen implements ActionListener {
     Game game;
 
     PuzllGridGroup puzlGridGroup;
-    
+
     public static int seconds = 0;
     public static Boolean boolHandle=false;
     public static Timeline timeline=null;
@@ -63,7 +67,6 @@ public class LevelPlaySceen implements ActionListener {
         //TODO trouver un moyen de le recuperer la taille de gamePane
 
         lpc=this;
-
         root.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.Z && event.isControlDown()) {
                 undo();
@@ -157,6 +160,10 @@ public class LevelPlaySceen implements ActionListener {
 
     private void updateWin(){
         winLabel.setVisible(game.isWin());
+        if(game.isWin()){
+            timeline.stop();
+            root.setDisable(true);
+        }
     }
 
     public void assumptionStart(ActionEvent actionEvent) {
@@ -202,12 +209,14 @@ public class LevelPlaySceen implements ActionListener {
     }
 
     public void pauseAction(ActionEvent event) {
-        if(boolHandle){
+        if(boolHandle && !winLabel.isVisible()){
             startTimer();
             boolHandle=false;
+            puzlGridGroup.setDisable(false);
         }else{
             stopTimer();
             boolHandle=true;
+            puzlGridGroup.setDisable(true);
         }
     }
 

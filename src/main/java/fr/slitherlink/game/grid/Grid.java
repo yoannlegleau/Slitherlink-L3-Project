@@ -29,6 +29,7 @@ public class Grid {
         return grid[x][y];
     }
 
+
     public int getSize(){
         return grid.length;
     }

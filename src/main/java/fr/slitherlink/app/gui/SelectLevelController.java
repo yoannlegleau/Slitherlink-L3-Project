@@ -35,6 +35,7 @@ public class SelectLevelController implements ActionListener {
             Button button = createButton(id);
             if (i <= 9) {
                 buttonLevelPanel.getChildren().add(button);
+                i = 0;
             } else {
                 FlowPane newFlowPane = new FlowPane();
                 newFlowPane.getChildren().add(button);
@@ -48,7 +49,7 @@ public class SelectLevelController implements ActionListener {
         }
     }
 
-    public Button createButton(int id) { // TODO: 11/04/2023 modif interface pour que ce soit clean + sauvegarder partie en cours avec id
+    public Button createButton(int id) {
 
         Button button = new Button(id + "");
         button.setContentDisplay(ContentDisplay.CENTER);
