@@ -35,6 +35,7 @@ public class SelectLevelController implements ActionListener {
             Button button = createButton(id);
             if (i <= 9) {
                 buttonLevelPanel.getChildren().add(button);
+                i = 0;
             } else {
                 FlowPane newFlowPane = new FlowPane();
                 newFlowPane.getChildren().add(button);
