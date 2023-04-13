@@ -58,11 +58,11 @@ public class PuzllGridGroup extends Group implements ActionListener {
         double fontSize = length * FONT_SIZE_FACTOR;
         double sizeText = fontSize * 0.7;
 
-        for (int x = 0; x <= game.getSolution().getSize(); x++) {
+        /*for (int x = 0; x <= game.getSolution().getSize(); x++) {
             for (int y = 0; y <= game.getSolution().getSize(); y++) {
                 getChildren().add(new CircleDraw(x, y, thickness));
             }
-        }
+        }*/
 
 
         for (int x = 0; x < game.getSolution().getSize(); x++) {
@@ -132,8 +132,8 @@ public class PuzllGridGroup extends Group implements ActionListener {
     protected Node createText(double marging, double length, double fontSize, double sizeText, int x, int y, Game game) {
         Text text = new Text(String.valueOf(game.getNumbers()[x][y]));
         text.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
-        text.setX( marging + x * length + length /2 - fontSize /2);
-        text.setY( marging + y * length + length /2 + fontSize /2);
+        text.setX( 3 * marging + x * length + length /2 - fontSize /2);
+        text.setY( -1 * marging + y * length + length /2 + fontSize /2);
         text.setStyle("-fx-fill: white; -fx-font-size: "+ sizeText +"px;");
         return text;
     }
