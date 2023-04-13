@@ -54,7 +54,7 @@ public class LevelPlaySceen implements ActionListener {
     public Label timeLabel=new Label("00:00:00");
     @FXML
     private Button pauseButton;
-    private static Timeline timeline;
+    public static Timeline timeline=null;
     public static LevelPlaySceen lpc=null;
 
     @FXML
@@ -161,7 +161,7 @@ public class LevelPlaySceen implements ActionListener {
         timeline.play();
     }
 
-    private void stopTimer(){
+    public static void stopTimer(){
         timeline.stop();
     }
 

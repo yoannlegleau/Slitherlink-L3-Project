@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <freePlayConfig>
-    <size>5</size>
-    <difficulty>EASY</difficulty>
+    <size>6</size>
+    <difficulty>MEDIUM</difficulty>
     <finishedFilter>true</finishedFilter>
     <finishedLevelId>1</finishedLevelId>
-    <gameSave id="3"/>
+    <gameSave id="2"/>
 </freePlayConfig>
