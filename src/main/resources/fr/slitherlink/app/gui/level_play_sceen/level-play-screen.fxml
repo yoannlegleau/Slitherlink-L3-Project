@@ -17,9 +17,9 @@
          <children>
             <HBox fx:id="timeVbox" alignment="CENTER">
                <children>
-                  <Label fx:id="timeLabel" prefHeight="18.0" prefWidth="45.0" style="-fx-text-fill: text-color;" text="00:00:00" />
+                  <Label fx:id="timeLabel" prefHeight="18.0" prefWidth="45.0" text="00:00:00" textFill="#f4f2f2" />
                   <Button fx:id="pauseButton" mnemonicParsing="false" onAction="#pauseAction" text="pause" />
-                  <Label fx:id="winLabel" style="-fx-text-fill: text-color;" text="Gagné !" visible="false">
+                  <Label fx:id="winLabel" textFill="#f4f2f2" text="Gagné !" visible="false">
                      <font>
                         <Font size="36.0" />
                      </font>
