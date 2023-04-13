@@ -132,6 +132,8 @@ public class Game {
             return;
         actions.add(action);
         action.doAction(this);
+        if (action.getGameActionTypes() == null)
+            actions.remove(action);
         saveGame();
     }
     public void loadGameSave(){
