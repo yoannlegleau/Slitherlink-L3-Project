@@ -18,21 +18,7 @@
                         <Font size="90.0" />
                     </font>
                 </Text>
-                <TextFlow translateY="-20.0">
-                    <padding>
-                        <Insets left="10.0" right="10.0" />
-                    </padding>
-                    <children>
-                        <Text id="game-rules-text" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Le SlitherLink se joue sur une matrice rectangulaire formée de points. Entre ces points, on retrouve parfois des nombres (entre 0 et 3). L'objectif est de relier horizontalement ou verticalement les points adjacents afin de créer une ligne unique continue. De plus, les nombres indiquent le nombre de côtés de la ligne qui doivent être adjacents au nombre." translateY="20.0">
-                            <font>
-                                <Font size="31.0" />
-                            </font>
-                        </Text>
-                    </children>
-               <VBox.margin>
-                  <Insets left="30.0" right="30.0" />
-               </VBox.margin>
-                </TextFlow>
+
             </children>
         </VBox>
    </top>
@@ -40,7 +26,21 @@
       <AnchorPane scaleX="0.9" styleClass="roundBorderedBackground" translateY="50.0" BorderPane.alignment="CENTER">
           <children>
               <ScrollPane fitToWidth="true" hbarPolicy="NEVER" style="-fx-background-color: transparent;" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="50.0">
-        
+                  <TextFlow translateY="-20.0">
+                      <padding>
+                          <Insets left="10.0" right="10.0" />
+                      </padding>
+                      <children>
+                          <Text id="game-rules-text" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Le SlitherLink se joue sur une matrice rectangulaire formée de points. Entre ces points, on retrouve parfois des nombres (entre 0 et 3). L'objectif est de relier horizontalement ou verticalement les points adjacents afin de créer une ligne unique continue. De plus, les nombres indiquent le nombre de côtés de la ligne qui doivent être adjacents au nombre." translateY="20.0">
+                              <font>
+                                  <Font size="31.0" />
+                              </font>
+                          </Text>
+                      </children>
+                      <VBox.margin>
+                          <Insets left="30.0" right="30.0" />
+                      </VBox.margin>
+                  </TextFlow>
               </ScrollPane>
 
           </children>

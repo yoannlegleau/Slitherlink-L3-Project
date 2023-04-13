@@ -51,7 +51,7 @@
                </children>
                 </HBox>
             <Line endX="456.79290771484375" endY="0.2928932309150696" fill="RED" smooth="false" startX="-100.0" stroke="#9f9f9f" />
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: text-color;" text="Paramètres de la partie">
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: onDark-text-color;" text="Paramètres de la partie">
                <font>
                   <Font size="31.0" />
                </font>
@@ -60,7 +60,7 @@
                <children>
                   <HBox prefHeight="40.0" prefWidth="600.0">
                      <children>
-                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: text-color;" text="Grille : ">
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: onDark-text-color;" text="Grille : ">
                            <font>
                               <Font size="22.0" />
                            </font>
@@ -70,12 +70,12 @@
                   </HBox>
                   <HBox alignment="BASELINE_LEFT" prefHeight="40.0" prefWidth="600.0">
                      <children>
-                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: text-color;" text="Difficulté : ">
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: onDark-text-color;" text="Difficulté : ">
                            <font>
                               <Font size="22.0" />
                            </font>
                         </Text>
-                        <Text fx:id="easyText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: text-color;" text="Facile">
+                        <Text fx:id="easyText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: onDark-text-color;" text="Facile">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -84,7 +84,7 @@
                            </HBox.margin>
                         </Text>
                         <RadioButton fx:id="easyButton" mnemonicParsing="false" prefHeight="18.0" prefWidth="23.0" text="RadioButton" />
-                        <Text fx:id="mediumText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: text-color;" text="Moyen">
+                        <Text fx:id="mediumText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: onDark-text-color;" text="Moyen">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -93,7 +93,7 @@
                            </HBox.margin>
                         </Text>
                         <RadioButton fx:id="mediumButton" mnemonicParsing="false" prefHeight="18.0" prefWidth="23.0" text="RadioButton" />
-                        <Text fx:id="hardText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: text-color;" text="Difficile">
+                        <Text fx:id="hardText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: onDark-text-color;" text="Difficile">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -122,12 +122,12 @@
                   </HBox>
                   <HBox prefHeight="40.0" prefWidth="600.0">
                      <children>
-                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: text-color;" text="Filter les niveux déja fini : ">
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: onDark-text-color;" text="Filter les niveux déja fini : ">
                            <font>
                               <Font size="22.0" />
                            </font>
                         </Text>
-                        <ToggleButton fx:id="finishedFilterToggle" mnemonicParsing="false" text="ToggleButton" />
+                        <ToggleButton fx:id="finishedFilterToggle" mnemonicParsing="false" text="    " />
                      </children>
                   </HBox>
                </children>

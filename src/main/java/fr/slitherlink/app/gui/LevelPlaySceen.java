@@ -162,11 +162,11 @@ public class LevelPlaySceen implements ActionListener {
     }
 
     private void updateWin(){
-        winLabel.setVisible(game.isWin());
         if(game.isWin()){
             timeline.stop();
             root.setDisable(true);
         }
+        winLabel.setVisible(game.isWin());
     }
 
     public void assumptionStart(ActionEvent actionEvent) {
