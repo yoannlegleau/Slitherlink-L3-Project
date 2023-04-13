@@ -77,15 +77,14 @@ public class LevelPlaySceen implements ActionListener {
             }
         });
 
-        centerVbox.heightProperty().addListener((observable, oldValue, newValue) -> {
+        root.heightProperty().addListener((observable, oldValue, newValue) -> {
             if (puzlGridGroup != null) {
                 puzlGridGroup.setPxSize(getPuzzleSize());
             }
             gamePane.setPrefWidth(gamePane.getHeight());
             gamePane.setMaxWidth(gamePane.getHeight());
-
-
         });
+
         retractablePanel.setVisible(false);
         transition = new TranslateTransition(Duration.millis(250), retractablePanel);
         transition2 = new TranslateTransition(Duration.millis(250), gamePane);
