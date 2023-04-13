@@ -1,7 +1,90 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <freePlayConfig>
     <size>4</size>
-    <difficulty>EASY</difficulty>
+    <difficulty>HARD</difficulty>
     <finishedFilter>true</finishedFilter>
-    <gameSave id="1"/>
+    <finishedLevelId>1</finishedLevelId>
+    <finishedLevelId>2</finishedLevelId>
+    <gameSave id="2">
+        <action type="SET_LINE">
+            <x>2</x>
+            <y>0</y>
+            <t>T</t>
+        </action>
+        <action type="SET_LINE">
+            <x>2</x>
+            <y>0</y>
+            <t>R</t>
+        </action>
+        <action type="SET_LINE">
+            <x>1</x>
+            <y>0</y>
+            <t>R</t>
+        </action>
+        <action type="SET_LINE">
+            <x>1</x>
+            <y>0</y>
+            <t>B</t>
+        </action>
+        <action type="SET_LINE">
+            <x>0</x>
+            <y>3</y>
+            <t>R</t>
+        </action>
+        <action type="SET_LINE">
+            <x>1</x>
+            <y>3</y>
+            <t>B</t>
+        </action>
+        <action type="SET_LINE">
+            <x>2</x>
+            <y>3</y>
+            <t>B</t>
+        </action>
+        <action type="SET_LINE">
+            <x>2</x>
+            <y>3</y>
+            <t>R</t>
+        </action>
+        <action type="SET_LINE">
+            <x>3</x>
+            <y>2</y>
+            <t>B</t>
+        </action>
+        <action type="SET_LINE">
+            <x>0</x>
+            <y>2</y>
+            <t>B</t>
+        </action>
+        <action type="SET_LINE">
+            <x>0</x>
+            <y>2</y>
+            <t>L</t>
+        </action>
+        <action type="SET_LINE">
+            <x>0</x>
+            <y>1</y>
+            <t>L</t>
+        </action>
+        <action type="SET_LINE">
+            <x>0</x>
+            <y>0</y>
+            <t>B</t>
+        </action>
+        <action type="SET_LINE">
+            <x>3</x>
+            <y>0</y>
+            <t>B</t>
+        </action>
+        <action type="SET_LINE">
+            <x>3</x>
+            <y>1</y>
+            <t>R</t>
+        </action>
+        <action type="SET_LINE">
+            <x>3</x>
+            <y>2</y>
+            <t>R</t>
+        </action>
+    </gameSave>
 </freePlayConfig>

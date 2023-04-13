@@ -152,6 +152,7 @@ public class LevelPlaySceen implements ActionListener {
 
     private void updateWin(){
         winLabel.setVisible(game.isWin());
+        if(game.isWin()){timeline.stop();}
     }
 
     public void assumptionStart(ActionEvent actionEvent) {
@@ -197,7 +198,7 @@ public class LevelPlaySceen implements ActionListener {
     }
 
     public void pauseAction(ActionEvent event) {
-        if(boolHandle){
+        if(boolHandle && !winLabel.isVisible()){
             startTimer();
             boolHandle=false;
         }else{
