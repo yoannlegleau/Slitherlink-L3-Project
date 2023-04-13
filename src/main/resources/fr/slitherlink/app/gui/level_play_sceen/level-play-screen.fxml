@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Control?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.FlowPane?>
@@ -12,9 +13,9 @@
 
 <BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="defaultBackground" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.slitherlink.app.gui.LevelPlaySceen">
    <center>
-      <VBox prefHeight="400.0" prefWidth="332.0" BorderPane.alignment="CENTER">
+      <VBox fx:id="centerVbox" prefHeight="400.0" prefWidth="332.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <HBox fx:id="timeVbox" alignment="CENTER">
                <children>
                   <Label fx:id="timeLabel" prefHeight="18.0" prefWidth="45.0" style="-fx-text-fill: text-color;" text="00:00:00" />
                   <Button fx:id="pauseButton" mnemonicParsing="false" onAction="#pauseAction" text="pause" />
@@ -24,7 +25,7 @@
                      </font>
                   </Label>
                </children></HBox>
-            <FlowPane fx:id="gamePane" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="200.0" styleClass="roundBorderedBackground">
+            <FlowPane fx:id="gamePane" alignment="TOP_CENTER" styleClass="roundBorderedBackground">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
@@ -32,7 +33,7 @@
                   <Insets bottom="10.0" top="10.0" />
                </padding>
             </FlowPane>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <HBox fx:id="toolHBox" alignment="CENTER">
                <children>
                   <Button mnemonicParsing="false" onAction="#resetAction" text="Reset" />
                   <Button mnemonicParsing="false" onAction="#helpAction" text="Help">
@@ -55,6 +56,13 @@
       </VBox>
    </center>
    <right>
-      <Pane fx:id="helpPanel" BorderPane.alignment="CENTER" />
+      <VBox alignment="CENTER" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <children>
+            <Pane fx:id="helpPanel" />
+         </children>
+      </VBox>
    </right>
 </BorderPane>

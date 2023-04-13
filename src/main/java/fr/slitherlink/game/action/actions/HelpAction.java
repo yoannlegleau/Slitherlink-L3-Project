@@ -65,11 +65,6 @@ public class HelpAction extends GameAction {
         int nbTechnics;
         int taillePuzzle;
 
-        // si la dernière aide demandée n'a pas été utilisée
-        System.out.println("ligne = " + game.getCurrentGrid().getCell(3,1).getRight().isLine());
-        System.out.println("ligne = " + game.getCurrentGrid().getCell(3,1).getBottom().isLine());
-        System.out.println("ligne = " + game.getCurrentGrid().getCell(3,1).getTop().isLine());
-        System.out.println("ligne = " + game.getCurrentGrid().getCell(3,1).getLeft().isLine());
         if(lastHelp != null && appTech.searchTech(lastHelp.getTechnicId(), lastHelp.getListCoord().get(0).getY(), lastHelp.getListCoord().get(0).getX(), game) != null){
             //TODO surlignage des cases
             //envoi de l'evenement pour la vue

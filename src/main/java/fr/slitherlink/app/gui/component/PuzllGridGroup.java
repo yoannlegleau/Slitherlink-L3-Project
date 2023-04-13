@@ -42,7 +42,8 @@ public class PuzllGridGroup extends Group implements ActionListener {
 
     public void setPxSize(int pxSize) {
         this.pxSize = pxSize;
-        //TODO faire un evenement pour changer la taille en px de la grille
+
+        createGrid();
     }
 
     public int getPxSize() {
@@ -50,7 +51,7 @@ public class PuzllGridGroup extends Group implements ActionListener {
     }
 
     private void createGrid() {
-
+        getChildren().clear();
         double thickness = (int) (pxSize * LINE_THICKNESS_FACTOR);
         double marging = thickness / 2;
         double length = (pxSize - thickness) / game.getSolution().getSize() ;

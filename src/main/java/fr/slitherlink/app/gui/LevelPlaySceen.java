@@ -1,12 +1,11 @@
 package fr.slitherlink.app.gui;
 
+import fr.slitherlink.app.Slitherlink;
 import fr.slitherlink.app.gui.component.PuzllGridGroup;
 import fr.slitherlink.game.Game;
 import fr.slitherlink.game.action.ActionFactory;
 import fr.slitherlink.game.action.GameActionTypes;
 import fr.slitherlink.game.action.actions.HelpAction;
-import fr.slitherlink.save.technic.ListTechnic;
-import fr.slitherlink.save.technic.Technic;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -15,15 +14,17 @@ import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.text.Text;
+import javafx.scene.layout.*;
 import javafx.util.Duration;
 
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 /**
  * @author LE GLEAU Yoann
@@ -37,6 +38,9 @@ public class LevelPlaySceen implements ActionListener {
     public Button assumptionCancelButton;
     public Button assumptionValidButton;
     public Pane helpPanel;
+    public HBox toolHBox;
+    public VBox centerVbox;
+    public HBox timeVbox;
 
     Game game;
 
@@ -64,10 +68,6 @@ public class LevelPlaySceen implements ActionListener {
         lpc=this;
 
         root.setOnKeyPressed(event -> {
-            if (event.getCode() == KeyCode.ESCAPE) {
-                System.out.println("Touche Echap appuyée !");
-            }
-
             if (event.getCode() == KeyCode.Z && event.isControlDown()) {
                 undo();
             }
@@ -76,15 +76,26 @@ public class LevelPlaySceen implements ActionListener {
                 redo();
             }
         });
+
+        centerVbox.heightProperty().addListener((observable, oldValue, newValue) -> {
+            if (puzlGridGroup != null) {
+                puzlGridGroup.setPxSize(getPuzzleSize());
+            }
+        });
+
+    }
+
+    private int getPuzzleSize() {
+        return (int) (root.getScene().getWindow().getHeight() * 0.7 )  - 100 ;
     }
 
     public void setGame(Game game) {
         this.game = game;
         game.subscribe(this);
-        int pxSize = 500;
-        puzlGridGroup = new PuzllGridGroup(game, pxSize);
+        puzlGridGroup = new PuzllGridGroup(game, getPuzzleSize());
         gamePane.getChildren().clear();
         gamePane.getChildren().add(puzlGridGroup);
+        helpPanel.getChildren().clear();
         game.redoAllAction();
     }
 
@@ -101,12 +112,22 @@ public class LevelPlaySceen implements ActionListener {
     }
 
     public void updateHelpDisplay(HelpAction helpAction) {
-        ListTechnic listTechnic = ListTechnic.getInstance();
-        Technic technic = listTechnic.getTechnic(helpAction.getTechnicId());
+        helpPanel.getChildren().clear();
+        helpPanel.getChildren().add(getHelpPane(helpAction.getTechnicId()));
+    }
 
-        //TODO afficher l'aide
-//        titleHelpText.setText(technic.getTitle());
-//        descriptionHelpText.setText(technic.getDesc());
+    private Pane getHelpPane(int id) {
+        FXMLLoader loader = new FXMLLoader(Slitherlink.class.getResource("gui/help.fxml"));
+        try {
+            loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        HelpController controller = loader.getController();
+        controller.setTechnicId(id);
+
+        return loader.getRoot();
     }
 
     @Override

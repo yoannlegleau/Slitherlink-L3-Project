@@ -31,7 +31,9 @@ public class Slitherlink extends Application {
     public static final String FREEPLAY_MENU = "freeplayMenu";
 
     private static Slitherlink instance = null;
+
     private AnchorPane mainPane;
+    public AnchorPane getMainPane() {return mainPane;}
     private ButtonBar mainButtonBar;
 
     private Pane backButton;

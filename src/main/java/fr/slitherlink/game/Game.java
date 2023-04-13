@@ -146,6 +146,8 @@ public class Game {
         //TODO trouver un moyen de faire ça plus proprement le cancel des actions
         init();
         for (GameAction action: actions) {
+            if (action.getGameActionTypes() == null)
+                continue;
             if (!action.isCanceled()) {
                 switch (action.getGameActionTypes()){
                     case ASSUMPTION_VALID:
