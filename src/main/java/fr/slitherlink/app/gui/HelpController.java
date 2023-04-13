@@ -5,10 +5,12 @@ import fr.slitherlink.save.technic.ListTechnic;
 import fr.slitherlink.save.technic.Technic;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
+import java.io.File;
 import java.io.IOException;
 
 /**
@@ -30,10 +32,12 @@ public class HelpController {
     }
 
     public void setTechnicId(int id) {
-        Technic technic = ListTechnic.getInstance().getTechnic(1);
+        Technic technic = ListTechnic.getInstance().getTechnic(id);
         titleText.setText(technic.getTitle());
         longText.setText(technic.getDesc());
-        //TODO : set image
+        File img = new File("src/main/resources/fr/slitherlink/technic/images/Tech" + technic.getId() + ".png");
+        Image imageI = new Image(img.toURI().toString());
+        image.setImage(imageI);
     }
 
 }

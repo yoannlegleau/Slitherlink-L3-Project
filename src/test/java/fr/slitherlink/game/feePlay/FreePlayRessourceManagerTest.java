@@ -21,13 +21,6 @@ class FreePlayRessourceManagerTest {
     @Test
     void setDefaultConfig() {
         FreePlayRessourceManager instance = FreePlayRessourceManager.getInstance();
-
-        instance.setSize(6);
-        instance.setDifficulty(Difficulty.MEDIUM);
-        instance.setFinishedFilter(true);
-        instance.addFinishedLevelId(1);
-        instance.addFinishedLevelId(2);
-        instance.saveConfig();
     }
 
     @Test

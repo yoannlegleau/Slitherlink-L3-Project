@@ -2,16 +2,21 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
 <VBox alignment="TOP_CENTER" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.slitherlink.app.gui.HelpController">
    <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="roundBorderedBackground">
       <children>
-         <Text fx:id="titleText" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Text" />
+         <Text fx:id="titleText" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Text">
+            <VBox.margin>
+               <Insets bottom="16.0" />
+            </VBox.margin></Text>
          <ImageView fx:id="image" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-         <Text fx:id="longText" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: text-color;" text="Text" />
+         <Text fx:id="longText" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: onDark-text-color;" text="Text">
+            <VBox.margin>
+               <Insets top="16.0" />
+            </VBox.margin></Text>
       </children>
       <padding>
          <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />

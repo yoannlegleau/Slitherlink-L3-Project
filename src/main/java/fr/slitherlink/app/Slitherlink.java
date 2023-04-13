@@ -48,7 +48,7 @@ public class Slitherlink extends Application {
     /* Pile qui contient les écrans affichées */
     private Stack<String> screenStack;
 
-    private Pane active;
+    public Pane active;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -155,6 +155,7 @@ public class Slitherlink extends Application {
             LevelPlaySceen.seconds=0;
             LevelPlaySceen.boolHandle=false;
             LevelPlaySceen.startTimer();
+            p.setDisable(false);
         }else if(LevelPlaySceen.timeline!=null){
             LevelPlaySceen.stopTimer();
         }
