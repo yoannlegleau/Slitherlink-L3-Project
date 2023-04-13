@@ -8,34 +8,30 @@
 <?import javafx.scene.text.TextFlow?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="960.0" styleClass="defaultBackground" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
-    <top>
-        <VBox prefHeight="94.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+   <top>
+        <VBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" spacing="10.0" BorderPane.alignment="CENTER">
             <children>
-                <Text fill="WHITE" scaleX="0.7" scaleY="0.7" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Règles du jeu" translateY="50.0" VBox.vgrow="ALWAYS">
+                <Text fill="WHITE" scaleX="0.7" scaleY="0.7" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Règles du jeu" translateX="100.0" translateY="-10.0" VBox.vgrow="ALWAYS">
                     <font>
                         <Font size="90.0" />
                     </font>
                 </Text>
-            </children>
-        </VBox>
-    </top>
-    <center>
-        <VBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" spacing="10.0" translateY="-150.0" BorderPane.alignment="CENTER">
-            <children>
                 <TextFlow translateY="-20.0">
                     <padding>
                         <Insets left="10.0" right="10.0" />
                     </padding>
-                    <prefWidth>900.0</prefWidth>
                     <children>
-                        <Text id="game-rules-text" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Le SlitherLink se joue sur une matrice rectangulaire formée de points. Entre ces points, on retrouve parfois des nombres (entre 0 et 3). L'objectif est de relier horizontalement ou verticalement les points adjacents afin de créer une ligne unique continue. De plus, les nombres indiquent le nombre de côtés de la ligne qui doivent être adjacents au nombre.">
+                        <Text id="game-rules-text" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Le SlitherLink se joue sur une matrice rectangulaire formée de points. Entre ces points, on retrouve parfois des nombres (entre 0 et 3). L'objectif est de relier horizontalement ou verticalement les points adjacents afin de créer une ligne unique continue. De plus, les nombres indiquent le nombre de côtés de la ligne qui doivent être adjacents au nombre." translateY="20.0">
                             <font>
                                 <Font size="31.0" />
                             </font>
                         </Text>
                     </children>
+               <VBox.margin>
+                  <Insets left="30.0" right="30.0" />
+               </VBox.margin>
                 </TextFlow>
             </children>
         </VBox>
-    </center>
+   </top>
 </BorderPane>
