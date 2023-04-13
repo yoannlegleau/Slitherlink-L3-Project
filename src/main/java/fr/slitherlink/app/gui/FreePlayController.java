@@ -66,12 +66,18 @@ public class FreePlayController implements ActionListener {
 
         newGameButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> newGame());
 
+        updateResume();
+        resumeButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> resumeGame());
+    }
+
+    private void updateResume(){
         if (config.loadSave() != null)
             resumeButton.setDisable(false);
         else
             resumeButton.setDisable(true);
-        resumeButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> resumeGame());
     }
+
+
 
     private void newGame(){
         int levelId = PuzzleResourceManageur.getLevelList().stream()
@@ -85,7 +91,7 @@ public class FreePlayController implements ActionListener {
 
         config.createSave(levelId);
         resumeGame();
-
+        updateResume();
     }
 
     public void resumeGame(){

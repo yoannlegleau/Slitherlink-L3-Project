@@ -31,6 +31,7 @@ public class SelectLevelController implements ActionListener {
     public void initialize() {
         List<Integer> listID = PuzzleResourceManageur.getLevelIdList();
         int i = 1;
+        buttonLevelPanel.getChildren().clear();
         for (Integer id : listID) {
             Button button = createButton(id);
             if (i <= 9) {
@@ -42,7 +43,6 @@ public class SelectLevelController implements ActionListener {
                 buttonLevelPanel.setMaxWidth(600);
                 newFlowPane.setMaxWidth(400); // largeur maximale du FlowPane
                 newFlowPane.setMaxHeight(400); // largeur maximale du FlowPane
-
                 buttonLevelPanel.getChildren().add(newFlowPane);
             }
             i++;
@@ -88,7 +88,9 @@ public class SelectLevelController implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getActionCommand().equals(GameActionTypes.WIN.name()))
+        if (e.getActionCommand().equals(GameActionTypes.WIN.name())) {
             AdventureModeRessourceManageur.getInstence().addLevel(((Game)e.getSource()).getPuzzleId());
+            initialize();
+        }
     }
 }
