@@ -2,21 +2,21 @@
     /* styleClass="root,DefaultBackground" */
 
     /* background */
-    background: #333337;
-    background-dark: #252525;
-    background-light: white;
+    background: #ba061e;
+    background-dark: #ba061e;
+    background-light: #ba061e;
 
-    border-color:  #757575;
+    border-color: #ba061e;
 
     /* text */
-    title-color: white;
-    text-color: white;
-    icon-color: black;
+    title-color: #ba061e;
+    text-color: #ba061e;
+    icon-color: #ba061e;
 
     /* action */
-    action-color: #93e4ea;
-    hover-action-color: rgb(226, 171, 238);
-    hover-action-Text: white;
+    action-color: #ba061e;
+    hover-action-color: rgb(186, 6, 30);
+    hover-action-Text: #ba061e;
 }
 
 

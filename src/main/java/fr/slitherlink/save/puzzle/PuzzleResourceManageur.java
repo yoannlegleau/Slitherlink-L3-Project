@@ -43,7 +43,7 @@ public class PuzzleResourceManageur {
     public static PuzzleSave LoadPuzzle(int id){
         PuzzleSave level;
         try {
-            level = (PuzzleSave) XmlResourcesManageur.concertXmlToJava(PuzzleSave.class,LEVEL_PATH+ id);
+            level = XmlResourcesManageur.concertXmlToJava(PuzzleSave.class,LEVEL_PATH+ id);
         } catch (JAXBException e) {
             throw new RuntimeException(e);
         }
