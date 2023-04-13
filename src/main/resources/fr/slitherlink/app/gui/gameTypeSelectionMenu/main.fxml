@@ -65,7 +65,7 @@
                         <String fx:value="button" />
                      </styleClass>
                         </VBox>
-                        <VBox fx:id="rushPlayButton" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onRushPlayButtonClick" prefHeight="200.0" prefWidth="200.0" spacing="30.0">
+                        <VBox fx:id="rushPlayButton" alignment="TOP_CENTER" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#onRushPlayButtonClick" prefHeight="200.0" prefWidth="200.0" spacing="30.0">
                             <children>
                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="button-text" text="Rush" textAlignment="CENTER">
                                     <font>

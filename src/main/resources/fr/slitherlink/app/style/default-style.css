@@ -12,6 +12,7 @@
     /* text */
     title-color: white;
     text-color: black;
+    onDark-text-color: White;
     icon-color: black;
 
     /* action */
@@ -54,6 +55,7 @@
 
 .title {
     -fx-fill: title-color;
+    -fx-text-fill : title-color;
     -fx-text-alignment: CENTER;
 }
 

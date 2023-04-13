@@ -6,9 +6,7 @@ import fr.slitherlink.game.Game;
 import fr.slitherlink.game.action.ActionFactory;
 import fr.slitherlink.game.action.GameActionTypes;
 import fr.slitherlink.game.action.actions.HelpAction;
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
+import javafx.animation.*;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
@@ -41,25 +39,24 @@ public class LevelPlaySceen implements ActionListener {
     public HBox toolHBox;
     public VBox centerVbox;
     public HBox timeVbox;
+    public BorderPane root;
+    public Pane gamePane;
+    public Label timeLabel=new Label("00:00:00");
+    public HBox retractablePanel;
+    public Region helpIcon;
 
     Game game;
 
     PuzllGridGroup puzlGridGroup;
-
-    @FXML
-    public BorderPane root;
-
-    @FXML
-    public Pane gamePane;
-
+    
     public static int seconds = 0;
     public static Boolean boolHandle=false;
-    @FXML
-    public Label timeLabel=new Label("00:00:00");
-    @FXML
-    private Button pauseButton;
     public static Timeline timeline=null;
     public static LevelPlaySceen lpc=null;
+    private TranslateTransition transition;
+    private TranslateTransition transition2;
+
+    private RotateTransition rotateTransition;
 
     @FXML
     public void initialize() {
@@ -81,8 +78,16 @@ public class LevelPlaySceen implements ActionListener {
             if (puzlGridGroup != null) {
                 puzlGridGroup.setPxSize(getPuzzleSize());
             }
+            gamePane.setPrefWidth(gamePane.getHeight());
+            gamePane.setMaxWidth(gamePane.getHeight());
+
+
         });
 
+        transition = new TranslateTransition(Duration.millis(250), retractablePanel);
+        transition2 = new TranslateTransition(Duration.millis(250), gamePane);
+        rotateTransition = new RotateTransition(Duration.millis(250), helpIcon);
+        helpIcon.setRotate(-90);
     }
 
     private int getPuzzleSize() {
@@ -204,6 +209,24 @@ public class LevelPlaySceen implements ActionListener {
             stopTimer();
             boolHandle=true;
         }
+    }
+
+    @FXML
+    public void togglePanel() {
+        rotateTransition.setByAngle(180); // rotation de 180 degrés
+        if (retractablePanel.getTranslateX() == 0) {
+            rotateTransition.setByAngle(180);
+            transition.setToX(helpPanel.getWidth());
+            transition2.setToX(helpPanel.getWidth()/2);
+        } else {
+            // Si le panneau est rétracté, l'étendre
+            rotateTransition.setByAngle(-180);
+            transition.setToX(0);
+            transition2.setToX(0);
+        }
+        rotateTransition.play();
+        transition2.play();
+        transition.play();
     }
 
 }
