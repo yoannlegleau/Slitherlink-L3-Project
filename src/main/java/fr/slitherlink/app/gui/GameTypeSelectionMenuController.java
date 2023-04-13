@@ -4,7 +4,7 @@ import fr.slitherlink.app.Slitherlink;
 import javafx.fxml.FXML;
 import javafx.scene.layout.VBox;
 
-public class gameTypeSelectionMenuController {
+public class GameTypeSelectionMenuController {
 
     @FXML
     private VBox freePlayButton;
