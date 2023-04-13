@@ -66,7 +66,6 @@ public class LevelPlaySceen implements ActionListener {
         //TODO trouver un moyen de le recuperer la taille de gamePane
 
         lpc=this;
-
         root.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.Z && event.isControlDown()) {
                 undo();
@@ -152,7 +151,10 @@ public class LevelPlaySceen implements ActionListener {
 
     private void updateWin(){
         winLabel.setVisible(game.isWin());
-        if(game.isWin()){timeline.stop();}
+        if(game.isWin()){
+            timeline.stop();
+            root.setDisable(true);
+        }
     }
 
     public void assumptionStart(ActionEvent actionEvent) {
@@ -206,5 +208,4 @@ public class LevelPlaySceen implements ActionListener {
             boolHandle=true;
         }
     }
-
 }
