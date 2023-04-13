@@ -133,8 +133,11 @@ public class LevelPlaySceen implements ActionListener {
 
         HelpController controller = loader.getController();
         controller.setTechnicId(id);
+        Pane pane = loader.getRoot();
+        pane.setPrefWidth(gamePane.getWidth()/2);
+        pane.setMaxWidth(gamePane.getWidth()/2);
 
-        return loader.getRoot();
+        return pane;
     }
 
     @Override
