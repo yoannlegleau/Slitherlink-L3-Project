@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<puzzleSave id="9">
+    <size>5</size>
+    <grid>
+        <number column="2" row="0">3</number>
+        <number column="3" row="0">2</number>
+        <number column="0" row="1">3</number>
+        <number column="1" row="1">0</number>
+        <number column="3" row="1">0</number>
+        <number column="2" row="2">1</number>
+        <number column="1" row="3">3</number>
+        <number column="4" row="3">2</number>
+        <number column="2" row="4">1</number>
+        <number column="4" row="4">3</number>
+    </grid>
+    <solution>
+        <edge column="0" row="0">R</edge>
+        <edge column="0" row="0">B</edge>
+        <edge column="1" row="0">T</edge>
+        <edge column="1" row="0">R</edge>
+        <edge column="2" row="0">B</edge>
+        <edge column="3" row="0">B</edge>
+        <edge column="0" row="1">L</edge>
+        <edge column="0" row="1">B</edge>
+        <edge column="3" row="1">R</edge>
+        <edge column="3" row="1">B</edge>
+        <edge column="0" row="2">R</edge>
+        <edge column="0" row="2">B</edge>
+        <edge column="2" row="2">R</edge>
+        <edge column="3" row="2">B</edge>
+        <edge column="4" row="2">B</edge>
+        <edge column="0" row="3">L</edge>
+        <edge column="2" row="3">B</edge>
+        <edge column="3" row="3">B</edge>
+        <edge column="4" row="3">R</edge>
+        <edge column="0" row="4">L</edge>
+        <edge column="0" row="4">B</edge>
+        <edge column="1" row="4">R</edge>
+        <edge column="1" row="4">B</edge>
+        <edge column="3" row="4">R</edge>
+        <edge column="4" row="4">R</edge>
+        <edge column="4" row="4">B</edge>
+    </solution>
+    <difficulty>MEDIUM</difficulty>
+</puzzleSave>
