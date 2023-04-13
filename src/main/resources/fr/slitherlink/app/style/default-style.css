@@ -7,10 +7,11 @@
     background-light: white;
 
     border-color:  #757575;
+    dropshadow-color: black;
 
     /* text */
     title-color: white;
-    text-color: white;
+    text-color: black;
     icon-color: black;
 
     /* action */
@@ -22,24 +23,36 @@
 
 /* Background */
 
-.DefaultBackground {
+.defaultBackground {
     -fx-background-color: background;
 }
 
-.DarkBackground {
+.darkBackground {
     -fx-background-color: background-dark;
 }
 
-.RoundBorderedBackground {
+.roundBorderedBackground {
     -fx-background-color: background-dark;
     -fx-border-color: border-color;
     -fx-background-radius: 50px;
     -fx-border-radius: 50px;
 }
 
+.game_mode {
+    -fx-effect: dropshadow(three-pass-box, dropshadow-color, 10, 0, 0, 0);
+    -fx-background-radius:15;
+}
+
+.game_mode:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-scale-z: 1.1;
+    -fx-cursor:hand;
+}
+
 /* Text */
 
-.Title {
+.title {
     -fx-fill: title-color;
     -fx-text-alignment: CENTER;
 }
@@ -47,42 +60,59 @@
 
 /* Button */
 
-.Button_icon {
-    -fx-pref-width : 0.8125em;
-    -fx-pref-height: 0.8125em;
+.icon{
     -fx-background-color: icon-color;
 }
 
-.ButtonBarButton {
-    -fx-pref-width : 1.5em;
-    -fx-pref-height: 1.5em;
-}
-
-.MenuButton {
+.button {
     -fx-background-color : action-color;
-    -fx-background-radius : 50px;
+    -fx-text-fill: text-color;
 }
 
-.MenuButton:hover {
+.button:hover {
     -fx-background-color: hover-action-color;
     -fx-text-fill : hover-action-Text;
 }
 
-.MenuButton:hover > .Button_icon {
-    -fx-background-color: background-light;
+.button-text {
+    -fx-fill: text-color;
 }
 
-.SelectButton{
-    -fx-background-color : action-color;
+.button-text:hover {
+    -fx-fill : hover-action-Text;
+}
+
+
+
+.button_icon {
+    -fx-pref-width : 0.8125em;
+    -fx-pref-height: 0.8125em;
+}
+
+
+.buttonBarButton {
+    -fx-pref-width : 1.5em;
+    -fx-pref-height: 1.5em;
+}
+
+.menuButton {
+    -fx-background-radius : 50px;
+}
+
+.selectButton{
     -fx-background-radius : 15 60 15 60 ;
 }
 
-.SelectButton:hover {
-    -fx-background-color : hover-action-color;
-    -fx-text-fill : hover-action-Text;
+.backButton {
+    -fx-background-radius: 0px 0px 50px 50px;
 }
 
 
+/** Icon **/
+
+#backButtonSVG {
+    -fx-shape: "M250 700q-14-14-14.5-33t13.5-33l198-198q7-7 15.5-10.5T480 422q9 0 17.5 3.5T513 436l198 197q14 14 14 33.5T711 699q-14 14-33.5 14T644 699L480 536 316 701q-13 14-32.5 13.5T250 700Z";
+}
 
 #Button_tuto {
     -fx-shape : "m 181.45896,587.01796 -0.73124,-8.04367 h -2.92497 q -10.45679,0 -17.84234,-7.38557 -7.38556,-7.38555 -7.38556,-17.84233 0,-10.45678 7.42212,-17.84234 7.42212,-7.38556 17.95202,-7.38556 5.19183,0 9.61585,1.86467 4.42403,1.86467 7.71462,5.22839 3.2906,3.36372 5.15527,7.93399 1.86467,4.57027 1.86467,9.98147 0,4.82621 -1.42592,9.65242 -1.42593,4.8262 -4.13153,9.21366 -2.7056,4.38746 -6.58119,8.1168 -3.87559,3.72935 -8.7018,6.50807 z m 3.65622,-7.89743 q 5.9962,-5.04558 9.39648,-11.8827 3.40028,-6.83713 3.40028,-13.71082 0,-9.06741 -5.66714,-14.84424 -5.66713,-5.77682 -14.29581,-5.77682 -8.77491,0 -14.8808,6.10588 -6.10588,6.10588 -6.10588,14.73456 0,8.62867 6.10588,14.73455 6.10589,6.10588 14.73456,6.10588 h 7.31243 z m -7.16619,-8.4093 q 1.16999,0 1.97436,-0.80437 0.80437,-0.80436 0.80437,-1.97435 0,-1.16999 -0.80437,-1.97436 -0.80437,-0.80437 -1.97436,-0.80437 -1.16998,0 -1.97435,0.80437 -0.80437,0.80437 -0.80437,1.97436 0,1.16999 0.80437,1.97435 0.80437,0.80437 1.97435,0.80437 z m -1.97435,-9.94491 h 3.65621 q 0,-1.82811 0.62156,-3.03466 0.62156,-1.20655 2.59592,-3.1809 1.97435,-1.97436 2.77872,-3.61966 0.80437,-1.6453 0.80437,-3.54653 0,-3.2906 -2.2303,-5.4112 -2.23029,-2.12061 -5.95963,-2.12061 -3.07122,0 -5.48432,1.60874 -2.4131,1.60874 -3.58309,4.38746 l 3.36372,1.38936 q 0.80436,-1.90123 2.23029,-2.81529 1.42592,-0.91405 3.25403,-0.91405 2.19373,0 3.43684,1.0603 1.24312,1.06031 1.24312,2.81529 0,1.38936 -0.80437,2.81528 -0.80437,1.42593 -2.85185,3.54654 -1.97436,2.04748 -2.52279,3.29059 -0.54843,1.24312 -0.54843,3.72934 z m 1.46248,-4.75308 z";

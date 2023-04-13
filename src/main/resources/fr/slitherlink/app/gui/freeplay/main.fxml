@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #333337;" stylesheets="@main.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.slitherlink.app.gui.FreePlayController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="defaultBackground" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.slitherlink.app.gui.FreePlayController">
     <top>
         <HBox maxHeight="-Infinity" prefHeight="35.0" prefWidth="580.0" BorderPane.alignment="CENTER">
             <opaqueInsets>
@@ -25,7 +25,7 @@
     <center>
         <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" spacing="10.0" BorderPane.alignment="CENTER">
             <children>
-                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Jeu Libre" textAlignment="CENTER">
+                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Jeu Libre" textAlignment="CENTER">
                     <font>
                         <Font name="Apple Braille" size="50.0" />
                     </font>
@@ -50,8 +50,8 @@
                   </Button>
                </children>
                 </HBox>
-            <Line endX="456.79290771484375" endY="0.2928932309150696" startX="-100.0" stroke="#9f9f9f" />
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Paramètres de la partie">
+            <Line endX="456.79290771484375" endY="0.2928932309150696" fill="RED" smooth="false" startX="-100.0" stroke="#9f9f9f" />
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: text-color;" text="Paramètres de la partie">
                <font>
                   <Font size="31.0" />
                </font>
@@ -60,7 +60,7 @@
                <children>
                   <HBox prefHeight="40.0" prefWidth="600.0">
                      <children>
-                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Grille : ">
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: text-color;" text="Grille : ">
                            <font>
                               <Font size="22.0" />
                            </font>
@@ -70,12 +70,12 @@
                   </HBox>
                   <HBox alignment="BASELINE_LEFT" prefHeight="40.0" prefWidth="600.0">
                      <children>
-                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Difficulté : ">
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: text-color;" text="Difficulté : ">
                            <font>
                               <Font size="22.0" />
                            </font>
                         </Text>
-                        <Text fx:id="easyText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Facile">
+                        <Text fx:id="easyText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: text-color;" text="Facile">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -84,7 +84,7 @@
                            </HBox.margin>
                         </Text>
                         <RadioButton fx:id="easyButton" mnemonicParsing="false" prefHeight="18.0" prefWidth="23.0" text="RadioButton" />
-                        <Text fx:id="mediumText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Moyen">
+                        <Text fx:id="mediumText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: text-color;" text="Moyen">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -93,7 +93,7 @@
                            </HBox.margin>
                         </Text>
                         <RadioButton fx:id="mediumButton" mnemonicParsing="false" prefHeight="18.0" prefWidth="23.0" text="RadioButton" />
-                        <Text fx:id="hardText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Difficile">
+                        <Text fx:id="hardText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: text-color;" text="Difficile">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -106,13 +106,13 @@
                   </HBox>
                   <HBox fx:id="HelpHbox" prefHeight="40.0" prefWidth="600.0">
                      <children>
-                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Aide : ">
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: text-color;" text="Aide : ">
                            <font>
                               <Font size="22.0" />
                            </font>
                         </Text>
                         <ToggleButton mnemonicParsing="false" text="ToggleButton" />
-                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text=" Auto-completion : ">
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: text-color;" text=" Auto-completion : ">
                            <font>
                               <Font size="22.0" />
                            </font>
@@ -122,7 +122,7 @@
                   </HBox>
                   <HBox prefHeight="40.0" prefWidth="600.0">
                      <children>
-                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Filter les niveux déja fini : ">
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: text-color;" text="Filter les niveux déja fini : ">
                            <font>
                               <Font size="22.0" />
                            </font>

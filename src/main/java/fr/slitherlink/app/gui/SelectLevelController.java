@@ -62,7 +62,7 @@ public class SelectLevelController implements ActionListener {
         button.setPrefWidth(100.0);
         button.setScaleX(1.1);
         button.setStyle("-fx-translate-y: -50;");
-        button.getStyleClass().add("SelectButton");
+        button.getStyleClass().add("selectButton");
         // TODO: 12/04/2023 Touver le bon chemin pour le css
         //        button.getStylesheets().add("@../../style/default-style.css");
         button.setTextAlignment(TextAlignment.CENTER);
@@ -74,7 +74,7 @@ public class SelectLevelController implements ActionListener {
             button.setDisable(true);
         else
             // TODO: 12/04/2023 afficher comme a faire
-            button.getStyleClass().add("SelectButtonUnfinished");
+            button.getStyleClass().add("selectButtonUnfinished");
 
         button.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             Game game = new Game(new GameSaveResourceManageur(id));

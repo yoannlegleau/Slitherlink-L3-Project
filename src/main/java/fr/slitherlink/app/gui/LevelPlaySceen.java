@@ -36,6 +36,7 @@ public class LevelPlaySceen implements ActionListener {
     public Button assumptionButton;
     public Button assumptionCancelButton;
     public Button assumptionValidButton;
+    public Pane helpPanel;
 
     Game game;
 
@@ -46,12 +47,6 @@ public class LevelPlaySceen implements ActionListener {
 
     @FXML
     public Pane gamePane;
-
-    @FXML
-    public Text titleHelpText;
-
-    @FXML
-    public Text descriptionHelpText;
 
     public static int seconds = 0;
     private static Boolean boolHandle=false;
@@ -88,6 +83,7 @@ public class LevelPlaySceen implements ActionListener {
         game.subscribe(this);
         int pxSize = 500;
         puzlGridGroup = new PuzllGridGroup(game, pxSize);
+        gamePane.getChildren().clear();
         gamePane.getChildren().add(puzlGridGroup);
         game.redoAllAction();
     }
@@ -107,8 +103,10 @@ public class LevelPlaySceen implements ActionListener {
     public void updateHelpDisplay(HelpAction helpAction) {
         ListTechnic listTechnic = ListTechnic.getInstance();
         Technic technic = listTechnic.getTechnic(helpAction.getTechnicId());
-        titleHelpText.setText(technic.getTitle());
-        descriptionHelpText.setText(technic.getDesc());
+
+        //TODO afficher l'aide
+//        titleHelpText.setText(technic.getTitle());
+//        descriptionHelpText.setText(technic.getDesc());
     }
 
     @Override
@@ -186,4 +184,5 @@ public class LevelPlaySceen implements ActionListener {
             boolHandle=true;
         }
     }
+
 }

@@ -6,25 +6,25 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #333337;" stylesheets="@../../style/default-style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.slitherlink.app.gui.LevelPlaySceen">
+<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="defaultBackground" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.slitherlink.app.gui.LevelPlaySceen">
    <center>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="400.0" prefWidth="332.0" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label fx:id="timeLabel" prefHeight="18.0" prefWidth="45.0" text="00:00:00" textFill="#efeded" />
+                  <Label fx:id="timeLabel" prefHeight="18.0" prefWidth="45.0" style="-fx-text-fill: text-color;" text="00:00:00" />
                   <Button fx:id="pauseButton" mnemonicParsing="false" onAction="#pauseAction" text="pause" />
-                  <Label fx:id="winLabel" text="Gagné !" textFill="WHITE" visible="false">
+                  <Label fx:id="winLabel" style="-fx-text-fill: text-color;" text="Gagné !" visible="false">
                      <font>
                         <Font size="36.0" />
                      </font>
                   </Label>
                </children></HBox>
-            <FlowPane fx:id="gamePane" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #252525; -fx-border-width: 5; -fx-border-color: #535353; -fx-border-radius: 15;">
+            <FlowPane fx:id="gamePane" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="200.0" styleClass="roundBorderedBackground">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
@@ -55,11 +55,6 @@
       </VBox>
    </center>
    <right>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-         <children>
-            <Text fx:id="titleHelpText" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-            <Text fx:id="descriptionHelpText" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-         </children>
-      </VBox>
+      <Pane fx:id="helpPanel" BorderPane.alignment="CENTER" />
    </right>
 </BorderPane>

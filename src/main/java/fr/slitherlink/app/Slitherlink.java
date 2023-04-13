@@ -60,6 +60,11 @@ public class Slitherlink extends Application {
 
         mainPane = new AnchorPane();
         mainPane.setMinSize(960, 720);
+        mainPane.getStylesheets().add(getClass().getResource("style/default-style.css").toExternalForm());
+
+        // TODO: 13/04/2023 suprimer test 
+
+
 
         mainButtonBar = FXMLLoader.load(getClass().getResource("gui/navBar/main.fxml"));
         if(mainButtonBar == null){
@@ -79,7 +84,7 @@ public class Slitherlink extends Application {
         sceneLoaders.put(GAME_SELECTION_MENU,new FXMLLoader(getClass().getResource("gui/gameTypeSelectionMenu/main.fxml")));
         sceneLoaders.put(FREEPLAY_MENU,new FXMLLoader(getClass().getResource("gui/freeplay/main.fxml")));
         sceneLoaders.put(RULE_SCREEN,new FXMLLoader(getClass().getResource("gui/rule_screen/ruleScreen.fxml")));
-        sceneLoaders.put(SELECT_LEVEL,new FXMLLoader(getClass().getResource("gui/select_Level/selectLevel.fxml")));
+        sceneLoaders.put(SELECT_LEVEL,new FXMLLoader(getClass().getResource("gui/select_level/selectLevel.fxml")));
         sceneLoaders.put(LEVEL_PLAY_SRCEEN,new FXMLLoader(getClass().getResource("gui/level_play_sceen/level-play-screen.fxml")));
 
         ObservableList<Node> children = mainPane.getChildren();
@@ -126,6 +131,9 @@ public class Slitherlink extends Application {
         stage.show();
 
         instance = this;
+
+        // test css
+        //Slitherlink.getMainInstance().setStyle("test-style");
     }
 
     public void toggleBlur(){
@@ -169,7 +177,15 @@ public class Slitherlink extends Application {
         return instance;
     }
 
+    public void setStyle(String style){
+        mainPane.getStylesheets().clear();
+        mainPane.getStylesheets().add(getClass().getResource("style/"+style+".css").toExternalForm());
+    }
+
     public static void main(String[] args) {
         launch();
     }
+
+
+
 }

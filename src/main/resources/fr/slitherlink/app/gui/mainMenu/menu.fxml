@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -9,11 +10,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="960.0" prefHeight="720.0" prefWidth="960.0" styleClass="root,DefaultBackground" stylesheets="@../../style/default-style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.slitherlink.app.gui.MainMenuController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="960.0" prefHeight="720.0" prefWidth="960.0" styleClass="defaultBackground" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.slitherlink.app.gui.MainMenuController">
    <top>
       <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-translate-y: 86;" BorderPane.alignment="CENTER">
          <children>
-            <Text styleClass="Title"  text="SlitherLink" VBox.vgrow="ALWAYS">
+            <Text styleClass="title" text="SlitherLink" VBox.vgrow="ALWAYS">
                <font>
                   <Font size="90.0" />
                </font>
@@ -24,7 +25,7 @@
    <center>
       <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="89.0" minWidth="255.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="playButton" alignment="CENTER" graphicTextGap="5.0" maxWidth="1.7976931348623157E308" minHeight="54.0" minWidth="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#onPlayButtonClick" styleClass="MenuButton" stylesheets="@../../style/default-style.css" text="Jouer" textAlignment="CENTER">
+            <Button fx:id="playButton" alignment="CENTER" graphicTextGap="5.0" maxWidth="1.7976931348623157E308" minHeight="54.0" minWidth="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#onPlayButtonClick" styleClass="menuButton" text="Jouer" textAlignment="CENTER">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -38,10 +39,14 @@
                   <Insets bottom="6.0" />
                </VBox.margin>
                <graphic>
-                  <Region id="Button_play" prefHeight="200.0" prefWidth="200.0" styleClass="Button_icon" />
+                  <Region id="Button_play" prefHeight="200.0" prefWidth="200.0">
+                     <styleClass>
+                        <String fx:value="button_icon" />
+                        <String fx:value="icon" />
+                     </styleClass></Region>
                </graphic>
             </Button>
-            <Button fx:id="rulesButton" alignment="CENTER" graphicTextGap="5.0" maxWidth="1.7976931348623157E308" minHeight="54.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#onRulesButtonClick" styleClass="MenuButton" stylesheets="@../../style/default-style.css" text="Règles">
+            <Button fx:id="rulesButton" alignment="CENTER" graphicTextGap="5.0" maxWidth="1.7976931348623157E308" minHeight="54.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#onRulesButtonClick" styleClass="menuButton" text="Règles">
                <VBox.margin>
                   <Insets bottom="6.0" top="6.0" />
                </VBox.margin>
@@ -55,10 +60,14 @@
                   <Insets bottom="1.0" />
                </padding>
                <graphic>
-                  <Region id="Button_rules" prefHeight="200.0" prefWidth="200.0" styleClass="Button_icon" stylesheets="@../../style/default-style.css" />
+                  <Region id="Button_rules" prefHeight="200.0" prefWidth="200.0">
+                     <styleClass>
+                        <String fx:value="button_icon" />
+                        <String fx:value="icon" />
+                     </styleClass></Region>
                </graphic>
             </Button>
-            <Button fx:id="tutorialButton" alignment="CENTER" graphicTextGap="2.0" maxWidth="1.7976931348623157E308" minHeight="54.0" mnemonicParsing="false" onAction="#onTutorialButtonClick" styleClass="MenuButton" stylesheets="@../../style/default-style.css" text="Tutoriel">
+            <Button fx:id="tutorialButton" alignment="CENTER" graphicTextGap="2.0" maxWidth="1.7976931348623157E308" minHeight="54.0" mnemonicParsing="false" onAction="#onTutorialButtonClick" styleClass="menuButton" text="Tutoriel">
                <VBox.margin>
                   <Insets bottom="6.0" top="6.0" />
                </VBox.margin>
@@ -72,10 +81,14 @@
                   <Insets bottom="1.0" />
                </padding>
                <graphic>
-                  <Region id="Button_tuto" prefHeight="50.0" prefWidth="90.0" styleClass="Button_icon" stylesheets="@../../style/default-style.css" />
+                  <Region id="Button_tuto" prefHeight="50.0" prefWidth="90.0">
+                     <styleClass>
+                        <String fx:value="button_icon" />
+                        <String fx:value="icon" />
+                     </styleClass></Region>
                </graphic>
             </Button>
-            <Button fx:id="quitButton" mnemonicParsing="false" onAction="#onQuitButtonClick" prefWidth="118.0" styleClass="MenuButton" stylesheets="@../../style/default-style.css" text="Quitter">
+            <Button fx:id="quitButton" mnemonicParsing="false" onAction="#onQuitButtonClick" prefWidth="118.0" styleClass="menuButton" text="Quitter">
                <VBox.margin>
                   <Insets top="6.0" />
                </VBox.margin>
@@ -86,7 +99,11 @@
                   <Font size="16.0" />
                </font>
                <graphic>
-                  <Region id="Button_exit" prefHeight="200.0" prefWidth="200.0" styleClass="Button_icon" stylesheets="@../../style/default-style.css" />
+                  <Region id="Button_exit" prefHeight="200.0" prefWidth="200.0">
+                     <styleClass>
+                        <String fx:value="button_icon" />
+                        <String fx:value="icon" />
+                     </styleClass></Region>
                </graphic>
             </Button>
          </children>

@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../../style/default-style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"  xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <VBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="200.0" prefWidth="406.0" BorderPane.alignment="CENTER">
          <children>
@@ -47,7 +47,7 @@
                   </ComboBox>
                </children>
             </HBox>
-            <Button mnemonicParsing="false" styleClass="MenuButton" stylesheets="@../../style/default-style.css" text="Enregistrer" />
+            <Button mnemonicParsing="false" styleClass="MenuButton"  text="Enregistrer" />
          </children>
       </VBox>
    </center>
