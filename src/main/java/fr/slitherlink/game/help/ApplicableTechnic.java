@@ -1097,19 +1097,19 @@ public class ApplicableTechnic {
 
             if ( ( (coordExist(y, x-1, size) && route.getCell(y, x-1).getTop().isLine() && (!coordExist(y-1, x, size) || route.getCell(y-1, x).getLeft().isCross()) )
                 || (coordExist(y-1, x, size) && route.getCell(y-1, x).getLeft().isLine() && (!coordExist(y, x-1, size) || route.getCell(y, x-1).getTop().isCross()) ) )
-                && !(route.getCell(x, y).getBottom().isLine() && route.getCell(x, y).getRight().isLine()) )
+                && !(route.getCell(x, y).getBottom().isCross() && route.getCell(x, y).getRight().isCross()) )
                     listCoord.add(new Coordinates(y, x));
             else if ( ( (coordExist(y-1, x, size) && route.getCell(y-1, x).getRight().isLine() && (!coordExist(y, x+1, size) || route.getCell(y, x+1).getTop().isCross()) )
                 || (coordExist(y, x+1, size) && route.getCell(y, x+1).getTop().isLine() && (!coordExist(y-1, x, size) || route.getCell(y-1, x).getRight().isCross()) ) )
-                && !(route.getCell(x, y).getBottom().isLine() && route.getCell(x, y).getLeft().isLine()) )
+                && !(route.getCell(x, y).getBottom().isCross() && route.getCell(x, y).getLeft().isCross()) )
                     listCoord.add(new Coordinates(y, x));
             else if ( ( (coordExist(y, x+1, size) && route.getCell(y, x+1).getBottom().isLine() && (!coordExist(y+1, x, size) || route.getCell(y+1, x).getRight().isCross()) )
                 || (coordExist(y+1, x, size) && route.getCell(y+1, x).getRight().isLine() && (!coordExist(y, x+1, size) || route.getCell(y, x+1).getBottom().isCross()) ) )
-                && !(route.getCell(x, y).getTop().isLine() && route.getCell(x, y).getLeft().isLine()) )
+                && !(route.getCell(x, y).getTop().isCross() && route.getCell(x, y).getLeft().isCross()) )
                     listCoord.add(new Coordinates(y, x));
             else if ( ( (coordExist(y+1, x, size) && route.getCell(y+1, x).getLeft().isLine() && (!coordExist(y, x-1, size) || route.getCell(y, x-1).getBottom().isCross()) )
                 || (coordExist(y, x-1, size) && route.getCell(y, x-1).getBottom().isLine() && (!coordExist(y+1, x, size) || route.getCell(y+1, x).getLeft().isCross()) ) )
-                && !(route.getCell(x, y).getTop().isLine() && route.getCell(x, y).getRight().isLine()) )
+                && !(route.getCell(x, y).getTop().isCross() && route.getCell(x, y).getRight().isCross()) )
                     listCoord.add(new Coordinates(y, x));
             else
                 return null;
