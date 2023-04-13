@@ -20,13 +20,20 @@ public class FreePlayRessourceManager implements GameSaver {
 
     private static FreePlayRessourceManager instance;
 
-    private final FreePlayConfig config;
+    private FreePlayConfig config;
 
     private FreePlayRessourceManager() {
         try {
             config = XmlResourcesManageur.concertXmlToJava(FreePlayConfig.class, FREE_PLAY_CONFIG_FILE);
         } catch (JAXBException e) {
             throw new RuntimeException(e);
+        }
+        if (config == null) {
+            config = new FreePlayConfig();
+            setSize(6);
+            setDifficulty(Difficulty.MEDIUM);
+            setFinishedFilter(true);
+            saveConfig();
         }
     }
 

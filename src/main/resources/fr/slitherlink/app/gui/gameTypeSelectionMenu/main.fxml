@@ -74,7 +74,7 @@
                                 </Text>
                                 <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../../../icons/grid.png" />
+                                        <Image url="@../../../icons/lock.png" />
                                     </image>
                                 </ImageView>
                             </children>
