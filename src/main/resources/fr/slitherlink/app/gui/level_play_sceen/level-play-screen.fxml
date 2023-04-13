@@ -16,8 +16,14 @@
          <children>
             <HBox fx:id="timeVbox" alignment="CENTER">
                <children>
-                  <Label fx:id="timeLabel" prefHeight="18.0" prefWidth="45.0" style="-fx-text-fill: onDark-text-color;" text="00:00:00" />
-                  <Button fx:id="pauseButton" mnemonicParsing="false" onAction="#pauseAction" styleClass="title" text="pause" />
+                  <Label fx:id="timeLabel" prefHeight="18.0" prefWidth="45.0" style="-fx-text-fill: onDark-text-color;" text="00:00:00">
+                     <HBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </HBox.margin></Label>
+                  <Button fx:id="pauseButton" mnemonicParsing="false" onAction="#pauseAction" styleClass="title" text="pause">
+                     <HBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </HBox.margin></Button>
                   <Label fx:id="winLabel" styleClass="title" text="Gagné !" visible="false">
                      <font>
                         <Font size="36.0" />
