@@ -1,6 +1,7 @@
 package fr.slitherlink.app.gui;
 
 import fr.slitherlink.app.Slitherlink;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
@@ -33,4 +34,6 @@ public class MainMenuController {
         System.out.println("On quitte le jeu");
         System.exit(0);
     }
+
+
 }

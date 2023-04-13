@@ -42,4 +42,8 @@ public abstract class Popup {
         stage.showAndWait();
     }
 
+    public void closepopUp() {
+        stage.getScene().getWindow().hide();
+    }
+
 }

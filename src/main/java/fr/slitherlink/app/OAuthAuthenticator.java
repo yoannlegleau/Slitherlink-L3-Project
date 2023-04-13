@@ -19,6 +19,7 @@ public class OAuthAuthenticator {
     private static final String CLIENT_ID = "308181366295-4hn7msjk5rjlvm773to7qre4h5tustoj.apps.googleusercontent.com";
     private static final String CLIENT_SECRET = "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";
     private static final List<String> SCOPES = Arrays.asList("email", "profile");
+    private static Credential credential;
 
     public  OAuthAuthenticator() {}
 
@@ -31,19 +32,22 @@ public class OAuthAuthenticator {
                     CLIENT_SECRET,
                     SCOPES)
                     .build();
-            Credential credential = new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("user");
+            credential = new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("user");
             Oauth2 oauth2 = new Oauth2.Builder(new NetHttpTransport(), new JacksonFactory(), credential)
                     .setApplicationName("SlitherLink")
                     .build();
-            Userinfo userinfo = oauth2.userinfo().get().execute();
 
-            System.out.println("Utilisateur authentifié : " + userinfo.getEmail());
-            System.out.println("Utilisateur authentifié : " + userinfo.getPicture());
+            Userinfo userinfo = oauth2.userinfo().get().execute();
+            FireBase db = FireBase.getInstance();
+            db.createUser(userinfo);
+
         } catch (IOException e) {
             System.err.println("Erreur d'authentification Google : " + e.getMessage());
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
+
+
+
 }
