@@ -8,10 +8,13 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.effect.GaussianBlur;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import javax.swing.plaf.basic.BasicSplitPaneUI;
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -63,6 +66,10 @@ public class Slitherlink extends Application {
         mainPane = new AnchorPane();
         mainPane.setMinSize(960, 720);
         mainPane.getStylesheets().add(getClass().getResource("style/default-style.css").toExternalForm());
+        mainPane.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ESCAPE)
+                onBackButtonClicked();
+        });
 
         // TODO: 13/04/2023 suprimer test 
 
