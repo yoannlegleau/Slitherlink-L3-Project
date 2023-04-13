@@ -86,7 +86,7 @@ public class LevelPlaySceen implements ActionListener {
 
 
         });
-
+        retractablePanel.setVisible(false);
         transition = new TranslateTransition(Duration.millis(250), retractablePanel);
         transition2 = new TranslateTransition(Duration.millis(250), gamePane);
         rotateTransition = new RotateTransition(Duration.millis(250), helpIcon);
@@ -148,7 +148,10 @@ public class LevelPlaySceen implements ActionListener {
             }
             case ASSUMPTION_START -> updateAssumptionButton(true);
             case ASSUMPTION_VALID,ASSUMPTION_CANCEL -> updateAssumptionButton(false);
-            case NEW_HELP -> updateHelpDisplay((HelpAction) e.getSource());
+            case NEW_HELP -> {
+                updateHelpDisplay((HelpAction) e.getSource());
+                retractablePanel.setVisible(true);
+            }
         }
     }
 
