@@ -32,7 +32,7 @@
                 </Text>
                 <HBox alignment="CENTER" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="52.0" prefWidth="600.0" spacing="10.0">
                <children>
-                  <Button fx:id="newGameButton" mnemonicParsing="false" text="Nouvelle partie">
+                  <Button fx:id="newGameButton" mnemonicParsing="false" styleClass="menuButton" text="Nouvelle partie">
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
@@ -43,7 +43,7 @@
                         <Insets />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="resumeButton" mnemonicParsing="false" text="Reprendre">
+                  <Button fx:id="resumeButton" mnemonicParsing="false" styleClass="menuButton" text="Reprendre">
                      <font>
                         <Font size="26.0" />
                      </font>

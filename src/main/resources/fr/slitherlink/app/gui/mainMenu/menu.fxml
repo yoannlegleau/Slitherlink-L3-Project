@@ -67,27 +67,6 @@
                      </styleClass></Region>
                </graphic>
             </Button>
-            <Button fx:id="tutorialButton" alignment="CENTER" graphicTextGap="2.0" maxWidth="1.7976931348623157E308" minHeight="54.0" mnemonicParsing="false" onAction="#onTutorialButtonClick" styleClass="menuButton" text="Tutoriel">
-               <VBox.margin>
-                  <Insets bottom="6.0" top="6.0" />
-               </VBox.margin>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <font>
-                  <Font size="32.0" />
-               </font>
-               <padding>
-                  <Insets bottom="1.0" />
-               </padding>
-               <graphic>
-                  <Region id="Button_tuto" prefHeight="50.0" prefWidth="90.0">
-                     <styleClass>
-                        <String fx:value="button_icon" />
-                        <String fx:value="icon" />
-                     </styleClass></Region>
-               </graphic>
-            </Button>
             <Button fx:id="quitButton" mnemonicParsing="false" onAction="#onQuitButtonClick" prefWidth="118.0" styleClass="menuButton" text="Quitter">
                <VBox.margin>
                   <Insets top="6.0" />

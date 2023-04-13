@@ -10,23 +10,6 @@
 
 <ButtonBar buttonMinWidth="2.0" minWidth="-Infinity" prefHeight="40.0" styleClass="darkBackground" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.slitherlink.app.gui.NavBarController">
    <buttons>
-      <Button graphicTextGap="5.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onSettingsButtonClick" style="-fx-translate-y: -18;" styleClass="menuButton" text="Paramètres" textAlignment="CENTER" textOverrun="CLIP" ButtonBar.buttonData="LEFT">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <graphic>
-            <Region id="Button_settings" prefHeight="200.0" prefWidth="200.0">
-               <styleClass>
-                  <String fx:value="button_icon" />
-                  <String fx:value="ButtonBarButton" />
-                  <String fx:value="icon" />
-               </styleClass>
-            </Region>
-         </graphic>
-         <padding>
-            <Insets left="20.0" right="20.0" />
-         </padding>
-      </Button>
       <Button alignment="CENTER" graphicTextGap="5.0" maxHeight="1.7976931348623157E308" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#onAccountButtonClick" style="-fx-translate-y: -18;" styleClass="menuButton" text="Profil" ButtonBar.buttonData="LEFT">
          <cursor>
             <Cursor fx:constant="HAND" />
