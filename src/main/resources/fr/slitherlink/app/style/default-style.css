@@ -141,3 +141,54 @@
 #Button_leaderboard {
     -fx-shape : "m 94.403764,896.64157 v 24.95467 h 13.211296 v -24.95467 z m 17.615056,-17.61505 v 42.56972 h 13.21129 v -42.56972 z m 17.61506,23.48674 v 19.08298 h 13.21129 V 902.51326 Z M 142.84517,926 H 94.403764 q -1.816553,0 -3.110158,-1.29361 Q 90,923.41279 90,921.59624 v -24.95467 q 0,-1.81655 1.293606,-3.11015 1.293605,-1.29361 3.110158,-1.29361 h 13.211296 v -13.21129 q 0,-1.81655 1.2936,-3.11016 1.29361,-1.29361 3.11016,-1.29361 h 13.21129 q 1.81655,0 3.11016,1.29361 1.29361,1.29361 1.29361,3.11016 v 19.08298 h 13.21129 q 1.81655,0 3.11016,1.2936 1.2936,1.29361 1.2936,3.11016 v 19.08298 q 0,1.81655 -1.2936,3.11015 Q 144.66172,926 142.84517,926 Z";
 }
+
+/* Custom scroll pane */
+
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+/* Custom scroll bar */
+
+.scroll-bar:vertical .track{
+    -fx-background-color : #252525;
+    -fx-border-color :transparent;
+    -fx-background-radius : 0.0em;
+    -fx-border-radius :2.0em;
+}
+
+.scroll-bar:vertical .increment-button ,
+.scroll-bar:vertical .decrement-button {
+    -fx-background-color : #252525;
+    -fx-background-radius : 0.0em;
+    -fx-padding :0.0 10.0 0.0 0.0;
+
+}
+
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow{
+    -fx-shape : "";
+    -fx-padding :0.15em 0.0;
+}
+
+.scroll-bar:vertical .increment-arrow,
+.scroll-bar:vertical .decrement-arrow{
+    -fx-shape : "";
+    -fx-padding :0.0 0.10em;
+}
+
+.scroll-bar:vertical {
+    -fx-pref-width: 7px;
+}
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color :derive(black,90.0%);
+    -fx-background-insets : 2.0, 0.0, 0.0;
+    -fx-background-radius : 2.0em;
+}
+
+.scroll-bar:vertical .thumb:hover {
+    -fx-background-color :derive(#4D4C4F,10.0%);
+    -fx-background-insets : 2.0, 0.0, 0.0;
+    -fx-background-radius : 2.0em;
+}

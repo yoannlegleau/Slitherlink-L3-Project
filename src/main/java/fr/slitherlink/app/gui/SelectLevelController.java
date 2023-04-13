@@ -49,7 +49,7 @@ public class SelectLevelController implements ActionListener {
         }
     }
 
-    public Button createButton(int id) { // TODO: 11/04/2023 modif interface pour que ce soit clean + sauvegarder partie en cours avec id
+    public Button createButton(int id) {
 
         Button button = new Button(id + "");
         button.setContentDisplay(ContentDisplay.CENTER);
