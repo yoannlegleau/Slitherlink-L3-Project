@@ -6,6 +6,7 @@ import fr.slitherlink.game.Game;
 import fr.slitherlink.game.action.ActionFactory;
 import fr.slitherlink.game.action.GameActionTypes;
 import fr.slitherlink.game.action.actions.HelpAction;
+import fr.slitherlink.game.grid.GridCell;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -203,9 +204,11 @@ public class LevelPlaySceen implements ActionListener {
         if(boolHandle && !winLabel.isVisible()){
             startTimer();
             boolHandle=false;
+            puzlGridGroup.setDisable(false);
         }else{
             stopTimer();
             boolHandle=true;
+            puzlGridGroup.setDisable(true);
         }
     }
 }
