@@ -85,7 +85,7 @@ public class LevelPlaySceen implements ActionListener {
             gamePane.setMaxWidth(gamePane.getHeight());
         });
 
-        retractablePanel.setVisible(false);
+
         transition = new TranslateTransition(Duration.millis(250), retractablePanel);
         transition2 = new TranslateTransition(Duration.millis(250), gamePane);
         rotateTransition = new RotateTransition(Duration.millis(250), helpIcon);
@@ -98,7 +98,9 @@ public class LevelPlaySceen implements ActionListener {
 
     public void setGame(Game game) {
         this.game = game;
+        togglePanel();
         game.subscribe(this);
+        retractablePanel.setVisible(false);
         puzlGridGroup = new PuzllGridGroup(game, getPuzzleSize());
         gamePane.getChildren().clear();
         gamePane.getChildren().add(puzlGridGroup);

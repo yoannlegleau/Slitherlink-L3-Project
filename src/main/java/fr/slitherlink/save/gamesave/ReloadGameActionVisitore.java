@@ -113,6 +113,6 @@ public class ReloadGameActionVisitore implements ActionVisitore {
 
     @Override
     public void visit(HelpAction hintAction) {
-
+        hintAction.setGameActionTypes(GameActionTypes.NEW_HELP);
     }
 }
