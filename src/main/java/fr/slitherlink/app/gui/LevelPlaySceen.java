@@ -49,7 +49,7 @@ public class LevelPlaySceen implements ActionListener {
     public Pane gamePane;
 
     public static int seconds = 0;
-    private static Boolean boolHandle=false;
+    public static Boolean boolHandle=false;
     @FXML
     public Label timeLabel=new Label("00:00:00");
     @FXML

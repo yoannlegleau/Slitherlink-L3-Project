@@ -151,6 +151,7 @@ public class Slitherlink extends Application {
 
         if(paneName==LEVEL_PLAY_SRCEEN){
             LevelPlaySceen.seconds=0;
+            LevelPlaySceen.boolHandle=false;
             LevelPlaySceen.startTimer();
         }
 
